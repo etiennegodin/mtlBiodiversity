@@ -10,6 +10,7 @@ setup(
         'pandas',
         'numpy',
         'duckdb',
-        'duckdb-extension-spatial'
+        'duckdb-extension-spatial',
+        'pyarrow'
     ],
     )
