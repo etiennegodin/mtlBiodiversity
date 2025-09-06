@@ -1,0 +1,11 @@
+#data folders 
+data/raw/
+data/interim/
+#geodata files 
+*.zip
+*.dbf
+*.tif
+*.gpkg
+#qgis
+*.qgz
+*.xlsx
