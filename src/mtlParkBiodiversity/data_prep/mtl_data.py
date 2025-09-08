@@ -27,7 +27,6 @@ def save_gdf(gdf, output_file_path):
         print(f"Failed to save {output_file_path.stem} : {e}")
         return False
     
-
 def extract_gpgk_layers(file : Path, slice : tuple = None):
 
     # Create df from layers of gpgk 
@@ -36,7 +35,6 @@ def extract_gpgk_layers(file : Path, slice : tuple = None):
     #Keep only geometry layers 
     values_to_remove = ['MultiPolygon', 'Polygon']
     df_filtered = layers_df[layers_df['geometry_type'].isin(values_to_remove)]
-    print(df_filtered)
     layers = df_filtered['name'].tolist()
 
     #Splice list if specified
