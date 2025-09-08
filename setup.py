@@ -11,6 +11,6 @@ setup(
         'numpy',
         'duckdb',
         'duckdb-extension-spatial',
-        'pyarrow'
+        'fiona'
     ],
     )

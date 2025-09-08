@@ -6,5 +6,4 @@ Requires-Dist: pandas
 Requires-Dist: numpy
 Requires-Dist: duckdb
 Requires-Dist: duckdb-extension-spatial
-Requires-Dist: pyarrow
 Dynamic: requires-dist
