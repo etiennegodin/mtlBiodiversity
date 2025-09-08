@@ -1,0 +1,10 @@
+Metadata-Version: 2.4
+Name: mtlParkBiodiversity
+Version: 0.0.1
+Requires-Dist: geopandas
+Requires-Dist: pandas
+Requires-Dist: numpy
+Requires-Dist: duckdb
+Requires-Dist: duckdb-extension-spatial
+Requires-Dist: pyarrow
+Dynamic: requires-dist

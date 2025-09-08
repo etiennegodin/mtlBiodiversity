@@ -1,0 +1,6 @@
+geopandas
+pandas
+numpy
+duckdb
+duckdb-extension-spatial
+pyarrow
