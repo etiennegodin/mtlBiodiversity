@@ -91,9 +91,12 @@ def prep_mtl(force = False):
                 gdf_out = convert_crs(gdf_clipped, target_crs = target_crs)
                 if not save_gdf(gdf_out,output_file_path):
                     continue
+                
 
         else:
             print(f"# File {output_file_path} already exists, skipping.")
+    
+    return True
 
 if __name__ == "__main__":
     prep_mtl(force= False)

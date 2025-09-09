@@ -13,6 +13,11 @@ gbif_occurence_sample_file = gbif_folder / 'gbif_occurences_sample.parquet'
 
 park_boundaries_file = Path("data/interim/Espace_Vert_clipped.shp")
 
+output_folder = Path('data/interim/gbif/')
+output_folder.mkdir(parents=True, exist_ok=True)
+
+output_file_path = output_folder / 'gbif_with_parks.parquet'
+
 
 def convert_gbif_csv(input_path, output_path, force = False, limit = None):
     if output_path.exists() and not force:
@@ -20,15 +25,18 @@ def convert_gbif_csv(input_path, output_path, force = False, limit = None):
         return 
     
     if limit:
+        print(f'Conveting to {input_path} to .parquet file with limit set to {limit} ')
         duckdb.query(f"COPY (SELECT * FROM '{input_path}' LIMIT {limit}) TO '{output_path}' (FORMAT PARQUET)")
+
     else: 
+        print(f'Conveting to {input_path} to .parquet file ')
         duckdb.query(f"COPY (SELECT * FROM '{input_path}') TO '{output_path}' (FORMAT PARQUET)")
   
 
 def preview_gbif_data(con, table, limit = 100):
     print('-'*25, 'Preview', '-'*25)
     df = con.execute(f"SELECT * FROM {table} LIMIT {limit}").df()
-    print(df.head())
+    print(df.head(limit))
     print(df.columns)
     print('/'*50)
 
@@ -74,7 +82,7 @@ def convert_lat_long_to_point(con, table):
     con.execute(f"ALTER TABLE {table} ADD COLUMN geom GEOMETRY")
     con.execute(f"UPDATE {table} SET geom = ST_Point(decimalLongitude, decimalLatitude)")
 
-def spatial_join(limit = 100):
+def spatial_join(gbif_occurence_db_file, park_boundaries_file, limit = 100):
 
     # Create a connection (in-memory or persistent)
     con = duckdb.connect()  # or con = duckdb.connect("mydb.duckdb")
@@ -90,19 +98,29 @@ def spatial_join(limit = 100):
     preview_gbif_data(con, "parks")
 
     #Load gbif data
-    con.execute(f"CREATE TABLE gbif AS SELECT *, ST_Point(decimalLongitude, decimalLatitude) AS geom FROM '{gbif_occurence_db_file}' LIMIT {limit}")
-
+    if limit:
+        con.execute(f"CREATE TABLE gbif AS SELECT *, ST_Point(decimalLongitude, decimalLatitude) AS geom FROM '{gbif_occurence_db_file}' LIMIT {limit}")
+    else:
+        con.execute(f"CREATE TABLE gbif AS SELECT *, ST_Point(decimalLongitude, decimalLatitude) AS geom FROM '{gbif_occurence_db_file}'")
+    
     preview_gbif_data(con, "gbif")
 
-    print("Spatial join")
-    # Create new col for park id 
     #Spatial Join 
+    print("Spatial join")
 
-    con.execute(f"""CREATE OR REPLACE TABLE gbif_with_parks AS
-                SELECT g.*, p.OBJECTID
+    con.execute(f"""
+                
+                CREATE OR REPLACE TABLE gbif_with_parks AS
+                SELECT g.*,
+                p.OBJECTID,
+                p.Type,
+                p.Nom,
+                p.TYPO1,
+                p.TYPO2
                 FROM gbif g
                 LEFT JOIN parks p
                 ON ST_Within(g.geom, p.geom);
+
                 """)
 
 
@@ -111,38 +129,39 @@ def spatial_join(limit = 100):
     print(df)
 
     print(df['OBJECTID'].unique())
-    
 
-    print('d')
-
-    
-
-    return
-
+    #Save 
     con.execute(f"""
-                    
-                    
-                    ALTER TABLE gbif ADD COLUMN Nom VARCHAR;
-                    UPDATE gbif
-                    SET Nom = (
-                    SELECT p.Nom
-                    FROM parks p
-                    WHERE ST_Within(p.geom,gbif.geom )
-                    );
-                    
-                    
-                    """)
+    COPY gbif_with_parks TO '{output_file_path}' (FORMAT 'parquet');
+    """)
+
+    return True
 
 def prep_gbif(force = False):
+
     print(f"#_{__name__}")
-    convert_gbif_csv(gbif_occurence_raw_file, gbif_occurence_db_file, force = force)
-    convert_gbif_csv(gbif_occurence_raw_file, gbif_occurence_sample_file, force = force, limit = 100)
+    # Check if csv has been converted to parquet file
+    if gbif_occurence_db_file.exists and force:
+        convert_gbif_csv(gbif_occurence_raw_file, gbif_occurence_db_file, force = force)
+    elif not gbif_occurence_db_file.exists:
+        convert_gbif_csv(gbif_occurence_raw_file, gbif_occurence_db_file, force = force)
+    else:
+        print("Convert_gbif_csv already done, skipping")
 
-    #get_gbif_data_crs(gbif_occurence_raw_file, 'decimalLatitude', 'decimalLongitude')
-    print('Check crs')
-    check_crs(park_boundaries_file, debug = False)
+    # Csv to sample for tests 
+    if gbif_occurence_sample_file.exists and force:
+        convert_gbif_csv(gbif_occurence_raw_file, gbif_occurence_sample_file, force = force, limit = 100)
+    elif not gbif_occurence_sample_file.exists:
+        convert_gbif_csv(gbif_occurence_raw_file, gbif_occurence_sample_file, force = force, limit = 100)
+    else:
+        print("Convert_gbif_csv already done on sample, skipping")
 
-    spatial_join(limit = 10)
-
+    if output_file_path.exists and force:
+        spatial_join(gbif_occurence_db_file,park_boundaries_file,limit = None)
+    elif not output_file_path.exists:
+        spatial_join(gbif_occurence_db_file,park_boundaries_file,limit = None)
+    else:
+        print("Spatial Join already done, skipping")
+    
 if __name__ == "__main__":
     prep_gbif(force= True)
