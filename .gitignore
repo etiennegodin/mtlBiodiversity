@@ -1,11 +1,16 @@
 #data folders 
 data/raw/
 data/interim/
+.temp/
+data/processed/
+
 #geodata files 
 *.zip
 *.dbf
 *.tif
 *.gpkg
+#db
+*.parquet
 #qgis
 *.qgz
 *.xlsx
