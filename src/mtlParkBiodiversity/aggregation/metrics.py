@@ -13,25 +13,11 @@ con.execute("INSTALL spatial;")
 con.execute("LOAD spatial;")
 
 def create_metric(name, query = None, save = False, limit = None):
+    print(f"Processing {name} metric")
     df = con.execute(query).df()
 
     if save:
         df.to_parquet(output_path / f"{name}.parquet")
-
-
-if limit:
-
-    con.execute(f"""\
-                CREATE TABLE data AS SELECT * FROM '{db_file_path}' 
-                WHERE OBJECTID IS NOT NULL
-                LIMIT 10000;
-                """)
-else:
-    con.execute(f"""
-                CREATE TABLE data AS SELECT * FROM '{db_file_path}' 
-                WHERE OBJECTID IS NOT NULL;
-                """)
-
 
 
 # Species richness per park 
@@ -43,7 +29,6 @@ species_richness_query = """
                             ORDER BY species_richness DESC;
                             """
 
-create_metric('species_richness', query= species_richness_query, save= True )
 
 
 # Number of observation per year
@@ -54,7 +39,6 @@ annual_observations_query = """
                             GROUP BY year
                             ORDER BY year DESC;    
                             """
-create_metric('annual_observations', query = annual_observations_query, save = True)
 
 # Most observed species 
 
@@ -66,7 +50,6 @@ most_observed_species_query = """
                             ORDER BY observations DESC;
                             """
 
-create_metric('most_observed_species', query = most_observed_species_query, save = True)
 
 # Number of species 
 species_count_query = """
@@ -74,4 +57,25 @@ species_count_query = """
         FROM data;
 """
 
-create_metric('species_count', query = species_count_query, save = True)
+def process_metrics(save = True):
+
+    print("Loading gbif with parks data")
+    if limit:
+
+        con.execute(f"""\
+                    CREATE TABLE data AS SELECT * FROM '{db_file_path}' 
+                    WHERE OBJECTID IS NOT NULL
+                    LIMIT 10000;
+                    """)
+    else:
+        con.execute(f"""
+                    CREATE TABLE data AS SELECT * FROM '{db_file_path}' 
+                    WHERE OBJECTID IS NOT NULL;
+                    """)
+
+    create_metric('species_richness', query= species_richness_query, save= save )
+    create_metric('annual_observations', query = annual_observations_query, save = save)
+    create_metric('most_observed_species', query = most_observed_species_query, save = save)
+    create_metric('species_count', query = species_count_query, save = save)
+
+
