@@ -6,7 +6,7 @@ setup(
     packages=find_packages(where='src'),
     package_dir={'': 'src'},
     entry_points = {
-        "console_scripts": "my_tool = mtlParkBiodiversity.cli:main"
+        "console_scripts": "mbio = mtlParkBiodiversity.cli:main"
     },
     install_requires=[
         'geopandas',

@@ -2,23 +2,31 @@ import geopandas as gpd
 from shapely.geometry import Polygon, MultiPolygon
 
 
-target_crs = 4326
-
 def convert_crs(gdf : gpd.GeoDataFrame, target_crs = 4326, verbose = False):
     """
     Converts gdf to taregt crs 
     """
-    if gdf.crs != target_crs:
+    crs_init = gdf.crs
+
+    if crs_init != target_crs:
         try:
             gdf = gdf.to_crs(target_crs)
+            crs_new = gdf.crs
+            if crs_init != crs_new:
+                return gdf
+            elif crs_init == crs_new:
+                print('Failed to convert crs')
+                return None
+
         except Exception as e:
             print(f"Failed to convert gdf to taregt crs {e}")
+            return None
 
-    else:
+    elif crs_init == target_crs:
         if verbose:
             print(f"Gdf already with target crs {target_crs}")
+        return gdf
 
-    return gdf
 
 
 def check_common_crs(gdf1 : gpd.GeoDataFrame, gdf2 : gpd.GeoDataFrame):

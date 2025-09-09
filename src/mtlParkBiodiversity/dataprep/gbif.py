@@ -2,9 +2,8 @@ import duckdb
 from pathlib import Path 
 import geopandas as gpd
 import pandas as pd 
-from ..core import convert_crs
+from ..core import clip_to_region, convert_crs
 from ..dataprep import target_crs
- 
 
 gbif_folder = Path('C:/Users/manat/Documents/Projects/mtlParkBiodiversity/data/raw/gbif/')
 
@@ -12,14 +11,11 @@ gbif_occurence_raw_file = gbif_folder / 'gbif_occurences.csv'
 gbif_occurence_db_file = gbif_folder / 'gbif_occurences.parquet'
 gbif_occurence_sample_file = gbif_folder / 'gbif_occurences_sample.parquet'
 
-park_boundaries_file = Path("data/raw/espace_verts/Espace_Vert.shp")
+park_boundaries_file = Path("data/interim/Espace_Vert_clipped.shp")
 
 
-
-
-
-def convert_gbif_csv(input_path, output_path, overwrite = False, limit = None):
-    if output_path.exists() and not overwrite:
+def convert_gbif_csv(input_path, output_path, force = False, limit = None):
+    if output_path.exists() and not force:
         print('File is already converted, skipping')
         return 
     
@@ -34,7 +30,7 @@ def preview_gbif_data(con, table, limit = 100):
     df = con.execute(f"SELECT * FROM {table} LIMIT {limit}").df()
     print(df.head())
     print(df.columns)
-    print('-'*50)
+    print('/'*50)
 
 
 def check_crs(file, debug = False):
@@ -84,58 +80,69 @@ def spatial_join(limit = 100):
     con = duckdb.connect()  # or con = duckdb.connect("mydb.duckdb")
 
     # Install spatial extension 
-    con.execute("INSTALL spatial; LOAD spatial;")
+    con.execute("INSTALL spatial;")
+    con.execute("LOAD spatial;")
 
     #Load parks boundary file 
-    con.execute(f"CREATE TABLE parks AS SELECT * FROM ST_Read('{park_boundaries_file}')")
+    con.execute(f"CREATE OR REPLACE TABLE parks AS SELECT * FROM ST_Read('{park_boundaries_file}')")
+    print(con.execute("DESCRIBE parks").fetchall())
+
+    preview_gbif_data(con, "parks")
 
     #Load gbif data
-    con.execute(f"CREATE TABLE gbif AS SELECT * FROM '{gbif_occurence_db_file}' LIMIT {limit}")
+    con.execute(f"CREATE TABLE gbif AS SELECT *, ST_Point(decimalLongitude, decimalLatitude) AS geom FROM '{gbif_occurence_db_file}' LIMIT {limit}")
 
-    #Gbif occ to geometry 
-    convert_lat_long_to_point(con, "gbif")
+    preview_gbif_data(con, "gbif")
 
-    
-
-    check_crs(gbif_occurence_db_file, debug= True)
-
-    return
-    #preview_gbif_data(con, "parks")
-    #preview_gbif_data(con, "gbif")
-
+    print("Spatial join")
     # Create new col for park id 
     #Spatial Join 
-    con.execute(f"""ALTER TABLE gbif ADD COLUMN Nom VARCHAR;
 
-                UPDATE gbif
-                SET Nom = (
-                    SELECT p.Nom
-                    FROM parks p
-                    WHERE ST_Intersects(p.geom,gbif.geom )
-                    );""")
+    con.execute(f"""CREATE OR REPLACE TABLE gbif_with_parks AS
+                SELECT g.*, p.OBJECTID
+                FROM gbif g
+                LEFT JOIN parks p
+                ON ST_Within(g.geom, p.geom);
+                """)
 
 
     #preview_gbif_data(con, "gbif_joined")
-    df = con.execute("SELECT * FROM gbif").df()
+    df = con.execute("SELECT * FROM gbif_with_parks").df()
     print(df)
 
-    print(df['Nom'].unique())
+    print(df['OBJECTID'].unique())
     
 
     print('d')
 
     
 
-    pass
+    return
 
-def main():
-    pass
+    con.execute(f"""
+                    
+                    
+                    ALTER TABLE gbif ADD COLUMN Nom VARCHAR;
+                    UPDATE gbif
+                    SET Nom = (
+                    SELECT p.Nom
+                    FROM parks p
+                    WHERE ST_Within(p.geom,gbif.geom )
+                    );
+                    
+                    
+                    """)
 
-convert_gbif_csv(gbif_occurence_raw_file, gbif_occurence_db_file )
-convert_gbif_csv(gbif_occurence_raw_file, gbif_occurence_sample_file, limit = 100)
+def prep_gbif(force = False):
+    print(f"#_{__name__}")
+    convert_gbif_csv(gbif_occurence_raw_file, gbif_occurence_db_file, force = force)
+    convert_gbif_csv(gbif_occurence_raw_file, gbif_occurence_sample_file, force = force, limit = 100)
 
-gdf = convert_crs()
-check_crs(park_boundaries_file, debug= True)
+    #get_gbif_data_crs(gbif_occurence_raw_file, 'decimalLatitude', 'decimalLongitude')
+    print('Check crs')
+    check_crs(park_boundaries_file, debug = False)
 
-#get_gbif_data_crs(gbif_occurence_raw_file, 'decimalLatitude', 'decimalLongitude')
-spatial_join(limit = 100)
+    spatial_join(limit = 10)
+
+if __name__ == "__main__":
+    prep_gbif(force= True)

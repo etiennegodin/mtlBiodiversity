@@ -1,5 +1,5 @@
 import argparse
-#from .dataprep.gbif import prep_gbif
+from .dataprep.gbif import prep_gbif
 from .dataprep.mtl import prep_mtl
 #from .dashboard.app import run_dashboard
 
@@ -7,6 +7,7 @@ def run_prep(force = False):
     print("Running data prep...")
 
     prep_mtl(force = force)
+    prep_gbif(force = force)
 
     # Load raw data (CSV, SHP, etc.)
     # Run prep_gbif/prep_mtl
