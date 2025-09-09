@@ -1,7 +1,7 @@
 #data folders 
 data/raw/
 data/interim/
-.temp/
+.tmp/
 data/processed/
 
 #geodata files 
