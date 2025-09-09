@@ -1,7 +1,7 @@
 import geopandas as gpd
 from pathlib import Path
-from mtlParkBiodiversity.data_prep import clip_to_region, target_crs
-import os 
+from ..core import clip_to_region
+from ..dataprep import target_crs
 
 raw_data_path = Path("data/raw" )
 output_path = Path("data/interim")
@@ -43,14 +43,14 @@ def extract_gpgk_layers(file : Path, slice : tuple = None):
     return layers
 
 
-def main(overwrite = False):
+def prep_mtl(force = False):
 
     for file in mtl_data:
         # Set target output_path 
         output_file_name = file.stem + '_clipped' + file.suffix 
         output_file_path = output_path / output_file_name
 
-        if output_file_path.exists and overwrite:
+        if output_file_path.exists and force:
 
             if file.suffix == '.gpkg':
 
@@ -86,4 +86,4 @@ def main(overwrite = False):
             print(f"# File {output_file_path} already exists, skipping.")
 
 if __name__ == "__main__":
-    main(overwrite= True)
+    prep_mtl(overwrite= True)

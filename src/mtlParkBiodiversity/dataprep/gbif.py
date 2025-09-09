@@ -2,7 +2,9 @@ import duckdb
 from pathlib import Path 
 import geopandas as gpd
 import pandas as pd 
-from mtlParkBiodiversity.data_prep import convert_crs, target_crs
+from ..core import convert_crs
+from ..dataprep import target_crs
+ 
 
 gbif_folder = Path('C:/Users/manat/Documents/Projects/mtlParkBiodiversity/data/raw/gbif/')
 
