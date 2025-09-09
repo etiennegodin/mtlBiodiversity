@@ -13,7 +13,8 @@ setup(
         'pandas',
         'numpy',
         'duckdb',
-        'duckdb-extension-spatial',
-        'fiona'
-    ],
+        'duckdb-extension-spatial'
+        'seaborn',
+        'matplotlib'
+        ],
     )

@@ -18,18 +18,17 @@ output_folder.mkdir(parents=True, exist_ok=True)
 
 output_file_path = output_folder / 'gbif_with_parks.parquet'
 
-
 def convert_gbif_csv(input_path, output_path, force = False, limit = None):
     if output_path.exists() and not force:
         print('File is already converted, skipping')
         return 
     
     if limit:
-        print(f'Conveting to {input_path} to .parquet file with limit set to {limit} ')
+        print(f'Converting to {input_path} to .parquet file with limit set to {limit} ')
         duckdb.query(f"COPY (SELECT * FROM '{input_path}' LIMIT {limit}) TO '{output_path}' (FORMAT PARQUET)")
 
     else: 
-        print(f'Conveting to {input_path} to .parquet file ')
+        print(f'Converting to {input_path} to .parquet file ')
         duckdb.query(f"COPY (SELECT * FROM '{input_path}') TO '{output_path}' (FORMAT PARQUET)")
   
 
@@ -111,7 +110,28 @@ def spatial_join(gbif_occurence_db_file, park_boundaries_file, limit = 100):
     con.execute(f"""
                 
                 CREATE OR REPLACE TABLE gbif_with_parks AS
-                SELECT g.*,
+                SELECT g.gbifID,
+                g.occurrenceID,
+                g.kingdom,
+                g.phylum,
+                g.class,
+                g.order,
+                g.family,
+                g.genus,
+                g.species,
+                g.taxonRank,
+                g.scientificName,
+                g.eventDate,
+                g.day,
+                g.month,
+                g.year,
+                g.taxonKey,
+                g.identifiedBy,
+                g.basisOfRecord,
+                g.license,
+                g.recordedBy,
+                g.geom,
+
                 p.OBJECTID,
                 p.Type,
                 p.Nom,

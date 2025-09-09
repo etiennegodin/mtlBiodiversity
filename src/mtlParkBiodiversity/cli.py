@@ -13,6 +13,9 @@ def run_prep(force = False):
     # Run prep_gbif/prep_mtl
     # Save outputs (e.g. parquet, duckdb, feather)
 
+def run_aggregate(force = False):
+    print("Running Aggregate Metrics...")
+
 def run_dash():
     print("Launching dashboard...")
     # Load prepped data
@@ -20,7 +23,7 @@ def run_dash():
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("command", choices=["prep", "dashboard"])
+    parser.add_argument("command", choices=["prep", "agg", "dashboard"])
     # optional flag: --force
     parser.add_argument(
         "--force",
@@ -33,5 +36,7 @@ def main():
         
     if args.command == "prep":
         run_prep(force = args.force)
+    elif args.command == "agg":
+        run_aggregate()
     elif args.command == "dashboard":
         run_dash()
