@@ -1,6 +1,6 @@
 import geopandas as gpd
 from pathlib import Path
-from mtlParkBiodiversity.data_prep import clip_to_region
+from mtlParkBiodiversity.data_prep import clip_to_region, target_crs
 import os 
 
 raw_data_path = Path("data/raw" )

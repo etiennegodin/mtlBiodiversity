@@ -1,6 +1,9 @@
 import geopandas as gpd
 from shapely.geometry import Polygon, MultiPolygon
 
+
+target_crs = 4326
+
 def convert_crs(gdf : gpd.GeoDataFrame, target_crs = 4326, verbose = False):
     """
     Converts gdf to taregt crs 
@@ -45,5 +48,3 @@ def clip_to_region(input : gpd.GeoDataFrame, clip_region : gpd.GeoDataFrame):
         print(f"Failed to clip input by clip_region : {e}")
 
     
-
-

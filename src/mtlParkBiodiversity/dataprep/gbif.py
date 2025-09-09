@@ -2,6 +2,7 @@ import duckdb
 from pathlib import Path 
 import geopandas as gpd
 import pandas as pd 
+from mtlParkBiodiversity.data_prep import convert_crs, target_crs
 
 gbif_folder = Path('C:/Users/manat/Documents/Projects/mtlParkBiodiversity/data/raw/gbif/')
 
@@ -10,6 +11,10 @@ gbif_occurence_db_file = gbif_folder / 'gbif_occurences.parquet'
 gbif_occurence_sample_file = gbif_folder / 'gbif_occurences_sample.parquet'
 
 park_boundaries_file = Path("data/raw/espace_verts/Espace_Vert.shp")
+
+
+
+
 
 def convert_gbif_csv(input_path, output_path, overwrite = False, limit = None):
     if output_path.exists() and not overwrite:
@@ -60,9 +65,10 @@ def check_crs(file, debug = False):
 def get_gbif_data_crs(gbif_occurence_raw_file, lat, long, limit = 10, ):
     from shapely.geometry import Point
 
-    df = pd.read_csv(gbif_occurence_raw_file, nrows = limit)
-    gdf = gpd.GeoDataFrame(df, geometry=[Point(xy) for xy in zip(df[long], df[lat])],)
-
+    df = pd.read_csv(gbif_occurence_raw_file, nrows = limit, delimiter = '\t')
+    gdf = gpd.GeoDataFrame(df, geometry=[Point(xy) for xy in zip(df["decimalLongitude"], df["decimalLatitude"])] , crs = 4326 )
+    print(gdf.head())
+    print(gdf.crs)
     pass
 
 def convert_lat_long_to_point(con, table):
@@ -90,8 +96,8 @@ def spatial_join(limit = 100):
     
 
     check_crs(gbif_occurence_db_file, debug= True)
-    check_crs(park_boundaries_file)
 
+    return
     #preview_gbif_data(con, "parks")
     #preview_gbif_data(con, "gbif")
 
@@ -120,11 +126,14 @@ def spatial_join(limit = 100):
 
     pass
 
-
+def main():
+    pass
 
 convert_gbif_csv(gbif_occurence_raw_file, gbif_occurence_db_file )
 convert_gbif_csv(gbif_occurence_raw_file, gbif_occurence_sample_file, limit = 100)
 
+gdf = convert_crs()
+check_crs(park_boundaries_file, debug= True)
 
-get_gbif_data_crs(gbif_occurence_raw_file, 'decimalLatitude', 'decimalLongitude')
-#spatial_join(limit = 100)fe
+#get_gbif_data_crs(gbif_occurence_raw_file, 'decimalLatitude', 'decimalLongitude')
+spatial_join(limit = 100)

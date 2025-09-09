@@ -1,0 +1,2 @@
+[console_scripts]
+my_tool = mtlParkBiodiversity.cli:main

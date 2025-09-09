@@ -1,4 +1,9 @@
 import geopandas as gpd
+from shapely.geometry import Polygon, MultiPolygon
+
+
+target_crs = 4326
+
 
 def convert_crs(gdf : gpd.GeoDataFrame, target_crs = 4326, verbose = False):
     """
@@ -36,12 +41,17 @@ def clip_to_region(input : gpd.GeoDataFrame, clip_region : gpd.GeoDataFrame):
         target_crs = input.crs
         clip_region = convert_crs(clip_region, target_crs)
     try:
-        clipped_input = input.clip(clip_region)
+        clip_region_merged = clip_region.union_all()
+        clipped_input = input.clip(clip_region_merged)
         return clipped_input 
 
     except Exception as e:
         print(f"Failed to clip input by clip_region : {e}")
 
     
+def main():
 
+    mtl_data.main(overwrite= True)
+    #gbif_data.main()
 
+main()
