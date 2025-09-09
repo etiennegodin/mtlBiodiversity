@@ -1,10 +1,11 @@
 import duckdb
 from pathlib import Path 
-
+from matplotlib import pyplot as plt
 
 db_file_path = Path("data/interim/gbif/gbif_with_parks.parquet")
 
-limit = False
+limit = True
+
 # Create a connection (in-memory or persistent)
 con = duckdb.connect() 
  # Install spatial extension 
@@ -16,7 +17,7 @@ if limit:
     con.execute(f"""\
                 CREATE TABLE data AS SELECT * FROM '{db_file_path}' 
                 WHERE OBJECTID IS NOT NULL
-                LIMIT {limit};
+                LIMIT 10000;
                 """)
 else:
     con.execute(f"""
