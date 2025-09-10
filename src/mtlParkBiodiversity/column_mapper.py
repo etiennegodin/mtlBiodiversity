@@ -31,9 +31,8 @@ def unify_columns(file : Path, expected_columns : list = None):
     """
 
     print(f'Mapping {file} columns ')
-    config_path = file.parent.parent.parent / 'config'
+    config_path = file.parent.parent.parent / '.config'
 
-    print(config_path)
     #Create config directory if not existing
     Path.mkdir(config_path, exist_ok= True)
 
@@ -43,7 +42,6 @@ def unify_columns(file : Path, expected_columns : list = None):
     # Load existing mapping or create a new one
     mapping = load_column_mapping(mapping_file = mapping_file)
 
-    print(mapping)
     # Read the file to get available columns
     gdf = gpd.read_file(file)    
     available_cols = gdf.columns.tolist()

@@ -133,11 +133,10 @@ def spatial_join(gbif_occurence_db_file, park_boundaries_file, test = False, lim
                 g.recordedBy,
                 g.geom,
 
-                p.OBJECTID,
-                p.Type,
-                p.Nom,
-                p.TYPO1,
-                p.TYPO2,
+                # park_config, (p.park_id, p.park_name, etc) - have it dynamic without p.geom to avoid duplicates 
+                # add , at end
+
+                # handle geom 
                 p.geom AS park_geom
                 FROM gbif g
                 LEFT JOIN parks p

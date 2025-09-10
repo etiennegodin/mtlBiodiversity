@@ -25,16 +25,12 @@ def process_shp(file :Path = None, output_file_path :Path = None, city_boundary_
     gdf = gpd.read_file(file)
 
     # Format columns 
-
     gdf = unify_columns(file, expected_columns= PARK_DATA_COL)
-    print(gdf.head())
+
     # Keep only mapped columns
     gdf = gdf[PARK_DATA_COL]
-    print(gdf.head())
 
-    print(type(gdf))
-
-    #Clip gdf 
+    #Clip gdf to city boundaries
     gdf_clipped = clip_to_region(gdf, city_boundary_gdf)
 
     # Convert to target crs before saving 
@@ -101,6 +97,7 @@ def prep_parks(force = False):
             if file.suffix == '.shp':
                 process_shp(file, output_file_path, city_boundary_gdf = city_boundary_gdf)
 
+            """
             elif file.suffix == '.gpkg':
 
                 new_OUTPUT_PATH = OUTPUT_PATH / file.stem  # If gpgk, modify output in a subfolder for better clarity 
@@ -113,7 +110,7 @@ def prep_parks(force = False):
                     print(layer, f" : {idx+1} / {len(layers)}")
 
                     process_gpgk(file, layer, output_file_path = new_OUTPUT_PATH)
-
+            """
         else:
             print(f"# File {output_file_path} already exists, skipping.")
     
