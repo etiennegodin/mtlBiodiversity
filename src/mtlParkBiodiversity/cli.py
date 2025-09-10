@@ -1,13 +1,16 @@
 import argparse
+import os, stat
+import pathlib
+from .core import raw_data_read_only
 from .dataprep.gbif import prep_gbif
-from .dataprep.mtl import prep_mtl
+from .dataprep.parks import prep_parks
 from .metrics import process_metrics
 #from .dashboard.app import run_dashboard
 
 def run_prep(force = False, test = False, limit = None):
     print("Running data prep...")
 
-    prep_mtl(force = force, )
+    prep_parks(force = force )
 
     if force:
         user_force = input("You have chosen to force re-run GBIF data prep. This may take a while. Do you want to continue? (y/n): ")
@@ -16,7 +19,7 @@ def run_prep(force = False, test = False, limit = None):
         else:
             force = False
             print("Skipping GBIF data prep.")
-    prep_gbif(force = force, test = test, limit = limit)
+    #prep_gbif(force = force, test = test, limit = limit)
 
 
     # Load raw data (CSV, SHP, etc.)
@@ -33,6 +36,9 @@ def run_dash():
     #run_dashboard()
 
 def main():
+
+    raw_data_read_only('data/raw', debug = False)
+
     parser = argparse.ArgumentParser()
     parser.add_argument("command", choices=["prep", "metrics", "dashboard"])
     # optional flag: --force

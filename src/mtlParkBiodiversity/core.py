@@ -1,10 +1,26 @@
 import geopandas as gpd
 import pandas as pd
 from shapely.geometry import Polygon, MultiPolygon, Point
+import pathlib
+import stat
+import os
 
 def convert_df_to_gdf(df : pd.DataFrame, lat_col : str = 'decimalLatitude', long_col : str = 'decimalLongitude', crs = 4326, verbose = False):
     gdf = gpd.GeoDataFrame(df, geometry=[Point(xy) for xy in zip(df["decimalLongitude"], df["decimalLatitude"])] , crs = 4326 )
     return gdf
+
+def raw_data_read_only(path, debug = True):
+    # Set read-only permissions for all files in the specified directory
+    
+    folder = pathlib.Path(path)
+
+    for file in folder.rglob("*"):
+        if file.is_file():
+            try:    
+                file.chmod(stat.S_IREAD)
+            except Exception as e:
+                if debug:
+                    print(f"Failed to change permissions for {file}: {e}")
 
 def df_inspect(df : pd.DataFrame, limit = 100):
     print('-'*25, 'Preview', '-'*25)
