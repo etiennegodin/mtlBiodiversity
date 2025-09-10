@@ -8,6 +8,14 @@ def run_prep(force = False, test = False, limit = None):
     print("Running data prep...")
 
     prep_mtl(force = force, )
+
+    if force:
+        user_force = input("You have chosen to force re-run GBIF data prep. This may take a while. Do you want to continue? (y/n): ")
+        if user_force.lower() == 'y':
+            force = True
+        else:
+            force = False
+            print("Skipping GBIF data prep.")
     prep_gbif(force = force, test = test, limit = limit)
 
 

@@ -91,9 +91,8 @@ def spatial_join(gbif_occurence_db_file, park_boundaries_file, test = False, lim
 
     #Load parks boundary file 
     con.execute(f"CREATE OR REPLACE TABLE parks AS SELECT * FROM ST_Read('{park_boundaries_file}')")
-    print(con.execute("DESCRIBE parks").fetchall())
 
-    preview_gbif_data(con, "parks")
+    #preview_gbif_data(con, "parks")
 
     #Load gbif data
     if test:
@@ -101,7 +100,7 @@ def spatial_join(gbif_occurence_db_file, park_boundaries_file, test = False, lim
     else:
         con.execute(f"CREATE TABLE gbif AS SELECT *, ST_Point(decimalLongitude, decimalLatitude) AS geom FROM '{gbif_occurence_db_file}'")
     
-    preview_gbif_data(con, "gbif")
+    #preview_gbif_data(con, "gbif")
 
     #Spatial Join 
     print("Spatial join")
@@ -143,7 +142,7 @@ def spatial_join(gbif_occurence_db_file, park_boundaries_file, test = False, lim
 
                 """)
 
-
+    print('Spatial join complete, saving file...')
     #Save 
     #con.execute(f"""COPY gbif_with_parks TO '{output_file_path}' (FORMAT 'parquet');""")
     con.execute(f"""
