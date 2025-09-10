@@ -9,7 +9,7 @@ from folium.features import GeoJsonTooltip, GeoJsonPopup
 gjson_path = Path("data/processed/species_richness.geojson")
 
 gdf = gpd.read_file(gjson_path)
-print(gdf.isnull().sum())
+
 m = folium.Map(location=[45.5017, -73.5673], zoom_start=11) 
 choropleth = folium.Choropleth(
     geo_data=gdf.__geo_interface__,

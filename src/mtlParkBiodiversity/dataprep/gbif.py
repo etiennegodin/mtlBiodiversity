@@ -85,6 +85,9 @@ def spatial_join(gbif_occurence_db_file, park_boundaries_file, test = False, lim
     # Create a connection (in-memory or persistent)
     con = duckdb.connect()  # or con = duckdb.connect("mydb.duckdb")
 
+    con.execute("PRAGMA max_temp_directory_size='25GiB';")
+
+
     # Install spatial extension 
     con.execute("INSTALL spatial;")
     con.execute("LOAD spatial;")
@@ -143,11 +146,15 @@ def spatial_join(gbif_occurence_db_file, park_boundaries_file, test = False, lim
                 """)
 
     print('Spatial join complete, saving file...')
+
+    con.execute('DROP TABLE IF EXISTS gbif;')
+    con.execute('PRAGMA optimize;')
+    print('Dropped gbif table to save memory')
     #Save 
     #con.execute(f"""COPY gbif_with_parks TO '{output_file_path}' (FORMAT 'parquet');""")
     con.execute(f"""
                     COPY (
-                        SELECT ST_AsWKB(park_geom) AS park_geom, *
+                        SELECT *
                         FROM gbif_with_parks
                     ) TO '{output_file_path}' (FORMAT 'parquet');
                 """)

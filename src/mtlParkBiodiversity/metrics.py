@@ -20,7 +20,7 @@ def create_metric(name, query = None, file_type = "parquet", debug = False):
     df = con.execute(query).df()
 
     if file_type == "parquet":
-        
+
         # Inspect
         if debug:
             df_inspect(df)
@@ -28,6 +28,7 @@ def create_metric(name, query = None, file_type = "parquet", debug = False):
 
     elif file_type == 'geojson':
         #Convert park_geom from wkb to shapely geometry
+        print("Converting park_geom from wkb to shapely geometry")
         df["geometry"] = df["park_geom"].apply(lambda x: wkb.loads(bytes(x)))
         gdf = gpd.GeoDataFrame(df, geometry = 'geometry', crs = 'EPSG:4326')
         gdf = gdf.drop(columns = ['park_geom'])
@@ -73,6 +74,14 @@ species_count_query = """
         SELECT COUNT(DISTINCT species) AS total_species
         FROM data;
 """
+
+#Shannon index
+# Type species per park 
+# genus count per park 
+# family count per park
+# order count per park
+
+
 
 def process_metrics(force = False, test = False, limit = None):
 
