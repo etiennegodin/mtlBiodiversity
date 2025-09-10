@@ -53,8 +53,6 @@ species_count_query = """
 def process_metrics(force = False, test = False, limit = None):
 
     print("Loading gbif with parks data")
-    if limit is None:
-        limit = 1000
 
     if test:
         print(f"Loading data with limit set to {limit}")

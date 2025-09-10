@@ -37,7 +37,9 @@ def main():
     parser.add_argument("--limit", type= int, help = 'Limit the number of rows processed (for testing purposes)')
     args = parser.parse_args()
 
-
+    # Default limit to 10000 if test mode is on and limit is not specified
+    if args.limit is None:
+        args.limit = 10000
         
     if args.command == "prep":
         run_prep(force = args.force, test = args.test, limit = args.limit)

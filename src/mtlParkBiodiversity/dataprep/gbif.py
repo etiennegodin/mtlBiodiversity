@@ -129,7 +129,7 @@ def spatial_join(gbif_occurence_db_file, park_boundaries_file, test = False, lim
                 g.basisOfRecord,
                 g.license,
                 g.recordedBy,
-                g.geom,d
+                g.geom,
 
                 p.OBJECTID,
                 p.Type,
@@ -158,9 +158,6 @@ def spatial_join(gbif_occurence_db_file, park_boundaries_file, test = False, lim
     return True
 
 def prep_gbif(force = False, test = False, limit = None):
-
-    if limit is None:
-        limit = 1000
 
     print(f"#_{__name__}")
     # Check if csv has been converted to parquet file
