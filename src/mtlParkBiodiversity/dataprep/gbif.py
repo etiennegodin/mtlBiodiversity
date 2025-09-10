@@ -133,7 +133,9 @@ def spatial_join(gbif_occurence_db_file, park_boundaries_file, test = False, lim
                 g.recordedBy,
                 g.geom,
 
-                # park_config, (p.park_id, p.park_name, etc) - have it dynamic without p.geom to avoid duplicates 
+                # create dynamic query 
+                (SELECT * EXCEPT xxx) is not possible 
+                # read park.shp and get columns, remove geom, (p.park_id, p.park_name, etc) - have it dynamic without p.geom to avoid duplicates 
                 # add , at end
 
                 # handle geom 
