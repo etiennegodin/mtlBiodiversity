@@ -7,18 +7,15 @@ def load_column_mapping(mapping_file : Path = None):
     """
     Load column mapping from a JSON file.
     """
-    if mapping_file is None and Path(mapping_file).exists():
-        with open(mapping_file, 'r') as f:
+    if mapping_file is not None and Path(mapping_file).exists():
+        with open(str(mapping_file), 'r') as f:
             mapping = json.load(f)
         return mapping
     return {}
 
 def save_mapping(mapping : json, mapping_file : Path = None):
     """Save mapping to config file."""
-    print(mapping_file)
-    mapping_file_path = str(mapping_file)
-    print(mapping_file_path)
-    with open(mapping_file_path, "w") as f:
+    with open(str(mapping_file), "w") as f:
         json.dump(mapping, f, indent=2)
 
 def get_user_mapping(missing_col, available_cols):
@@ -34,8 +31,9 @@ def unify_columns(file : Path, expected_columns : list = None):
     """
 
     print(f'Mapping {file} columns ')
-    config_path = file.parent / 'config'
+    config_path = file.parent.parent.parent / 'config'
 
+    print(config_path)
     #Create config directory if not existing
     Path.mkdir(config_path, exist_ok= True)
 
@@ -45,6 +43,7 @@ def unify_columns(file : Path, expected_columns : list = None):
     # Load existing mapping or create a new one
     mapping = load_column_mapping(mapping_file = mapping_file)
 
+    print(mapping)
     # Read the file to get available columns
     gdf = gpd.read_file(file)    
     available_cols = gdf.columns.tolist()

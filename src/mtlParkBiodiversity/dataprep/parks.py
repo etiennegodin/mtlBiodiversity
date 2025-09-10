@@ -7,7 +7,7 @@ from . import target_crs
 RAW_DATA_PATH = Path("data/raw" )
 OUTPUT_PATH = Path("data/interim/parks")
 
-PARK_DATA_COL = ['park_id', 'park_name', 'park_type1', 'park_type2']
+PARK_DATA_COL = ['park_id', 'park_name', 'park_type1', 'geometry']
 
 #Read boundary file 
 def save_gdf(gdf, output_file_path):
@@ -27,9 +27,12 @@ def process_shp(file :Path = None, output_file_path :Path = None, city_boundary_
     # Format columns 
 
     gdf = unify_columns(file, expected_columns= PARK_DATA_COL)
+    print(gdf.head())
+    # Keep only mapped columns
+    gdf = gdf[PARK_DATA_COL]
+    print(gdf.head())
 
-    # Keep only mapped columns 
-    gdf = gdf[gdf[PARK_DATA_COL]]
+    print(type(gdf))
 
     #Clip gdf 
     gdf_clipped = clip_to_region(gdf, city_boundary_gdf)
