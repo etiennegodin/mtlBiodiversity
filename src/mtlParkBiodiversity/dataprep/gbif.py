@@ -159,7 +159,7 @@ def spatial_join(gbif_occurence_db_file, park_boundaries_file, test = False, lim
 
 def prep_gbif(force = False, test = False, limit = None):
 
-    if limit is not None:
+    if limit is None:
         limit = 1000
 
     print(f"#_{__name__}")

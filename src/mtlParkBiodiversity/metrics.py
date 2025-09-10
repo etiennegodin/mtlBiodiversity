@@ -50,15 +50,25 @@ species_count_query = """
         FROM data;
 """
 
-def process_metrics(force = False):
+def process_metrics(force = False, test = False, limit = None):
 
     print("Loading gbif with parks data")
+    if limit is None:
+        limit = 1000
 
-    con.execute(f"""
+    if test:
+        print(f"Loading data with limit set to {limit}")
+        con.execute(f"""
                     CREATE TABLE data AS SELECT * FROM '{db_file_path}' 
-                    WHERE OBJECTID IS NOT NULL;
+                    WHERE OBJECTID IS NOT NULL
+                    LIMIT {limit};
                     """)
-    
+    else:
+        con.execute(f"""
+                        CREATE TABLE data AS SELECT * FROM '{db_file_path}' 
+                        WHERE OBJECTID IS NOT NULL;
+                        """)
+        
 
     create_metric('species_richness', query= species_richness_query )
     create_metric('annual_observations', query = annual_observations_query)
