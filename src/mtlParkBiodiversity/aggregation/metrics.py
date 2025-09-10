@@ -12,13 +12,10 @@ con = duckdb.connect()
 con.execute("INSTALL spatial;")
 con.execute("LOAD spatial;")
 
-def create_metric(name, query = None, save = False, limit = None):
+def create_metric(name, query = None):
     print(f"Processing {name} metric")
     df = con.execute(query).df()
-
-    if save:
-        df.to_parquet(output_path / f"{name}.parquet")
-
+    df.to_parquet(output_path / f"{name}.parquet")
 
 # Species richness per park 
 species_richness_query = """
@@ -28,8 +25,6 @@ species_richness_query = """
                             GROUP BY Nom
                             ORDER BY species_richness DESC;
                             """
-
-
 
 # Number of observation per year
 annual_observations_query = """
@@ -41,7 +36,6 @@ annual_observations_query = """
                             """
 
 # Most observed species 
-
 most_observed_species_query = """            
                             SELECT species,
                             COUNT(*) AS observations
@@ -57,7 +51,7 @@ species_count_query = """
         FROM data;
 """
 
-def process_metrics(save = True):
+def process_metrics(force = False):
 
     print("Loading gbif with parks data")
     if limit:
@@ -73,9 +67,9 @@ def process_metrics(save = True):
                     WHERE OBJECTID IS NOT NULL;
                     """)
 
-    create_metric('species_richness', query= species_richness_query, save= save )
-    create_metric('annual_observations', query = annual_observations_query, save = save)
-    create_metric('most_observed_species', query = most_observed_species_query, save = save)
-    create_metric('species_count', query = species_count_query, save = save)
+    create_metric('species_richness', query= species_richness_query )
+    create_metric('annual_observations', query = annual_observations_query)
+    create_metric('most_observed_species', query = most_observed_species_query)
+    create_metric('species_count', query = species_count_query)
 
-
+    con.close()

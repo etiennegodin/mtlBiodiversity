@@ -16,7 +16,7 @@ def run_prep(force = False):
 
 def run_metrics(force = False):
     print("Running Aggregate Metrics...")
-    process_metrics(save = True)
+    process_metrics(force = force)
 
 def run_dash():
     print("Launching dashboard...")
@@ -39,6 +39,6 @@ def main():
     if args.command == "prep":
         run_prep(force = args.force)
     elif args.command == "metrics":
-        run_metrics()
+        run_metrics(force = args.force)
     elif args.command == "dashboard":
         run_dash()
