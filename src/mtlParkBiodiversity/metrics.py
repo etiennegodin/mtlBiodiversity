@@ -44,7 +44,6 @@ most_observed_species_query = """
                             ORDER BY observations DESC;
                             """
 
-
 # Number of species 
 species_count_query = """
         SELECT COUNT(DISTINCT species) AS total_species
@@ -54,18 +53,12 @@ species_count_query = """
 def process_metrics(force = False):
 
     print("Loading gbif with parks data")
-    if limit:
 
-        con.execute(f"""\
-                    CREATE TABLE data AS SELECT * FROM '{db_file_path}' 
-                    WHERE OBJECTID IS NOT NULL
-                    LIMIT 10000;
-                    """)
-    else:
-        con.execute(f"""
+    con.execute(f"""
                     CREATE TABLE data AS SELECT * FROM '{db_file_path}' 
                     WHERE OBJECTID IS NOT NULL;
                     """)
+    
 
     create_metric('species_richness', query= species_richness_query )
     create_metric('annual_observations', query = annual_observations_query)

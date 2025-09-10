@@ -9,7 +9,6 @@ gbif_folder = Path('C:/Users/manat/Documents/Projects/mtlParkBiodiversity/data/r
 
 gbif_occurence_raw_file = gbif_folder / 'gbif_occurences.csv'
 gbif_occurence_db_file = gbif_folder / 'gbif_occurences.parquet'
-gbif_occurence_sample_file = gbif_folder / 'gbif_occurences_sample.parquet'
 
 park_boundaries_file = Path("data/interim/Espace_Vert_clipped.shp")
 
@@ -18,12 +17,12 @@ output_folder.mkdir(parents=True, exist_ok=True)
 
 output_file_path = output_folder / 'gbif_with_parks.parquet'
 
-def convert_gbif_csv(input_path, output_path, force = False, limit = None):
+def convert_gbif_csv(input_path, output_path, force = False, test = False, limit = None):
     if output_path.exists() and not force:
         print('File is already converted, skipping')
         return 
     
-    if limit:
+    if test:
         print(f'Converting to {input_path} to .parquet file with limit set to {limit} ')
         duckdb.query(f"COPY (SELECT * FROM '{input_path}' LIMIT {limit}) TO '{output_path}' (FORMAT PARQUET)")
 
@@ -81,7 +80,7 @@ def convert_lat_long_to_point(con, table):
     con.execute(f"ALTER TABLE {table} ADD COLUMN geom GEOMETRY")
     con.execute(f"UPDATE {table} SET geom = ST_Point(decimalLongitude, decimalLatitude)")
 
-def spatial_join(gbif_occurence_db_file, park_boundaries_file, limit = 100):
+def spatial_join(gbif_occurence_db_file, park_boundaries_file, test = False, limit = None):
 
     # Create a connection (in-memory or persistent)
     con = duckdb.connect()  # or con = duckdb.connect("mydb.duckdb")
@@ -97,7 +96,7 @@ def spatial_join(gbif_occurence_db_file, park_boundaries_file, limit = 100):
     preview_gbif_data(con, "parks")
 
     #Load gbif data
-    if limit:
+    if test:
         con.execute(f"CREATE TABLE gbif AS SELECT *, ST_Point(decimalLongitude, decimalLatitude) AS geom FROM '{gbif_occurence_db_file}' LIMIT {limit}")
     else:
         con.execute(f"CREATE TABLE gbif AS SELECT *, ST_Point(decimalLongitude, decimalLatitude) AS geom FROM '{gbif_occurence_db_file}'")
@@ -130,13 +129,14 @@ def spatial_join(gbif_occurence_db_file, park_boundaries_file, limit = 100):
                 g.basisOfRecord,
                 g.license,
                 g.recordedBy,
-                g.geom,
+                g.geom,d
 
                 p.OBJECTID,
                 p.Type,
                 p.Nom,
                 p.TYPO1,
-                p.TYPO2
+                p.TYPO2,
+                p.geom AS park_geom
                 FROM gbif g
                 LEFT JOIN parks p
                 ON ST_Within(g.geom, p.geom);
@@ -157,29 +157,20 @@ def spatial_join(gbif_occurence_db_file, park_boundaries_file, limit = 100):
 
     return True
 
-def prep_gbif(force = False):
+def prep_gbif(force = False, test = False, limit = None):
+
+    if limit is not None:
+        limit = 1000
 
     print(f"#_{__name__}")
     # Check if csv has been converted to parquet file
-    if gbif_occurence_db_file.exists and force:
-        convert_gbif_csv(gbif_occurence_raw_file, gbif_occurence_db_file, force = force)
-    elif not gbif_occurence_db_file.exists:
-        convert_gbif_csv(gbif_occurence_raw_file, gbif_occurence_db_file, force = force)
+    if (gbif_occurence_db_file.exists and force) or (not gbif_occurence_db_file.exists) :
+        convert_gbif_csv(gbif_occurence_raw_file, gbif_occurence_db_file, force = force, test = test, limit = limit)
     else:
         print("Convert_gbif_csv already done, skipping")
 
-    # Csv to sample for tests 
-    if gbif_occurence_sample_file.exists and force:
-        convert_gbif_csv(gbif_occurence_raw_file, gbif_occurence_sample_file, force = force, limit = 100)
-    elif not gbif_occurence_sample_file.exists:
-        convert_gbif_csv(gbif_occurence_raw_file, gbif_occurence_sample_file, force = force, limit = 100)
-    else:
-        print("Convert_gbif_csv already done on sample, skipping")
-
-    if output_file_path.exists and force:
-        spatial_join(gbif_occurence_db_file,park_boundaries_file,limit = None)
-    elif not output_file_path.exists:
-        spatial_join(gbif_occurence_db_file,park_boundaries_file,limit = None)
+    if (output_file_path.exists and force) or (not output_file_path.exists):
+        spatial_join(gbif_occurence_db_file,park_boundaries_file, test = test, limit = limit)
     else:
         print("Spatial Join already done, skipping")
     
