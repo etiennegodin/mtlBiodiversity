@@ -1,6 +1,10 @@
 import geopandas as gpd
-from shapely.geometry import Polygon, MultiPolygon
+import pandas as pd
+from shapely.geometry import Polygon, MultiPolygon, Point
 
+def convert_df_to_gdf(df : pd.DataFrame, lat_col : str = 'decimalLatitude', long_col : str = 'decimalLongitude', crs = 4326, verbose = False):
+    gdf = gpd.GeoDataFrame(df, geometry=[Point(xy) for xy in zip(df["decimalLongitude"], df["decimalLatitude"])] , crs = 4326 )
+    return gdf
 
 def convert_crs(gdf : gpd.GeoDataFrame, target_crs = 4326, verbose = False):
     """

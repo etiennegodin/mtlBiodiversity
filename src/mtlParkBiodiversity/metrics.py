@@ -1,6 +1,9 @@
 import duckdb
 from pathlib import Path 
 from matplotlib import pyplot as plt
+from shapely import wkb,wkt
+import geopandas as gpd
+
 
 db_file_path = Path("data/interim/gbif/gbif_with_parks.parquet")
 output_path = Path("data/processed")
@@ -12,17 +15,31 @@ con = duckdb.connect()
 con.execute("INSTALL spatial;")
 con.execute("LOAD spatial;")
 
-def create_metric(name, query = None):
+def create_metric(name, query = None, file_type = "parquet", debug = False):
     print(f"Processing {name} metric")
     df = con.execute(query).df()
-    df.to_parquet(output_path / f"{name}.parquet")
+
+    if debug:
+        print(df.head())
+        print(df.columns)
+        print(df.dtypes)
+        print(df.shape)
+        print('/'*50)
+
+    if file_type == "parquet":
+        df.to_parquet(output_path / f"{name}.{file_type}")
+    elif file_type == 'geojson':
+        df["geometry"] = df["park_geom"].apply(lambda x: wkb.loads(bytes(x)))
+        gdf = gpd.GeoDataFrame(df, geometry = 'geometry', crs = 'EPSG:4326')
+        gdf.to_file(output_path / f"{name}.{file_type}", driver = 'GeoJSON')
 
 # Species richness per park 
 species_richness_query = """
                             SELECT Nom,
+                            ST_AsWKB(park_geom) AS park_geom,
                             COUNT(DISTINCT species) AS species_richness
                             FROM data
-                            GROUP BY Nom
+                            GROUP BY Nom, park_geom
                             ORDER BY species_richness DESC;
                             """
 
@@ -68,9 +85,9 @@ def process_metrics(force = False, test = False, limit = None):
                         """)
         
 
-    create_metric('species_richness', query= species_richness_query )
-    create_metric('annual_observations', query = annual_observations_query)
-    create_metric('most_observed_species', query = most_observed_species_query)
-    create_metric('species_count', query = species_count_query)
+    create_metric('species_richness', query= species_richness_query, file_type = 'geojson', debug=True)
+    #create_metric('annual_observations', query = annual_observations_query)
+    #create_metric('most_observed_species', query = most_observed_species_query)
+    #create_metric('species_count', query = species_count_query)
 
     con.close()

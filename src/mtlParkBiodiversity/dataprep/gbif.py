@@ -144,17 +144,15 @@ def spatial_join(gbif_occurence_db_file, park_boundaries_file, test = False, lim
                 """)
 
 
-    #preview_gbif_data(con, "gbif_joined")
-    df = con.execute("SELECT * FROM gbif_with_parks").df()
-    print(df)
-
-    print(df['OBJECTID'].unique())
-
     #Save 
+    #con.execute(f"""COPY gbif_with_parks TO '{output_file_path}' (FORMAT 'parquet');""")
     con.execute(f"""
-    COPY gbif_with_parks TO '{output_file_path}' (FORMAT 'parquet');
-    """)
-
+                    COPY (
+                        SELECT ST_AsWKB(park_geom) AS park_geom, *
+                        FROM gbif_with_parks
+                    ) TO '{output_file_path}' (FORMAT 'parquet');
+                """)
+    con.close()
     return True
 
 def prep_gbif(force = False, test = False, limit = None):
