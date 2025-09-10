@@ -5,6 +5,14 @@ Requires-Dist: geopandas
 Requires-Dist: pandas
 Requires-Dist: numpy
 Requires-Dist: duckdb
+Requires-Dist: duckdb-extensions
 Requires-Dist: duckdb-extension-spatial
-Requires-Dist: fiona
+Requires-Dist: seaborn
+Requires-Dist: matplotlib
+Requires-Dist: streamlit
+Requires-Dist: streamlit-folium
+Requires-Dist: plotly
+Requires-Dist: shapely
+Requires-Dist: argparse
+Requires-Dist: folium
 Dynamic: requires-dist

@@ -2,5 +2,13 @@ geopandas
 pandas
 numpy
 duckdb
+duckdb-extensions
 duckdb-extension-spatial
-fiona
+seaborn
+matplotlib
+streamlit
+streamlit-folium
+plotly
+shapely
+argparse
+folium
