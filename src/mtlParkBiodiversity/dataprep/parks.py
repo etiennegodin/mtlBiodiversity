@@ -3,15 +3,11 @@ from pathlib import Path
 from ..core import clip_to_region, convert_crs
 from . import target_crs
 
-raw_data_path = Path("data/raw" )
-output_path = Path("data/interim/parks")
-
-Path.mkdir(output_path, exist_ok= True)
+RAW_DATA_PATH = Path("data/raw" )
+OUTPUT_PATH = Path("data/interim/parks")
 
 
 #Read boundary file 
-
-
 def save_gdf(gdf, output_file_path):
     try:
         gdf.to_file(output_file_path)
@@ -23,8 +19,12 @@ def save_gdf(gdf, output_file_path):
 
 def process_shp(file :Path = None, output_file_path :Path = None, city_boundary_gdf :gpd.GeoDataFrame = None):
 
-        # Read shapefile 
+    # Read shapefile 
     gdf = gpd.read_file(file)
+
+    # Format columns 
+
+    
 
     #Clip gdf 
     gdf_clipped = clip_to_region(gdf, city_boundary_gdf)
@@ -66,34 +66,37 @@ def list_gpgk_layers(file : Path, slice : tuple = None):
     if slice:
         layers = layers[slice[0]:slice[1]]
 
-
-
     return layers
 
 
 def prep_parks(force = False):
 
-    city_boundary_file = [f for f in raw_data_path.rglob("*.shp")][0]  # Assuming there's only one .shp file for the city boundary
+    # Create output directory if not existing
+    Path.mkdir(OUTPUT_PATH, exist_ok= True)
+
+    # Read city boundary file
+    city_boundary_file = [f for f in RAW_DATA_PATH.rglob("*.shp")][0]  # Assuming there's only one .shp file for the city boundary
     city_boundary_gdf = gpd.read_file(city_boundary_file)
 
-    parks_path = raw_data_path / 'parks'
-
+    # List all park files (shp, gpgk) in RAW_DATA_PATH / parks
+    parks_path = RAW_DATA_PATH / 'parks'
     parks_files = [f for f in parks_path.rglob("*") if f.suffix in ['.shp', '.gpkg']]
 
-    print(parks_files)
-
-
-    for file in parks_files:
-        # Set target output_path 
-        output_file_name = file.stem + '_clipped' + file.suffix 
-        output_file_path = output_path / output_file_name
+    # Iterate over each park file and process
+    for idx, file in enumerate(parks_files):
+        # Set target OUTPUT_PATH 
+        output_file_name = f'park_{idx+1}.shp' 
+        output_file_path = OUTPUT_PATH / output_file_name
 
         if output_file_path.exists and force:
 
-            if file.suffix == '.gpkg':
+            if file.suffix == '.shp':
+                process_shp(file, output_file_path, city_boundary_gdf = city_boundary_gdf)
 
-                new_output_path = output_path / file.stem  # If gpgk, modify output in a subfolder for better clarity 
-                new_output_path.mkdir(exist_ok= True) # Create subfolder if not existing
+            elif file.suffix == '.gpkg':
+
+                new_OUTPUT_PATH = OUTPUT_PATH / file.stem  # If gpgk, modify output in a subfolder for better clarity 
+                new_OUTPUT_PATH.mkdir(exist_ok= True) # Create subfolder if not existing
                 
                 #Create list of gpgk layers
                 layers = list_gpgk_layers(file)
@@ -101,11 +104,7 @@ def prep_parks(force = False):
                 for idx, layer in enumerate(layers):
                     print(layer, f" : {idx+1} / {len(layers)}")
 
-                    process_gpgk(file, layer, output_file_path = new_output_path)
-
-            elif file.suffix == '.shp':
-
-                process_shp(file, output_file_path, city_boundary_gdf = city_boundary_gdf)
+                    process_gpgk(file, layer, output_file_path = new_OUTPUT_PATH)
 
         else:
             print(f"# File {output_file_path} already exists, skipping.")
