@@ -1,9 +1,32 @@
-import pandas as pd 
-import duckdb
-from matplotlib import pyplot as plt
-import seaborn as sns
-df = pd.read_parquet("data/processed/most_observed_species.parquet")
+import streamlit_folium
+import streamlit as st
+import folium
+import geopandas as gpd
+from pathlib import Path
+from folium.features import GeoJsonTooltip, GeoJsonPopup
 
-df = df.set_index('species')
+
+gjson_path = Path("data/processed/species_richness.geojson")
+
+gdf = gpd.read_file(gjson_path)
+print(gdf.isnull().sum())
+m = folium.Map(location=[45.5017, -73.5673], zoom_start=11) 
+choropleth = folium.Choropleth(
+    geo_data=gdf.__geo_interface__,
+    data=gdf,
+    columns=["Nom", "species_richness"],
+    key_on="feature.properties.Nom",
+    fill_color="YlGn",
+    fill_opacity=0.7,
+    line_opacity=0.2,
+    legend_name="Species Richness"
+).add_to(m)
+
+# Add hover tooltips
+folium.GeoJsonTooltip(
+    fields=["Nom", "species_richness"],
+    aliases=["Park:", "Species Richness:"],
+).add_to(choropleth.geojson)
 
 
+streamlit_folium.st_folium(m, width=700, height=500)

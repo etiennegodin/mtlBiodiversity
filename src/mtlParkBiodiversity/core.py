@@ -6,6 +6,19 @@ def convert_df_to_gdf(df : pd.DataFrame, lat_col : str = 'decimalLatitude', long
     gdf = gpd.GeoDataFrame(df, geometry=[Point(xy) for xy in zip(df["decimalLongitude"], df["decimalLatitude"])] , crs = 4326 )
     return gdf
 
+def df_inspect(df : pd.DataFrame, limit = 100):
+    print('-'*25, 'Preview', '-'*25)
+    print(df.head(limit))
+    print('/'*25, 'Columns', '/'*25)
+    print(df.columns)
+    print('/'*25, 'Dtypes', '/'*25)
+    print(df.dtypes)
+    print('/'*25, 'Shape', '/'*25)
+    print(df.shape)
+    print('-'*25, 'Null values', '-'*25)
+    print(df.isnull().sum())
+    print('/'*50)
+
 def convert_crs(gdf : gpd.GeoDataFrame, target_crs = 4326, verbose = False):
     """
     Converts gdf to taregt crs 

@@ -3,7 +3,7 @@ from pathlib import Path
 from matplotlib import pyplot as plt
 from shapely import wkb,wkt
 import geopandas as gpd
-
+from .core import df_inspect
 
 db_file_path = Path("data/interim/gbif/gbif_with_parks.parquet")
 output_path = Path("data/processed")
@@ -19,18 +19,25 @@ def create_metric(name, query = None, file_type = "parquet", debug = False):
     print(f"Processing {name} metric")
     df = con.execute(query).df()
 
-    if debug:
-        print(df.head())
-        print(df.columns)
-        print(df.dtypes)
-        print(df.shape)
-        print('/'*50)
-
     if file_type == "parquet":
+        
+        # Inspect
+        if debug:
+            df_inspect(df)
         df.to_parquet(output_path / f"{name}.{file_type}")
+
     elif file_type == 'geojson':
+        #Convert park_geom from wkb to shapely geometry
         df["geometry"] = df["park_geom"].apply(lambda x: wkb.loads(bytes(x)))
         gdf = gpd.GeoDataFrame(df, geometry = 'geometry', crs = 'EPSG:4326')
+        gdf = gdf.drop(columns = ['park_geom'])
+        
+        #Clean Nan values 
+        gdf = gdf.dropna(how="any").reset_index(drop=True)
+        # Inspect
+        if debug:
+            df_inspect(gdf)
+
         gdf.to_file(output_path / f"{name}.{file_type}", driver = 'GeoJSON')
 
 # Species richness per park 
