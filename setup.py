@@ -15,6 +15,12 @@ setup(
         'duckdb',
         'duckdb-extension-spatial'
         'seaborn',
-        'matplotlib'
+        'matplotlib',
+        'streamlit',
+        'streamlit-folium',
+        'plotly',
+        'shapely',
+        'argparse',
+        'folium'
         ],
     )
