@@ -172,15 +172,13 @@ def prep_gbif(force = False, test = False, limit = None):
     gbif_occurence_raw_file = [f for f in RAW_DATA_PATH.rglob("*.csv")][0]  # Assuming there's only one .csv file for the gbif data
     park_file =  [f for f in PARK_PATH.rglob("*.shp")][0]  # Assuming there's only one .shp file for the park data
 
-
     if test:
         print('Running gbif prep as test')
         gbif_occurence_db_file = OUTPUT_PATH / '_test_gbif_data.parquet'
-        output_file_path = OUTPUT_PATH / '_test_gbif_with_parks_test.parquet'
+        output_file_path = OUTPUT_PATH / '_test_gbif_with_parks.parquet'
     else:
         gbif_occurence_db_file = OUTPUT_PATH / 'gbif_data.parquet'
         output_file_path = OUTPUT_PATH / 'gbif_with_parks.parquet'
-
 
     # Check if csv has been converted to parquet file
     if (gbif_occurence_db_file.exists() and force) or (not gbif_occurence_db_file.exists()) :

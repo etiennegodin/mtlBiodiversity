@@ -1,0 +1,12 @@
+views:
+  - type: table
+    name: Table
+    order:
+      - file.name
+      - file.tags
+      - file.folder
+    sort: []
+  - type: cards
+    name: View
+    order:
+      - file.name
