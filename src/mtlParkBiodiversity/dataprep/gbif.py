@@ -30,6 +30,8 @@ def preview_gbif_data(con, table, limit = 100):
 def prep_park_sql(park_file, alias = 'p'):
 
     sql_query = """"""
+
+    #Get fields
     gdf = gpd.read_file(park_file)
     columns = gdf.columns.to_list()
 
@@ -38,9 +40,13 @@ def prep_park_sql(park_file, alias = 'p'):
         columns.remove('geometry')
 
     #Create string 
+    for idx, col in enumerate(columns):
+        if idx+1 == len(columns):
+            #Remove comma at end if last element 
+            x = f"""\t{alias}.{col}\n"""
+        else:
+            x = f"""\t{alias}.{col},\n"""
 
-    for col in columns:
-        x = f"""\t{alias}.{col}\n"""
         sql_query += x 
 
     return sql_query
