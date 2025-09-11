@@ -50,7 +50,6 @@ def main():
     )
     parser.add_argument("--test", action= 'store_true', help = 'Run in test mode')
     parser.add_argument("--limit", type= int, help = 'Limit the number of rows processed (for testing purposes)')
-    parser.add_argument("--limit", type= int, help = 'Limit the number of rows processed (for testing purposes)')
 
     args = parser.parse_args()
 
