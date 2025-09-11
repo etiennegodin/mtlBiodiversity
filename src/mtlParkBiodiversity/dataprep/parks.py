@@ -92,7 +92,7 @@ def prep_parks(force = False):
         output_file_name = f'park_{idx+1}.shp' 
         output_file_path = OUTPUT_PATH / output_file_name
 
-        if output_file_path.exists and force:
+        if output_file_path.exists() and force:
 
             if file.suffix == '.shp':
                 process_shp(file, output_file_path, city_boundary_gdf = city_boundary_gdf)

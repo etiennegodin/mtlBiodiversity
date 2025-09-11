@@ -10,7 +10,7 @@ from .metrics import process_metrics
 def run_prep(force = False, test = False, limit = None):
     print("Running data prep...")
 
-    prep_parks(force = force )
+    prep_parks(force = force)
 
     if force:
         user_force = input("You have chosen to force re-run GBIF data prep. This may take a while. Do you want to continue? (y/n): ")
@@ -19,7 +19,8 @@ def run_prep(force = False, test = False, limit = None):
         else:
             force = False
             print("Skipping GBIF data prep.")
-    #prep_gbif(force = force, test = test, limit = limit)
+
+    prep_gbif(force = force, test = test, limit = limit)
 
 
     # Load raw data (CSV, SHP, etc.)

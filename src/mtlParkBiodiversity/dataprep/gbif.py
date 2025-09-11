@@ -10,10 +10,7 @@ OUTPUT_PATH = Path("data/interim/gbif")
 PARK_FILE_PATH = Path("data/interim/Espace_Vert_clipped.shp")
 
 def convert_gbif_csv(input_path, output_path, force = False, test = False, limit = None):
-    if output_path.exists() and not force:
-        print('File is already converted, skipping')
-        return 
-    
+
     if test:
         print(f'Converting to {input_path} to .parquet file with limit set to {limit} ')
         duckdb.query(f"COPY (SELECT * FROM '{input_path}' LIMIT {limit}) TO '{output_path}' (FORMAT PARQUET)")
@@ -141,7 +138,7 @@ def spatial_join(gbif_occurence_db_file, PARK_FILE_PATH, test = False, limit = N
 
     print('Spatial join complete, saving file...')
 
-    con.execute('DROP TABLE IF EXISTS gbif;')
+    con.execute('DROP TABLE IF EXISTS() gbif;')
     con.execute('PRAGMA optimize;')
     print('Dropped gbif table to save memory')
     #Save 
@@ -163,21 +160,21 @@ def prep_gbif(force = False, test = False, limit = None):
     gbif_occurence_raw_file = [f for f in RAW_DATA_PATH.rglob("*.csv")][0]  # Assuming there's only one .csv file for the gbif data
 
     if test:
-        gbif_occurence_db_file = OUTPUT_PATH / '_gbif_data_test.parquet'
-        output_file_path = OUTPUT_PATH / '_gbif_with_parks_test.parquet'
+        print('Running gbif prep as test')
+        gbif_occurence_db_file = OUTPUT_PATH / '_test_gbif_data.parquet'
+        output_file_path = OUTPUT_PATH / '_test_gbif_with_parks_test.parquet'
     else:
         gbif_occurence_db_file = OUTPUT_PATH / 'gbif_data.parquet'
         output_file_path = OUTPUT_PATH / 'gbif_with_parks.parquet'
 
 
-    print(f"#_{__name__}")
     # Check if csv has been converted to parquet file
-    if (gbif_occurence_db_file.exists and force) or (not gbif_occurence_db_file.exists) :
+    if (gbif_occurence_db_file.exists() and force) or (not gbif_occurence_db_file.exists()) :
         convert_gbif_csv(gbif_occurence_raw_file, gbif_occurence_db_file, force = force, test = test, limit = limit)
     else:
         print("Convert_gbif_csv already done, skipping")
 
-    if (output_file_path.exists and force) or (not output_file_path.exists):
+    if (output_file_path.exists() and force) or (not output_file_path.exists()):
         spatial_join(gbif_occurence_db_file,PARK_FILE_PATH, test = test, limit = limit)
     else:
         print("Spatial Join already done, skipping")
