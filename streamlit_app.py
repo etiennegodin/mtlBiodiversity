@@ -1,7 +1,10 @@
 import pandas as pd
 import geopandas as gpd
 from pathlib import Path
+
 import streamlit as st 
+import streamlit_folium
+import folium
 
 
 PARENT_FOLDER = Path(__file__).parent
@@ -18,21 +21,72 @@ layout = 'wide',
 initial_sidebar_state= 'expanded'
 )
 
+@st.cache_data(ttl='1d')
+def get_gdf_data():
+
+    gdf = gpd.read_file(gjson_path)
+    return gdf
+
+gdf = get_gdf_data()
 
 
-gdf = gpd.read_file(gjson_path)
+# PAGE
+
+f'''
+# {TITLE}
+Explore Montreal's hidden biodiversity 
+[Link](https://inaturalist.ca/home)
+
+'''
+
+'''
+'''
 
 # Side bar
 with st.sidebar:
     st.title = TITLE
     park_list = list(gdf.park_name.unique().tolist())
 
-    selected_park = st.selectbox('Select park', park_list, index = len(park_list)-1)
+    #selected_park = st.selectbox('Select park', park_list, index = len(park_list)-1)
     color_theme_list = ['blues', 'cividis', 'greens', 'inferno', 'magma', 'plasma', 'reds', 'rainbow', 'turbo', 'viridis']
 
     selected_color_theme = st.selectbox('Select a color theme', color_theme_list)
 
+    
 # Layout 
 col = st.columns((1.4,4.5,2), gap = 'medium')
 
+with col[1]:
+    selected_park = st.selectbox('Which park do you want to look', park_list)
+
+    st.bar_chart(
+
+        gdf,
+        x = 'park_name',
+        y = 'species_richness'
+
+
+    )
+
+    m = folium.Map(location=[45.5017, -73.5673], zoom_start=11)
+
+    choropleth = folium.Choropleth(
+        geo_data=gdf.__geo_interface__,
+        data=gdf,
+        columns=["park_name","species_richness",],
+        key_on="feature.properties.park_name",
+        fill_color="viridis",
+        fill_opacity=0.7,
+        line_opacity=0.2,
+        legend_name="Species Richness"
+    ).add_to(m)
+
+    # Add hover tooltips
+    folium.GeoJsonTooltip(
+        fields=["park_name", "species_richness", 'shannon_index'],
+        aliases=["Park:", "Species Richness:", 'shannon_index'],
+    ).add_to(choropleth.geojson)
+
+
+    streamlit_folium.st_folium(m, width=700, height=500)
 
