@@ -5,17 +5,9 @@ import pandas as pd
 from ..core import clip_to_region, convert_crs
 from ..dataprep import target_crs
 
-gbif_folder = Path('C:/Users/manat/Documents/Projects/mtlParkBiodiversity/data/raw/gbif/')
-
-gbif_occurence_raw_file = gbif_folder / 'gbif_occurences.csv'
-gbif_occurence_db_file = gbif_folder / 'gbif_occurences.parquet'
-
-park_boundaries_file = Path("data/interim/Espace_Vert_clipped.shp")
-
-output_folder = Path('data/interim/gbif/')
-output_folder.mkdir(parents=True, exist_ok=True)
-
-output_file_path = output_folder / 'gbif_with_parks.parquet'
+RAW_DATA_PATH = Path("data/raw/gbif")
+OUTPUT_PATH = Path("data/interim/gbif")
+PARK_FILE_PATH = Path("data/interim/Espace_Vert_clipped.shp")
 
 def convert_gbif_csv(input_path, output_path, force = False, test = False, limit = None):
     if output_path.exists() and not force:
@@ -80,7 +72,7 @@ def convert_lat_long_to_point(con, table):
     con.execute(f"ALTER TABLE {table} ADD COLUMN geom GEOMETRY")
     con.execute(f"UPDATE {table} SET geom = ST_Point(decimalLongitude, decimalLatitude)")
 
-def spatial_join(gbif_occurence_db_file, park_boundaries_file, test = False, limit = None):
+def spatial_join(gbif_occurence_db_file, PARK_FILE_PATH, test = False, limit = None):
 
     # Create a connection (in-memory or persistent)
     con = duckdb.connect()  # or con = duckdb.connect("mydb.duckdb")
@@ -88,12 +80,13 @@ def spatial_join(gbif_occurence_db_file, park_boundaries_file, test = False, lim
     con.execute("PRAGMA max_temp_directory_size='25GiB';")
 
 
+
     # Install spatial extension 
     con.execute("INSTALL spatial;")
     con.execute("LOAD spatial;")
 
     #Load parks boundary file 
-    con.execute(f"CREATE OR REPLACE TABLE parks AS SELECT * FROM ST_Read('{park_boundaries_file}')")
+    con.execute(f"CREATE OR REPLACE TABLE parks AS SELECT * FROM ST_Read('{PARK_FILE_PATH}')")
 
     #preview_gbif_data(con, "parks")
 
@@ -164,6 +157,19 @@ def spatial_join(gbif_occurence_db_file, park_boundaries_file, test = False, lim
 
 def prep_gbif(force = False, test = False, limit = None):
 
+    # Create output directory if not existing
+    Path.mkdir(OUTPUT_PATH, exist_ok= True)
+
+    gbif_occurence_raw_file = [f for f in RAW_DATA_PATH.rglob("*.csv")][0]  # Assuming there's only one .csv file for the gbif data
+
+    if test:
+        gbif_occurence_db_file = OUTPUT_PATH / '_gbif_data_test.parquet'
+        output_file_path = OUTPUT_PATH / '_gbif_with_parks_test.parquet'
+    else:
+        gbif_occurence_db_file = OUTPUT_PATH / 'gbif_data.parquet'
+        output_file_path = OUTPUT_PATH / 'gbif_with_parks.parquet'
+
+
     print(f"#_{__name__}")
     # Check if csv has been converted to parquet file
     if (gbif_occurence_db_file.exists and force) or (not gbif_occurence_db_file.exists) :
@@ -172,7 +178,7 @@ def prep_gbif(force = False, test = False, limit = None):
         print("Convert_gbif_csv already done, skipping")
 
     if (output_file_path.exists and force) or (not output_file_path.exists):
-        spatial_join(gbif_occurence_db_file,park_boundaries_file, test = test, limit = limit)
+        spatial_join(gbif_occurence_db_file,PARK_FILE_PATH, test = test, limit = limit)
     else:
         print("Spatial Join already done, skipping")
     
