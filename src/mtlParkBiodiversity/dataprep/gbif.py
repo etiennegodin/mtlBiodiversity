@@ -7,7 +7,7 @@ from ..dataprep import target_crs
 
 RAW_DATA_PATH = Path("data/raw/gbif")
 OUTPUT_PATH = Path("data/interim/gbif")
-PARK_FILE_PATH = Path("data/interim/Espace_Vert_clipped.shp")
+PARK_PATH = Path("data/interim/parks")
 
 def convert_gbif_csv(input_path, output_path, force = False, test = False, limit = None):
 
@@ -27,6 +27,23 @@ def preview_gbif_data(con, table, limit = 100):
     print(df.columns)
     print('/'*50)
 
+def prep_park_sql(park_file, alias = 'p'):
+
+    sql_query = """"""
+    gdf = gpd.read_file(park_file)
+    columns = gdf.columns.to_list()
+
+    #Remove geometry col by default
+    if 'geometry' in columns:
+        columns.remove('geometry')
+
+    #Create string 
+
+    for col in columns:
+        x = f"""\t{alias}.{col}\n"""
+        sql_query += x 
+
+    return sql_query
 
 def check_crs(file, debug = False):
     if debug:
@@ -69,22 +86,23 @@ def convert_lat_long_to_point(con, table):
     con.execute(f"ALTER TABLE {table} ADD COLUMN geom GEOMETRY")
     con.execute(f"UPDATE {table} SET geom = ST_Point(decimalLongitude, decimalLatitude)")
 
-def spatial_join(gbif_occurence_db_file, PARK_FILE_PATH, test = False, limit = None):
+def spatial_join(gbif_occurence_db_file, park_file, test = False, limit = None):
 
     # Create a connection (in-memory or persistent)
     con = duckdb.connect()  # or con = duckdb.connect("mydb.duckdb")
 
     con.execute("PRAGMA max_temp_directory_size='25GiB';")
 
-
-
     # Install spatial extension 
     con.execute("INSTALL spatial;")
     con.execute("LOAD spatial;")
 
     #Load parks boundary file 
-    con.execute(f"CREATE OR REPLACE TABLE parks AS SELECT * FROM ST_Read('{PARK_FILE_PATH}')")
+    con.execute(f"CREATE OR REPLACE TABLE parks AS SELECT * FROM ST_Read('{park_file}')")
+    sql_query = prep_park_sql(park_file)
+    print(sql_query)
 
+    return
     #preview_gbif_data(con, "parks")
 
     #Load gbif data
@@ -158,6 +176,8 @@ def prep_gbif(force = False, test = False, limit = None):
     Path.mkdir(OUTPUT_PATH, exist_ok= True)
 
     gbif_occurence_raw_file = [f for f in RAW_DATA_PATH.rglob("*.csv")][0]  # Assuming there's only one .csv file for the gbif data
+    park_file =  [f for f in PARK_PATH.rglob("*.shp")][0]  # Assuming there's only one .shp file for the park data
+
 
     if test:
         print('Running gbif prep as test')
@@ -175,7 +195,7 @@ def prep_gbif(force = False, test = False, limit = None):
         print("Convert_gbif_csv already done, skipping")
 
     if (output_file_path.exists() and force) or (not output_file_path.exists()):
-        spatial_join(gbif_occurence_db_file,PARK_FILE_PATH, test = test, limit = limit)
+        spatial_join(gbif_occurence_db_file,park_file, test = test, limit = limit)
     else:
         print("Spatial Join already done, skipping")
     
