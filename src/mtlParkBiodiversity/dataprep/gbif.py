@@ -41,12 +41,7 @@ def prep_park_sql(park_file, alias = 'p'):
 
     #Create string 
     for idx, col in enumerate(columns):
-        if idx+1 == len(columns):
-            #Remove comma at end if last element 
-            x = f"""\t{alias}.{col}\n"""
-        else:
-            x = f"""\t{alias}.{col},\n"""
-
+        x = f"""\t{alias}.{col},\n"""
         sql_query += x 
 
     return sql_query
@@ -92,7 +87,7 @@ def convert_lat_long_to_point(con, table):
     con.execute(f"ALTER TABLE {table} ADD COLUMN geom GEOMETRY")
     con.execute(f"UPDATE {table} SET geom = ST_Point(decimalLongitude, decimalLatitude)")
 
-def spatial_join(gbif_occurence_db_file, park_file, test = False, limit = None):
+def spatial_join(gbif_occurence_db_file, park_file, output_file_path = None, test = False, limit = None):
 
     # Create a connection (in-memory or persistent)
     con = duckdb.connect()  # or con = duckdb.connect("mydb.duckdb")
@@ -105,10 +100,8 @@ def spatial_join(gbif_occurence_db_file, park_file, test = False, limit = None):
 
     #Load parks boundary file 
     con.execute(f"CREATE OR REPLACE TABLE parks AS SELECT * FROM ST_Read('{park_file}')")
-    sql_query = prep_park_sql(park_file)
-    print(sql_query)
+    park_fields_sql = prep_park_sql(park_file)
 
-    return
     #preview_gbif_data(con, "parks")
 
     #Load gbif data
@@ -147,12 +140,8 @@ def spatial_join(gbif_occurence_db_file, park_file, test = False, limit = None):
                 g.recordedBy,
                 g.geom,
 
-                # create dynamic query 
-                (SELECT * EXCEPT xxx) is not possible 
-                # read park.shp and get columns, remove geom, (p.park_id, p.park_name, etc) - have it dynamic without p.geom to avoid duplicates 
-                # add , at end
+                {park_fields_sql}
 
-                # handle geom 
                 p.geom AS park_geom
                 FROM gbif g
                 LEFT JOIN parks p
@@ -162,8 +151,7 @@ def spatial_join(gbif_occurence_db_file, park_file, test = False, limit = None):
 
     print('Spatial join complete, saving file...')
 
-    con.execute('DROP TABLE IF EXISTS() gbif;')
-    con.execute('PRAGMA optimize;')
+    con.execute('DROP TABLE IF EXISTS gbif;')
     print('Dropped gbif table to save memory')
     #Save 
     #con.execute(f"""COPY gbif_with_parks TO '{output_file_path}' (FORMAT 'parquet');""")
@@ -201,7 +189,7 @@ def prep_gbif(force = False, test = False, limit = None):
         print("Convert_gbif_csv already done, skipping")
 
     if (output_file_path.exists() and force) or (not output_file_path.exists()):
-        spatial_join(gbif_occurence_db_file,park_file, test = test, limit = limit)
+        spatial_join(gbif_occurence_db_file,park_file, output_file_path = output_file_path, test = test, limit = limit)
     else:
         print("Spatial Join already done, skipping")
     
