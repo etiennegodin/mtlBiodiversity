@@ -152,16 +152,17 @@ def spatial_join(gbif_occurence_db_file, park_file, output_file_path = None, tes
     print('Spatial join complete, saving file...')
 
     con.execute('DROP TABLE IF EXISTS gbif;')
-    print('Dropped gbif table to save memory')
     #Save 
-    #con.execute(f"""COPY gbif_with_parks TO '{output_file_path}' (FORMAT 'parquet');""")
-    con.execute(f"""
-                    COPY (
-                        SELECT *
-                        FROM gbif_with_parks
-                    ) TO '{output_file_path}' (FORMAT 'parquet');
-                """)
-    con.close()
+    try:
+        con.execute(f"""
+                        COPY (
+                            SELECT *
+                            FROM gbif_with_parks
+                        ) TO '{output_file_path}' (FORMAT 'parquet');
+                    """)
+        con.close()
+    except Exception as e:
+        print(f'Failed to saved spatial join : {e}')
     return True
 
 def prep_gbif(force = False, test = False, limit = None):

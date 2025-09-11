@@ -41,7 +41,7 @@ def main():
     raw_data_read_only('data/raw', debug = False)
 
     parser = argparse.ArgumentParser()
-    parser.add_argument("command", choices=["prep", "metrics", "dashboard"])
+    parser.add_argument("command", choices=["prep", "metrics", "dashboard", 'full'])
     # optional flag: --force
     parser.add_argument(
         "--force",
@@ -50,13 +50,17 @@ def main():
     )
     parser.add_argument("--test", action= 'store_true', help = 'Run in test mode')
     parser.add_argument("--limit", type= int, help = 'Limit the number of rows processed (for testing purposes)')
+    parser.add_argument("--limit", type= int, help = 'Limit the number of rows processed (for testing purposes)')
+
     args = parser.parse_args()
 
     # Default limit to 10000 if test mode is on and limit is not specified
     if args.limit is None:
         args.limit = 10000
-        
-    if args.command == "prep":
+    if args.command == 'full':
+        run_prep(force = args.force, test = args.test, limit = args.limit, )
+        run_metrics(force = args.force, test = args.test, limit = args.limit)
+    elif args.command == "prep":
         run_prep(force = args.force, test = args.test, limit = args.limit)
     elif args.command == "metrics":
         run_metrics(force = args.force, test = args.test, limit = args.limit)

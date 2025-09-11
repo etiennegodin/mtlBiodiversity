@@ -1,9 +1,9 @@
 
 ## Reusable metrics 
 	
-- [ ] Species richness
-- [ ] Shannon index
-- [ ] Observation count 
+- [x] Species richness
+- [x] Shannon index
+- [x] Observation count 
 - [ ] Most observed taxa
 	- [ ] with picture
 

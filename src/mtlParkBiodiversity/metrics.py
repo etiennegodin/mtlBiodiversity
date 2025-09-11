@@ -20,7 +20,7 @@ def save_table(name, geographic_data = False, debug = False):
     df = con.execute(f"SELECT * FROM {name}").df()
     
     df.to_parquet(OUTPUT_PATH / f"{name}.parquet")
-    print(f'Saved {name} to parquet file')
+    print(f'Saved {name} metric to parquet file')
 
     if debug:
         df_inspect(df)
@@ -173,7 +173,7 @@ def process_metrics(force = False, test = False, limit = None):
  
         
 
-    save_table('parks', geographic_data= True , debug=True)
+    save_table('parks', geographic_data= True , debug=False)
     #save_table('annual_observations', query = annual_observations_query)
     #save_table('most_observed_species', query = most_observed_species_query)
     #save_table('species_count', query = species_count_query)

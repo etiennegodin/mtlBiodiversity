@@ -24,6 +24,8 @@ def process_shp(file :Path = None, output_file_path :Path = None, city_boundary_
     # Read shapefile 
     gdf = gpd.read_file(file)
 
+    print(gdf)
+
     # Format columns 
     gdf = unify_columns(file, expected_columns= PARK_DATA_COL)
 
@@ -31,10 +33,11 @@ def process_shp(file :Path = None, output_file_path :Path = None, city_boundary_
     gdf = gdf[PARK_DATA_COL]
 
     #Clip gdf to city boundaries
-    gdf_clipped = clip_to_region(gdf, city_boundary_gdf)
+    #gdf = clip_to_region(gdf, city_boundary_gdf)
 
+    print('Park data processed, saving')
     # Convert to target crs before saving 
-    gdf_out = convert_crs(gdf_clipped, target_crs = target_crs)
+    gdf_out = convert_crs(gdf, target_crs = target_crs)
     if not save_gdf(gdf_out,output_file_path):
         return False
     return True
@@ -48,10 +51,10 @@ def process_gpgk(file :Path = None, output_file_path :Path = None, city_boundary
     #Read gpgk layer 
     gdf = gpd.read_file(file, layer = layer)
     #Clip gdf 
-    gdf_clipped = clip_to_region(gdf, city_boundary_gdf)
+    #gdf = clip_to_region(gdf, city_boundary_gdf)
 
     # Convert to target crs before saving 
-    gdf_out = convert_crs(gdf_clipped, target_crs = target_crs)
+    gdf_out = convert_crs(gdf, target_crs = target_crs)
     if not save_gdf(gdf_out,output_file_path):
         return False
     return True
