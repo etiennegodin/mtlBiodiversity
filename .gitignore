@@ -1,6 +1,5 @@
 #data folders 
-data/raw/
-data/interim/
+
 #data/processed/
 
 .tmp/
