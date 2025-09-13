@@ -16,19 +16,18 @@ def read_sql_file(file_name):
     return park_metrics_sql
 
 
-def save_table(name, geographic_data = False, debug = False):
+def save_table(name, geographic_data = False, debug = False, con = None):
     print(f"Processing {name} metric")
 
-    df = con.execute(f"SELECT * FROM {name}").df()
     
-    df.to_parquet(OUTPUT_PATH / f"{name}.parquet")
+# Save table to Parquet
+    con.execute(f"COPY {name} TO '{OUTPUT_PATH}/{name}.parquet' (FORMAT PARQUET);")
     print(f'Saved {name} metric to parquet file')
-
-    if debug:
-        df_inspect(df)
 
     if geographic_data:
         print("Geographic data, exporting to GeoJSON")
+
+        df = con.execute(f"SELECT * FROM {name}").df()
         #Convert park_geom from wkb to shapely geometry
         df["geometry"] = df["park_geom"].apply(lambda x: wkb.loads(bytes(x)))
         gdf = gpd.GeoDataFrame(df, geometry = 'geometry', crs = 'EPSG:4326')
@@ -93,47 +92,6 @@ GROUP BY park_name
 ORDER BY species_richness DESC
 
 ;
-
-"""
-shannon_index_query = """
-
-CREATE OR REPLACE VIEW park_shannon_index AS
-WITH species_count AS
-(SELECT park_name, species, 
-COUNT(*) AS species_count,
-FROM data
-WHERE park_name IS NOT NULL
-GROUP BY park_name, species,
-ORDER BY park_name
-),
-
-park_totals AS(
-
-SELECT park_name,
-SUM(species_count) AS total_count
-FROM species_count
-GROUP BY park_name,
-),
-
-proportions AS(
-
-SELECT s.park_name,
-        s.species,
-        s.species_count,
-        t.total_count,
-        s.species_count * 1.0 / ( t.total_count *1.0 )AS p
-        
-FROM species_count s
-JOIN park_totals t
-ON s.park_name = t.park_name
-)
-
-
-SELECT park_name,
-
-    -SUM(p*LN(p)) AS shannon_index
-FROM proportions
-GROUP BY park_name;
 
 """
 
@@ -205,13 +163,15 @@ def park_metrics(force = False, test = False, limit = None):
     # Install spatial extension 
     con.execute("INSTALL spatial;")
     con.execute("LOAD spatial;")
-    print(SQL_PATH)
 
     park_metrics_sql = read_sql_file('parks')
+    con.execute(park_metrics_sql)
+    save_table('parks', geographic_data= True , debug=False, con = con)
 
-    df = con.execute(park_metrics_sql).df()
-    print(Path(__file__).parent)
-    print(df)
+    taxa_group_sql = read_sql_file('taxa_groups')
+    con.execute(park_metrics_sql)
+    save_table('taxa_groups', geographic_data= True , debug=False, con = con)
+
     
     # Create base parks metrics 
     #con.execute(park_metrics_query)

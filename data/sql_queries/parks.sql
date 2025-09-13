@@ -1,35 +1,20 @@
+CREATE OR REPLACE TABLE parks AS
 
-WITH kingdom_richness AS(
-    SELECT park_name, kingdom,
-    COUNT(*) AS kingdom_count
-    FROM data
-    GROUP BY park_name, kingdom,
+SELECT park_name,
+COUNT(DISTINCT gbifID) AS observation, -- dsda-- 
+COUNT(DISTINCT kingdom) AS kingdom_richness,
+COUNT(DISTINCT family) AS family_richness,
+COUNT(DISTINCT genus) AS genus_richness,
+COUNT(DISTINCT species) AS species_richness,
 
-),
 
-class_richness AS(
-    SELECT park_name, class,
-    COUNT(*) AS class_count
-    FROM data
-    GROUP BY park_name, class,
-),
+ANY_VALUE(park_geom) AS park_geom,
+    
 
-taxa_richness AS(
-        SELECT k.park_name,
-        k.kingdom_count,
-        c.class_count,
-        c.park_name
+FROM data d
 
-    FROM kingdom_richness k
-    JOIN class_richness c
-    ON k.park_name = c.park_name
-
-)
-
-SELECT * 
-
-FROM taxa_richness
-LIMIT 1000
-
+WHERE park_name IS NOT NULL
+GROUP BY park_name
+ORDER BY species_richness DESC
 
 ;
