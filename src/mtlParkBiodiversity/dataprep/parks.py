@@ -42,7 +42,7 @@ def process_shp(file :Path = None, output_file_path :Path = None):
         return False
     return True
 
-def process_gpgk(file :Path = None, output_file_path :Path = None,  :gpd.GeoDataFrame = None, layer = None):
+def process_gpgk(file :Path = None, output_file_path :Path = None, layer = None):
     #Create new filename base on layer name
     output_file_name = file.stem + f'_clipped_{layer}.shp'
     # Final output path with new subfolder
