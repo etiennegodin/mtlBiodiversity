@@ -166,11 +166,13 @@ def park_metrics(force = False, test = False, limit = None):
 
     park_metrics_sql = read_sql_file('parks')
     con.execute(park_metrics_sql)
-    save_table('parks', geographic_data= True , debug=False, con = con)
 
-    taxa_group_sql = read_sql_file('taxa_groups')
-    con.execute(park_metrics_sql)
-    save_table('taxa_groups', geographic_data= True , debug=False, con = con)
+    taxa_group_sql = read_sql_file('park_taxa')
+    con.execute(taxa_group_sql)
+
+    df = con.execute("SELECT * FROM park_taxa LIMIT 5").df()
+    print(df)
+    save_table('park_taxa', geographic_data= True , debug=False, con = con)
 
     
     # Create base parks metrics 
