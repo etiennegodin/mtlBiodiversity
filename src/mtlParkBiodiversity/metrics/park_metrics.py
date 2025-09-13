@@ -7,7 +7,13 @@ from ..core import df_inspect
 
 DB_PATH = Path("data/interim/gbif/")
 OUTPUT_PATH = Path("data/processed")
+SQL_PATH = Path("data/sql_queries")
 
+def read_sql_file(file_name):
+    with open(SQL_PATH / f'{file_name}.sql', 'r') as f:
+        park_metrics_sql = f.read()
+    
+    return park_metrics_sql
 
 
 def save_table(name, geographic_data = False, debug = False):
@@ -199,10 +205,12 @@ def park_metrics(force = False, test = False, limit = None):
     # Install spatial extension 
     con.execute("INSTALL spatial;")
     con.execute("LOAD spatial;")
+    print(SQL_PATH)
 
-    with open(Path(__file__).parent / 'parks.sql', 'r') as f:
-        park_metrics_sql = f.read()
+    park_metrics_sql = read_sql_file('parks')
+
     df = con.execute(park_metrics_sql).df()
+    print(Path(__file__).parent)
     print(df)
     
     # Create base parks metrics 
