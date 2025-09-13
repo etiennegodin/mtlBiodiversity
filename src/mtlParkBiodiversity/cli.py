@@ -1,10 +1,11 @@
 import argparse
-import os, stat
-import pathlib
+import subprocess
+from pathlib import Path
+import sys
 from .core import raw_data_read_only
 from .dataprep.gbif import prep_gbif
 from .dataprep.parks import prep_parks
-from .metrics import process_metrics
+from .metrics.main import process_all_metrics
 #from .dashboard.app import run_dashboard
 
 def run_prep(force = False, test = False, limit = None):
@@ -29,13 +30,15 @@ def run_prep(force = False, test = False, limit = None):
 
 def run_metrics(force = False, test = False, limit = None):
     print("Running Aggregate Metrics...")
-    process_metrics(force = force, test = test, limit = limit)
+    process_all_metrics(force = force, test = test, limit = limit)
 
 def run_dash():
     print("Launching dashboard...")
     # Load prepped data
     #run_dashboard()
-
+    app_folder = Path(__file__).parent.parent.parent
+    # Run Streamlit app with streamlit subprocess
+    subprocess.run([sys.executable, "-m", "streamlit", "run", f"{app_folder}/streamlit_app.py"])
 def main():
 
     raw_data_read_only('data/raw', debug = False)
@@ -59,6 +62,7 @@ def main():
     if args.command == 'full':
         run_prep(force = args.force, test = args.test, limit = args.limit, )
         run_metrics(force = args.force, test = args.test, limit = args.limit)
+        run_dash()
     elif args.command == "prep":
         run_prep(force = args.force, test = args.test, limit = args.limit)
     elif args.command == "metrics":

@@ -3,16 +3,12 @@ from pathlib import Path
 from matplotlib import pyplot as plt
 from shapely import wkb,wkt
 import geopandas as gpd
-from .core import df_inspect
+from ..core import df_inspect
 
 DB_PATH = Path("data/interim/gbif/")
 OUTPUT_PATH = Path("data/processed")
 
-# Create a connection (in-memory or persistent)
-con = duckdb.connect() 
- # Install spatial extension 
-con.execute("INSTALL spatial;")
-con.execute("LOAD spatial;")
+
 
 def save_table(name, geographic_data = False, debug = False):
     print(f"Processing {name} metric")
@@ -42,22 +38,55 @@ def save_table(name, geographic_data = False, debug = False):
 
 # Species richness per park 
 park_metrics_query = """
-CREATE TABLE parks AS
+
+CREATE OR REPLACE TABLE parks AS
+
+WITH kingdom_richness AS(
+SELECT park_name, kingdom,
+COUNT(*) AS count
+FROM data
+GROUP BY park_name, kingdom,
+
+),
+
+class_richness AS(
+SELECT park_name, class,
+COUNT(*) AS count
+FROM data
+GROUP BY park_name, class,
+),
+
+taxa_richness AS(
+SELECT k.count AS kingdom_count,
+SELECT c.count AS class_count,
+
+FROM kingdom_richness k
+JOIN class_richness c
+ON k.park_name = c.park_name
+
+)
+
+
 SELECT park_name,
 COUNT(DISTINCT gbifID) AS observation, -- dsda-- 
 COUNT(DISTINCT kingdom) AS kingdom_richness,
 COUNT(DISTINCT family) AS family_richness,
 COUNT(DISTINCT genus) AS genus_richness,
-COUNT(DISTINCT species) AS species_richness, 
+COUNT(DISTINCT species) AS species_richness,
+
 ANY_VALUE(ST_AsWKB(park_geom)) AS park_geom,
 
+t.kingdom_count,
+t.class_count
 
 FROM data
+JOIN taxa_richness t
+ON data.park_name = t.park_name
 WHERE park_name IS NOT NULL
 GROUP BY park_name
 ORDER BY species_richness DESC
 
-LIMIT 1000;
+;
 
 """
 shannon_index_query = """
@@ -137,12 +166,15 @@ species_count_query = """
 """
 
 
-def process_metrics(force = False, test = False, limit = None):
+def park_metrics(force = False, test = False, limit = None):
 
     if test:
         db_file_path = DB_PATH / "_test_gbif_with_parks.parquet"
     else:
         db_file_path = DB_PATH / "gbif_with_parks.parquet"
+
+    # Create a connection (in-memory or persistent)
+    con = duckdb.connect('data/interim/parks_metrics.duckdb') 
 
 
 
@@ -151,29 +183,41 @@ def process_metrics(force = False, test = False, limit = None):
     if test:
         print(f"Loading data with limit set to {limit}")
         con.execute(f"""
-                    CREATE TABLE data AS SELECT * FROM '{db_file_path}' 
+                    CREATE OR REPLACE TABLE data AS
+                    SELECT * FROM '{db_file_path}' 
                     WHERE park_id IS NOT NULL
                     LIMIT {limit};
                     """)
     else:
         con.execute(f"""
-                        CREATE TABLE data AS SELECT * FROM '{db_file_path}' 
+                        CREATE TABLE OR REPLACE data AS
+                        SELECT * FROM '{db_file_path}' 
                         WHERE park_id IS NOT NULL;
                         """)
         
+
+    # Install spatial extension 
+    con.execute("INSTALL spatial;")
+    con.execute("LOAD spatial;")
+
+    with open(Path(__file__).parent / 'parks.sql', 'r') as f:
+        park_metrics_sql = f.read()
+    df = con.execute(park_metrics_sql).df()
+    print(df)
+    
     # Create base parks metrics 
-    con.execute(park_metrics_query)
+    #con.execute(park_metrics_query)
     # Create view of shannon index from parks table 
-    con.execute(shannon_index_query)
+    #con.execute(shannon_index_query)
     # Add columns to parks to add shannon index
-    con.execute("ALTER TABLE parks ADD COLUMN shannon_index DOUBLE")
+    #con.execute("ALTER TABLE parks ADD COLUMN shannon_index DOUBLE")
     # Add shannon index view to parks
-    con.execute(join_shannon)
+    #con.execute(join_shannon)
     
  
         
 
-    save_table('parks', geographic_data= True , debug=False)
+    #save_table('parks', geographic_data= True , debug=False)
     #save_table('annual_observations', query = annual_observations_query)
     #save_table('most_observed_species', query = most_observed_species_query)
     #save_table('species_count', query = species_count_query)
