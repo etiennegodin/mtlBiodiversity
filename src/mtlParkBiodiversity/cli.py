@@ -44,7 +44,7 @@ def main():
     raw_data_read_only('data/raw', debug = False)
 
     parser = argparse.ArgumentParser()
-    parser.add_argument("command", choices=["prep", "metrics", "dashboard", 'full'])
+    parser.add_argument("command", choices=["prep", "metrics", "app", 'full'])
     # optional flag: --force
     parser.add_argument(
         "--force",
@@ -67,5 +67,5 @@ def main():
         run_prep(force = args.force, test = args.test, limit = args.limit)
     elif args.command == "metrics":
         run_metrics(force = args.force, test = args.test, limit = args.limit)
-    elif args.command == "dashboard":
+    elif args.command == "app":
         run_dash()

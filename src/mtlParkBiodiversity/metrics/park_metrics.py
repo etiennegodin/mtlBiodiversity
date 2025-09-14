@@ -96,13 +96,7 @@ ORDER BY species_richness DESC
 """
 
 
-join_shannon = """
-UPDATE parks
-SET shannon_index = s.shannon_index
-FROM park_shannon_index s
-WHERE parks.park_name = s.park_name;
 
-"""
 
 
 # Number of observation per year
@@ -154,10 +148,11 @@ def park_metrics(force = False, test = False, limit = None):
                     """)
     else:
         con.execute(f"""
-                        CREATE TABLE OR REPLACE data AS
-                        SELECT * FROM '{db_file_path}' 
-                        WHERE park_id IS NOT NULL;
-                        """)
+                    CREATE OR REPLACE TABLE data AS
+                    SELECT * FROM '{db_file_path}' 
+                    WHERE park_id IS NOT NULL
+                    ;
+                    """)
         
 
     # Install spatial extension 
@@ -167,11 +162,20 @@ def park_metrics(force = False, test = False, limit = None):
     park_metrics_sql = read_sql_file('parks')
     con.execute(park_metrics_sql)
 
+    shannon_index_sql = read_sql_file('shannon_index')
+    con.execute(shannon_index_sql)
+
+    con.execute("""
+        UPDATE parks
+        SET shannon_index = s.shannon_index
+        FROM park_shannon_index s
+        WHERE parks.park_name = s.park_name;
+    """)
+
+    save_table('parks', geographic_data= True , debug=False, con = con)
+
     taxa_group_sql = read_sql_file('park_taxa')
     con.execute(taxa_group_sql)
-
-    df = con.execute("SELECT * FROM park_taxa LIMIT 5").df()
-    print(df)
     save_table('park_taxa', geographic_data= True , debug=False, con = con)
 
     

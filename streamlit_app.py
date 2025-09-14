@@ -76,27 +76,12 @@ with col[1]:
         name ="Species Richness",
         columns=["park_name","species_richness",],
         key_on="feature.properties.park_name",
-        fill_color="YlGn",
+        fill_color="RdPu",
         fill_opacity=0.7,
         line_opacity=0.2,
         legend_name="Species Richness",
         show= False
     ).add_to(m)
-
-    choropleth_shannon_index = folium.Choropleth(
-    geo_data=gdf,
-    data=gdf,
-    name ="Shannon Index",
-    columns=["park_name","shannon_index",],
-    key_on="feature.properties.park_name",
-    fill_color="YlGn",
-    fill_opacity=0.7,
-    line_opacity=0.2,
-    legend_name="Shannon Index",
-    show = False
-
-    ).add_to(m)
-
 
     # Add hover tooltips
     folium.GeoJsonTooltip(
