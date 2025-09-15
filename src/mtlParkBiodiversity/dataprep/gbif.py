@@ -170,7 +170,7 @@ def prep_gbif(force = False, test = False, colab = False, limit = None):
     if colab:
         RAW_DATA_PATH = Path("/content/gdrive/MyDrive/mtlParkBiodiversity/data/raw/gbif")
         OUTPUT_PATH = Path("/content/gdrive/MyDrive/mtlParkBiodiversity/data/interim/gbif")
-        PARK_PATH = Path("/content/gdrive/MyDrive/mtlParkBiodiversity/data/interim/parks")
+        PARK_PATH = Path("/content/mtlParkBiodiversity/data/interim/parks")
     else:
         RAW_DATA_PATH = Path("data/raw/gbif")
         OUTPUT_PATH = Path("data/interim/gbif")
