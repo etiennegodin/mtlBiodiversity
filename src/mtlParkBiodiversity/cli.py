@@ -52,8 +52,8 @@ def main():
         help="Force re-run of data prep even if processed files exist"
     )
     parser.add_argument("--test", action= 'store_true', help = 'Run in test mode')
+    parser.add_argument("--colab", action= 'store_true', help = 'Run in colab')
     parser.add_argument("--limit", type= int, help = 'Limit the number of rows processed (for testing purposes)')
-    parser.add_argument("--colab", type= int, help = 'Run in colab ')
 
     args = parser.parse_args()
 
