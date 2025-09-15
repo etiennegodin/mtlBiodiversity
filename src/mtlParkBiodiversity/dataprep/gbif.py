@@ -104,7 +104,7 @@ def spatial_join(gbif_occurence_db_file, park_file, output_file_path = None, tes
     #Load parks boundary file 
     con.execute(f"CREATE OR REPLACE TABLE parks AS SELECT * FROM ST_Read('{park_file}')")
     park_fields_sql = prep_park_sql(park_file)
-
+    print(park_fields_sql)
     #preview_gbif_data(con, "parks")
     print('Creating gbif table...')
     #Load gbif data
@@ -145,7 +145,7 @@ def spatial_join(gbif_occurence_db_file, park_file, output_file_path = None, tes
 
                 {park_fields_sql}
 
-                p.geom AS park_geom
+                p.geom AS park_geom,
                 FROM gbif g
                 LEFT JOIN parks p
                 ON ST_Within(g.geom, p.geom);
