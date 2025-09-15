@@ -1,9 +1,9 @@
 #data folders 
-data/raw/
-data/interim/
+
+#data/processed/
+
 .tmp/
 build/
-data/processed/
 
 #geodata files 
 *.zip
@@ -11,7 +11,7 @@ data/processed/
 *.tif
 *.gpkg
 #db
-*.parquet
+#*.parquet
 #qgis
 *.qgz
 *.xlsx

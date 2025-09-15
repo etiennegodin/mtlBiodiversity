@@ -1,16 +1,16 @@
 import argparse
-import os, stat
-import pathlib
+import subprocess
+from pathlib import Path
+import sys
 from .core import raw_data_read_only
 from .dataprep.gbif import prep_gbif
 from .dataprep.parks import prep_parks
-from .metrics import process_metrics
+from .metrics.main import process_all_metrics
 #from .dashboard.app import run_dashboard
 
-def run_prep(force = False, test = False, limit = None):
+def run_prep(force = False, test = False, limit = None, colab = False):
     print("Running data prep...")
 
-    prep_parks(force = force)
 
     if force:
         user_force = input("You have chosen to force re-run GBIF data prep. This may take a while. Do you want to continue? (y/n): ")
@@ -20,7 +20,6 @@ def run_prep(force = False, test = False, limit = None):
             force = False
             print("Skipping GBIF data prep.")
 
-    prep_gbif(force = force, test = test, limit = limit)
 
 
     # Load raw data (CSV, SHP, etc.)
@@ -29,19 +28,21 @@ def run_prep(force = False, test = False, limit = None):
 
 def run_metrics(force = False, test = False, limit = None):
     print("Running Aggregate Metrics...")
-    process_metrics(force = force, test = test, limit = limit)
+    process_all_metrics(force = force, test = test, limit = limit)
 
 def run_dash():
     print("Launching dashboard...")
     # Load prepped data
     #run_dashboard()
-
+    app_folder = Path(__file__).parent.parent.parent
+    # Run Streamlit app with streamlit subprocess
+    subprocess.run([sys.executable, "-m", "streamlit", "run", f"{app_folder}/streamlit_app.py"])
 def main():
 
     raw_data_read_only('data/raw', debug = False)
 
     parser = argparse.ArgumentParser()
-    parser.add_argument("command", choices=["prep", "metrics", "dashboard", 'full'])
+    parser.add_argument("command", choices=["parks", "gbif", "metrics", "app", 'full'])
     # optional flag: --force
     parser.add_argument(
         "--force",
@@ -49,6 +50,7 @@ def main():
         help="Force re-run of data prep even if processed files exist"
     )
     parser.add_argument("--test", action= 'store_true', help = 'Run in test mode')
+    parser.add_argument("--colab", action= 'store_true', help = 'Run in colab')
     parser.add_argument("--limit", type= int, help = 'Limit the number of rows processed (for testing purposes)')
 
     args = parser.parse_args()
@@ -57,11 +59,15 @@ def main():
     if args.limit is None:
         args.limit = 10000
     if args.command == 'full':
-        run_prep(force = args.force, test = args.test, limit = args.limit, )
+        prep_parks(force = args.force, test = args.test, limit = args.limit, colab = args.colab)
+        prep_gbif(force = args.force, test = args.test, limit = args.limit, colab = args.colab)
         run_metrics(force = args.force, test = args.test, limit = args.limit)
-    elif args.command == "prep":
-        run_prep(force = args.force, test = args.test, limit = args.limit)
+        run_dash()
+    elif args.command == "parks":
+        prep_parks(force = args.force, test = args.test, limit = args.limit, colab = args.colab)
+    elif args.command == "gbif":
+        prep_gbif(force = args.force, test = args.test, limit = args.limit, colab = args.colab)
     elif args.command == "metrics":
         run_metrics(force = args.force, test = args.test, limit = args.limit)
-    elif args.command == "dashboard":
+    elif args.command == "app":
         run_dash()

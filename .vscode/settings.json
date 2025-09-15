@@ -1,0 +1,11 @@
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "driver": "DuckDB",
+            "database": "${workspaceFolder:mtlParkBiodiversity}/data/interim/parks_metrics.duckdb",
+            "name": "xxx"
+        }
+    ],
+    "sqltools.useNodeRuntime": true
+}

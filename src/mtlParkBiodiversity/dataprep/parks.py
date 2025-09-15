@@ -19,7 +19,7 @@ def save_gdf(gdf, output_file_path):
         print(f"Failed to save {output_file_path.stem} : {e}")
         return False
 
-def process_shp(file :Path = None, output_file_path :Path = None, city_boundary_gdf :gpd.GeoDataFrame = None):
+def process_shp(file :Path = None, output_file_path :Path = None):
 
     # Read shapefile 
     gdf = gpd.read_file(file)
@@ -33,7 +33,7 @@ def process_shp(file :Path = None, output_file_path :Path = None, city_boundary_
     gdf = gdf[PARK_DATA_COL]
 
     #Clip gdf to city boundaries
-    #gdf = clip_to_region(gdf, city_boundary_gdf)
+    #gdf = clip_to_region(gdf, )
 
     print('Park data processed, saving')
     # Convert to target crs before saving 
@@ -42,7 +42,7 @@ def process_shp(file :Path = None, output_file_path :Path = None, city_boundary_
         return False
     return True
 
-def process_gpgk(file :Path = None, output_file_path :Path = None, city_boundary_gdf :gpd.GeoDataFrame = None, layer = None):
+def process_gpgk(file :Path = None, output_file_path :Path = None, layer = None):
     #Create new filename base on layer name
     output_file_name = file.stem + f'_clipped_{layer}.shp'
     # Final output path with new subfolder
@@ -51,7 +51,7 @@ def process_gpgk(file :Path = None, output_file_path :Path = None, city_boundary
     #Read gpgk layer 
     gdf = gpd.read_file(file, layer = layer)
     #Clip gdf 
-    #gdf = clip_to_region(gdf, city_boundary_gdf)
+    #gdf = clip_to_region(gdf, )
 
     # Convert to target crs before saving 
     gdf_out = convert_crs(gdf, target_crs = target_crs)
@@ -81,10 +81,6 @@ def prep_parks(force = False):
     # Create output directory if not existing
     Path.mkdir(OUTPUT_PATH, exist_ok= True)
 
-    # Read city boundary file
-    city_boundary_file = [f for f in RAW_DATA_PATH.rglob("*.shp")][0]  # Assuming there's only one .shp file for the city boundary
-    city_boundary_gdf = gpd.read_file(city_boundary_file)
-
     # List all park files (shp, gpgk) in RAW_DATA_PATH / parks
     parks_path = RAW_DATA_PATH / 'parks'
     parks_files = [f for f in parks_path.rglob("*") if f.suffix in ['.shp', '.gpkg']]
@@ -98,7 +94,7 @@ def prep_parks(force = False):
         if output_file_path.exists() and force:
 
             if file.suffix == '.shp':
-                process_shp(file, output_file_path, city_boundary_gdf = city_boundary_gdf)
+                process_shp(file, output_file_path)
 
             """
             elif file.suffix == '.gpkg':

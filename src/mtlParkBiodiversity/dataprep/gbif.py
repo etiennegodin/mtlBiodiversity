@@ -5,9 +5,9 @@ import pandas as pd
 from ..core import clip_to_region, convert_crs
 from ..dataprep import target_crs
 
-RAW_DATA_PATH = Path("data/raw/gbif")
-OUTPUT_PATH = Path("data/interim/gbif")
-PARK_PATH = Path("data/interim/parks")
+
+
+
 
 def convert_gbif_csv(input_path, output_path, force = False, test = False, limit = None):
 
@@ -103,7 +103,7 @@ def spatial_join(gbif_occurence_db_file, park_file, output_file_path = None, tes
     park_fields_sql = prep_park_sql(park_file)
 
     #preview_gbif_data(con, "parks")
-
+    print('Creating gbif table...')
     #Load gbif data
     if test:
         con.execute(f"CREATE TABLE gbif AS SELECT *, ST_Point(decimalLongitude, decimalLatitude) AS geom FROM '{gbif_occurence_db_file}' LIMIT {limit}")
@@ -165,12 +165,21 @@ def spatial_join(gbif_occurence_db_file, park_file, output_file_path = None, tes
         print(f'Failed to saved spatial join : {e}')
     return True
 
-def prep_gbif(force = False, test = False, limit = None):
+def prep_gbif(force = False, test = False, colab = False, limit = None):
+    if colab:
+        RAW_DATA_PATH = Path("/content/gdrive/MyDrive/mtlParkBiodiversity/data/raw/gbif")
+        OUTPUT_PATH = Path("/content/gdrive/MyDrive/mtlParkBiodiversity/data/interim/gbif")
+        PARK_PATH = Path("/content/gdrive/MyDrive/mtlParkBiodiversity/data/interim/parks")
+    else:
+        RAW_DATA_PATH = Path("data/raw/gbif")
+        OUTPUT_PATH = Path("data/interim/gbif")
+        PARK_PATH = Path("data/interim/parks")
+
+        Path.mkdir(OUTPUT_PATH, exist_ok= True)
+        gbif_occurence_raw_file = [f for f in RAW_DATA_PATH.rglob("*.csv")][0]  # Assuming there's only one .csv file for the gbif data
+
 
     # Create output directory if not existing
-    Path.mkdir(OUTPUT_PATH, exist_ok= True)
-
-    gbif_occurence_raw_file = [f for f in RAW_DATA_PATH.rglob("*.csv")][0]  # Assuming there's only one .csv file for the gbif data
     park_file =  [f for f in PARK_PATH.rglob("*.shp")][0]  # Assuming there's only one .shp file for the park data
 
     if test:
@@ -181,13 +190,16 @@ def prep_gbif(force = False, test = False, limit = None):
         gbif_occurence_db_file = OUTPUT_PATH / 'gbif_data.parquet'
         output_file_path = OUTPUT_PATH / 'gbif_with_parks.parquet'
 
-    # Check if csv has been converted to parquet file
-    if (gbif_occurence_db_file.exists() and force) or (not gbif_occurence_db_file.exists()) :
-        convert_gbif_csv(gbif_occurence_raw_file, gbif_occurence_db_file, force = force, test = test, limit = limit)
-    else:
-        print("Convert_gbif_csv already done, skipping")
+    # Skipping this step as parquet file is upoaded to colab directly
+    if not colab:
+        # Check if csv has been converted to parquet file
+        if (gbif_occurence_db_file.exists() and force) or (not gbif_occurence_db_file.exists()) :
+            convert_gbif_csv(gbif_occurence_raw_file, gbif_occurence_db_file, force = force, test = test, limit = limit)
+        else:
+            print("Convert_gbif_csv already done, skipping")
 
     if (output_file_path.exists() and force) or (not output_file_path.exists()):
+        pass
         spatial_join(gbif_occurence_db_file,park_file, output_file_path = output_file_path, test = test, limit = limit)
     else:
         print("Spatial Join already done, skipping")

@@ -86,12 +86,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Ux/Term tool tip.md",
+                "file": "Metrics.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Term tool tip"
+              "title": "Metrics"
             }
           }
         ],
@@ -245,8 +245,8 @@
   },
   "active": "040ce3a6975eec1c",
   "lastOpenFiles": [
-    "Ux/Inat tool tip.md",
     "Ux/Term tool tip.md",
+    "Ux/Inat tool tip.md",
     "App/pages.md",
     "Metrics.md",
     "Roadmap.md",
