@@ -11,7 +11,6 @@ from .metrics.main import process_all_metrics
 def run_prep(force = False, test = False, limit = None, colab = False):
     print("Running data prep...")
 
-    prep_parks(force = force)
 
     if force:
         user_force = input("You have chosen to force re-run GBIF data prep. This may take a while. Do you want to continue? (y/n): ")
@@ -21,7 +20,6 @@ def run_prep(force = False, test = False, limit = None, colab = False):
             force = False
             print("Skipping GBIF data prep.")
 
-    prep_gbif(force = force, test = test, limit = limit, colab= colab)
 
 
     # Load raw data (CSV, SHP, etc.)
@@ -44,7 +42,7 @@ def main():
     raw_data_read_only('data/raw', debug = False)
 
     parser = argparse.ArgumentParser()
-    parser.add_argument("command", choices=["prep", "metrics", "app", 'full'])
+    parser.add_argument("command", choices=["parks", "gbif", "metrics", "app", 'full'])
     # optional flag: --force
     parser.add_argument(
         "--force",
@@ -61,11 +59,14 @@ def main():
     if args.limit is None:
         args.limit = 10000
     if args.command == 'full':
-        run_prep(force = args.force, test = args.test, limit = args.limit, colab = args.colab)
+        prep_parks(force = args.force, test = args.test, limit = args.limit, colab = args.colab)
+        prep_gbif(force = args.force, test = args.test, limit = args.limit, colab = args.colab)
         run_metrics(force = args.force, test = args.test, limit = args.limit)
         run_dash()
-    elif args.command == "prep":
-        run_prep(force = args.force, test = args.test, limit = args.limit, colab = args.colab)
+    elif args.command == "parks":
+        prep_parks(force = args.force, test = args.test, limit = args.limit, colab = args.colab)
+    elif args.command == "gbif":
+        prep_gbif(force = args.force, test = args.test, limit = args.limit, colab = args.colab)
     elif args.command == "metrics":
         run_metrics(force = args.force, test = args.test, limit = args.limit)
     elif args.command == "app":
