@@ -174,14 +174,12 @@ def prep_gbif(force = False, test = False, colab = False, limit = None):
         RAW_DATA_PATH = Path("data/raw/gbif")
         OUTPUT_PATH = Path("data/interim/gbif")
         PARK_PATH = Path("data/interim/parks")
-        
-        Path.mkdir(OUTPUT_PATH, exist_ok= True)
 
-    print(OUTPUT_PATH)
+        Path.mkdir(OUTPUT_PATH, exist_ok= True)
+        gbif_occurence_raw_file = [f for f in RAW_DATA_PATH.rglob("*.csv")][0]  # Assuming there's only one .csv file for the gbif data
+
 
     # Create output directory if not existing
-
-    gbif_occurence_raw_file = [f for f in RAW_DATA_PATH.rglob("*.csv")][0]  # Assuming there's only one .csv file for the gbif data
     park_file =  [f for f in PARK_PATH.rglob("*.shp")][0]  # Assuming there's only one .shp file for the park data
 
     if test:
