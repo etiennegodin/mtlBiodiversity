@@ -8,7 +8,7 @@ from .dataprep.parks import prep_parks
 from .metrics.main import process_all_metrics
 #from .dashboard.app import run_dashboard
 
-def run_prep(force = False, test = False, limit = None):
+def run_prep(force = False, test = False, limit = None, colab = False):
     print("Running data prep...")
 
     prep_parks(force = force)
@@ -21,7 +21,7 @@ def run_prep(force = False, test = False, limit = None):
             force = False
             print("Skipping GBIF data prep.")
 
-    prep_gbif(force = force, test = test, limit = limit)
+    prep_gbif(force = force, test = test, limit = limit, colab= colab)
 
 
     # Load raw data (CSV, SHP, etc.)
