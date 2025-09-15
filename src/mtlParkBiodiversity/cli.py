@@ -65,7 +65,7 @@ def main():
         run_metrics(force = args.force, test = args.test, limit = args.limit)
         run_dash()
     elif args.command == "prep":
-        run_prep(force = args.force, test = args.test, limit = args.limit)
+        run_prep(force = args.force, test = args.test, limit = args.limit, colab = args.colab)
     elif args.command == "metrics":
         run_metrics(force = args.force, test = args.test, limit = args.limit)
     elif args.command == "app":
