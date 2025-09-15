@@ -103,7 +103,7 @@ def spatial_join(gbif_occurence_db_file, park_file, output_file_path = None, tes
     park_fields_sql = prep_park_sql(park_file)
 
     #preview_gbif_data(con, "parks")
-
+    print('Creating gbif table...')
     #Load gbif data
     if test:
         con.execute(f"CREATE TABLE gbif AS SELECT *, ST_Point(decimalLongitude, decimalLatitude) AS geom FROM '{gbif_occurence_db_file}' LIMIT {limit}")
