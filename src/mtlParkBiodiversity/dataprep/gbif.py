@@ -87,12 +87,15 @@ def convert_lat_long_to_point(con, table):
     con.execute(f"ALTER TABLE {table} ADD COLUMN geom GEOMETRY")
     con.execute(f"UPDATE {table} SET geom = ST_Point(decimalLongitude, decimalLatitude)")
 
-def spatial_join(gbif_occurence_db_file, park_file, output_file_path = None, test = False, limit = None):
+def spatial_join(gbif_occurence_db_file, park_file, output_file_path = None, test = False, limit = None, colab = False):
 
     # Create a connection (in-memory or persistent)
     con = duckdb.connect()  # or con = duckdb.connect("mydb.duckdb")
+    if colab:
+        con.execute("PRAGMA max_temp_directory_size='60GiB';")
+    else:
+        con.execute("PRAGMA max_temp_directory_size='25GiB';")
 
-    con.execute("PRAGMA max_temp_directory_size='25GiB';")
 
     # Install spatial extension 
     con.execute("INSTALL spatial;")
@@ -201,7 +204,7 @@ def prep_gbif(force = False, test = False, colab = False, limit = None):
 
     if (output_file_path.exists() and force) or (not output_file_path.exists()):
         pass
-        spatial_join(gbif_occurence_db_file,park_file, output_file_path = output_file_path, test = test, limit = limit)
+        spatial_join(gbif_occurence_db_file,park_file, output_file_path = output_file_path, test = test, limit = limit, colab = colab)
     else:
         print("Spatial Join already done, skipping")
     
