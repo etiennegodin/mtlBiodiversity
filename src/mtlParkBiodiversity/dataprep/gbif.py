@@ -5,9 +5,9 @@ import pandas as pd
 from ..core import clip_to_region, convert_crs
 from ..dataprep import target_crs
 
-RAW_DATA_PATH = Path("data/raw/gbif")
-OUTPUT_PATH = Path("data/interim/gbif")
-PARK_PATH = Path("data/interim/parks")
+
+
+
 
 def convert_gbif_csv(input_path, output_path, force = False, test = False, limit = None):
 
@@ -165,7 +165,17 @@ def spatial_join(gbif_occurence_db_file, park_file, output_file_path = None, tes
         print(f'Failed to saved spatial join : {e}')
     return True
 
-def prep_gbif(force = False, test = False, limit = None):
+def prep_gbif(force = False, test = False, colab = False, limit = None):
+
+    if colab:
+        RAW_DATA_PATH = Path("/content/gdrive/MyDrive/mtlParkBiodiversity/data/raw/gbif")
+        OUTPUT_PATH = Path("/content/gdrive/MyDrive/mtlParkBiodiversity/data/interim/gbif")
+        PARK_PATH = Path("/content/gdrive/MyDrive/mtlParkBiodiversity/data/interim/parks")
+    else:
+        RAW_DATA_PATH = Path("data/raw/gbif")
+        OUTPUT_PATH = Path("data/interim/gbif")
+        PARK_PATH = Path("data/interim/parks")
+
 
     # Create output directory if not existing
     Path.mkdir(OUTPUT_PATH, exist_ok= True)
@@ -188,6 +198,7 @@ def prep_gbif(force = False, test = False, limit = None):
         print("Convert_gbif_csv already done, skipping")
 
     if (output_file_path.exists() and force) or (not output_file_path.exists()):
+        pass
         spatial_join(gbif_occurence_db_file,park_file, output_file_path = output_file_path, test = test, limit = limit)
     else:
         print("Spatial Join already done, skipping")

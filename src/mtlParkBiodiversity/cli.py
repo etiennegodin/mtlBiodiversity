@@ -53,6 +53,7 @@ def main():
     )
     parser.add_argument("--test", action= 'store_true', help = 'Run in test mode')
     parser.add_argument("--limit", type= int, help = 'Limit the number of rows processed (for testing purposes)')
+    parser.add_argument("--colab", type= int, help = 'Run in colab ')
 
     args = parser.parse_args()
 
@@ -60,7 +61,7 @@ def main():
     if args.limit is None:
         args.limit = 10000
     if args.command == 'full':
-        run_prep(force = args.force, test = args.test, limit = args.limit, )
+        run_prep(force = args.force, test = args.test, limit = args.limit, colab = args.colab)
         run_metrics(force = args.force, test = args.test, limit = args.limit)
         run_dash()
     elif args.command == "prep":
