@@ -12,11 +12,11 @@ from ..dataprep import target_crs
 def convert_gbif_csv(input_path, output_path, force = False, test = False, limit = None):
 
     if test:
-        print(f'Converting to {input_path} to .parquet file with limit set to {limit} ')
+        print(f'Converting to {input_path} to {output_path} file with limit set to {limit} ')
         duckdb.query(f"COPY (SELECT * FROM '{input_path}' LIMIT {limit}) TO '{output_path}' (FORMAT PARQUET)")
 
     else: 
-        print(f'Converting to {input_path} to .parquet file ')
+        print(f'Converting to {input_path} to {output_path} file ')
         duckdb.query(f"COPY (SELECT * FROM '{input_path}') TO '{output_path}' (FORMAT PARQUET)")
   
 
@@ -160,6 +160,7 @@ def spatial_join(gbif_occurence_db_file, park_file, output_file_path = None, tes
                             FROM gbif_with_parks
                         ) TO '{output_file_path}' (FORMAT 'parquet');
                     """)
+        print(f'Successfuly saved {output_file_path}')
         con.close()
     except Exception as e:
         print(f'Failed to saved spatial join : {e}')

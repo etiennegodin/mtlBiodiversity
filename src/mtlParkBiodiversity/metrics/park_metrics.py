@@ -132,7 +132,7 @@ def park_metrics(force = False, test = False, limit = None):
         db_file_path = DB_PATH / "gbif_with_parks.parquet"
 
     # Create a connection (in-memory or persistent)
-    con = duckdb.connect('data/interim/parks_metrics.duckdb') 
+    con = duckdb.connect('data/db/parks_metrics.duckdb') 
 
 
 
