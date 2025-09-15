@@ -190,11 +190,13 @@ def prep_gbif(force = False, test = False, colab = False, limit = None):
         gbif_occurence_db_file = OUTPUT_PATH / 'gbif_data.parquet'
         output_file_path = OUTPUT_PATH / 'gbif_with_parks.parquet'
 
-    # Check if csv has been converted to parquet file
-    if (gbif_occurence_db_file.exists() and force) or (not gbif_occurence_db_file.exists()) :
-        convert_gbif_csv(gbif_occurence_raw_file, gbif_occurence_db_file, force = force, test = test, limit = limit)
-    else:
-        print("Convert_gbif_csv already done, skipping")
+    # Skipping this step as parquet file is upoaded to colab directly
+    if not colab:
+        # Check if csv has been converted to parquet file
+        if (gbif_occurence_db_file.exists() and force) or (not gbif_occurence_db_file.exists()) :
+            convert_gbif_csv(gbif_occurence_raw_file, gbif_occurence_db_file, force = force, test = test, limit = limit)
+        else:
+            print("Convert_gbif_csv already done, skipping")
 
     if (output_file_path.exists() and force) or (not output_file_path.exists()):
         pass
