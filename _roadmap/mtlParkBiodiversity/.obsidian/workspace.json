@@ -93,9 +93,26 @@
               "icon": "lucide-file",
               "title": "Metrics"
             }
+          },
+          {
+            "id": "716f4e4fc308303e",
+            "type": "leaf",
+            "state": {
+              "type": "canvas",
+              "state": {
+                "file": "DataViz.canvas",
+                "viewState": {
+                  "x": 584.2936378835332,
+                  "y": 610.489040806372,
+                  "zoom": -0.7735818705831785
+                }
+              },
+              "icon": "lucide-layout-dashboard",
+              "title": "DataViz"
+            }
           }
         ],
-        "currentTab": 5
+        "currentTab": 6
       }
     ],
     "direction": "vertical"
@@ -243,12 +260,13 @@
       "bases:Create new base": false
     }
   },
-  "active": "040ce3a6975eec1c",
+  "active": "716f4e4fc308303e",
   "lastOpenFiles": [
+    "Untitled.md",
+    "Metrics.md",
     "Ux/Term tool tip.md",
     "Ux/Inat tool tip.md",
     "App/pages.md",
-    "Metrics.md",
     "Roadmap.md",
     "to_do_etl.md",
     "Untitled.base",

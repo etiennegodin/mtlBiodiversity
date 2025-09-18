@@ -113,7 +113,17 @@ def spatial_join(gbif_occurence_db_file, park_file, output_file_path = None, tes
     else:
         con.execute(f"CREATE TABLE gbif AS SELECT *, ST_Point(decimalLongitude, decimalLatitude) AS geom FROM '{gbif_occurence_db_file}'")
     
-    #preview_gbif_data(con, "gbif")
+    # Add col for bbox 
+    con.execute(f"ALTER TABLE gbif ADD COLUMN minx DOUBLE;")
+    con.execute(f"ALTER TABLE gbif ADD COLUMN miny DOUBLE;")
+    con.execute(f"ALTER TABLE gbif ADD COLUMN maxx DOUBLE;")
+    con.execute(f"ALTER TABLE gbif ADD COLUMN maxy DOUBLE;")
+    # Fill bbox col from geom
+    con.execute(f"""UPDATE gbif 
+                    SET minx = ST_XMin(geom),
+                        miny = ST_YMin(geom),
+                        maxx = ST_XMax(geom),
+                        maxy = ST_YMax(geom);""")
 
     #Spatial Join 
     print("Spatial join")
@@ -148,8 +158,12 @@ def spatial_join(gbif_occurence_db_file, park_file, output_file_path = None, tes
                 p.geom AS park_geom,
                 FROM gbif g
                 LEFT JOIN parks p
-                ON ST_Within(g.geom, p.geom);
-
+                    ON g.maxx >= ST_XMIN(p.geom)
+                    AND g.minx <= ST_XMAX(p.geom)
+                    AND g.maxy >= ST_YMIN(p.geom)
+                    AND g.miny <= ST_YMAX(p.geom)
+                    AND ST_Within(g.geom, p.geom) -- Spatial join predicate
+                ;
                 """)
 
     print('Spatial join complete, saving file...')

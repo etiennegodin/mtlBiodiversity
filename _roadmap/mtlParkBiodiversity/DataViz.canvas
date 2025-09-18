@@ -2,17 +2,30 @@
 	"nodes":[
 		{"id":"98837827c4f6dcdf","type":"group","x":-931,"y":-570,"width":1173,"height":900,"label":"Species/taxa count"},
 		{"id":"f184b5bed19c73c3","type":"group","x":-931,"y":560,"width":826,"height":580,"label":"Park comparison"},
+		{"id":"7dee90cfaa72c167","type":"text","text":"Park connectivity \nParks = ABCD","x":-880,"y":580,"width":250,"height":60},
+		{"id":"a9e44aaff6e88faf","type":"text","text":"Hieght map of observation \n","x":-33,"y":-180,"width":250,"height":60},
+		{"id":"c658279b651aebab","type":"file","file":"_images/species_graph_inat.png","x":-500,"y":-90,"width":323,"height":400},
+		{"id":"c34e805a48cb0168","type":"text","text":"Data as matrix ","x":-560,"y":580,"width":250,"height":60},
+		{"id":"b00f0412fbd879c5","type":"file","file":"_images/Screenshot 2025-09-11 082739.png","x":-494,"y":720,"width":369,"height":400},
+		{"id":"84078027ef018fb3","type":"text","text":"Park","x":320,"y":1090,"width":250,"height":60,"color":"4"},
+		{"id":"a936d87160bb3b3e","type":"text","text":"Neighborhood","x":760,"y":920,"width":250,"height":67,"color":"2"},
+		{"id":"500f6f15283d15e9","type":"text","text":"Enter your adress\n","x":885,"y":370,"width":250,"height":50},
+		{"id":"37dc0599f30a058e","type":"text","text":"Radius cell lookup","x":1220,"y":1060,"width":250,"height":60,"color":"6"},
 		{"id":"122793ea46f61670","type":"text","text":"PyDeck","x":-33,"y":-51,"width":250,"height":60},
 		{"id":"a68d1a8d0addc765","type":"text","text":"Bokeh","x":-28,"y":80,"width":250,"height":60},
-		{"id":"a9e44aaff6e88faf","type":"text","text":"Hieght map of observation \n","x":-33,"y":-180,"width":250,"height":60},
-		{"id":"ab5f255b875288af","type":"file","file":"_images/convex_tree_map.png","x":-911,"y":-550,"width":354,"height":400},
-		{"id":"c658279b651aebab","type":"file","file":"_images/species_graph_inat.png","x":-500,"y":-90,"width":323,"height":400},
-		{"id":"6fefa46b40ce9fca","type":"file","file":"_images/nested_prop_graph.png","x":-911,"y":-90,"width":343,"height":400},
-		{"id":"7dee90cfaa72c167","type":"text","text":"Park connectivity \nParks = ABCD","x":-880,"y":580,"width":250,"height":60},
 		{"id":"4310e8809166ee8a","type":"text","text":"Create color palette reused in project\n","x":340,"y":-350,"width":250,"height":60,"color":"1"},
+		{"id":"9a091013034ee1f2","type":"text","text":"Explorer\n","x":445,"y":80,"width":250,"height":60},
 		{"id":"80aff05fe4bb9a81","type":"file","file":"_images/Screenshot 2025-09-11 082439.png","x":-911,"y":720,"width":388,"height":400},
-		{"id":"c34e805a48cb0168","type":"text","text":"Data as matrix ","x":-560,"y":580,"width":250,"height":60},
-		{"id":"b00f0412fbd879c5","type":"file","file":"_images/Screenshot 2025-09-11 082739.png","x":-494,"y":720,"width":369,"height":400}
+		{"id":"ab5f255b875288af","type":"file","file":"_images/convex_tree_map.png","x":-911,"y":-550,"width":354,"height":400},
+		{"id":"6fefa46b40ce9fca","type":"file","file":"_images/nested_prop_graph.png","x":-911,"y":-90,"width":343,"height":400}
 	],
-	"edges":[]
+	"edges":[
+		{"id":"74fbfe8609932953","fromNode":"9a091013034ee1f2","fromSide":"bottom","toNode":"84078027ef018fb3","toSide":"top","color":"4"},
+		{"id":"ad274f2f23aab7a8","fromNode":"9a091013034ee1f2","fromSide":"bottom","toNode":"a936d87160bb3b3e","toSide":"top","color":"2"},
+		{"id":"79697cd970edddca","fromNode":"9a091013034ee1f2","fromSide":"bottom","toNode":"500f6f15283d15e9","toSide":"top","color":"6"},
+		{"id":"cb13178f39ea6944","fromNode":"500f6f15283d15e9","fromSide":"bottom","toNode":"37dc0599f30a058e","toSide":"top","color":"6"},
+		{"id":"87b524ae2f4bb70e","fromNode":"a936d87160bb3b3e","fromSide":"bottom","toNode":"84078027ef018fb3","toSide":"top","color":"4","label":"Parks in nbhood"},
+		{"id":"a2f0880097e277d2","fromNode":"500f6f15283d15e9","fromSide":"bottom","toNode":"84078027ef018fb3","toSide":"top","color":"4","label":"Closest park list"},
+		{"id":"efedb8a61288c5fb","fromNode":"500f6f15283d15e9","fromSide":"bottom","toNode":"a936d87160bb3b3e","toSide":"top","color":"2","label":"You're in this nbhood"}
+	]
 }
