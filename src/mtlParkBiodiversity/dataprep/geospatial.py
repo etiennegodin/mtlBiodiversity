@@ -23,17 +23,16 @@ def process_shp(file :Path = None, output_file_path :Path = None, force = False)
 
     # Read shapefile 
     gdf = gpd.read_file(file)
-
-    print(gdf)
-
+    
     # Format columns 
-    gdf = unify_columns(file, expected_columns= None, force = force)
+    gdf, columns = unify_columns(file, force = force)
+
+    #Add geometry back if missing
+    if "geometry" not in columns:
+        columns.append('geometry')
 
     # Keep only mapped columns
-    gdf = gdf[GEOSPATIAL_DATA_COL]
-
-    #Clip gdf to city boundaries
-    #gdf = clip_to_region(gdf, )
+    gdf = gdf[columns]
 
     print('Geospatial data processed, saving')
     # Convert to target crs before saving 
@@ -50,8 +49,6 @@ def process_gpgk(file :Path = None, output_file_path :Path = None, layer = None)
 
     #Read gpgk layer 
     gdf = gpd.read_file(file, layer = layer)
-    #Clip gdf 
-    #gdf = clip_to_region(gdf, )
 
     # Convert to target crs before saving 
     gdf_out = convert_crs(gdf, target_crs = target_crs)

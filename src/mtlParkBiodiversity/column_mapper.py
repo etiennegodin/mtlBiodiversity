@@ -25,15 +25,19 @@ def get_user_mapping(missing_col, available_cols):
     choice = input(f"Select a column to map to '{missing_col}' (or press Enter to skip): ")
     return choice if choice in available_cols else None
 
-def get_user_expected_col():
-    print("Expected columns not provided. Please type wanted columns as list:")
+def get_user_expected_col(available_cols):
+    print("Expected columns not provided. Please type wanted columns as list.")
+    print("Current available columns in shapefile for reference: \n ", available_cols)
     expected_input = input()
-    expected_columns = list(expected_input.split(sep = ","))
-    if not isinstance(expected_columns, list):
-        raise UserWarning('Could not ')
-        get_user_expected_col()
-    else:
+    expected_columns = expected_input.split(sep = ",")
+
+    try:
+        isinstance(expected_columns, list) == True
         return expected_columns
+    except: 
+        raise UserWarning('Could not ')
+        return get_user_expected_col()
+
 
 
 def unify_columns(file : Path, expected_columns : list = None, force = False):
@@ -62,8 +66,8 @@ def unify_columns(file : Path, expected_columns : list = None, force = False):
     available_cols = gdf.columns.tolist()
 
     if expected_columns is None:
+        expected_columns = get_user_expected_col(available_cols)
 
-            
     # Loop over expected cols
     for col in expected_columns:
         # Check if in gfd
@@ -93,4 +97,4 @@ def unify_columns(file : Path, expected_columns : list = None, force = False):
 
     save_mapping(mapping, mapping_file = mapping_file)
 
-    return gdf
+    return gdf, expected_columns
