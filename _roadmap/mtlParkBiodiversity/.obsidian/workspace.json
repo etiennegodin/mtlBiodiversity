@@ -98,17 +98,14 @@
             "id": "716f4e4fc308303e",
             "type": "leaf",
             "state": {
-              "type": "canvas",
+              "type": "markdown",
               "state": {
-                "file": "DataViz.canvas",
-                "viewState": {
-                  "x": 584.2936378835332,
-                  "y": 610.489040806372,
-                  "zoom": -0.7735818705831785
-                }
+                "file": "README.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-layout-dashboard",
-              "title": "DataViz"
+              "icon": "lucide-file",
+              "title": "README"
             }
           }
         ],
@@ -185,7 +182,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Welcome.md",
+                "file": "README.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -195,7 +192,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for Welcome"
+              "title": "Backlinks for README"
             }
           },
           {
@@ -204,12 +201,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Welcome.md",
+                "file": "README.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from Welcome"
+              "title": "Outgoing links from README"
             }
           },
           {
@@ -233,21 +230,21 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Welcome.md",
+                "file": "README.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Welcome"
+              "title": "Outline of README"
             }
           }
-        ]
+        ],
+        "currentTab": 3
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -260,20 +257,21 @@
       "bases:Create new base": false
     }
   },
-  "active": "716f4e4fc308303e",
+  "active": "8cdff27a98db3cd1",
   "lastOpenFiles": [
-    "Untitled.md",
-    "Metrics.md",
-    "Ux/Term tool tip.md",
-    "Ux/Inat tool tip.md",
-    "App/pages.md",
     "Roadmap.md",
-    "to_do_etl.md",
     "Untitled.base",
-    "ETL/ETL - park data uniformisation.md",
-    "ETL",
+    "README.md",
+    "Metrics.md",
     "DataViz.canvas",
     "DataScience.md",
+    "Ux/Term tool tip.md",
+    "Ux/Inat tool tip.md",
+    "ETL/ETL - park data uniformisation.md",
+    "App/pages.md",
+    "_images/species_graph_inat.png",
+    "to_do_etl.md",
+    "ETL",
     "_images/Screenshot 2025-09-11 082439.png",
     "_images/Screenshot 2025-09-11 082739.png",
     "_images/convex_tree_map.png",
@@ -282,7 +280,6 @@
     "Graphing.md",
     "App",
     "_root_.base",
-    "Ux",
-    "_images/species_graph_inat.png"
+    "Ux"
   ]
 }
