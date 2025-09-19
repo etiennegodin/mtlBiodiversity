@@ -57,9 +57,9 @@ def main():
 
     args = parser.parse_args()
 
-    # Default limit to 10000 if test mode is on and limit is not specified
+    # Default limit to 1000 if test mode is on and limit is not specified
     if args.limit is None:
-        args.limit = 10000
+        args.limit = 1000
     if args.command == 'full':
         run_geospatial(force = args.force)
         run_gbif(force = args.force, test = args.test, limit = args.limit, colab = args.colab)

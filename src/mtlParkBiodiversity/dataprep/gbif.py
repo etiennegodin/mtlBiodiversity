@@ -119,10 +119,9 @@ def set_geom_bbox(table_name = None):
 
 
 
-def create_gbif_table(gbif_occurence_db_file :Path = None, limit :int = None, test :bool = False):
+def create_gbif_table(gbif_occurence_db_file :Path = None, table_name = None, limit :int = None, test :bool = False):
     #Redeclare connection variable
     con = DuckDBConnection.get_connection()
-    table_name = 'observations'
 
     print('Creating gbif_observations table...')
     #Load gbif data
@@ -227,6 +226,10 @@ def grid_spatial_join(grid_file : Path = None, output_file_path : Path = None, t
                     AND ST_Within(o.geom, g.geom) -- Spatial join predicate
                 ;
                 """)
+    
+    # Remove gbif geom point
+    con.execute(f"""ALTER TABLE {output_table_name} DROP COLUMN geom;""")
+    con.execute(f"""ALTER TABLE {output_table_name} RENAME COLUMN grid_geom TO geom;""")
 
     print('Spatial join complete, saving file...')
 
@@ -291,15 +294,12 @@ def prep_gbif(force = False, test = False, colab = False, limit = None):
 
     #Iterate over files to create tables
     for file in [grid_file, nbhood_file, park_file ]:
-        table_name = file.stem.split(sep= "_")[0]
+        table_name = file.stem.split(sep= "_")[0] #Set table name as first word of file name
         created = create_table_from_shp(file_path= file, table_name=table_name , limit = limit, test = test)
         tables_creation_dict[table_name] = created
 
-    created = create_gbif_table(gbif_occurence_db_file = gbif_occurence_db_file, limit = limit, test = test)
+    created = create_gbif_table(gbif_occurence_db_file = gbif_occurence_db_file, table_name= 'observations', limit = limit, test = test)
     tables_creation_dict['observations'] = created
-
-    print(tables_creation_dict)
-    print(tables_creation_dict['grid'] and tables_creation_dict['observations'])
 
     if tables_creation_dict['grid'] and tables_creation_dict['observations']:
         if (occurence_grid_file.exists() and force) or (not occurence_grid_file.exists()):
