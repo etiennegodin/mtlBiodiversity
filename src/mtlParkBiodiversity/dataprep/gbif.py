@@ -98,6 +98,23 @@ def convert_lat_long_to_point(con, table):
     con.execute(f"UPDATE {table} SET geom = ST_Point(decimalLongitude, decimalLatitude)")
     return True
 
+def set_geom_bbox(table_name = None):
+    con = DuckDBConnection.get_connection()
+            # Add col for bbox 
+    con.execute(f"ALTER TABLE {table_name} ADD COLUMN minx DOUBLE;")
+    con.execute(f"ALTER TABLE {table_name} ADD COLUMN miny DOUBLE;")
+    con.execute(f"ALTER TABLE {table_name} ADD COLUMN maxx DOUBLE;")
+    con.execute(f"ALTER TABLE {table_name} ADD COLUMN maxy DOUBLE;")
+        # Fill bbox col from geom
+    con.execute(f"""UPDATE {table_name} 
+                        SET minx = ST_XMin(geom),
+                            miny = ST_YMin(geom),
+                            maxx = ST_XMax(geom),
+                            maxy = ST_YMax(geom);""")
+    
+
+
+
 def create_gbif_table(gbif_occurence_db_file :Path = None, limit :int = None, test :bool = False):
     #Redeclare connection variable
     con = DuckDBConnection.get_connection()
@@ -116,18 +133,8 @@ def create_gbif_table(gbif_occurence_db_file :Path = None, limit :int = None, te
                     con.execute(f"CREATE OR REPLACE TABLE {table_name} AS SELECT *, ST_Point(decimalLongitude, decimalLatitude) AS geom FROM '{gbif_occurence_db_file}' LIMIT {limit}")
                 else:
                     con.execute(f"CREATE OR REPLACE TABLE {table_name} AS SELECT *, ST_Point(decimalLongitude, decimalLatitude) AS geom FROM '{gbif_occurence_db_file}'")
-            # Add col for bbox 
-            con.execute(f"ALTER TABLE {table_name} ADD COLUMN minx DOUBLE;")
-            con.execute(f"ALTER TABLE {table_name} ADD COLUMN miny DOUBLE;")
-            con.execute(f"ALTER TABLE {table_name} ADD COLUMN maxx DOUBLE;")
-            con.execute(f"ALTER TABLE {table_name} ADD COLUMN maxy DOUBLE;")
-                # Fill bbox col from geom
-            con.execute(f"""UPDATE {table_name} 
-                                SET minx = ST_XMin(geom),
-                                    miny = ST_YMin(geom),
-                                    maxx = ST_XMax(geom),
-                                    maxy = ST_YMax(geom);""")
-            
+
+            set_geom_bbox(table_name= table_name)
             return True 
         
         except Exception as e:
@@ -156,6 +163,8 @@ def create_tables(gbif_occurence_db_file :Path = None, grid_file :Path = None, n
     try:
         if park_file is not None:   
             con.execute(f"CREATE OR REPLACE TABLE parks AS SELECT * FROM ST_Read('{park_file}')")
+            set_geom_bbox(table_name= "parks")
+
         else:
             print('No park_file ')
     except Exception as e:
