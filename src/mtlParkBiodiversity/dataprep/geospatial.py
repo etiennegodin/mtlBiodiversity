@@ -27,7 +27,7 @@ def process_shp(file :Path = None, output_file_path :Path = None, force = False)
     print(gdf)
 
     # Format columns 
-    gdf = unify_columns(file, expected_columns= GEOSPATIAL_DATA_COL, force = force)
+    gdf = unify_columns(file, expected_columns= None, force = force)
 
     # Keep only mapped columns
     gdf = gdf[GEOSPATIAL_DATA_COL]
