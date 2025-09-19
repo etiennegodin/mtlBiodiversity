@@ -6,6 +6,9 @@ from ..core import select_file
 from ..dataprep import target_crs
 
 # GLOBAL VAR
+
+# Create connection and store as class object
+# Get's initialise first time it's called, otherwise object is just passed along
 class DuckDBConnection:
     _instance = None
 
@@ -58,7 +61,7 @@ def convert_gbif_csv(input_path, output_path, force = False, test = False, limit
         print(f'Converting to {input_path} to {output_path} file ')
         duckdb.query(f"COPY (SELECT * FROM '{input_path}') TO '{output_path}' (FORMAT PARQUET)")
 
-def prep_shp_file_field_sql(shp_file, alias = 'p'):
+def create_shp_file_field_sql(shp_file : Path, alias :str = 'p'):
 
     sql_query = """"""
 
@@ -74,133 +77,143 @@ def prep_shp_file_field_sql(shp_file, alias = 'p'):
     for idx, col in enumerate(columns):
         x = f"""\t{alias}.{col},\n"""
         sql_query += x 
-
+    
     return sql_query
 
 def convert_lat_long_to_point(con, table):
     #Gbif occ to geometry 
     con.execute(f"ALTER TABLE {table} ADD COLUMN geom GEOMETRY")
     con.execute(f"UPDATE {table} SET geom = ST_Point(decimalLongitude, decimalLatitude)")
+    return True
 
+def create_gbif_table(gbif_occurence_db_file :Path = None, limit :int = None, test :bool = False):
 
-def create_gbif_table(gbif_occurence_db_file = None, limit = None, test = False):
-    
+    #Redeclare connection variable
     con = DuckDBConnection.get_connection()
+    table_name = "observations"
+
     print('Creating gbif_observations table...')
     #Load gbif data
-    if test:
-        con.execute(f"CREATE TABLE gbif AS SELECT *, ST_Point(decimalLongitude, decimalLatitude) AS geom FROM '{gbif_occurence_db_file}' LIMIT {limit}")
-    else:
-        if limit is not None:
-            con.execute(f"CREATE TABLE gbif AS SELECT *, ST_Point(decimalLongitude, decimalLatitude) AS geom FROM '{gbif_occurence_db_file}' LIMIT {limit}")
+    try:
+        if test:
+            con.execute(f"CREATE TABLE {table_name} AS SELECT *, ST_Point(decimalLongitude, decimalLatitude) AS geom FROM '{gbif_occurence_db_file}' LIMIT {limit}")
         else:
-            con.execute(f"CREATE TABLE gbif AS SELECT *, ST_Point(decimalLongitude, decimalLatitude) AS geom FROM '{gbif_occurence_db_file}'")
+            if limit is not None:
+                con.execute(f"CREATE TABLE {table_name} AS SELECT *, ST_Point(decimalLongitude, decimalLatitude) AS geom FROM '{gbif_occurence_db_file}' LIMIT {limit}")
+            else:
+                con.execute(f"CREATE TABLE {table_name} AS SELECT *, ST_Point(decimalLongitude, decimalLatitude) AS geom FROM '{gbif_occurence_db_file}'")
+        
+        # Add col for bbox 
+        con.execute(f"ALTER TABLE {table_name} ADD COLUMN minx DOUBLE;")
+        con.execute(f"ALTER TABLE {table_name} ADD COLUMN miny DOUBLE;")
+        con.execute(f"ALTER TABLE {table_name} ADD COLUMN maxx DOUBLE;")
+        con.execute(f"ALTER TABLE {table_name} ADD COLUMN maxy DOUBLE;")
+            # Fill bbox col from geom
+        con.execute(f"""UPDATE {table_name} 
+                            SET minx = ST_XMin(geom),
+                                miny = ST_YMin(geom),
+                                maxx = ST_XMax(geom),
+                                maxy = ST_YMax(geom);""")
+        return True 
     
-    # Add col for bbox 
-    con.execute(f"ALTER TABLE gbif ADD COLUMN minx DOUBLE;")
-    con.execute(f"ALTER TABLE gbif ADD COLUMN miny DOUBLE;")
-    con.execute(f"ALTER TABLE gbif ADD COLUMN maxx DOUBLE;")
-    con.execute(f"ALTER TABLE gbif ADD COLUMN maxy DOUBLE;")
-    # Fill bbox col from geom
-    con.execute(f"""UPDATE gbif 
-                    SET minx = ST_XMin(geom),
-                        miny = ST_YMin(geom),
-                        maxx = ST_XMax(geom),
-                            maxy = ST_YMax(geom);""")
+    except Exception as e:
+        print(e)
+        return False
+        
 
+def create_tables(gbif_occurence_db_file :Path = None, grid_file :Path = None, nbhood_file : Path = None, park_file :Path = None, limit : int= False, test :bool = False ):
 
+    tables_created = True
 
-
-def create_tables(gbif_occurence_db_file = None, grid_file = None, nbhood_file = None, park_file = None, limit = False, test = False ):
+    #Redeclare connection variable
     con = DuckDBConnection.get_connection()
-
     # Install spatial extension 
     con.execute("INSTALL spatial;")
     con.execute("LOAD spatial;")
-
-    if grid_file is not None:   
-        con.execute(f"CREATE OR REPLACE TABLE grid AS SELECT * FROM ST_Read('{grid_file}')")
-        grid_field_sql = prep_shp_file_field_sql(grid_file)
-
-    else:
-        print('No grid file')
-
-    if park_file is not None:   
-        con.execute(f"CREATE OR REPLACE TABLE parks AS SELECT * FROM ST_Read('{park_file}')")
-        park_fields_sql = prep_shp_file_field_sql(park_file)
-    else:
-        print('No park_file ')
+    try:
+        if grid_file is not None:   
+            con.execute(f"CREATE OR REPLACE TABLE grid AS SELECT * FROM ST_Read('{grid_file}')")
+        else:
+            print('No grid file')
+    except Exception as e:
+        print(e)
+        tables_created = False
+    try:
+        if park_file is not None:   
+            con.execute(f"CREATE OR REPLACE TABLE parks AS SELECT * FROM ST_Read('{park_file}')")
+        else:
+            print('No park_file ')
+    except Exception as e:
+        print(e)
+        tables_created = False
 
     # Create main observation table from gbif data 
-    create_gbif_table(gbif_occurence_db_file = gbif_occurence_db_file, limit = limit, test = test)
+    tables_created = create_gbif_table(gbif_occurence_db_file = gbif_occurence_db_file, limit = limit, test = test)
 
+    return tables_created
 
-
-
-
-def spatial_join(output_file_path = None, test = False, limit = None, colab = False):
+def grid_spatial_join(grid_file : Path = None, output_file_path : Path = None, test : bool = False, limit :int = None, colab : bool= False):
+    #Redeclare connection variable
     con = DuckDBConnection.get_connection()
 
+    # Set final table name from expected output path name
+    output_table_name = output_file_path.stem
     # Create a connection (in-memory or persistent)
     if colab:
         con.execute("PRAGMA max_temp_directory_size='60GiB';")
     else:
         con.execute("PRAGMA max_temp_directory_size='25GiB';")
 
-
-    
-
     #Spatial Join 
     print("Spatial join")
 
     con.execute(f"""
                 
-                CREATE OR REPLACE TABLE gbif_with_parks AS
-                SELECT g.gbifID,
-                g.occurrenceID,
-                g.kingdom,
-                g.phylum,
-                g.class,
-                g.order,
-                g.family,
-                g.genus,
-                g.species,
-                g.taxonRank,
-                g.scientificName,
-                g.eventDate,
-                g.day,
-                g.month,
-                g.year,
-                g.taxonKey,
-                g.identifiedBy,
-                g.basisOfRecord,
-                g.license,
-                g.recordedBy,
-                g.geom,
+                CREATE OR REPLACE TABLE {output_table_name} AS
+                SELECT o.gbifID,
+                o.occurrenceID,
+                o.kingdom,
+                o.phylum,
+                o.class,
+                o.order,
+                o.family,
+                o.genus,
+                o.species,
+                o.taxonRank,
+                o.scientificName,
+                o.eventDate,
+                o.day,
+                o.month,
+                o.year,
+                o.taxonKey,
+                o.identifiedBy,
+                o.basisOfRecord,
+                o.license,
+                o.recordedBy,
+                o.geom,
 
-                {park_fields_sql}
-                
+                {create_shp_file_field_sql(grid_file, alias = 'g')}
+                g.geom AS grid_geom,
 
-                p.geom AS park_geom,
-                FROM gbif g
-                LEFT JOIN parks p
-                    ON g.maxx >= ST_XMIN(p.geom)
-                    AND g.minx <= ST_XMAX(p.geom)
-                    AND g.maxy >= ST_YMIN(p.geom)
-                    AND g.miny <= ST_YMAX(p.geom)
-                    AND ST_Within(g.geom, p.geom) -- Spatial join predicate
+                FROM observations o
+                LEFT JOIN grid g
+                    ON o.maxx >= ST_XMIN(g.geom)
+                    AND o.minx <= ST_XMAX(g.geom)
+                    AND o.maxy >= ST_YMIN(g.geom)
+                    AND o.miny <= ST_YMAX(g.geom)
+                    AND ST_Within(o.geom, g.geom) -- Spatial join predicate
                 ;
                 """)
 
     print('Spatial join complete, saving file...')
 
-    con.execute('DROP TABLE IF EXISTS gbif;')
+    con.execute('DROP TABLE IF EXISTS observations;')
     #Save 
     try:
         con.execute(f"""
                         COPY (
                             SELECT *
-                            FROM gbif_with_parks
+                            FROM {output_table_name}
                         ) TO '{output_file_path}' (FORMAT 'parquet');
                     """)
         print(f'Successfuly saved {output_file_path}')
@@ -246,14 +259,10 @@ def prep_gbif(force = False, test = False, colab = False, limit = None):
             print("Convert_gbif_csv already done, skipping")
 
     if (output_file_path.exists() and force) or (not output_file_path.exists()):
+        if create_tables(gbif_occurence_db_file = gbif_occurence_db_file,grid_file = grid_file,nbhood_file = nbhood_file,park_file= park_file, limit = False, test = False):
 
-        create_tables(gbif_occurence_db_file = gbif_occurence_db_file,grid_file = grid_file,nbhood_file = nbhood_file,park_file= park_file,
-                    limit = False, test = False
-        )
-
-        spatial_join(output_file_path = output_file_path,
-                    test = test, limit = limit, colab = colab
-        )
+            grid_spatial_join(output_file_path = output_file_path,
+                        test = test, limit = limit, colab = colab)
 
     else:
         print("Spatial Join already done, skipping")
