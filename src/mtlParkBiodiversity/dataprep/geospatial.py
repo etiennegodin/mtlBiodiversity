@@ -1,13 +1,13 @@
 import geopandas as gpd
 from pathlib import Path
-from ..core import clip_to_region, convert_crs
+from ..core import convert_crs
 from ..column_mapper import unify_columns
 from . import target_crs
 
 RAW_DATA_PATH = Path("data/raw" )
-OUTPUT_PATH = Path("data/interim/parks")
+OUTPUT_PATH = Path("data/interim/geospatial")
 
-PARK_DATA_COL = ['park_id', 'park_name', 'park_type1', 'geometry']
+GEOSPATIAL_DATA_COL = ['geospatial_id', 'geospatial_name', 'geospatial_type1', 'geometry']
 
 #Read boundary file 
 def save_gdf(gdf, output_file_path):
@@ -19,7 +19,7 @@ def save_gdf(gdf, output_file_path):
         print(f"Failed to save {output_file_path.stem} : {e}")
         return False
 
-def process_shp(file :Path = None, output_file_path :Path = None):
+def process_shp(file :Path = None, output_file_path :Path = None, force = False):
 
     # Read shapefile 
     gdf = gpd.read_file(file)
@@ -27,15 +27,15 @@ def process_shp(file :Path = None, output_file_path :Path = None):
     print(gdf)
 
     # Format columns 
-    gdf = unify_columns(file, expected_columns= PARK_DATA_COL)
+    gdf = unify_columns(file, expected_columns= GEOSPATIAL_DATA_COL, force = force)
 
     # Keep only mapped columns
-    gdf = gdf[PARK_DATA_COL]
+    gdf = gdf[GEOSPATIAL_DATA_COL]
 
     #Clip gdf to city boundaries
     #gdf = clip_to_region(gdf, )
 
-    print('Park data processed, saving')
+    print('Geospatial data processed, saving')
     # Convert to target crs before saving 
     gdf_out = convert_crs(gdf, target_crs = target_crs)
     if not save_gdf(gdf_out,output_file_path):
@@ -76,25 +76,25 @@ def list_gpgk_layers(file : Path, slice : tuple = None):
     return layers
 
 
-def prep_parks(force = False):
+def prep_geospatial(force = False):
 
     # Create output directory if not existing
     Path.mkdir(OUTPUT_PATH, exist_ok= True)
 
-    # List all park files (shp, gpgk) in RAW_DATA_PATH / parks
-    parks_path = RAW_DATA_PATH / 'parks'
-    parks_files = [f for f in parks_path.rglob("*") if f.suffix in ['.shp', '.gpkg']]
+    # List all park files (shp, gpgk) in RAW_DATA_PATH / spatial
+    geospatial_path = RAW_DATA_PATH / 'geospatial'
+    geospatial_files = [f for f in geospatial_path.rglob("*") if f.suffix in ['.shp', '.gpkg']]
 
     # Iterate over each park file and process
-    for idx, file in enumerate(parks_files):
-        # Set target OUTPUT_PATH 
-        output_file_name = f'park_{idx+1}.shp' 
+    for file in geospatial_files:
+        # Set target OUTPUT_PATH
+        output_file_name = f'{file.stem}_inter.shp' 
         output_file_path = OUTPUT_PATH / output_file_name
 
-        if output_file_path.exists() and force:
+        if (output_file_path.exists() and force) or (not output_file_path.exists()):
 
             if file.suffix == '.shp':
-                process_shp(file, output_file_path)
+                process_shp(file, output_file_path, force = force)
 
             """
             elif file.suffix == '.gpkg':
@@ -116,4 +116,4 @@ def prep_parks(force = False):
     return True
 
 if __name__ == "__main__":
-    prep_parks(force= False)
+    prep_geospatial(force= False)

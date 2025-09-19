@@ -4,7 +4,7 @@ from pathlib import Path
 import sys
 from .core import raw_data_read_only
 from .dataprep.gbif import prep_gbif
-from .dataprep.spatial import prep_spatial
+from .dataprep.geospatial import prep_geospatial
 from .metrics.main import process_all_metrics
 #from .dashboard.app import run_app
 def run_prep(force = False, test = False, limit = None, colab = False):
@@ -22,8 +22,8 @@ def run_prep(force = False, test = False, limit = None, colab = False):
     # Load raw data (CSV, SHP, etc.)
     # Run prep_gbif/prep_mtl
     # Save outputs (e.g. parquet, duckdb, feather)
-def run_spatial(force = False, test = False, limit = None, colab = False):
-    prep_spatial(force = force, test = test, limit = limit, colab = colab)
+def run_geospatial(force = False):
+    prep_geospatial(force = force)
 
 def run_gbif(force = False, test = False, limit = None, colab = False):
     prep_gbif(force =force, test =test, limit =limit, colab =colab)
@@ -44,7 +44,7 @@ def main():
     raw_data_read_only('data/raw', debug = False)
 
     parser = argparse.ArgumentParser()
-    parser.add_argument("command", choices=["spatial", "gbif", "metrics", "app", 'full'])
+    parser.add_argument("command", choices=["geo", "gbif", "metrics", "app", 'full'])
     # optional flag: --force
     parser.add_argument(
         "--force",
@@ -61,12 +61,12 @@ def main():
     if args.limit is None:
         args.limit = 10000
     if args.command == 'full':
-        run_spatial(force = args.force, test = args.test, limit = args.limit, colab = args.colab)
+        run_geospatial(force = args.force)
         run_gbif(force = args.force, test = args.test, limit = args.limit, colab = args.colab)
         run_metrics(force = args.force, test = args.test, limit = args.limit)
         run_app()
-    elif args.command == "spatial":
-        run_spatial(force = args.force, test = args.test, limit = args.limit, colab = args.colab)
+    elif args.command == "geo":
+        run_geospatial(force = args.force)
     elif args.command == "gbif":
         run_gbif(force = args.force, test = args.test, limit = args.limit, colab = args.colab)
     elif args.command == "metrics":

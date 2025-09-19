@@ -25,7 +25,7 @@ def get_user_mapping(missing_col, available_cols):
     choice = input(f"Select a column to map to '{missing_col}' (or press Enter to skip): ")
     return choice if choice in available_cols else None
 
-def unify_columns(file : Path, expected_columns : list = None):
+def unify_columns(file : Path, expected_columns : list = None, force = False):
     """
     Unify column names to a standard set.
     """
@@ -39,8 +39,13 @@ def unify_columns(file : Path, expected_columns : list = None):
     # Define mapping file path
     mapping_file = config_path / f"{file.stem}_column_mapping.json"
 
+    # If force, delete mapping to start over
+    if force:
+        mapping_file.unlink()
+
     # Load existing mapping or create a new one
     mapping = load_column_mapping(mapping_file = mapping_file)
+
 
     # Read the file to get available columns
     gdf = gpd.read_file(file)    
