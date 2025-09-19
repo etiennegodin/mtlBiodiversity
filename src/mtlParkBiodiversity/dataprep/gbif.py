@@ -5,7 +5,15 @@ import pandas as pd
 from ..core import select_file
 from ..dataprep import target_crs
 
+# GLOBAL VAR
+class DuckDBConnection:
+    _instance = None
 
+    @classmethod
+    def get_connection(cls):
+        if cls._instance is None:
+            cls._instance = duckdb.connect()
+        return cls._instance
 
 def ask_user_grid_file(GEOSPATIAL_PATH):
 
@@ -36,7 +44,7 @@ def ask_user_grid_file(GEOSPATIAL_PATH):
     if nbhood_file is None:
         print(f'Neighborhood file not found in {GEOSPATIAL_PATH}, please provide')
         nbhood_file = select_file()
-
+    
     return grid_file, nbhood_file, park_file
 
 
@@ -50,12 +58,12 @@ def convert_gbif_csv(input_path, output_path, force = False, test = False, limit
         print(f'Converting to {input_path} to {output_path} file ')
         duckdb.query(f"COPY (SELECT * FROM '{input_path}') TO '{output_path}' (FORMAT PARQUET)")
 
-def prep_park_sql(park_file, alias = 'p'):
+def prep_shp_file_field_sql(shp_file, alias = 'p'):
 
     sql_query = """"""
 
     #Get fields
-    gdf = gpd.read_file(park_file)
+    gdf = gpd.read_file(shp_file)
     columns = gdf.columns.to_list()
 
     #Remove geometry col by default
@@ -69,31 +77,16 @@ def prep_park_sql(park_file, alias = 'p'):
 
     return sql_query
 
-
 def convert_lat_long_to_point(con, table):
     #Gbif occ to geometry 
     con.execute(f"ALTER TABLE {table} ADD COLUMN geom GEOMETRY")
     con.execute(f"UPDATE {table} SET geom = ST_Point(decimalLongitude, decimalLatitude)")
 
-def spatial_join(gbif_occurence_db_file, park_file, output_file_path = None, test = False, limit = None, colab = False):
 
-    # Create a connection (in-memory or persistent)
-    con = duckdb.connect()  # or con = duckdb.connect("mydb.duckdb")
-    if colab:
-        con.execute("PRAGMA max_temp_directory_size='60GiB';")
-    else:
-        con.execute("PRAGMA max_temp_directory_size='25GiB';")
-
-
-    # Install spatial extension 
-    con.execute("INSTALL spatial;")
-    con.execute("LOAD spatial;")
-
-    #Load parks boundary file 
-    con.execute(f"CREATE OR REPLACE TABLE parks AS SELECT * FROM ST_Read('{park_file}')")
-    park_fields_sql = prep_park_sql(park_file)
-
-    print('Creating gbif table...')
+def create_gbif_table(gbif_occurence_db_file = None, limit = None, test = False):
+    
+    con = DuckDBConnection.get_connection()
+    print('Creating gbif_observations table...')
     #Load gbif data
     if test:
         con.execute(f"CREATE TABLE gbif AS SELECT *, ST_Point(decimalLongitude, decimalLatitude) AS geom FROM '{gbif_occurence_db_file}' LIMIT {limit}")
@@ -113,7 +106,49 @@ def spatial_join(gbif_occurence_db_file, park_file, output_file_path = None, tes
                     SET minx = ST_XMin(geom),
                         miny = ST_YMin(geom),
                         maxx = ST_XMax(geom),
-                        maxy = ST_YMax(geom);""")
+                            maxy = ST_YMax(geom);""")
+
+
+
+
+def create_tables(gbif_occurence_db_file = None, grid_file = None, nbhood_file = None, park_file = None, limit = False, test = False ):
+    con = DuckDBConnection.get_connection()
+
+    # Install spatial extension 
+    con.execute("INSTALL spatial;")
+    con.execute("LOAD spatial;")
+
+    if grid_file is not None:   
+        con.execute(f"CREATE OR REPLACE TABLE grid AS SELECT * FROM ST_Read('{grid_file}')")
+        grid_field_sql = prep_shp_file_field_sql(grid_file)
+
+    else:
+        print('No grid file')
+
+    if park_file is not None:   
+        con.execute(f"CREATE OR REPLACE TABLE parks AS SELECT * FROM ST_Read('{park_file}')")
+        park_fields_sql = prep_shp_file_field_sql(park_file)
+    else:
+        print('No park_file ')
+
+    # Create main observation table from gbif data 
+    create_gbif_table(gbif_occurence_db_file = gbif_occurence_db_file, limit = limit, test = test)
+
+
+
+
+
+def spatial_join(output_file_path = None, test = False, limit = None, colab = False):
+    con = DuckDBConnection.get_connection()
+
+    # Create a connection (in-memory or persistent)
+    if colab:
+        con.execute("PRAGMA max_temp_directory_size='60GiB';")
+    else:
+        con.execute("PRAGMA max_temp_directory_size='25GiB';")
+
+
+    
 
     #Spatial Join 
     print("Spatial join")
@@ -175,6 +210,7 @@ def spatial_join(gbif_occurence_db_file, park_file, output_file_path = None, tes
     return True
 
 def prep_gbif(force = False, test = False, colab = False, limit = None):
+
     if colab:
         RAW_DATA_PATH = Path("/content/gdrive/MyDrive/mtlParkBiodiversity/data/raw/gbif")
         OUTPUT_PATH = Path("/content/gdrive/MyDrive/mtlParkBiodiversity/data/interim/gbif")
@@ -187,14 +223,11 @@ def prep_gbif(force = False, test = False, colab = False, limit = None):
         Path.mkdir(OUTPUT_PATH, exist_ok= True)
         gbif_occurence_raw_file = [f for f in RAW_DATA_PATH.rglob("*.csv")][0]  # Assuming there's only one .csv file for the gbif data
     
-    
 
-
-    x = ask_user_grid_file(GEOSPATIAL_PATH)
-
+    grid_file, nbhood_file, park_file = ask_user_grid_file(GEOSPATIAL_PATH)
 
     # Create output directory if not existing
-    park_file =  [f for f in GEOSPATIAL_PATH.rglob("*.shp")][0]  # Assuming there's only one .shp file for the park data
+    #park_file =  [f for f in GEOSPATIAL_PATH.rglob("*.shp")][0]  # Assuming there's only one .shp file for the park data
 
     if test:
         print('Running gbif prep as test')
@@ -213,7 +246,15 @@ def prep_gbif(force = False, test = False, colab = False, limit = None):
             print("Convert_gbif_csv already done, skipping")
 
     if (output_file_path.exists() and force) or (not output_file_path.exists()):
-        spatial_join(gbif_occurence_db_file,park_file, output_file_path = output_file_path, test = test, limit = limit, colab = colab)
+
+        create_tables(gbif_occurence_db_file = gbif_occurence_db_file,grid_file = grid_file,nbhood_file = nbhood_file,park_file= park_file,
+                    limit = False, test = False
+        )
+
+        spatial_join(output_file_path = output_file_path,
+                    test = test, limit = limit, colab = colab
+        )
+
     else:
         print("Spatial Join already done, skipping")
     
