@@ -4,10 +4,9 @@ from pathlib import Path
 import sys
 from .core import raw_data_read_only
 from .dataprep.gbif import prep_gbif
-from .dataprep.parks import prep_parks
+from .dataprep.spatial import prep_spatial
 from .metrics.main import process_all_metrics
-#from .dashboard.app import run_dashboard
-
+#from .dashboard.app import run_app
 def run_prep(force = False, test = False, limit = None, colab = False):
     print("Running data prep...")
 
@@ -20,20 +19,23 @@ def run_prep(force = False, test = False, limit = None, colab = False):
             force = False
             print("Skipping GBIF data prep.")
 
-
-
     # Load raw data (CSV, SHP, etc.)
     # Run prep_gbif/prep_mtl
     # Save outputs (e.g. parquet, duckdb, feather)
+def run_spatial(force = False, test = False, limit = None, colab = False):
+    prep_spatial(force = force, test = test, limit = limit, colab = colab)
+
+def run_gbif(force = False, test = False, limit = None, colab = False):
+    prep_gbif(force =force, test =test, limit =limit, colab =colab)
 
 def run_metrics(force = False, test = False, limit = None):
     print("Running Aggregate Metrics...")
     process_all_metrics(force = force, test = test, limit = limit)
 
-def run_dash():
+def run_app():
     print("Launching dashboard...")
     # Load prepped data
-    #run_dashboard()
+    #run_appboard()
     app_folder = Path(__file__).parent.parent.parent
     # Run Streamlit app with streamlit subprocess
     subprocess.run([sys.executable, "-m", "streamlit", "run", f"{app_folder}/streamlit_app.py"])
@@ -42,7 +44,7 @@ def main():
     raw_data_read_only('data/raw', debug = False)
 
     parser = argparse.ArgumentParser()
-    parser.add_argument("command", choices=["parks", "gbif", "metrics", "app", 'full'])
+    parser.add_argument("command", choices=["spatial", "gbif", "metrics", "app", 'full'])
     # optional flag: --force
     parser.add_argument(
         "--force",
@@ -59,15 +61,15 @@ def main():
     if args.limit is None:
         args.limit = 10000
     if args.command == 'full':
-        prep_parks(force = args.force, test = args.test, limit = args.limit, colab = args.colab)
-        prep_gbif(force = args.force, test = args.test, limit = args.limit, colab = args.colab)
+        run_spatial(force = args.force, test = args.test, limit = args.limit, colab = args.colab)
+        run_gbif(force = args.force, test = args.test, limit = args.limit, colab = args.colab)
         run_metrics(force = args.force, test = args.test, limit = args.limit)
-        run_dash()
-    elif args.command == "parks":
-        prep_parks(force = args.force, test = args.test, limit = args.limit, colab = args.colab)
+        run_app()
+    elif args.command == "spatial":
+        run_spatial(force = args.force, test = args.test, limit = args.limit, colab = args.colab)
     elif args.command == "gbif":
-        prep_gbif(force = args.force, test = args.test, limit = args.limit, colab = args.colab)
+        run_gbif(force = args.force, test = args.test, limit = args.limit, colab = args.colab)
     elif args.command == "metrics":
         run_metrics(force = args.force, test = args.test, limit = args.limit)
     elif args.command == "app":
-        run_dash()
+        run_app()

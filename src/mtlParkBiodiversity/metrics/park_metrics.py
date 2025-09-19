@@ -1,7 +1,7 @@
 import duckdb
 from pathlib import Path 
 from matplotlib import pyplot as plt
-from shapely import wkb,wkt
+from shapely import wkb
 import geopandas as gpd
 from ..core import df_inspect
 
@@ -162,9 +162,14 @@ def park_metrics(force = False, test = False, limit = None):
     park_metrics_sql = read_sql_file('parks')
     con.execute(park_metrics_sql)
 
+ 
+
     shannon_index_sql = read_sql_file('shannon_index')
     con.execute(shannon_index_sql)
 
+
+
+    con.execute("ALTER TABLE parks ADD COLUMN shannon_index DOUBLE")
     con.execute("""
         UPDATE parks
         SET shannon_index = s.shannon_index
@@ -172,28 +177,14 @@ def park_metrics(force = False, test = False, limit = None):
         WHERE parks.park_name = s.park_name;
     """)
 
+    df = con.execute("SELECT * FROM parks").df()
+    print(df)
+
     save_table('parks', geographic_data= True , debug=False, con = con)
 
-    taxa_group_sql = read_sql_file('park_taxa')
-    con.execute(taxa_group_sql)
-    save_table('park_taxa', geographic_data= True , debug=False, con = con)
+    #taxa_group_sql = read_sql_file('park_taxa')
+    #con.execute(taxa_group_sql)
+    #save_table('park_taxa', geographic_data= True , debug=False, con = con)
 
-    
-    # Create base parks metrics 
-    #con.execute(park_metrics_query)
-    # Create view of shannon index from parks table 
-    #con.execute(shannon_index_query)
-    # Add columns to parks to add shannon index
-    #con.execute("ALTER TABLE parks ADD COLUMN shannon_index DOUBLE")
-    # Add shannon index view to parks
-    #con.execute(join_shannon)
-    
- 
-        
-
-    #save_table('parks', geographic_data= True , debug=False)
-    #save_table('annual_observations', query = annual_observations_query)
-    #save_table('most_observed_species', query = most_observed_species_query)
-    #save_table('species_count', query = species_count_query)
 
     con.close()

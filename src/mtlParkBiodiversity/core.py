@@ -5,6 +5,13 @@ import pathlib
 import stat
 import os
 
+def meters_degress(meter, lat,long, ):
+    # Latitude 
+    lat_step = meter / 111000
+
+
+    pass
+
 def convert_df_to_gdf(df : pd.DataFrame, lat_col : str = 'decimalLatitude', long_col : str = 'decimalLongitude', crs = 4326, verbose = False):
     gdf = gpd.GeoDataFrame(df, geometry=[Point(xy) for xy in zip(df["decimalLongitude"], df["decimalLatitude"])] , crs = 4326 )
     return gdf

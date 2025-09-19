@@ -71,7 +71,7 @@ with col[1]:
     m = folium.Map(location=[45.5017, -73.5673], zoom_start=11)
 
     choropleth_species_richness = folium.Choropleth(
-        geo_data=gdf,
+        geo_data=gdf.__geo_interface__,
         data=gdf,
         name ="Species Richness",
         columns=["park_name","species_richness",],
