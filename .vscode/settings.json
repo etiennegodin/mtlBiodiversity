@@ -1,10 +1,10 @@
 {
     "sqltools.connections": [
         {
+            "name": "DuckDB",
+            "accessMode": "Read Only",
             "previewLimit": 50,
-            "driver": "DuckDB",
-            "database": "${workspaceFolder:mtlParkBiodiversity}/data/interim/parks_metrics.duckdb",
-            "name": "xxx"
+            "driver": "DuckDB"
         }
     ],
     "sqltools.useNodeRuntime": true

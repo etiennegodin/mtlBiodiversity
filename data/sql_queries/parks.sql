@@ -7,7 +7,7 @@ COUNT(DISTINCT family) AS family_richness,
 COUNT(DISTINCT genus) AS genus_richness,
 COUNT(DISTINCT species) AS species_richness,
 
-ANY_VALUE(park_id) AS park_geom,
+ANY_VALUE(park_id) AS park_id,
 ANY_VALUE(park_geom) AS park_geom,
     
 
