@@ -2,12 +2,45 @@ import duckdb
 from pathlib import Path 
 import geopandas as gpd
 import pandas as pd 
-from ..core import clip_to_region, convert_crs
+from ..core import select_file
 from ..dataprep import target_crs
 
 
 
+def ask_user_grid_file(GEOSPATIAL_PATH):
 
+    grid_file = None
+    park_file = None
+    nbhood_file = None
+
+    geospatial_files = [f for f in GEOSPATIAL_PATH.rglob("*") if f.suffix in ['.shp', '.gpkg']]
+
+    print(f"Found {len(geospatial_files)} file in {GEOSPATIAL_PATH}")
+    for file in geospatial_files:
+        print(file.stem.lower())
+        if "grid" in file.stem.lower():
+            grid_file = file 
+        elif "park" in file.stem.lower():
+            park_file = file 
+        elif "quartier" in file.stem.lower():
+            nbhood_file = file 
+    
+    if grid_file is None:
+        print(f'Grid file not found in {GEOSPATIAL_PATH}, please provide')
+        grid_file = select_file()
+
+    if park_file is None:
+        print(f'Park file not found in {GEOSPATIAL_PATH}, please provide')
+        park_file = select_file()
+
+    if nbhood_file is None:
+        print(f'Neighborhood file not found in {GEOSPATIAL_PATH}, please provide')
+        nbhood_file = select_file()
+
+    return grid_file, nbhood_file, park_file
+
+
+    
 
 def convert_gbif_csv(input_path, output_path, force = False, test = False, limit = None):
 
@@ -71,7 +104,7 @@ def check_crs(file, debug = False):
     else:
         print(f'Error reading {file}')
         return False
-    
+
     
 def get_gbif_data_crs(gbif_occurence_raw_file, lat, long, limit = 10, ):
     from shapely.geometry import Point
@@ -190,18 +223,24 @@ def prep_gbif(force = False, test = False, colab = False, limit = None):
     if colab:
         RAW_DATA_PATH = Path("/content/gdrive/MyDrive/mtlParkBiodiversity/data/raw/gbif")
         OUTPUT_PATH = Path("/content/gdrive/MyDrive/mtlParkBiodiversity/data/interim/gbif")
-        PARK_PATH = Path("/content/mtlParkBiodiversity/data/interim/parks")
+        GEOSPATIAL_PATH = Path("/content/mtlParkBiodiversity/data/interim/geospatial")
     else:
         RAW_DATA_PATH = Path("data/raw/gbif")
         OUTPUT_PATH = Path("data/interim/gbif")
-        PARK_PATH = Path("data/interim/parks")
+        GEOSPATIAL_PATH = Path("data/interim/geospatial")
 
         Path.mkdir(OUTPUT_PATH, exist_ok= True)
         gbif_occurence_raw_file = [f for f in RAW_DATA_PATH.rglob("*.csv")][0]  # Assuming there's only one .csv file for the gbif data
+    
+    
 
+
+    x = ask_user_grid_file(GEOSPATIAL_PATH)
+
+    return
 
     # Create output directory if not existing
-    park_file =  [f for f in PARK_PATH.rglob("*.shp")][0]  # Assuming there's only one .shp file for the park data
+    park_file =  [f for f in GEOSPATIAL_PATH.rglob("*.shp")][0]  # Assuming there's only one .shp file for the park data
 
     if test:
         print('Running gbif prep as test')

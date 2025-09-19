@@ -3,14 +3,17 @@ import pandas as pd
 from shapely.geometry import Polygon, MultiPolygon, Point
 import pathlib
 import stat
-import os
+import tkinter as tk 
+from tkinter import filedialog
 
-def meters_degress(meter, lat,long, ):
-    # Latitude 
-    lat_step = meter / 111000
-
-
-    pass
+def select_file():
+    root = tk.Tk()
+    root.withdraw()  # hide the root window
+    file_path = filedialog.askopenfilename(
+        title="Select a file",
+        filetypes=[("All files", "*.*"), ("Text files", "*.txt"), ("CSV files", "*.csv")]
+    )
+    return file_path
 
 def convert_df_to_gdf(df : pd.DataFrame, lat_col : str = 'decimalLatitude', long_col : str = 'decimalLongitude', crs = 4326, verbose = False):
     gdf = gpd.GeoDataFrame(df, geometry=[Point(xy) for xy in zip(df["decimalLongitude"], df["decimalLatitude"])] , crs = 4326 )
