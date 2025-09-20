@@ -1,8 +1,0 @@
-README.md
-setup.py
-src/mtlParkBiodiversity.egg-info/PKG-INFO
-src/mtlParkBiodiversity.egg-info/SOURCES.txt
-src/mtlParkBiodiversity.egg-info/dependency_links.txt
-src/mtlParkBiodiversity.egg-info/entry_points.txt
-src/mtlParkBiodiversity.egg-info/requires.txt
-src/mtlParkBiodiversity.egg-info/top_level.txt

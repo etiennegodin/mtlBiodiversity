@@ -1,4 +1,4 @@
-from mtlParkBiodiversity.metrics import park_metrics
+from mtlBio.metrics import park_metrics
 
 def process_all_metrics(force = False, test = False, limit = None):
 

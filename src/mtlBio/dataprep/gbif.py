@@ -2,8 +2,8 @@ import duckdb
 from pathlib import Path 
 import geopandas as gpd
 import pandas as pd 
-from mtlParkBiodiversity.core import select_file
-from mtlParkBiodiversity.dataprep import target_crs
+from mtlBio.core import select_file
+from mtlBio.dataprep import target_crs
 
 # GLOBAL VAR
 

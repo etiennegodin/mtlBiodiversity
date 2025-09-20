@@ -3,7 +3,7 @@ from pathlib import Path
 from matplotlib import pyplot as plt
 from shapely import wkb
 import geopandas as gpd
-from mtlParkBiodiversity.core import df_inspect
+from mtlBio.core import df_inspect
 
 DB_PATH = Path("data/interim/gbif/")
 OUTPUT_PATH = Path("data/processed")

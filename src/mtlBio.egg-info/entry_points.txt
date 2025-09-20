@@ -1,0 +1,2 @@
+[console_scripts]
+mytool = mtlBio.cli:main

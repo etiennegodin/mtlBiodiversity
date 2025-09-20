@@ -2,10 +2,10 @@ import argparse
 import subprocess
 from pathlib import Path
 import sys
-from mtlParkBiodiversity.core  import raw_data_read_only
-from mtlParkBiodiversity.dataprep.gbif import prep_gbif_data, gbif_spatial_joins
-from mtlParkBiodiversity.dataprep.geospatial import prep_geospatial
-from mtlParkBiodiversity.metrics.main import process_all_metrics
+from mtlBio.core  import raw_data_read_only
+from mtlBio.dataprep.gbif import prep_gbif_data, gbif_spatial_joins
+from mtlBio.dataprep.geospatial import prep_geospatial
+from mtlBio.metrics.main import process_all_metrics
 #from .dashboard.app import run_app
 
 

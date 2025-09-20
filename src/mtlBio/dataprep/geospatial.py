@@ -1,7 +1,7 @@
 import geopandas as gpd
 from pathlib import Path
-from mtlParkBiodiversity.core import convert_crs
-from mtlParkBiodiversity.column_mapper import unify_columns
+from mtlBio.core import convert_crs
+from mtlBio.column_mapper import unify_columns
 from . import target_crs
 
 RAW_DATA_PATH = Path("data/raw" )

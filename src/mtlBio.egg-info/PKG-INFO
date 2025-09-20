@@ -1,6 +1,8 @@
 Metadata-Version: 2.4
-Name: mtlParkBiodiversity
-Version: 0.0.3
+Name: mtlBio
+Version: 0.0.4
+Summary: MTL Biodiversity Project
+Author-email: Etienne Godin <etiennegodin@duck.com>
 Requires-Dist: geopandas
 Requires-Dist: pandas
 Requires-Dist: numpy
@@ -15,4 +17,6 @@ Requires-Dist: plotly
 Requires-Dist: shapely
 Requires-Dist: argparse
 Requires-Dist: folium
-Dynamic: requires-dist
+Provides-Extra: dev
+Requires-Dist: pytest; extra == "dev"
+Requires-Dist: black; extra == "dev"

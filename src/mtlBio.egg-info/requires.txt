@@ -12,3 +12,7 @@ plotly
 shapely
 argparse
 folium
+
+[dev]
+pytest
+black

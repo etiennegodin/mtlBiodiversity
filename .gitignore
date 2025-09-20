@@ -1,7 +1,5 @@
-#data folders 
 
-#data/processed/
-
+.vscode/
 .tmp/
 build/
 
@@ -10,8 +8,7 @@ build/
 *.dbf
 *.tif
 *.gpkg
-#db
-#*.parquet
+
 #qgis
 *.qgz
 *.xlsx
