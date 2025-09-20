@@ -61,13 +61,22 @@ def find_geospatial_fies(GEOSPATIAL_PATH: Path, debug :bool= False):
 
 def convert_gbif_csv(input_path, output_path, force = False, test = False, limit = None):
 
+    query = None
+    
     if test:
         print(f'Converting to {input_path} to {output_path} file with limit set to {limit} ')
-        duckdb.query(f"COPY (SELECT * FROM '{input_path}' LIMIT {limit}) TO '{output_path}' (FORMAT PARQUET)")
-
+        query = f"COPY (SELECT * FROM '{input_path}' LIMIT {limit}) TO '{output_path}' (FORMAT PARQUET)"
     else: 
         print(f'Converting to {input_path} to {output_path} file ')
-        duckdb.query(f"COPY (SELECT * FROM '{input_path}') TO '{output_path}' (FORMAT PARQUET)")
+        query = f"COPY (SELECT * FROM '{input_path}') TO '{output_path}' (FORMAT PARQUET)"
+        
+    if query is not None:
+        try:
+            duckdb.query(query)
+            return True
+        except Exception as e:
+            print(f"Failed to convert csv to parquet: {e}")
+            return False
 
 def create_shp_file_field_sql(shp_file : Path = None , alias :str = 'p'):
 
@@ -257,7 +266,6 @@ def prep_gbif_data(force = False, test = False, limit = None):
     OUTPUT_PATH = Path("data/interim/gbif")
     gbif_occurence_db_file = None
 
-        
     if test:
         print('Running gbif prep as test')
         gbif_occurence_db_file = OUTPUT_PATH / '_test_gbif_data.parquet'
@@ -265,13 +273,17 @@ def prep_gbif_data(force = False, test = False, limit = None):
         gbif_occurence_db_file = OUTPUT_PATH / 'gbif_data.parquet'
 
     gbif_occurence_raw_file = [f for f in RAW_DATA_PATH.rglob("*.csv")][0]  # Assuming there's only one .csv file for the gbif data
-    
-    
+
     # Check if csv has been converted to parquet file
     if (gbif_occurence_db_file.exists() and force) or (not gbif_occurence_db_file.exists()) :
-        convert_gbif_csv(gbif_occurence_raw_file, gbif_occurence_db_file, force = force, test = test, limit = limit)
+        converted = convert_gbif_csv(gbif_occurence_raw_file, gbif_occurence_db_file, force = force, test = test, limit = limit)
+        if converted:
+            return gbif_occurence_db_file
+        else:
+            return None
     else:
         print("Convert_gbif_csv already done, skipping")
+        return gbif_occurence_db_file
 
 def gbif_spatial_joins(gbif_occurence_db_file :Path = None, force = False, test = False, limit = None):
     """Performs main geospatial joins of gbif observation to set of shp files
@@ -306,7 +318,6 @@ def gbif_spatial_joins(gbif_occurence_db_file :Path = None, force = False, test 
         tables_creation_dict[table_name] = created
     print(gbif_occurence_db_file)
     
-    import pdb; pdb.set_trace()
 
     if gbif_occurence_db_file is not None:
         created = create_gbif_table(gbif_occurence_db_file = gbif_occurence_db_file, table_name= 'observations', limit = limit, test = test)

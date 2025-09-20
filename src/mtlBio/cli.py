@@ -6,7 +6,7 @@ from mtlBio.core  import raw_data_read_only
 from mtlBio.dataprep.gbif import prep_gbif_data, gbif_spatial_joins
 from mtlBio.dataprep.geospatial import prep_geospatial
 from mtlBio.metrics.main import process_all_metrics
-#from .dashboard.app import run_app
+
 
 
 def run_prep(force = False, test = False, limit = None, colab = False):
@@ -28,10 +28,9 @@ def run_geospatial(force = False):
 
 def run_gbif(force = False, test = False, limit = None, colab = False):
     
-    gbif_occurence_db_file = prep_gbif_data(force =force, test =test, limit =limit)
-    gbif_spatial_joins(gbif_occurence_db_file = gbif_occurence_db_file, force =force, test =test, limit =limit)
+    gbif_parquet = prep_gbif_data(force =force, test =test, limit =limit)
 
-
+    gbif_spatial_joins(gbif_occurence_db_file = gbif_parquet, force =force, test =test, limit =limit)
 
 def run_metrics(force = False, test = False, limit = None):
     print("Running Aggregate Metrics...")
@@ -45,10 +44,16 @@ def run_app():
     # Run Streamlit app with streamlit subprocess
     subprocess.run([sys.executable, "-m", "streamlit", "run", f"{app_folder}/streamlit_app.py"])
     
+    
+def launch_debugger():
+    
+    import debugpy
+    debugpy.listen(("localhost", 5678))
+    print("Waiting for debugger attach...")
+    debugpy.wait_for_client()  # Pause until VS Code connects
+    
 def main():
-
     raw_data_read_only('data/raw', debug = False)
-    print('hey')
     parser = argparse.ArgumentParser()
     parser.add_argument("command", choices=["geo", "gbif", "metrics", "app", 'full'])
     # optional flag: --force
@@ -57,11 +62,13 @@ def main():
         action="store_true",
         help="Force re-run of data prep even if processed files exist"
     )
+    parser.add_argument("--debug", action= 'store_true', help = 'Run debugger')
     parser.add_argument("--test", action= 'store_true', help = 'Run in test mode')
     parser.add_argument("--limit", type= int, help = 'Limit the number of rows processed (for testing purposes)')
 
     args = parser.parse_args()
-
+    if args.debug:
+        launch_debugger()
     # Default limit to 1000 if test mode is on and limit is not specified
     if args.limit is None:
         args.limit = 1000
@@ -78,3 +85,8 @@ def main():
         run_metrics(force = args.force, test = args.test, limit = args.limit)
     elif args.command == "app":
         run_app()
+        
+        
+
+if __name__ == "__main__":
+    main()

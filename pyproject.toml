@@ -31,4 +31,4 @@ dependencies = [
 dev = ["pytest", "black"]
 
 [project.scripts]   # <-- entry point CLI
-mytool = "mtlBio.cli:main"
+mtlBio = "mtlBio.cli:main"
