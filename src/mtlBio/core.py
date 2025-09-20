@@ -37,18 +37,22 @@ def find_files(folder_path: Path, expected_files : list = None, suffix = None, d
         files = [f for f in folder_path.rglob("*") if f.suffix in final_suffix]
         
         print(f"Found {len(files)} file in {folder_path}")
-        for f in files:
-            f_name = f.stem.lower()
-            for e_file in expected_files:
+        for e_file in expected_files:
+            e_file_found = False
+            for f in files:
+                f_name = f.stem.lower()
                 if debug:
                     print(f_name)
                     print(e_file)
-                    
                 if e_file in f_name:
                     files_found.append(f)
-                else: 
-                    files_not_found.append(e_file)
-        
+                    e_file_found = True
+                    break
+                
+            if not e_file_found: 
+                files_not_found.append(e_file)
+                    
+        print(files_found)
         for file in files_not_found:
             print(f'{file} not found in {folder_path}, please provide')
             file = select_file()   
