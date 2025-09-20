@@ -1,75 +1,13 @@
-CREATE OR REPLACE TABLE _test_occurences_grid  AS 
-                SELECT 
-                
-                l.gbifID,
-				l.datasetKey,
-				l.occurrenceID,
-				l.kingdom,
-				l.phylum,
-				l.class,
-				l.order,
-				l.family,
-				l.genus,
-				l.species,
-				l.infraspecificEpithet,
-				l.taxonRank,
-				l.scientificName,
-				l.verbatimScientificName,
-				l.verbatimScientificNameAuthorship,
-				l.countryCode,
-				l.locality,
-				l.stateProvince,
-				l.occurrenceStatus,
-				l.individualCount,
-				l.publishingOrgKey,
-				l.decimalLatitude,
-				l.decimalLongitude,
-				l.coordinateUncertaintyInMeters,
-				l.coordinatePrecision,
-				l.elevation,
-				l.elevationAccuracy,
-				l.depth,
-				l.depthAccuracy,
-				l.eventDate,
-				l.day,
-				l.month,
-				l.year,
-				l.taxonKey,
-				l.speciesKey,
-				l.basisOfRecord,
-				l.institutionCode,
-				l.collectionCode,
-				l.catalogNumber,
-				l.recordNumber,
-				l.identifiedBy,
-				l.dateIdentified,
-				l.license,
-				l.rightsHolder,
-				l.recordedBy,
-				l.typeStatus,
-				l.establishmentMeans,
-				l.lastInterpreted,
-				l.mediaType,
-				l.issue,
-				l.geom,
-				l.minx,
-				l.miny,
-				l.maxx,
-				l.maxy,
-				 
-                r.id,
-				r.minx,
-				r.miny,
-				r.maxx,
-				r.maxy,
-				 
-                r.geom AS right_geom,
+ALTER TABLE _test_occurences_grid DROP COLUMN geom;
+ALTER TABLE _test_occurences_grid DROP COLUMN minx;
+ALTER TABLE _test_occurences_grid DROP COLUMN miny;
+ALTER TABLE _test_occurences_grid DROP COLUMN maxx;
+ALTER TABLE _test_occurences_grid DROP COLUMN maxy;
 
-                FROM observations l 
-                LEFT JOIN grid r 
-                    ON l.maxx >= ST_XMIN(r.geom)
-                    AND l.minx <= ST_XMAX(r.geom)
-                    AND l.maxy >= ST_YMIN(r.geom)
-                    AND l.miny <= ST_YMAX(r.geom)
-                    AND ST_Within(l.geom, r.geom) -- Spatial join predicate
-                ;
+
+ALTER TABLE _test_occurences_grid RENAME COLUMN right_geom TO geom;
+ALTER TABLE _test_occurences_grid RENAME COLUMN minx_1 TO minx;
+ALTER TABLE _test_occurences_grid RENAME COLUMN miny_1 TO miny;
+ALTER TABLE _test_occurences_grid RENAME COLUMN maxx_1 TO maxx;
+ALTER TABLE _test_occurences_grid RENAME COLUMN maxy_1 TO maxy;
+

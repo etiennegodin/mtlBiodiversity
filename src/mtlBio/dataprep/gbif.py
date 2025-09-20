@@ -249,20 +249,23 @@ def grid_spatial_join2(left_table_name : str = None, right_table_name: str = Non
                                right_table_name = right_table_name
 
                                )
-       
-        with open('mysql.sql', 'w') as f:
-           f.write(sjoin_sql_query)
-       
-       
+        # Main spatial join query 
         con.execute(sjoin_sql_query)
         
-        # Remove gbif geom point
-        con.execute(f"""ALTER TABLE {output_table_name} DROP COLUMN geom;""")
-        con.execute(f"""ALTER TABLE {output_table_name} RENAME COLUMN right_geom TO geom;""")
-
+        clean_joined_table_template = read_sql_template('clean_gbif_sjoin')
+        clean_joined_table_query = clean_joined_table_template.render(output_table_name = output_table_name)
+        
+        with open('mysql.sql', 'w') as f:
+           f.write(clean_joined_table_query)
+           
+        
+        try:
+            con.execute(clean_joined_table_query)
+        except Exception as e:
+            print(e)
+            
         print('Spatial join complete, saving file...')
 
-        #con.execute('DROP TABLE IF EXISTS observations;')
         #Save 
         try:
             con.execute(f"""
