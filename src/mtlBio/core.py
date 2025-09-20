@@ -11,6 +11,54 @@ from jinja2 import Template
 
 SQL_PATH = Path("data/sql_queries")
 
+
+def find_files(folder_path: Path, expected_files : list = None, suffix = None, debug :bool= False):
+    files_found = []
+    files_not_found = []
+
+    
+    #Check if suffix is provided
+    if suffix is not None:
+        # If suffix is only a string format to list
+        if isinstance(suffix, str):
+            suffix_list = [suffix]
+        else:
+            suffix_list = suffix
+            
+        # Check if written with a dot - fix if not
+        final_suffix  = []
+        for s in suffix_list:
+            if not s.startswith('.'):
+                s = f'.{s}'
+                final_suffix.append(s)
+            else:
+                final_suffix.append(s)
+        print(final_suffix)
+        files = [f for f in folder_path.rglob("*") if f.suffix in final_suffix]
+        
+        print(f"Found {len(files)} file in {folder_path}")
+        for f in files:
+            f_name = f.stem.lower()
+            for e_file in expected_files:
+                if debug:
+                    print(f_name)
+                    print(e_file)
+                    
+                if e_file in f_name:
+                    files_found.append(f)
+                else: 
+                    files_not_found.append(e_file)
+        
+        for file in files_not_found:
+            print(f'{file} not found in {folder_path}, please provide')
+            file = select_file()   
+            files_found.append(file)
+    
+    if len(files_found) == len(expected_files):
+        return files_found
+
+
+
 def read_sql_template(file_name):
     global SQL_PATH
     with open(SQL_PATH / f'{file_name}.sql', 'r') as f:

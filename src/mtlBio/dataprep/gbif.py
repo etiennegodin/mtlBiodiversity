@@ -2,7 +2,7 @@ import duckdb
 from pathlib import Path 
 import geopandas as gpd
 import pandas as pd 
-from mtlBio.core import select_file, read_sql_template
+from mtlBio.core import select_file, read_sql_template, find_files
 from mtlBio.dataprep import target_crs
 
 # GLOBAL VAR
@@ -359,6 +359,9 @@ def gbif_spatial_joins(gbif_occurence_db_file :Path = None, force = False, test 
 
     # Find all expected geospatial files
     grid_file, nbhood_file, park_file = find_geospatial_fies(GEOSPATIAL_PATH)
+    files = find_files(folder_path= GEOSPATIAL_PATH, expected_files= ['grid', 'quartiers', 'park'], suffix= '.shp')
+    
+    print(files)
 
     if test:
         print('Running gbif prep as test')
