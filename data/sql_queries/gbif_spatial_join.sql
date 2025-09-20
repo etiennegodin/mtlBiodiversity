@@ -7,9 +7,9 @@ CREATE OR REPLACE TABLE {{output_table_name}}  AS
 
                 FROM {{left_table_name}} l 
                 LEFT JOIN {{right_table_name}} r 
-                    ON l.maxx >= ST_XMIN(r.geom)
-                    AND l.minx <= ST_XMAX(r.geom)
-                    AND l.maxy >= ST_YMIN(r.geom)
-                    AND l.miny <= ST_YMAX(r.geom)
+                    ON l.maxx >= r.minx
+                    AND l.minx <= r.maxx
+                    AND l.maxy >= r.miny
+                    AND l.miny <= r.maxy
                     AND ST_Within(l.geom, r.geom) -- Spatial join predicate
                 ;

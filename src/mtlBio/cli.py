@@ -55,7 +55,7 @@ def launch_debugger():
 def main():
     raw_data_read_only('data/raw', debug = False)
     parser = argparse.ArgumentParser()
-    parser.add_argument("command", choices=["geo", "gbif", "metrics", "app", 'full'])
+    parser.add_argument("command", choices=["geo", "gbif", 'sjoin', "metrics", "app", 'full'])
     # optional flag: --force
     parser.add_argument(
         "--force",

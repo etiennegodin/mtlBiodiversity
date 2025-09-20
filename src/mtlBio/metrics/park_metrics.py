@@ -5,7 +5,7 @@ from shapely import wkb
 import geopandas as gpd
 from mtlBio.core import df_inspect, read_sql_file
 
-DB_PATH = Path("data/interim/gbif/")
+DB_PATH = Path("data/interim/joined/")
 OUTPUT_PATH = Path("data/processed")
 SQL_PATH = Path("data/sql_queries")
 

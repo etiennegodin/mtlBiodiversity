@@ -4,10 +4,9 @@ import geopandas as gpd
 import pandas as pd 
 from mtlBio.core import select_file, read_sql_template
 from mtlBio.dataprep import target_crs
-from jinja2 import Template
 
 # GLOBAL VAR
-
+tables_creation_dict = {}
 # Create connection and store as class object
 # Get's initialise first time it's called, otherwise object is just passed along
 class DuckDBConnection:
@@ -175,7 +174,7 @@ def set_geom_bbox(table_name = None):
                             SET minx = ST_XMin(geom),
                                 miny = ST_YMin(geom),
                                 maxx = ST_XMax(geom),
-                            maxy = ST_YMax(geom);""")
+                                maxy = ST_YMax(geom);""")
         return True
     except Exception as e:
         print(f'Could not set bbox for table {table_name}: {e}')
@@ -196,10 +195,6 @@ def create_gbif_table(gbif_occurence_db_file :Path = None, table_name = None, li
                 ST_Point(decimalLongitude, decimalLatitude) AS geom,
                 FROM '{gbif_occurence_db_file}' AS f
                 {'LIMIT ' + str(limit) if (test and limit is not None) or (limit is not None) else ''} """
-        
-        with open('tests/gbif_table.sql', 'w') as f:
-           f.write(query)
-           
         
         try:
             con.execute(query)
@@ -248,11 +243,8 @@ def grid_spatial_join2(left_table_name : str = None, right_table_name: str = Non
     
     if check_table_exists(left_table_name) and check_table_exists(right_table_name):
         
-        # SEt limit for tmp files on disk
+        # Set limit for tmp files on disk
         con.execute("PRAGMA max_temp_directory_size='25GiB';")
-
-        #Spatial Join 
-        print("Grid spatial join")
         
         left_table_cols = get_table_columns(table_name= left_table_name)
         right_table_cols= get_table_columns(table_name= right_table_name)
@@ -273,16 +265,15 @@ def grid_spatial_join2(left_table_name : str = None, right_table_name: str = Non
                                right_table_name = right_table_name
 
                                )
+        
+        print(f"Spatial join of {left_table_name} & {right_table_name}...")
+
         # Main spatial join query 
         con.execute(sjoin_sql_query)
         
         clean_joined_table_template = read_sql_template('clean_gbif_sjoin')
         clean_joined_table_query = clean_joined_table_template.render(output_table_name = output_table_name)
-        
-        with open('tests/mysql.sql', 'w') as f:
-           f.write(clean_joined_table_query)
-           
-        
+        print('Cleaning joined table')
         try:
             con.execute(clean_joined_table_query)
         except Exception as e:
@@ -299,23 +290,26 @@ def grid_spatial_join2(left_table_name : str = None, right_table_name: str = Non
                             ) TO '{output_file_path}' (FORMAT 'parquet');
                         """)
             print(f'Successfuly saved {output_file_path}')
-            con.close()
-            return True
+            
+            #Apend to dict of created tables to keep track 
+            global tables_creation_dict
+            tables_creation_dict[output_table_name] = True
+            return output_table_name
 
         except Exception as e:
             print(f'Failed to saved spatial join : {e}')
-            return False
+            return None
         
         
     elif not check_table_exists(left_table_name) and check_table_exists(right_table_name):
         print(f"Left table {left_table_name} doesn't exists ")
-        return False
+        return None
     elif check_table_exists(left_table_name) and not check_table_exists(right_table_name):
         print(f"Right table {right_table_name} doesn't exists ")
-        return False
+        return None
     else:
         print(f"Tables {left_table_name}, {right_table_name} do not exist")
-        return False
+        return None
 
 
 def prep_gbif_data(force = False, test = False, limit = None):
@@ -358,22 +352,21 @@ def gbif_spatial_joins(gbif_occurence_db_file :Path = None, force = False, test 
         test (bool, optional): _description_. Defaults to False.
         limit (_type_, optional): _description_. Defaults to None.
     """
-    tables_creation_dict =  {}
+    global tables_creation_dict 
 
     OUTPUT_PATH = Path("data/interim/joined")
     GEOSPATIAL_PATH = Path("data/interim/geospatial")
 
     # Find all expected geospatial files
     grid_file, nbhood_file, park_file = find_geospatial_fies(GEOSPATIAL_PATH)
-    print(grid_file, nbhood_file, park_file)
 
     if test:
         print('Running gbif prep as test')
         occurence_grid_file = OUTPUT_PATH / '_test_occurences_grid.parquet'
-        quartier_joined_file = OUTPUT_PATH / '_test_gbif_with_parks.parquet'
+        quartier_joined_file = OUTPUT_PATH / '_test_occurences_quartiers.parquet'
     else:
         occurence_grid_file = OUTPUT_PATH / 'occurences_grid.parquet'
-        quartier_joined_file = OUTPUT_PATH / 'gbif_with_parks.parquet'
+        quartier_joined_file = OUTPUT_PATH / 'occurences_quartiers.parquet'
 
     #Iterate over files to create tables
     for file in [grid_file, nbhood_file, park_file ]:
@@ -390,7 +383,10 @@ def gbif_spatial_joins(gbif_occurence_db_file :Path = None, force = False, test 
     if tables_creation_dict['grid'] and tables_creation_dict['observations']:
         if (occurence_grid_file.exists() and force) or (not occurence_grid_file.exists()):
 
-                grid_spatial_join2(left_table_name = 'observations', right_table_name= 'grid', output_file_path = occurence_grid_file, test  = False, limit = None)
+            grid_joined_table = grid_spatial_join2(left_table_name = 'observations', right_table_name= 'grid', output_file_path = occurence_grid_file, test  = False, limit = None)
+            if grid_joined_table is not None:
+                grid_spatial_join2(left_table_name = grid_joined_table, right_table_name= 'quartiers', output_file_path = quartier_joined_file, test  = False, limit = None)
+            
         else:
             print("Grid spatial join already done, skipping")
     
