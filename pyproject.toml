@@ -24,7 +24,8 @@ dependencies = [
     'plotly',
     'shapely',
     'argparse',
-    'folium'
+    'folium',
+    'jinja2'
 ]
 
 [project.optional-dependencies]

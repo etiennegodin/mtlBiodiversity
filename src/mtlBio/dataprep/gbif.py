@@ -2,8 +2,9 @@ import duckdb
 from pathlib import Path 
 import geopandas as gpd
 import pandas as pd 
-from mtlBio.core import select_file
+from mtlBio.core import select_file, read_sql_template
 from mtlBio.dataprep import target_crs
+from jinja2 import Template
 
 # GLOBAL VAR
 
@@ -15,10 +16,25 @@ class DuckDBConnection:
     @classmethod
     def get_connection(cls):
         if cls._instance is None:
-            cls._instance = duckdb.connect("data\db\gbif.duckdb")
+            cls._instance = duckdb.connect("data\db\gbif_spatial_join.duckdb")
         return cls._instance
 
-def check_table(table_name :str = None):
+
+def check_table_exists(table_name = None):
+    con = DuckDBConnection.get_connection()
+  
+    if table_name is not None:
+        result = con.execute(f"""
+            SELECT COUNT(*) 
+            FROM information_schema.tables 
+            WHERE table_name = '{table_name.lower()}'
+        """).fetchone()
+    if result[0] > 0:
+        return True
+    else:
+        return False
+    
+def inspect_table(table_name :str = None):
 
     con = DuckDBConnection.get_connection()
     df = con.execute(f"SELECT * FROM {table_name}").df()
@@ -77,7 +93,25 @@ def convert_gbif_csv(input_path, output_path, force = False, test = False, limit
         except Exception as e:
             print(f"Failed to convert csv to parquet: {e}")
             return False
+        
+def assign_table_alias(columns: list = None, alias :str = None):
+    query = """"""
+    for col in columns:
+        col_new = f'{alias}.{col}'
+        query += f"{col_new},\n\t\t\t\t"
+    return query
+        
 
+def get_table_columns(table_name = None):
+    columns = None
+    if table_name is not None:
+        con = DuckDBConnection.get_connection()
+        columns = con.execute(f"PRAGMA table_info('{table_name}')").df()
+        columns = columns['name'].tolist()
+        
+    if isinstance(columns, list):
+        return columns
+    
 def create_shp_file_field_sql(shp_file : Path = None , alias :str = 'p'):
 
     if shp_file is not None:
@@ -180,6 +214,84 @@ def create_table_from_shp(file_path : Path = None, table_name :str = None, limit
 
     if table_created is not None:
         return table_created
+    
+    
+def grid_spatial_join2(left_table_name : str = None, right_table_name: str = None, output_file_path : Path = None, test : bool = False, limit :int = None):
+    #Redeclare connection variable
+    con = DuckDBConnection.get_connection()
+    # Set final table name from expected output path name
+    output_table_name = output_file_path.stem
+    
+    if check_table_exists(left_table_name) and check_table_exists(right_table_name):
+        
+        # SEt limit for tmp files on disk
+        con.execute("PRAGMA max_temp_directory_size='25GiB';")
+
+        #Spatial Join 
+        print("Grid spatial join")
+        
+        left_table_cols = get_table_columns(table_name= left_table_name)
+        right_table_cols= get_table_columns(table_name= right_table_name)
+        
+        # Remove right col as it's handled by the sjoin sql query ( renamed to right geom temporrily to avoid confusion)
+        if 'geom' in right_table_cols:
+            right_table_cols.remove('geom')
+        
+        left_table_cols_alias = assign_table_alias(left_table_cols, alias = 'l')
+        right_table_cols_alias = assign_table_alias(right_table_cols, alias = 'r')
+       
+       
+        sjoin_sql_template= read_sql_template('gbif_spatial_join')
+        sjoin_sql_query = sjoin_sql_template.render(output_table_name =output_table_name,
+                               left_fields = left_table_cols_alias,
+                               right_fields = right_table_cols_alias,
+                               left_table_name = left_table_name,
+                               right_table_name = right_table_name
+
+                               )
+       
+        with open('mysql.sql', 'w') as f:
+           f.write(sjoin_sql_query)
+       
+       
+        con.execute(sjoin_sql_query)
+        
+        # Remove gbif geom point
+        con.execute(f"""ALTER TABLE {output_table_name} DROP COLUMN geom;""")
+        con.execute(f"""ALTER TABLE {output_table_name} RENAME COLUMN right_geom TO geom;""")
+
+        print('Spatial join complete, saving file...')
+
+        #con.execute('DROP TABLE IF EXISTS observations;')
+        #Save 
+        try:
+            con.execute(f"""
+                            COPY (
+                                SELECT *
+                                FROM {output_table_name}
+                            ) TO '{output_file_path}' (FORMAT 'parquet');
+                        """)
+            print(f'Successfuly saved {output_file_path}')
+            con.close()
+            return True
+
+        except Exception as e:
+            print(f'Failed to saved spatial join : {e}')
+            return False
+        
+        
+    elif not check_table_exists(left_table_name) and check_table_exists(right_table_name):
+        print(f"Left table {left_table_name} doesn't exists ")
+        return False
+    elif check_table_exists(left_table_name) and not check_table_exists(right_table_name):
+        print(f"Right table {right_table_name} doesn't exists ")
+        return False
+    else:
+        print(f"Tables {left_table_name}, {right_table_name} do not exist")
+        return False
+
+
+
 
 def grid_spatial_join(grid_file : Path = None, output_file_path : Path = None, test : bool = False, limit :int = None):
     #Redeclare connection variable
@@ -306,10 +418,10 @@ def gbif_spatial_joins(gbif_occurence_db_file :Path = None, force = False, test 
     if test:
         print('Running gbif prep as test')
         occurence_grid_file = OUTPUT_PATH / '_test_occurences_grid.parquet'
-        output_file_path = OUTPUT_PATH / '_test_gbif_with_parks.parquet'
+        quartier_joined_file = OUTPUT_PATH / '_test_gbif_with_parks.parquet'
     else:
         occurence_grid_file = OUTPUT_PATH / 'occurences_grid.parquet'
-        output_file_path = OUTPUT_PATH / 'gbif_with_parks.parquet'
+        quartier_joined_file = OUTPUT_PATH / 'gbif_with_parks.parquet'
 
     #Iterate over files to create tables
     for file in [grid_file, nbhood_file, park_file ]:
@@ -326,8 +438,7 @@ def gbif_spatial_joins(gbif_occurence_db_file :Path = None, force = False, test 
     if tables_creation_dict['grid'] and tables_creation_dict['observations']:
         if (occurence_grid_file.exists() and force) or (not occurence_grid_file.exists()):
 
-                grid_spatial_join(grid_file = grid_file, output_file_path = occurence_grid_file,
-                                test = test, limit = limit)
+                grid_spatial_join2(left_table_name = 'observations', right_table_name= 'grid', output_file_path = occurence_grid_file, test  = False, limit = None)
         else:
             print("Grid spatial join already done, skipping")
     

@@ -3,17 +3,13 @@ from pathlib import Path
 from matplotlib import pyplot as plt
 from shapely import wkb
 import geopandas as gpd
-from mtlBio.core import df_inspect
+from mtlBio.core import df_inspect, read_sql_file
 
 DB_PATH = Path("data/interim/gbif/")
 OUTPUT_PATH = Path("data/processed")
 SQL_PATH = Path("data/sql_queries")
 
-def read_sql_file(file_name):
-    with open(SQL_PATH / f'{file_name}.sql', 'r') as f:
-        park_metrics_sql = f.read()
-    
-    return park_metrics_sql
+
 
 
 def save_table(name, geographic_data = False, debug = False, con = None):

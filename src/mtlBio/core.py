@@ -1,10 +1,29 @@
 import geopandas as gpd
+from pathlib import Path
 import pandas as pd
 from shapely.geometry import Polygon, MultiPolygon, Point
 import pathlib
 import stat
 import tkinter as tk 
 from tkinter import filedialog
+from jinja2 import Template
+
+
+SQL_PATH = Path("data/sql_queries")
+
+def read_sql_template(file_name):
+    global SQL_PATH
+    with open(SQL_PATH / f'{file_name}.sql', 'r') as f:
+        sql_template = Template(f.read())
+        
+    return sql_template
+
+def read_sql_file(file_name):
+    global SQL_PATH
+    with open(SQL_PATH / f'{file_name}.sql', 'r') as f:
+        sql_query = f.read()
+    
+    return sql_query
 
 def select_file():
     root = tk.Tk()
