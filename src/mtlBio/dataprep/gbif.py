@@ -20,6 +20,27 @@ class DuckDBConnection:
         return cls._instance
 
 
+gbif_raw_col = """f.gbifID,
+                f.occurrenceID,
+                f.kingdom,
+                f.phylum,
+                f.class,
+                f.order,
+                f.family,
+                f.genus,
+                f.species,
+                f.taxonRank,
+                f.scientificName,
+                f.eventDate,
+                f.day,
+                f.month,
+                f.year,
+                f.taxonKey,
+                f.basisOfRecord,
+                f.license,
+                f.recordedBy,
+                """
+
 def check_table_exists(table_name = None):
     con = DuckDBConnection.get_connection()
   
@@ -160,25 +181,28 @@ def set_geom_bbox(table_name = None):
         print(f'Could not set bbox for table {table_name}: {e}')
         return False
 
-
 def create_gbif_table(gbif_occurence_db_file :Path = None, table_name = None, limit :int = None, test :bool = False):
     #Redeclare connection variable
     con = DuckDBConnection.get_connection()
-
+    global gbif_raw_col
     print('Creating gbif_observations table...')
     #Load gbif data
 
     #con.execute(f"CREATE OR REPLACE TABLE observations AS SELECT *, FROM '{gbif_occurence_db_file}'")
     if gbif_occurence_db_file is not None:
+        
+        query = f"""CREATE OR REPLACE TABLE {table_name} AS
+                SELECT {gbif_raw_col}
+                ST_Point(decimalLongitude, decimalLatitude) AS geom,
+                FROM '{gbif_occurence_db_file}' AS f
+                {'LIMIT ' + str(limit) if (test and limit is not None) or (limit is not None) else ''} """
+        
+        with open('tests/gbif_table.sql', 'w') as f:
+           f.write(query)
+           
+        
         try:
-            if test and limit is not None:
-                con.execute(f"CREATE OR REPLACE TABLE {table_name} AS SELECT *, ST_Point(decimalLongitude, decimalLatitude) AS geom FROM '{gbif_occurence_db_file}' LIMIT {limit}")
-            else:
-                if limit is not None:
-                    con.execute(f"CREATE OR REPLACE TABLE {table_name} AS SELECT *, ST_Point(decimalLongitude, decimalLatitude) AS geom FROM '{gbif_occurence_db_file}' LIMIT {limit}")
-                else:
-                    con.execute(f"CREATE OR REPLACE TABLE {table_name} AS SELECT *, ST_Point(decimalLongitude, decimalLatitude) AS geom FROM '{gbif_occurence_db_file}'")
-
+            con.execute(query)
             set_geom_bbox(table_name= table_name)
             return True 
         
@@ -255,7 +279,7 @@ def grid_spatial_join2(left_table_name : str = None, right_table_name: str = Non
         clean_joined_table_template = read_sql_template('clean_gbif_sjoin')
         clean_joined_table_query = clean_joined_table_template.render(output_table_name = output_table_name)
         
-        with open('mysql.sql', 'w') as f:
+        with open('tests/mysql.sql', 'w') as f:
            f.write(clean_joined_table_query)
            
         
@@ -291,81 +315,6 @@ def grid_spatial_join2(left_table_name : str = None, right_table_name: str = Non
         return False
     else:
         print(f"Tables {left_table_name}, {right_table_name} do not exist")
-        return False
-
-
-
-
-def grid_spatial_join(grid_file : Path = None, output_file_path : Path = None, test : bool = False, limit :int = None):
-    #Redeclare connection variable
-    con = DuckDBConnection.get_connection()
-    # Set final table name from expected output path name
-    output_table_name = output_file_path.stem
-
-    # SEt limit for tmp files on disk
-    con.execute("PRAGMA max_temp_directory_size='25GiB';")
-
-    #Spatial Join 
-    print("Grid spatial join")
-
-    con.execute(f"""
-                
-                CREATE OR REPLACE TABLE {output_table_name} AS
-                SELECT o.gbifID,
-                o.occurrenceID,
-                o.kingdom,
-                o.phylum,
-                o.class,
-                o.order,
-                o.family,
-                o.genus,
-                o.species,
-                o.taxonRank,
-                o.scientificName,
-                o.eventDate,
-                o.day,
-                o.month,
-                o.year,
-                o.taxonKey,
-                o.basisOfRecord,
-                o.license,
-                o.recordedBy,
-                o.geom,
-
-                {create_shp_file_field_sql(grid_file, alias = 'g')}
-                g.geom AS grid_geom,
-
-                FROM observations o
-                LEFT JOIN grid g
-                    ON o.maxx >= ST_XMIN(g.geom)
-                    AND o.minx <= ST_XMAX(g.geom)
-                    AND o.maxy >= ST_YMIN(g.geom)
-                    AND o.miny <= ST_YMAX(g.geom)
-                    AND ST_Within(o.geom, g.geom) -- Spatial join predicate
-                ;
-                """)
-    
-    # Remove gbif geom point
-    con.execute(f"""ALTER TABLE {output_table_name} DROP COLUMN geom;""")
-    con.execute(f"""ALTER TABLE {output_table_name} RENAME COLUMN grid_geom TO geom;""")
-
-    print('Spatial join complete, saving file...')
-
-    con.execute('DROP TABLE IF EXISTS observations;')
-    #Save 
-    try:
-        con.execute(f"""
-                        COPY (
-                            SELECT *
-                            FROM {output_table_name}
-                        ) TO '{output_file_path}' (FORMAT 'parquet');
-                    """)
-        print(f'Successfuly saved {output_file_path}')
-        con.close()
-        return True
-
-    except Exception as e:
-        print(f'Failed to saved spatial join : {e}')
         return False
 
 
