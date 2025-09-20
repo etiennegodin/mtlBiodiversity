@@ -2,8 +2,8 @@ import duckdb
 from pathlib import Path 
 import geopandas as gpd
 import pandas as pd 
-from ..core import select_file
-from ..dataprep import target_crs
+from mtlParkBiodiversity.core import select_file
+from mtlParkBiodiversity.dataprep import target_crs
 
 # GLOBAL VAR
 
@@ -118,7 +118,6 @@ def set_geom_bbox(table_name = None):
         return False
 
 
-
 def create_gbif_table(gbif_occurence_db_file :Path = None, table_name = None, limit :int = None, test :bool = False):
     #Redeclare connection variable
     con = DuckDBConnection.get_connection()
@@ -150,9 +149,7 @@ def create_table_from_shp(file_path : Path = None, table_name :str = None, limit
     """
     Create duckdb tables for observations, grid, parks, nbhood
     """
-
     table_created = None
-
     #Redeclare connection variable
     con = DuckDBConnection.get_connection()
     # Install spatial extension 
@@ -175,19 +172,17 @@ def create_table_from_shp(file_path : Path = None, table_name :str = None, limit
     if table_created is not None:
         return table_created
 
-def grid_spatial_join(grid_file : Path = None, output_file_path : Path = None, test : bool = False, limit :int = None, colab : bool= False):
+def grid_spatial_join(grid_file : Path = None, output_file_path : Path = None, test : bool = False, limit :int = None):
     #Redeclare connection variable
     con = DuckDBConnection.get_connection()
     # Set final table name from expected output path name
     output_table_name = output_file_path.stem
-    # Create a connection (in-memory or persistent)
-    if colab:
-        con.execute("PRAGMA max_temp_directory_size='60GiB';")
-    else:
-        con.execute("PRAGMA max_temp_directory_size='25GiB';")
+
+    # SEt limit for tmp files on disk
+    con.execute("PRAGMA max_temp_directory_size='25GiB';")
 
     #Spatial Join 
-    print("Spatial join")
+    print("Grid spatial join")
 
     con.execute(f"""
                 
@@ -208,7 +203,6 @@ def grid_spatial_join(grid_file : Path = None, output_file_path : Path = None, t
                 o.month,
                 o.year,
                 o.taxonKey,
-                o.identifiedBy,
                 o.basisOfRecord,
                 o.license,
                 o.recordedBy,
@@ -250,65 +244,82 @@ def grid_spatial_join(grid_file : Path = None, output_file_path : Path = None, t
         print(f'Failed to saved spatial join : {e}')
         return False
 
-def prep_gbif(force = False, test = False, colab = False, limit = None):
 
-    tables_creation_dict =  {}
+def prep_gbif_data(force = False, test = False, limit = None):
+    """Create .parquet file from gbif obsrvations csv file
 
-    if colab:
-        RAW_DATA_PATH = Path("/content/gdrive/MyDrive/mtlParkBiodiversity/data/raw/gbif")
-        OUTPUT_PATH = Path("/content/gdrive/MyDrive/mtlParkBiodiversity/data/interim/gbif")
-        GEOSPATIAL_PATH = Path("/content/mtlParkBiodiversity/data/interim/geospatial")
-    else:
-        RAW_DATA_PATH = Path("data/raw/gbif")
-        OUTPUT_PATH = Path("data/interim/gbif")
-        GEOSPATIAL_PATH = Path("data/interim/geospatial")
+    Args:
+        force (bool, optional): _description_. Defaults to False.
+        test (bool, optional): _description_. Defaults to False.
+        limit (_type_, optional): _description_. Defaults to None.
+    """
+    RAW_DATA_PATH = Path("data/raw/gbif")
+    OUTPUT_PATH = Path("data/interim/gbif")
+    gbif_occurence_db_file = None
 
-        Path.mkdir(OUTPUT_PATH, exist_ok= True)
-        gbif_occurence_raw_file = [f for f in RAW_DATA_PATH.rglob("*.csv")][0]  # Assuming there's only one .csv file for the gbif data
-    
-
-    grid_file, nbhood_file, park_file = find_geospatial_fies(GEOSPATIAL_PATH)
-    print(grid_file, nbhood_file, park_file)
-    # Create output directory if not existing
-    #park_file =  [f for f in GEOSPATIAL_PATH.rglob("*.shp")][0]  # Assuming there's only one .shp file for the park data
-
+        
     if test:
         print('Running gbif prep as test')
         gbif_occurence_db_file = OUTPUT_PATH / '_test_gbif_data.parquet'
-        occurence_grid_file = OUTPUT_PATH / '_test_occurences_grid.parquet'
-
-        output_file_path = OUTPUT_PATH / '_test_gbif_with_parks.parquet'
     else:
         gbif_occurence_db_file = OUTPUT_PATH / 'gbif_data.parquet'
+
+    gbif_occurence_raw_file = [f for f in RAW_DATA_PATH.rglob("*.csv")][0]  # Assuming there's only one .csv file for the gbif data
+    
+    
+    # Check if csv has been converted to parquet file
+    if (gbif_occurence_db_file.exists() and force) or (not gbif_occurence_db_file.exists()) :
+        convert_gbif_csv(gbif_occurence_raw_file, gbif_occurence_db_file, force = force, test = test, limit = limit)
+    else:
+        print("Convert_gbif_csv already done, skipping")
+
+def gbif_spatial_joins(gbif_occurence_db_file :Path = None, force = False, test = False, limit = None):
+    """Performs main geospatial joins of gbif observation to set of shp files
+
+    Args:
+        gbif_occurence_db_file (Path, optional): _description_. Defaults to None.
+        force (bool, optional): _description_. Defaults to False.
+        test (bool, optional): _description_. Defaults to False.
+        limit (_type_, optional): _description_. Defaults to None.
+    """
+    tables_creation_dict =  {}
+
+    OUTPUT_PATH = Path("data/interim/joined")
+    GEOSPATIAL_PATH = Path("data/interim/geospatial")
+
+    # Find all expected geospatial files
+    grid_file, nbhood_file, park_file = find_geospatial_fies(GEOSPATIAL_PATH)
+    print(grid_file, nbhood_file, park_file)
+
+    if test:
+        print('Running gbif prep as test')
+        occurence_grid_file = OUTPUT_PATH / '_test_occurences_grid.parquet'
+        output_file_path = OUTPUT_PATH / '_test_gbif_with_parks.parquet'
+    else:
         occurence_grid_file = OUTPUT_PATH / 'occurences_grid.parquet'
-
         output_file_path = OUTPUT_PATH / 'gbif_with_parks.parquet'
-
-    # Skipping this step as parquet file is upoaded to colab directly
-    if not colab:
-        # Check if csv has been converted to parquet file
-        if (gbif_occurence_db_file.exists() and force) or (not gbif_occurence_db_file.exists()) :
-            convert_gbif_csv(gbif_occurence_raw_file, gbif_occurence_db_file, force = force, test = test, limit = limit)
-        else:
-            print("Convert_gbif_csv already done, skipping")
 
     #Iterate over files to create tables
     for file in [grid_file, nbhood_file, park_file ]:
         table_name = file.stem.split(sep= "_")[0] #Set table name as first word of file name
         created = create_table_from_shp(file_path= file, table_name=table_name , limit = limit, test = test)
         tables_creation_dict[table_name] = created
+    print(gbif_occurence_db_file)
+    
+    import pdb; pdb.set_trace()
 
-    created = create_gbif_table(gbif_occurence_db_file = gbif_occurence_db_file, table_name= 'observations', limit = limit, test = test)
-    tables_creation_dict['observations'] = created
+    if gbif_occurence_db_file is not None:
+        created = create_gbif_table(gbif_occurence_db_file = gbif_occurence_db_file, table_name= 'observations', limit = limit, test = test)
+        tables_creation_dict['observations'] = created
 
     if tables_creation_dict['grid'] and tables_creation_dict['observations']:
         if (occurence_grid_file.exists() and force) or (not occurence_grid_file.exists()):
 
                 grid_spatial_join(grid_file = grid_file, output_file_path = occurence_grid_file,
-                                test = test, limit = limit, colab = colab)
+                                test = test, limit = limit)
         else:
             print("Grid spatial join already done, skipping")
     
 if __name__ == "__main__":
 
-    prep_gbif(force= True)
+    pass

@@ -1,12 +1,11 @@
 import geopandas as gpd
 from pathlib import Path
-from ..core import convert_crs
-from ..column_mapper import unify_columns
+from mtlParkBiodiversity.core import convert_crs
+from mtlParkBiodiversity.column_mapper import unify_columns
 from . import target_crs
 
 RAW_DATA_PATH = Path("data/raw" )
 OUTPUT_PATH = Path("data/interim/geospatial")
-
 GEOSPATIAL_DATA_COL = ['geospatial_id', 'geospatial_name', 'geospatial_type1', 'geometry']
 
 #Read boundary file 

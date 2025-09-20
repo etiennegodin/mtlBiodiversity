@@ -2,14 +2,15 @@ import argparse
 import subprocess
 from pathlib import Path
 import sys
-from .core import raw_data_read_only
-from .dataprep.gbif import prep_gbif
-from .dataprep.geospatial import prep_geospatial
-from .metrics.main import process_all_metrics
+from mtlParkBiodiversity.core  import raw_data_read_only
+from mtlParkBiodiversity.dataprep.gbif import prep_gbif_data, gbif_spatial_joins
+from mtlParkBiodiversity.dataprep.geospatial import prep_geospatial
+from mtlParkBiodiversity.metrics.main import process_all_metrics
 #from .dashboard.app import run_app
+
+
 def run_prep(force = False, test = False, limit = None, colab = False):
     print("Running data prep...")
-
 
     if force:
         user_force = input("You have chosen to force re-run GBIF data prep. This may take a while. Do you want to continue? (y/n): ")
@@ -26,7 +27,11 @@ def run_geospatial(force = False):
     prep_geospatial(force = force)
 
 def run_gbif(force = False, test = False, limit = None, colab = False):
-    prep_gbif(force =force, test =test, limit =limit, colab =colab)
+    
+    gbif_occurence_db_file = prep_gbif_data(force =force, test =test, limit =limit)
+    gbif_spatial_joins(gbif_occurence_db_file = gbif_occurence_db_file, force =force, test =test, limit =limit)
+
+
 
 def run_metrics(force = False, test = False, limit = None):
     print("Running Aggregate Metrics...")
@@ -39,10 +44,11 @@ def run_app():
     app_folder = Path(__file__).parent.parent.parent
     # Run Streamlit app with streamlit subprocess
     subprocess.run([sys.executable, "-m", "streamlit", "run", f"{app_folder}/streamlit_app.py"])
+    
 def main():
 
     raw_data_read_only('data/raw', debug = False)
-
+    print('hey')
     parser = argparse.ArgumentParser()
     parser.add_argument("command", choices=["geo", "gbif", "metrics", "app", 'full'])
     # optional flag: --force
@@ -52,7 +58,6 @@ def main():
         help="Force re-run of data prep even if processed files exist"
     )
     parser.add_argument("--test", action= 'store_true', help = 'Run in test mode')
-    parser.add_argument("--colab", action= 'store_true', help = 'Run in colab')
     parser.add_argument("--limit", type= int, help = 'Limit the number of rows processed (for testing purposes)')
 
     args = parser.parse_args()
@@ -62,13 +67,13 @@ def main():
         args.limit = 1000
     if args.command == 'full':
         run_geospatial(force = args.force)
-        run_gbif(force = args.force, test = args.test, limit = args.limit, colab = args.colab)
+        run_gbif(force = args.force, test = args.test, limit = args.limit)
         run_metrics(force = args.force, test = args.test, limit = args.limit)
         run_app()
     elif args.command == "geo":
         run_geospatial(force = args.force)
     elif args.command == "gbif":
-        run_gbif(force = args.force, test = args.test, limit = args.limit, colab = args.colab)
+        run_gbif(force = args.force, test = args.test, limit = args.limit)
     elif args.command == "metrics":
         run_metrics(force = args.force, test = args.test, limit = args.limit)
     elif args.command == "app":
