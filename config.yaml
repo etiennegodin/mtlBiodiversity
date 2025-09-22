@@ -3,3 +3,11 @@ raw_dir: "data/raw"
 interim_dir : "data/interim"
 processed_dir: "data/processed"
 db_dir: "data/db"
+
+geo_samples:
+  grid:
+    file: "data/raw/geospatial/grid.shp"
+  parks:
+    file: "data/raw/geospatial/parks.shp"
+  quartiers:
+    file: "data/raw/geospatial/quartiers.shp"
