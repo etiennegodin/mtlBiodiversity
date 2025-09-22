@@ -4,12 +4,23 @@ import pandas as pd
 from shapely.geometry import Polygon, MultiPolygon, Point
 import pathlib
 import stat
+import duckdb
 import tkinter as tk 
 from tkinter import filedialog
 from jinja2 import Template
 
 
 SQL_PATH = Path("data/sql_queries")
+
+class DuckDBConnection:
+    _instance = None
+
+    @classmethod
+    def get_connection(cls):
+        if cls._instance is None:
+            cls._instance = duckdb.connect("data\db\mtlBio.duckdb")
+        return cls._instance
+
 
 
 def find_files(folder_path: Path, expected_files : list = None, suffix = None, debug :bool= False):
@@ -63,7 +74,7 @@ def find_files(folder_path: Path, expected_files : list = None, suffix = None, d
 
 
 
-def read_sql_template(file_name):
+def read_sql_template(file_name : str = None):
     global SQL_PATH
     with open(SQL_PATH / f'{file_name}.sql', 'r') as f:
         sql_template = Template(f.read())

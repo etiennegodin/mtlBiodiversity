@@ -3,7 +3,7 @@ from pathlib import Path
 from matplotlib import pyplot as plt
 from shapely import wkb
 import geopandas as gpd
-from mtlBio.core import df_inspect, read_sql_file
+from mtlBio.core import df_inspect, read_sql_file, find_files
 
 DB_PATH = Path("data/interim/joined/")
 OUTPUT_PATH = Path("data/processed")
@@ -121,16 +121,11 @@ species_count_query = """
 
 
 def park_metrics(force = False, test = False, limit = None):
-
-    if test:
-        db_file_path = DB_PATH / "_test_gbif_with_parks.parquet"
-    else:
-        db_file_path = DB_PATH / "gbif_with_parks.parquet"
-
+    global DB_PATH
+    files = [f for f in DB_PATH.rglob("*")]
+             
     # Create a connection (in-memory or persistent)
     con = duckdb.connect('data/db/parks_metrics.duckdb') 
-
-
 
     print("Loading gbif with parks data")
 

@@ -12,6 +12,9 @@ plotly
 shapely
 argparse
 folium
+jinja2
+dotenv
+snakemake
 
 [dev]
 pytest

@@ -14,8 +14,11 @@ src/mtlBio/dataprep/__init__.py
 src/mtlBio/dataprep/eco.py
 src/mtlBio/dataprep/gbif.py
 src/mtlBio/dataprep/geospatial.py
+src/mtlBio/metrics/config.py
 src/mtlBio/metrics/main.py
-src/mtlBio/metrics/park_metrics.py
+src/mtlBio/metrics/old_park_metrics copy.py
+src/mtlBio/metrics/old_park_metrics.py
 src/mtlBio/test/__init__.py
 src/mtlBio/test/test1.py
+src/mtlBio/test/test_db.py
 src/mtlBio/test/tinter.py

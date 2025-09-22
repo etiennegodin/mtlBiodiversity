@@ -2,21 +2,15 @@ import duckdb
 from pathlib import Path 
 import geopandas as gpd
 import pandas as pd 
-from mtlBio.core import select_file, read_sql_template, find_files
+from mtlBio.core import select_file, read_sql_template, find_files, DuckDBConnection
 from mtlBio.dataprep import target_crs
 
 # GLOBAL VAR
 tables_creation_dict = {}
+
 # Create connection and store as class object
 # Get's initialise first time it's called, otherwise object is just passed along
-class DuckDBConnection:
-    _instance = None
 
-    @classmethod
-    def get_connection(cls):
-        if cls._instance is None:
-            cls._instance = duckdb.connect("data\db\gbif_spatial_join.duckdb")
-        return cls._instance
 
 
 gbif_raw_col = """f.gbifID,
@@ -358,7 +352,7 @@ def gbif_spatial_joins(gbif_occurence_db_file :Path = None, force = False, test 
     GEOSPATIAL_PATH = Path("data/interim/geospatial")
 
     # Find all expected geospatial files
-    grid_file, nbhood_file, park_file = find_geospatial_fies(GEOSPATIAL_PATH)
+    #grid_file, nbhood_file, park_file = find_geospatial_fies(GEOSPATIAL_PATH)
     files = find_files(folder_path= GEOSPATIAL_PATH, expected_files= ['grid', 'quartiers', 'park'], suffix= '.shp')
     
     print(files)
@@ -372,7 +366,7 @@ def gbif_spatial_joins(gbif_occurence_db_file :Path = None, force = False, test 
         quartier_joined_file = OUTPUT_PATH / 'occurences_quartiers.parquet'
 
     #Iterate over files to create tables
-    for file in [grid_file, nbhood_file, park_file ]:
+    for file in files:
         table_name = file.stem.split(sep= "_")[0] #Set table name as first word of file name
         created = create_table_from_shp(file_path= file, table_name=table_name , limit = limit, test = test)
         tables_creation_dict[table_name] = created

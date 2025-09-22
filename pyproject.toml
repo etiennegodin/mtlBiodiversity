@@ -7,7 +7,7 @@ where = ["src"]
 
 [project]
 name = "mtlBio"
-version = "0.0.4"
+version = "0.0.5"
 description = "MTL Biodiversity Project"
 authors = [{ name="Etienne Godin", email="etiennegodin@duck.com" }]
 dependencies = [
@@ -25,7 +25,10 @@ dependencies = [
     'shapely',
     'argparse',
     'folium',
-    'jinja2'
+    'jinja2',
+    'dotenv',
+    'snakemake'
+
 ]
 
 [project.optional-dependencies]

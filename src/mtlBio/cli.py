@@ -2,6 +2,7 @@ import argparse
 import subprocess
 from pathlib import Path
 import sys
+from config import configs
 from mtlBio.core  import raw_data_read_only
 from mtlBio.dataprep.gbif import prep_gbif_data, gbif_spatial_joins
 from mtlBio.dataprep.geospatial import prep_geospatial
@@ -53,7 +54,7 @@ def launch_debugger():
     debugpy.wait_for_client()  # Pause until VS Code connects
     
 def main():
-    raw_data_read_only('data/raw', debug = False)
+        
     parser = argparse.ArgumentParser()
     parser.add_argument("command", choices=["geo", "gbif", 'sjoin', "metrics", "app", 'full'])
     # optional flag: --force
@@ -71,8 +72,7 @@ def main():
         launch_debugger()
     # Default limit to 1000 if test mode is on and limit is not specified
     if args.limit is None:
-        args.limit = 1000
-    if args.command == 'full':
+        args.limit = configs.limit
         run_geospatial(force = args.force)
         run_gbif(force = args.force, test = args.test, limit = args.limit)
         run_metrics(force = args.force, test = args.test, limit = args.limit)

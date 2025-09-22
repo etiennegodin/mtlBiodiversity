@@ -74,6 +74,8 @@ def list_gpgk_layers(file : Path, slice : tuple = None):
 
 def prep_geospatial(force = False):
 
+    
+    
     # Create output directory if not existing
     Path.mkdir(OUTPUT_PATH, exist_ok= True)
 
