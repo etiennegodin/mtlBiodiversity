@@ -9,7 +9,6 @@ import tkinter as tk
 from tkinter import filedialog
 from jinja2 import Template
 
-
 SQL_PATH = Path("data/sql_queries")
 
 class DuckDBConnection:
@@ -22,7 +21,10 @@ class DuckDBConnection:
         return cls._instance
 
 
-
+def convertToPath(file_path: str):
+    path = Path(file_path)
+    return path
+    
 def find_files(folder_path: Path, expected_files : list = None, suffix = None, debug :bool= False):
     files_found = []
     files_not_found = []

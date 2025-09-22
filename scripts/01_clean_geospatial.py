@@ -3,4 +3,4 @@ from mtlBio.dataprep.geospatial import process_shp
 
 
 
-#test
+process_shp(input_file = snakemake.input[0], output_file = snakemake.output[0], col_mapping = snakemake.params.colmap)

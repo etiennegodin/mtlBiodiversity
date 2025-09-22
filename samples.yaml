@@ -1,0 +1,24 @@
+
+samples:
+  grid:
+    file: "data/raw/grid.shp"
+    column_map:
+      grid_id: "id"
+      geometry: "geometry"
+
+  parks:
+    file: "data/raw/parks.shp"
+    column_map:
+      park_id: "OBJECTID"
+      park_name: "Nom"
+      park_type1: "TYPO1"
+      park_type2: "TYPO2"
+      park_area: "SUPERFICIE"
+      geometry: "geometry"
+
+  quartiers:
+    file: "data/raw/quartiers.shp"
+    column_map:
+      qrt_id: "no_qr"
+      qrt_name: "nom_qr"
+      qrt_arr: "nom_arr      

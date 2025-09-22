@@ -1,14 +1,16 @@
 
 .vscode/
+.snakemake/
 .tmp/
 build/
 
-#geodata files 
+#file type
 *.zip
 *.dbf
+*.db
 *.tif
 *.gpkg
-
-#qgis
+*.env
+*.config.yaml
 *.qgz
 *.xlsx
