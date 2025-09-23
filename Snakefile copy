@@ -7,20 +7,11 @@ interim_dir = data_dir / "interim"
 processed_dir = data_dir / "processed"
 db_dir = data_dir / "db"
 
-raw_shp_path = raw_dir / "geospatial"
-int_shp_path = interim_dir / "geospatial"
-
-raw_gbif_path = raw_dir / "gbif" 
-int_gbif_path = interim_dir / "gbif" 
-
 scripts_dir = Path("scripts")
 
 # Extract shapefile names from config
-shapefile_names = [f.stem for f in raw_shp_path.glob("*.shp")]
-gbif_raw_file = [f.stem for f in raw_gbif_path.glob("*.csv")][0]
-
-print(gbif_raw_file)
-print(shapefile_names)
+shapefile_names = [s["name"] for s in config["shapefiles"]]
+#        expand(processed_dir / "{shapefile}_joined.parquet", shapefile=shapefile_names)
 
 rule all:
     input:
@@ -28,9 +19,9 @@ rule all:
 
 rule load_gbif_data:
     input:
-        raw_gbif_path / f"{gbif_raw_file}.csv"
+        raw_dir / "gbif/gbif_occurences.csv"
     output:
-        int_gbif_path / "gbif_data.parquet"
+        interim_dir / "gbif/gbif_data.parquet"
     params:
         limit = config.get("limit", None)
     script:
@@ -38,19 +29,21 @@ rule load_gbif_data:
 
 rule clean_shapefiles:
     input:
-        expand("{raw_shp_path}/{shapefile}.shp", shapefile=shapefile_names, raw_shp_path = raw_shp_path)
+        lambda wildcards: next(
+            Path(s["path"]) for s in config["shapefiles"]
+            if s["name"] == wildcards.shapefile
+        )
     output:
-        expand("{int_shp_path}/{shapefile}_clean.shp", shapefile=shapefile_names, int_shp_path = int_shp_path)
+        interim_dir / 'geospatial' / f"{shapefile}_clean.shp"
     params:
         crs = config["target_crs"]
     script:
         scripts_dir / "02_clean_shapefiles.py"
 
-
 rule create_duckdb:
     input:
-        expand("{int_shp_path}/{shapefile}_clean.shp", shapefile=shapefile_names, int_shp_path = int_shp_path),
-        int_gbif_path / "gbif_data.parquet"
+        expand(interim_dir / "geospatial" / "{shapefile}_clean.shp", shapefile=shapefile_names),
+        interim_dir / "gbif/gbif_data.parquet"
     output:
         config["duckdb_file"]
     params:
@@ -58,5 +51,6 @@ rule create_duckdb:
         db_name = config["duckdb_file"]
     script:
         scripts_dir / "03_createDuckdb.py"
+
 
 

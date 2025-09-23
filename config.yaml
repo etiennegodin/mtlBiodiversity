@@ -7,7 +7,7 @@ db_dir: "data/db"
 limit: 1000
 target_crs: 4326
 
-
+duckdb_file: "data/db/mtlBio.duckdb"
 
 shapefiles:
   - name: "grid"
