@@ -27,7 +27,9 @@ def main(input_file :str = None, output_file :str = None, crs = None):
         mapping = json.load(f)
     print(mapping)
     #Remap col name
-    gdf = gdf.rename(mapping)
+    gdf = gdf.rename(columns=mapping)
+    
+    print(gdf.columns)
 
     print('Geospatial data processed, saving')
     # Convert to target crs before saving 
