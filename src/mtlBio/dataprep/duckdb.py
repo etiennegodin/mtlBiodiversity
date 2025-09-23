@@ -25,12 +25,13 @@ def set_geom_bbox(table_name = None):
 
 
 
-def create_table_from_shp(file_path : Path = None, limit : int= None):
+def create_table_from_shp(file_path : Path = None):
     """
     Create duckdb tables for observations, grid, parks, nbhood
     """
     #Redeclare connection variable
-    con = DuckDBConnection.get_connection()
+    db = DuckDBConnection()
+    con = db.conn
     # Install spatial extension 
     con.execute("INSTALL spatial;")
     con.execute("LOAD spatial;")
@@ -49,9 +50,12 @@ def create_table_from_shp(file_path : Path = None, limit : int= None):
 
     except Exception as e:
         print(f'Could not create table for {table_name}: {e}')
-
+    
 
 def create_gbif_table(gbif_data_path :Path = None, limit :int = None):
+    
+    db = DuckDBConnection()
+    con = db.conn
     
     gbif_data_path = convertToPath(gbif_data_path)
     table_name = gbif_data_path.stem
@@ -78,7 +82,6 @@ def create_gbif_table(gbif_data_path :Path = None, limit :int = None):
                 """
     
     #Redeclare connection variable
-    con = DuckDBConnection.get_connection()
     
     print('Creating gbif_observations table...')
     #Load gbif data
@@ -94,10 +97,9 @@ def create_gbif_table(gbif_data_path :Path = None, limit :int = None):
         try:
             con.execute(query)
             set_geom_bbox(table_name= table_name)
-            return True 
         
         except Exception as e:
             print('Failed to create gbif')
             print(e)
-            return False
-        
+
+    

@@ -63,7 +63,7 @@ rule create_duckdb:
 
 rule spatial_joins:
     input:
-        config["duckdb_file"]
+        expand(int_shp_path/"{shapefile}", shapefile=shapefile_names)
     output:
         config["duckdb_file"]
     script:
