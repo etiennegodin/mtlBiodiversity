@@ -23,7 +23,7 @@ gbif_raw_file = [f.stem for f in raw_gbif_path.glob("*.csv")][0]
 
 print(gbif_raw_file)
 print(shapefile_names)
-print(shapefile_paths)
+print(int_shp_path)
 
 rule all:
     input:
@@ -41,18 +41,17 @@ rule load_gbif_data:
 
 rule clean_shapefiles:
     input:
-        shapefile=lambda wildcards: f"raw_shp_path/{wildcards.shapefile}.shp"
+        shapefile=lambda wildcards: f"{raw_shp_path}/{wildcards.shapefile}.shp"
     output:
-        cleaned="int_shp_path/{shapefile}_clean.shp"
+        cleaned=int_shp_path/"{shapefile}_clean.shp"
     params:
         crs = config["target_crs"]
     script:
         scripts_dir / "02_clean_shapefiles.py"
-"""
 
 rule create_duckdb:
     input:
-        expand("{int_shp_path}/{shapefile}_clean.shp", shapefile=shapefile_names, int_shp_path = int_shp_path),
+        expand(int_shp_path/"{shapefile}_clean.shp", shapefile=shapefile_names),
         int_gbif_path / "gbif_data.parquet"
     output:
         config["duckdb_file"]
@@ -61,5 +60,4 @@ rule create_duckdb:
         db_name = config["duckdb_file"]
     script:
         scripts_dir / "03_createDuckdb.py"
-"""
 
