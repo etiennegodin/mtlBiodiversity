@@ -46,7 +46,7 @@ def import_gbif_csv(input_path, output_path, limit = None):
     if query is not None:
         try:
             duckdb.query(query)
-            return True
+            print('-'*25,'Successfuly convert gbif csv data to parquet','-'*25, '\n')
         except Exception as e:
             print(f"Failed to convert csv to parquet: {e}")
             return False

@@ -15,7 +15,7 @@ class DuckDBConnection:
     _instance = None
 
     @classmethod
-    def get_connection(cls, file):
+    def get_connection(cls, file:str = None):
         if cls._instance is None:
             cls._instance = duckdb.connect(file)
         return cls._instance
