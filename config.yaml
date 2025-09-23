@@ -3,6 +3,7 @@ raw_dir: "data/raw"
 interim_dir : "data/interim"
 processed_dir: "data/processed"
 db_dir: "data/db"
+limit: 1000
 
 geo_samples:
   grid:
@@ -11,3 +12,4 @@ geo_samples:
     file: "data/raw/geospatial/parks.shp"
   quartiers:
     file: "data/raw/geospatial/quartiers.shp"
+

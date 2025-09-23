@@ -2,7 +2,7 @@ import duckdb
 from pathlib import Path 
 import geopandas as gpd
 import pandas as pd 
-from mtlBio.core import select_file, read_sql_template, find_files, DuckDBConnection
+from mtlBio.core import select_file, read_sql_template, find_files, DuckDBConnection, convertToPath
 from mtlBio.dataprep import target_crs
 
 # GLOBAL VAR
@@ -89,16 +89,15 @@ def find_geospatial_fies(GEOSPATIAL_PATH: Path, debug :bool= False):
     return grid_file, nbhood_file, park_file
 
 
-def convert_gbif_csv(input_path, output_path, force = False, test = False, limit = None):
+def convert_gbif_csv(input_path, output_path, limit = None):
 
     query = None
     
-    if test:
-        print(f'Converting to {input_path} to {output_path} file with limit set to {limit} ')
-        query = f"COPY (SELECT * FROM '{input_path}' LIMIT {limit}) TO '{output_path}' (FORMAT PARQUET)"
-    else: 
-        print(f'Converting to {input_path} to {output_path} file ')
-        query = f"COPY (SELECT * FROM '{input_path}') TO '{output_path}' (FORMAT PARQUET)"
+    input_path = convertToPath(input_path)
+    output_path = convertToPath(output_path)
+
+    print(f'Converting to {input_path} to {output_path} file with limit set to {limit} ')
+    query = f"COPY (SELECT * FROM '{input_path}' {'LIMIT ' + str(limit) if (limit is not None) else ''}) TO '{output_path}' (FORMAT PARQUET)"
         
     if query is not None:
         try:
