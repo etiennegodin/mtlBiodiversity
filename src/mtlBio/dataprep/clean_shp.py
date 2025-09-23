@@ -29,7 +29,8 @@ def main(input_file :str = None, output_file :str = None, crs = None):
     #Remap col name
     gdf = gdf.rename(columns=mapping)
     
-    print(gdf.columns)
+    # Keep only specified columns
+    gdf = gdf[list(mapping.values())]     
 
     print('Geospatial data processed, saving')
     # Convert to target crs before saving 
