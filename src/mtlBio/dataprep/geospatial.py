@@ -14,7 +14,7 @@ def save_gdf(gdf, output_file_path):
         print(f"Failed to save {output_file_path.stem} : {e}")
         return False
 
-def process_shp(input_file :str = None, output_file :str = None):
+def process_shp(input_file :str = None, output_file :str = None, crs = None):
 
     input_path = convertToPath(input_file)
     output_path = convertToPath(output_file)
@@ -32,7 +32,7 @@ def process_shp(input_file :str = None, output_file :str = None):
 
     print('Geospatial data processed, saving')
     # Convert to target crs before saving 
-    gdf_out = convert_crs(gdf, target_crs = target_crs)
+    gdf_out = convert_crs(gdf, target_crs = crs)
     if not save_gdf(gdf_out,output_path):
         return False
     return True

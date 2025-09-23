@@ -2,8 +2,7 @@ import duckdb
 from pathlib import Path 
 import geopandas as gpd
 import pandas as pd 
-from mtlBio.core import select_file, read_sql_template, find_files, DuckDBConnection, convertToPath
-from mtlBio.dataprep import target_crs
+from mtlBio.core import read_sql_template, find_files, DuckDBConnection, convertToPath
 
 # GLOBAL VAR
 tables_creation_dict = {}
@@ -12,27 +11,6 @@ tables_creation_dict = {}
 # Get's initialise first time it's called, otherwise object is just passed along
 
 
-
-gbif_raw_col = """f.gbifID,
-                f.occurrenceID,
-                f.kingdom,
-                f.phylum,
-                f.class,
-                f.order,
-                f.family,
-                f.genus,
-                f.species,
-                f.taxonRank,
-                f.scientificName,
-                f.eventDate,
-                f.day,
-                f.month,
-                f.year,
-                f.taxonKey,
-                f.basisOfRecord,
-                f.license,
-                f.recordedBy,
-                """
 
 def check_table_exists(table_name = None):
     con = DuckDBConnection.get_connection()
@@ -54,42 +32,8 @@ def inspect_table(table_name :str = None):
     df = con.execute(f"SELECT * FROM {table_name}").df()
     print(df)
 
-def find_geospatial_fies(GEOSPATIAL_PATH: Path, debug :bool= False):
 
-    grid_file = None
-    park_file = None
-    nbhood_file = None
-
-    geospatial_files = [f for f in GEOSPATIAL_PATH.rglob("*") if f.suffix in ['.shp', '.gpkg']]
-
-    print(f"Found {len(geospatial_files)} file in {GEOSPATIAL_PATH}")
-    for file in geospatial_files:
-        if debug:
-            print(file.stem.lower())
-
-        if "grid" in file.stem.lower():
-            grid_file = file 
-        elif "park" in file.stem.lower():
-            park_file = file 
-        elif "quartier" in file.stem.lower():
-            nbhood_file = file 
-    
-    if grid_file is None:
-        print(f'Grid file not found in {GEOSPATIAL_PATH}, please provide')
-        grid_file = select_file()
-
-    if park_file is None:
-        print(f'Park file not found in {GEOSPATIAL_PATH}, please provide')
-        park_file = select_file()
-
-    if nbhood_file is None:
-        print(f'Neighborhood file not found in {GEOSPATIAL_PATH}, please provide')
-        nbhood_file = select_file()
-    
-    return grid_file, nbhood_file, park_file
-
-
-def convert_gbif_csv(input_path, output_path, limit = None):
+def import_gbif_csv(input_path, output_path, limit = None):
 
     query = None
     
@@ -106,6 +50,7 @@ def convert_gbif_csv(input_path, output_path, limit = None):
         except Exception as e:
             print(f"Failed to convert csv to parquet: {e}")
             return False
+
         
 def assign_table_alias(columns: list = None, alias :str = None):
     query = """"""
@@ -113,7 +58,6 @@ def assign_table_alias(columns: list = None, alias :str = None):
         col_new = f'{alias}.{col}'
         query += f"{col_new},\n\t\t\t\t"
     return query
-        
 
 def get_table_columns(table_name = None):
     columns = None
@@ -173,21 +117,45 @@ def set_geom_bbox(table_name = None):
         print(f'Could not set bbox for table {table_name}: {e}')
         return False
 
-def create_gbif_table(gbif_occurence_db_file :Path = None, table_name = None, limit :int = None, test :bool = False):
+def create_gbif_table(gbif_data_path :Path = None, limit :int = None):
+    
+    gbif_data_path = convertToPath(gbif_data_path)
+    table_name = gbif_data_path.stem
+    
+    gbif_raw_col = """f.gbifID,
+                f.occurrenceID,
+                f.kingdom,
+                f.phylum,
+                f.class,
+                f.order,
+                f.family,
+                f.genus,
+                f.species,
+                f.taxonRank,
+                f.scientificName,
+                f.eventDate,
+                f.day,
+                f.month,
+                f.year,
+                f.taxonKey,
+                f.basisOfRecord,
+                f.license,
+                f.recordedBy,
+                """
+    
     #Redeclare connection variable
     con = DuckDBConnection.get_connection()
-    global gbif_raw_col
+    
     print('Creating gbif_observations table...')
     #Load gbif data
 
-    #con.execute(f"CREATE OR REPLACE TABLE observations AS SELECT *, FROM '{gbif_occurence_db_file}'")
-    if gbif_occurence_db_file is not None:
+    if gbif_data_path is not None:
         
         query = f"""CREATE OR REPLACE TABLE {table_name} AS
                 SELECT {gbif_raw_col}
                 ST_Point(decimalLongitude, decimalLatitude) AS geom,
-                FROM '{gbif_occurence_db_file}' AS f
-                {'LIMIT ' + str(limit) if (test and limit is not None) or (limit is not None) else ''} """
+                FROM '{gbif_data_path}' AS f
+                {'LIMIT ' + str(limit) if (limit is not None) else ''} """
         
         try:
             con.execute(query)
@@ -200,32 +168,31 @@ def create_gbif_table(gbif_occurence_db_file :Path = None, table_name = None, li
             return False
         
 
-def create_table_from_shp(file_path : Path = None, table_name :str = None, limit : int= None, test :bool = False ):
+def create_table_from_shp(file_path : Path = None, limit : int= None):
     """
     Create duckdb tables for observations, grid, parks, nbhood
     """
-    table_created = None
     #Redeclare connection variable
     con = DuckDBConnection.get_connection()
     # Install spatial extension 
     con.execute("INSTALL spatial;")
     con.execute("LOAD spatial;")
+    
+    file_path = convertToPath(file_path)
+    
+    #Define table name from file
+    table_name = file_path.stem
 
     try:
         if file_path is not None:   
             con.execute(f"CREATE OR REPLACE TABLE {table_name} AS SELECT * FROM ST_Read('{file_path}')")
             set_geom_bbox(table_name= table_name)
-            table_created = True
         else:
             print('File provided to create table is None')
-            table_created = False
 
     except Exception as e:
         print(f'Could not create table for {table_name}: {e}')
-        table_created = False
 
-    if table_created is not None:
-        return table_created
     
     
 def grid_spatial_join2(left_table_name : str = None, right_table_name: str = None, output_file_path : Path = None, test : bool = False, limit :int = None):
@@ -305,36 +272,6 @@ def grid_spatial_join2(left_table_name : str = None, right_table_name: str = Non
         return None
 
 
-def prep_gbif_data(force = False, test = False, limit = None):
-    """Create .parquet file from gbif obsrvations csv file
-
-    Args:
-        force (bool, optional): _description_. Defaults to False.
-        test (bool, optional): _description_. Defaults to False.
-        limit (_type_, optional): _description_. Defaults to None.
-    """
-    RAW_DATA_PATH = Path("data/raw/gbif")
-    OUTPUT_PATH = Path("data/interim/gbif")
-    gbif_occurence_db_file = None
-
-    if test:
-        print('Running gbif prep as test')
-        gbif_occurence_db_file = OUTPUT_PATH / '_test_gbif_data.parquet'
-    else:
-        gbif_occurence_db_file = OUTPUT_PATH / 'gbif_data.parquet'
-
-    gbif_occurence_raw_file = [f for f in RAW_DATA_PATH.rglob("*.csv")][0]  # Assuming there's only one .csv file for the gbif data
-
-    # Check if csv has been converted to parquet file
-    if (gbif_occurence_db_file.exists() and force) or (not gbif_occurence_db_file.exists()) :
-        converted = convert_gbif_csv(gbif_occurence_raw_file, gbif_occurence_db_file, force = force, test = test, limit = limit)
-        if converted:
-            return gbif_occurence_db_file
-        else:
-            return None
-    else:
-        print("Convert_gbif_csv already done, skipping")
-        return gbif_occurence_db_file
 
 def gbif_spatial_joins(gbif_occurence_db_file :Path = None, force = False, test = False, limit = None):
     """Performs main geospatial joins of gbif observation to set of shp files

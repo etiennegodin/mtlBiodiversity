@@ -1,28 +1,56 @@
-#Snakefile
+from pathlib import Path
 configfile: "config.yaml"
 
-SAMPLES = list(config["geo_samples"].keys())
+data_dir = Path(config["data_dir"])
+raw_dir = data_dir / "raw"
+interim_dir = data_dir / "interim"
+processed_dir = data_dir / "processed"
+db_dir = data_dir / "db"
+
+scripts_dir = Path("scripts")
+
+# Extract shapefile names from config
+shapefile_names = [s["name"] for s in config["shapefiles"]]
+#        expand(processed_dir / "{shapefile}_joined.parquet", shapefile=shapefile_names)
 
 rule all:
     input:
-        expand("data/interim/geospatial/{sample}_inter.shp", sample=SAMPLES),
-        "data/interim/gbif/gbif_data.parquet"
-
-rule clean_geospatial:
-    input:
-        lambda wildcards: config["geo_samples"][wildcards.sample]["file"]
-    output:
-        "data/interim/geospatial/{sample}_inter.shp"
-    script:
-        "scripts/01_clean_geospatial.py"
-
+        config["duckdb_file"]
+        
 rule load_gbif_data:
     input:
-        "data/raw/gbif/gbif_occurences.csv"
+        raw_dir / "gbif/gbif_occurences.csv"
     output:
-        "data/interim/gbif/gbif_data.parquet"
+        interim_dir / "gbif/gbif_data.parquet"
     params:
         limit = config.get("limit", None)
     script:
-        "scripts/02_loadGbifData.py"
+        scripts_dir / "01_loadGbifData.py"
+
+rule clean_shapefiles:
+    input:
+        lambda wildcards: next(
+            Path(s["path"]) for s in config["shapefiles"]
+            if s["name"] == wildcards.shapefile
+        )
+    output:
+        interim_dir / 'geospatial' / f"{shapefile}_clean.shp"
+    params:
+        crs = config["target_crs"]
+    script:
+        scripts_dir / "02_clean_shapefiles.py"
+
+rule create_duckdb:
+    input:
+        expand(interim_dir / "geospatial" / "{shapefile}_clean.shp", shapefile=shapefile_names),
+        interim_dir / "gbif/gbif_data.parquet"
+    output:
+        config["duckdb_file"]
+    params:
+        limit = config.get("limit", None),
+        db_name = config["duckdb_file"]
+    script:
+        scripts_dir / "03_createDuckdb.py"
+
+
 
