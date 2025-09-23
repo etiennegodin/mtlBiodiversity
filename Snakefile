@@ -60,3 +60,4 @@ rule create_duckdb:
         db_name = config["duckdb_file"]
     script:
         scripts_dir / "03_createDuckdb.py"
+
