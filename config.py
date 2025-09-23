@@ -1,9 +1,10 @@
 import os
 from dataclasses import dataclass
-from dotenv import load_dotenv
 from pathlib import Path
+from dotenv import load_dotenv
 
 
+load_dotenv()  # reads .env if present
 @dataclass
 class Config:
     data_dir: str
@@ -19,5 +20,5 @@ def load_config() -> Config:
         debug = os.getenv('DEBUG')
     )
 
-# Single shared instance
+
 configs = load_config()

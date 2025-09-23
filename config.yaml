@@ -8,13 +8,3 @@ limit: 1000
 target_crs: 4326
 
 duckdb_file: "data/db/mtlBio.duckdb"
-
-shapefiles:
-  - name: "grid"
-  - name: "grid"
-    path: "data/raw/geospatial/grid.shp"
-  - name: "parks"
-    path: "data/raw/geospatial/parks.shp"
-  - name: "quartiers"
-    path: "data/raw/geospatial/quartiers.shp"
-

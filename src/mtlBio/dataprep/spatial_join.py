@@ -1,6 +1,6 @@
 from pathlib import Path 
 import geopandas as gpd
-from mtlBio.core import read_sql_template, find_files, DuckDBConnection, convertToPath
+from mtlBio.core import read_sql_template, DuckDBConnection, convertToPath
 
 # GLOBAL VAR
 tables_creation_dict = {}
