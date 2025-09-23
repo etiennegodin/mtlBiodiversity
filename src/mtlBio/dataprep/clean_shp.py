@@ -13,7 +13,7 @@ def save_gdf(gdf, output_file_path):
         print(f"Failed to save {output_file_path.stem} : {e}")
         return False
 
-def process_shp(input_file :str = None, output_file :str = None, crs = None):
+def main(input_file :str = None, output_file :str = None, crs = None):
 
     input_path = convertToPath(input_file)
     output_path = convertToPath(output_file)

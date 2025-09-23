@@ -1,7 +1,5 @@
-import duckdb
 from pathlib import Path 
 import geopandas as gpd
-import pandas as pd 
 from mtlBio.core import read_sql_template, find_files, DuckDBConnection, convertToPath
 
 # GLOBAL VAR
@@ -9,7 +7,6 @@ tables_creation_dict = {}
 
 # Create connection and store as class object
 # Get's initialise first time it's called, otherwise object is just passed along
-
 
 
 def check_table_exists(table_name = None):
@@ -33,23 +30,6 @@ def inspect_table(table_name :str = None):
     print(df)
 
 
-def import_gbif_csv(input_path, output_path, limit = None):
-
-    query = None
-    
-    input_path = convertToPath(input_path)
-    output_path = convertToPath(output_path)
-
-    print(f'Converting to {input_path} to {output_path} file with limit set to {limit} ')
-    query = f"COPY (SELECT * FROM '{input_path}' {'LIMIT ' + str(limit) if (limit is not None) else ''}) TO '{output_path}' (FORMAT PARQUET)"
-        
-    if query is not None:
-        try:
-            duckdb.query(query)
-            print('-'*25,'Successfuly convert gbif csv data to parquet','-'*25, '\n')
-        except Exception as e:
-            print(f"Failed to convert csv to parquet: {e}")
-            return False
 
         
 def assign_table_alias(columns: list = None, alias :str = None):

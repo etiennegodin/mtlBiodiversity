@@ -4,8 +4,8 @@ from pathlib import Path
 import sys
 from config import configs
 from mtlBio.core  import raw_data_read_only
-from mtlBio.dataprep.gbif import prep_gbif_data, gbif_spatial_joins
-from mtlBio.dataprep.geospatial import prep_geospatial
+from mtlBio.dataprep.spatial_join import prep_gbif_data, gbif_spatial_joins
+from mtlBio.dataprep.clean_shp import prep_geospatial
 from mtlBio.metrics.main import process_all_metrics
 
 
