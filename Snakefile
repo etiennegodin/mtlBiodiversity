@@ -61,3 +61,11 @@ rule create_duckdb:
     script:
         scripts_dir / "03_createDuckdb.py"
 
+rule spatial_joins:
+    input:
+        config["duckdb_file"]
+    output:
+        config["duckdb_file"]
+    script:
+        scripts_dir / "04_spatial_join.py"
+

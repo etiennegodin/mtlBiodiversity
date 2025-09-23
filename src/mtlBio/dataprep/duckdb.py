@@ -38,7 +38,7 @@ def create_table_from_shp(file_path : Path = None, limit : int= None):
     file_path = convertToPath(file_path)
     
     #Define table name from file
-    table_name = file_path.stem
+    table_name = file_path.stem.split(sep= '_')[0]
 
     try:
         if file_path is not None:   

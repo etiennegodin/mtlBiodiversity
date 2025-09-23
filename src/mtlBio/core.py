@@ -11,14 +11,42 @@ from config import configs
 
 SQL_PATH = configs.sql_dir
 
+import duckdb
+
 class DuckDBConnection:
     _instance = None
 
-    @classmethod
-    def get_connection(cls, file:str = None):
+    def __new__(cls, file: str = None):
         if cls._instance is None:
-            cls._instance = duckdb.connect(file)
+            # Create the class instance
+            cls._instance = super().__new__(cls)
+            cls._instance._conn = None
+            cls._instance._file = None
+
+        # Handle connection logic
+        if file is not None:
+            # Close old connection if switching files
+            if cls._instance._conn is not None and file != cls._instance._file:
+                cls._instance._conn.close()
+                cls._instance._conn = None
+
+            # Open connection if not already connected
+            if cls._instance._conn is None:
+                cls._instance._conn = duckdb.connect(file)
+                cls._instance._file = file
+
+        elif cls._instance._conn is None:
+            raise ValueError("No DuckDB file specified for initial connection.")
+
         return cls._instance
+
+    @property
+    def conn(self):
+        return self._conn
+
+    @property
+    def file(self):
+        return self._file
 
 
 def convertToPath(file_path: str):
