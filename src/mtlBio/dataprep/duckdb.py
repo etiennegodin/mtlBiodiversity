@@ -3,8 +3,8 @@ import geopandas as gpd
 from mtlBio.core import read_sql_template, DuckDBConnection, convertToPath
 
 def set_geom_bbox(table_name = None):
-    con = DuckDBConnection.get_connection()
-
+    db = DuckDBConnection()
+    con = db.conn
     try:
         # Add col for bbox 
         con.execute(f"ALTER TABLE {table_name} ADD COLUMN minx DOUBLE;")
