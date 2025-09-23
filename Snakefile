@@ -17,10 +17,13 @@ scripts_dir = Path("scripts")
 
 # Extract shapefile names from config
 shapefile_names = [f.stem for f in raw_shp_path.glob("*.shp")]
+shapefile_paths = [f for f in raw_shp_path.glob("*.shp")]
+
 gbif_raw_file = [f.stem for f in raw_gbif_path.glob("*.csv")][0]
 
 print(gbif_raw_file)
 print(shapefile_names)
+print(shapefile_paths)
 
 rule all:
     input:
@@ -38,14 +41,14 @@ rule load_gbif_data:
 
 rule clean_shapefiles:
     input:
-        expand("{raw_shp_path}/{shapefile}.shp", shapefile=shapefile_names, raw_shp_path = raw_shp_path)
+        shapefile=lambda wildcards: f"raw_shp_path/{wildcards.shapefile}.shp"
     output:
-        expand("{int_shp_path}/{shapefile}_clean.shp", shapefile=shapefile_names, int_shp_path = int_shp_path)
+        cleaned="int_shp_path/{shapefile}_clean.shp"
     params:
         crs = config["target_crs"]
     script:
         scripts_dir / "02_clean_shapefiles.py"
-
+"""
 
 rule create_duckdb:
     input:
@@ -58,5 +61,5 @@ rule create_duckdb:
         db_name = config["duckdb_file"]
     script:
         scripts_dir / "03_createDuckdb.py"
-
+"""
 

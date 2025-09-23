@@ -2,7 +2,6 @@ import geopandas as gpd
 from pathlib import Path
 import json
 from mtlBio.core import convert_crs, convertToPath
-from . import target_crs
 
 #Read boundary file 
 def save_gdf(gdf, output_file_path):
