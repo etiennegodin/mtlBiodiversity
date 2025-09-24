@@ -31,7 +31,7 @@ def load_spatial_extension(con = None):
     con.execute("INSTALL spatial;")
     con.execute("LOAD spatial;")
 
-def create_table_from_shp(file_path : Path = None):
+def create_table_from_shp(file_path : Path = None, marker_file:str = None):
     """
     Create duckdb tables for observations, grid, parks, nbhood
     """
@@ -51,12 +51,14 @@ def create_table_from_shp(file_path : Path = None):
         if file_path is not None:   
             con.execute(f"CREATE OR REPLACE TABLE {table_name} AS SELECT * FROM ST_Read('{file_path}')")
             set_geom_bbox(table_name= table_name)
-        else:
+            Path(marker_file).touch()
+
             print('File provided to create table is None')
 
     except Exception as e:
         print(f'Could not create table for {table_name}: {e}')
     
+
     
 
 def create_gbif_table(gbif_data_path :Path = None, limit :int = None, marker_file:str = None ):
