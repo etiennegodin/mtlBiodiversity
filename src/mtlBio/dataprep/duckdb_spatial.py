@@ -77,6 +77,9 @@ def create_table_from_shp(file_path : Path = None, marker_file:str = None):
     
 def create_gbif_table(gbif_data_path :Path = None, limit :int = None, marker_file:str = None ):
     
+    if limit == 'None':
+        limit = None
+    
     db = DuckDBConnection()
     con = db.conn
     
