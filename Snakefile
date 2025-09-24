@@ -24,7 +24,8 @@ gbif_raw_file = [f.stem for f in raw_gbif_path.glob("*.csv")][0]
 
 rule all:
     input:
-        expand(db_dir/".{name}_done", name=shapefile_names)
+        expand(db_dir/".{name}_done", name=shapefile_names),
+        db_dir / ".gbif_done"
 
 rule load_gbif_data:
     input:
