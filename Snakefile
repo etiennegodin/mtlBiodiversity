@@ -17,9 +17,9 @@ scripts_dir = Path("scripts")
 
 # Extract shapefile names from config
 shapefile_names = [f.stem for f in raw_shp_path.glob("*.shp")]
-shapefile_paths = [f for f in raw_shp_path.glob("*.shp")]
-
 gbif_raw_file = [f.stem for f in raw_gbif_path.glob("*.csv")][0]
+
+db_lock = db_dir / ".db_lock"
 
 
 rule all:
@@ -27,6 +27,11 @@ rule all:
         expand(db_dir/".{name}_table", name=shapefile_names),
         db_dir / ".gbif_table",
         expand(db_dir/".{name}_sjoin", name=shapefile_names)
+
+rule lock_db:
+    output: db_lock
+    run:
+        Path(output[0]).touch()
 
 rule load_gbif_data:
     input:
@@ -92,7 +97,9 @@ rule grid_spatial_join:
 rule shp_spatial_join:
     input:
         db_dir/".grid_sjoin",
-        db_dir/".{name}_table"
+        db_dir/".{name}_table",
+        db_lock
+
     output:
         db_dir/".{name}_sjoin"
     resources:
