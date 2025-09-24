@@ -21,13 +21,10 @@ shapefile_paths = [f for f in raw_shp_path.glob("*.shp")]
 
 gbif_raw_file = [f.stem for f in raw_gbif_path.glob("*.csv")][0]
 
-print(gbif_raw_file)
-print(shapefile_names)
-print(int_shp_path)
 
 rule all:
     input:
-        config["duckdb_file"]
+        expand(db_dir/".{name}_done", name=shapefile_names)
 
 rule load_gbif_data:
     input:
@@ -41,9 +38,9 @@ rule load_gbif_data:
 
 rule clean_shapefiles:
     input:
-        shapefile=lambda wildcards: f"{raw_shp_path}/{wildcards.shapefile}.shp"
+        raw_shp_path/"{name}.shp"
     output:
-        cleaned=int_shp_path/"{shapefile}_clean.shp"
+        int_shp_path/"{name}.shp"
     params:
         crs = config["target_crs"]
     script:
@@ -53,7 +50,6 @@ rule create_duckdb:
     input:
         int_gbif_path / "gbif_data.parquet"
     output:
-        config["duckdb_file"],
         marker = db_dir / ".gbif_done"
     params:
         limit = config.get("limit", None),
@@ -63,6 +59,22 @@ rule create_duckdb:
     script:
         scripts_dir / "03_createDuckdb.py"
 
+rule create_shp_tables:
+    input:
+        int_shp_path/"{name}.shp"
+    output:
+        db_dir/".{name}_done"
+    params:
+        db_name = config["duckdb_file"],
+
+    script:
+        scripts_dir / "04_shp_tables.py"
+
+rule test:
+    input:
+        db_dir/".{name}_done"
+    output:
+        config["duckdb_file"]
 # make .ready files of tables instaed of updating main .duckdb as snakefile doesnt understand and skips step 4 
 """
 rule spatial_joins:
