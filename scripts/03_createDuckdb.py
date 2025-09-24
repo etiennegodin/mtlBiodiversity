@@ -1,4 +1,4 @@
-from mtlBio.dataprep.duckdb import create_table_from_shp, create_gbif_table
+from mtlBio.dataprep.duckdb_spatial import create_gbif_table
 from mtlBio.core import DuckDBConnection
 
 print('#'*25, '03_createDuckdb', '#'*25,'\n' )

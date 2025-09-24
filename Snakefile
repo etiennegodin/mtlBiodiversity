@@ -24,8 +24,12 @@ gbif_raw_file = [f.stem for f in raw_gbif_path.glob("*.csv")][0]
 
 rule all:
     input:
-        expand(db_dir/".{name}_done", name=shapefile_names),
-        db_dir / ".gbif_done"
+        expand(db_dir/".{name}_table", name=shapefile_names),
+        db_dir / ".gbif_table",
+        db_dir/".grid_sjoin"
+
+
+        
 
 rule load_gbif_data:
     input:
@@ -51,7 +55,7 @@ rule create_duckdb:
     input:
         int_gbif_path / "gbif_data.parquet"
     output:
-        marker = db_dir / ".gbif_done"
+        marker = db_dir / ".gbif_table"
     params:
         limit = config.get("limit", None),
         db_name = config["duckdb_file"],
@@ -64,26 +68,28 @@ rule create_shp_tables:
     input:
         int_shp_path/"{name}.shp"
     output:
-        db_dir/".{name}_done"
+        db_dir/".{name}_table"
     params:
         db_name = config["duckdb_file"],
 
     script:
         scripts_dir / "04_shp_tables.py"
 
-rule test:
+rule grid_spatial_join:
     input:
-        db_dir/".{name}_done"
+        db_dir / ".gbif_table",
+        db_dir/".grid_table"
     output:
-        config["duckdb_file"]
-# make .ready files of tables instaed of updating main .duckdb as snakefile doesnt understand and skips step 4 
-"""
+        db_dir/".grid_sjoin"
+    params:
+        db_name = config["duckdb_file"],        
+    script:
+        scripts_dir / "05_grid_spatial_join.py"
+
 rule spatial_joins:
     input:
-        expand(int_shp_path/"{shapefile}", shapefile=shapefile_names)
+        db_dir/".grid_sjoin"
     output:
-        config["duckdb_file"]
+        db_dir/".{name}_sjoin"
     script:
-        scripts_dir / "04_spatial_join.py"
-
-"""
+        scripts_dir / "05_spatial_join.py"
