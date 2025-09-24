@@ -51,16 +51,20 @@ rule clean_shapefiles:
 
 rule create_duckdb:
     input:
-        expand(int_shp_path/"{shapefile}_clean.shp", shapefile=shapefile_names),
         int_gbif_path / "gbif_data.parquet"
     output:
-        config["duckdb_file"]
+        config["duckdb_file"],
+        marker = db_dir / ".gbif_done"
     params:
         limit = config.get("limit", None),
-        db_name = config["duckdb_file"]
+        db_name = config["duckdb_file"],
+        marker_file = output.marker
+
     script:
         scripts_dir / "03_createDuckdb.py"
 
+# make .ready files of tables instaed of updating main .duckdb as snakefile doesnt understand and skips step 4 
+"""
 rule spatial_joins:
     input:
         expand(int_shp_path/"{shapefile}", shapefile=shapefile_names)
@@ -69,3 +73,4 @@ rule spatial_joins:
     script:
         scripts_dir / "04_spatial_join.py"
 
+"""

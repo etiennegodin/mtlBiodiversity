@@ -6,11 +6,8 @@ print('#'*25, '03_createDuckdb', '#'*25,'\n' )
 
 # Create db 
 db = DuckDBConnection(file = snakemake.params.db_name)
-# Release
-for file in snakemake.input[:-1]:
-    create_table_from_shp(file_path= file)
 
-create_gbif_table(gbif_data_path= snakemake.input[-1], limit = snakemake.params.limit )
+create_gbif_table(gbif_data_path= snakemake.input[0], limit = snakemake.params.limit, marker_file = snakemake.params.marker_file )
 
 db.conn.close()
 
