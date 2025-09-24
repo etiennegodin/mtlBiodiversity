@@ -26,8 +26,7 @@ rule all:
     input:
         expand(db_dir/".{name}_table", name=shapefile_names),
         db_dir / ".gbif_table",
-        db_dir/".grid_sjoin"
-
+        expand(db_dir/".{name}_sjoin", name=shapefile_names)
 
         
 
@@ -84,12 +83,15 @@ rule grid_spatial_join:
     params:
         db_name = config["duckdb_file"],        
     script:
-        scripts_dir / "05_grid_spatial_join.py"
+        scripts_dir / "05_grid_sjoin.py"
 
-rule spatial_joins:
+rule shp_spatial_join:
     input:
-        db_dir/".grid_sjoin"
+        db_dir/".grid_sjoin",
+        db_dir/".{name}_table"
     output:
         db_dir/".{name}_sjoin"
+    params:
+        db_name = config["duckdb_file"],        
     script:
-        scripts_dir / "05_spatial_join.py"
+        scripts_dir / "06_shp_sjoin.py"
