@@ -28,8 +28,6 @@ rule all:
         db_dir / ".gbif_table",
         expand(db_dir/".{name}_sjoin", name=shapefile_names)
 
-        
-
 rule load_gbif_data:
     input:
         raw_gbif_path / f"{gbif_raw_file}.csv"
@@ -55,6 +53,8 @@ rule create_duckdb:
         int_gbif_path / "gbif_data.parquet"
     output:
         marker = db_dir / ".gbif_table"
+    resources:
+        db_con =1 
     params:
         limit = config.get("limit", None),
         db_name = config["duckdb_file"],
@@ -68,6 +68,8 @@ rule create_shp_tables:
         int_shp_path/"{name}.shp"
     output:
         db_dir/".{name}_table"
+    resources:
+        db_con =1         
     params:
         db_name = config["duckdb_file"],
 
@@ -80,6 +82,8 @@ rule grid_spatial_join:
         db_dir/".grid_table"
     output:
         db_dir/".grid_sjoin"
+    resources:
+        db_con =1         
     params:
         db_name = config["duckdb_file"],        
     script:
@@ -91,6 +95,8 @@ rule shp_spatial_join:
         db_dir/".{name}_table"
     output:
         db_dir/".{name}_sjoin"
+    resources:
+        db_con =1         
     params:
         db_name = config["duckdb_file"],        
     script:
