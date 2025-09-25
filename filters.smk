@@ -17,7 +17,7 @@ rule filter_gbif_data:
         limit = config.get("limit", None),
         db_name = config["duckdb_file"],
         marker_file = output.marker,
-        coordUncerFilter = coord_uncertainty
+        coordUncerFilter = coord_uncertainty,
         wkt_filters = config.get("wkt_filters", [])
 
     script:

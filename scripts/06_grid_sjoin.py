@@ -9,7 +9,7 @@ db = DuckDBConnection(file = snakemake.params.db_name)
 # Transform input marker file back to table name 
 
 
-left_table_name = snakemake.input[0].split(sep=".")[-1].split(sep='_')[0]
+left_table_name = 'filtered_gbif'
 right_table_name = snakemake.input[1].split(sep=".")[-1].split(sep='_')[0]
 
 print(left_table_name)

@@ -1,5 +1,4 @@
 from pathlib import Path
-from math import sqrt
 configfile: "config.yaml"
 
 data_dir = Path(config["data_dir"])
@@ -20,11 +19,11 @@ int_gbif_path = interim_dir / "gbif"
 shapefile_names = [f.stem for f in raw_shp_path.glob("*.shp")]
 gbif_raw_file = [f.stem for f in raw_gbif_path.glob("*.csv")][0]
 
-db_lock = db_dir / ".db_lock"
-group: "duckdb"
 
-# Calculate coordinate uncertainty based on grid size
-coord_uncertainty = ((config['grid_size'] * sqrt(2)) / 2)
+include: "preprocess.smk"
+include: "filters.smk"
+include: "analysis.smk"
+
 
 rule all:
     input:
@@ -32,88 +31,3 @@ rule all:
         db_dir / ".gbif_table",
         expand(db_dir/".{name}_sjoin", name=shapefile_names)
 
-
-rule gbif_to_parquet:
-    input:
-        raw_gbif_path / f"{gbif_raw_file}.csv"
-    output:
-        int_gbif_path / "gbif_data.parquet"
-    params:
-        limit = config.get("limit", None)
-    script:
-        scripts_dir / "01_loadGbifData.py"
-
-rule clean_shapefiles:
-    input:
-        raw_shp_path/"{name}.shp"
-    output:
-        int_shp_path/"{name}.shp"
-    params:
-        crs = config["target_crs"]
-    script:
-        scripts_dir / "02_clean_shapefiles.py"
-
-rule create_duckdb:
-    input:
-        int_gbif_path / "gbif_data.parquet"
-    output:
-        marker = db_dir / ".gbif_table"
-    resources:
-        db_con =1 
-    params:
-        limit = config.get("limit", None),
-        db_name = config["duckdb_file"],
-        marker_file = output.marker,
-        coordUncerFilter = coord_uncertainty
-
-    group:
-        "duckdb"
-
-    script:
-        scripts_dir / "03_createDuckdb.py"
-
-rule create_shp_tables:
-    input:
-        int_shp_path/"{name}.shp"
-    output:
-        db_dir/".{name}_table"
-    resources:
-        db_con =1
-    group:
-        "duckdb"         
-    params:
-        db_name = config["duckdb_file"],
-
-    script:
-        scripts_dir / "04_shp_tables.py"
-
-rule grid_spatial_join:
-    input:
-        db_dir / ".filtered_gbif_table",
-        db_dir/".grid_table"
-    output:
-        db_dir/".grid_sjoin"
-    resources:
-        db_con =1 
-    group: "duckdb"
-        
-    params:
-        db_name = config["duckdb_file"],        
-    script:
-        scripts_dir / "05_grid_sjoin.py"
-
-rule shp_spatial_join:
-    input:
-        db_dir/".grid_sjoin",
-        db_dir/".{name}_table",
-        db_lock
-    group: "duckdb"
-
-    output:
-        db_dir/".{name}_sjoin"
-    resources:
-        db_con =1         
-    params:
-        db_name = config["duckdb_file"],        
-    script:
-        scripts_dir / "06_shp_sjoin.py"

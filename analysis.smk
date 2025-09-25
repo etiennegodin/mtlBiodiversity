@@ -10,35 +10,24 @@ scripts_dir = Path("scripts")
 
 
 
-
-
 rule grid_spatial_join:
     input:
         db_dir / ".filtered_gbif_table",
         db_dir/".grid_table"
     output:
         db_dir/".grid_sjoin"
-    resources:
-        db_con =1 
-    group: "duckdb"
-        
     params:
         db_name = config["duckdb_file"],        
     script:
-        scripts_dir / "05_grid_sjoin.py"
+        scripts_dir / "06_grid_sjoin.py"
 
 rule shp_spatial_join:
     input:
         db_dir/".grid_sjoin",
-        db_dir/".{name}_table",
-        db_lock
-    group: "duckdb"
-
+        db_dir/".{name}_table"
     output:
-        db_dir/".{name}_sjoin"
-    resources:
-        db_con =1         
+        db_dir/".{name}_sjoin"       
     params:
         db_name = config["duckdb_file"],        
     script:
-        scripts_dir / "06_shp_sjoin.py"
+        scripts_dir / "07_shp_sjoin.py"

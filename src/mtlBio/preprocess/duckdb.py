@@ -44,11 +44,12 @@ def create_gbif_table(gbif_data_path :Path = None,  marker_file:str = None):
     if gbif_data_path is not None:
         
         query = f"""CREATE OR REPLACE TABLE {table_name} AS
-                SELECT *
+                SELECT *,
                 ST_Point(decimalLongitude, decimalLatitude) AS geom,
                 FROM '{gbif_data_path}'
                 """
         
+        #print(query)
         try:
             con.execute(query)
             set_geom_bbox(table_name= table_name)
@@ -60,22 +61,36 @@ def create_gbif_table(gbif_data_path :Path = None,  marker_file:str = None):
     
 
 def filter_gbif_data(gbif_cols:str = None, limit :int = None,  marker_file:str = None,  coordUncerFilter:float = None, wkt_filters: str = None ):
-
+    
+    table_name = 'filtered_gbif'
+    
+    if limit == 'None':
+        limit = None
+    
     db = DuckDBConnection()
     con = db.conn
     
     # Install spatial extension 
     load_spatial_extension(con)
     
-    table_name = 'filtered_gbif'
+    #COnvert cols if not list 
+    if not isinstance(gbif_cols, list):
+        gbif_cols_temp = gbif_cols.split(sep= ",")
+        gbif_cols = []
+        for col in gbif_cols_temp:
+            col = col.strip()
+            gbif_cols.append(col)
+     
     gbif_cols = assign_table_alias(gbif_cols, alias= 'g')
              
     query = f"""CREATE OR REPLACE TABLE {table_name} AS
-                SELECT {gbif_cols} *
-                FROM 'gbif_raw' AS g,
-                WHERE coordinateUncertaintyInMetersc <= {coordUncerFilter}
+                SELECT {gbif_cols}
+                FROM gbif_raw AS g,
+                WHERE coordinateUncertaintyInMeters <= {coordUncerFilter}
                 {'LIMIT ' + str(limit) if (limit is not None) else ''}
                 """ 
+                
+    #print(query)
     try:
         con.execute(query)
         set_geom_bbox(table_name= table_name)

@@ -38,7 +38,7 @@ rule clean_shapefiles:
     script:
         scripts_dir / "02_clean_shapefiles.py"
 
-rule create_duckdb:
+rule load_gbif_to_db:
     input:
         int_gbif_path / "gbif_data.parquet"
     output:

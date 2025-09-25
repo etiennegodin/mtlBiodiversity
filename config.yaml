@@ -35,6 +35,6 @@ gbif_columns: "gbifID,
                 issue,
                 publishingOrgKey,
                 coordinateUncertaintyInMeters,
-                geom,
+                geom
                 "
                
