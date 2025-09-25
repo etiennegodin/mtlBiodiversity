@@ -1,78 +1,57 @@
 import geopandas as gpd
 from pathlib import Path
 import pandas as pd
-from shapely.geometry import Polygon, MultiPolygon, Point
+from shapely.geometry import Point
 import pathlib
 import stat
 import duckdb
-import tkinter as tk 
-from tkinter import filedialog
 from jinja2 import Template
 
+from config import configs
 
-SQL_PATH = Path("data/sql_queries")
+SQL_PATH = configs.sql_dir
+
+import duckdb
 
 class DuckDBConnection:
     _instance = None
 
-    @classmethod
-    def get_connection(cls):
+    def __new__(cls, file: str = None):
         if cls._instance is None:
-            cls._instance = duckdb.connect("data\db\mtlBio.duckdb")
+            # Create the class instance
+            cls._instance = super().__new__(cls)
+            cls._instance._conn = None
+            cls._instance._file = None
+
+        # Handle connection logic
+        if file is not None:
+            # Close old connection if switching files
+            if cls._instance._conn is not None and file != cls._instance._file:
+                cls._instance._conn.close()
+                cls._instance._conn = None
+
+            # Open connection if not already connected
+            if cls._instance._conn is None:
+                cls._instance._conn = duckdb.connect(file)
+                cls._instance._file = file
+
+        elif cls._instance._conn is None:
+            raise ValueError("No DuckDB file specified for initial connection.")
+
         return cls._instance
 
+    @property
+    def conn(self):
+        return self._conn
+
+    @property
+    def file(self):
+        return self._file
 
 
-def find_files(folder_path: Path, expected_files : list = None, suffix = None, debug :bool= False):
-    files_found = []
-    files_not_found = []
-
-    
-    #Check if suffix is provided
-    if suffix is not None:
-        # If suffix is only a string format to list
-        if isinstance(suffix, str):
-            suffix_list = [suffix]
-        else:
-            suffix_list = suffix
-            
-        # Check if written with a dot - fix if not
-        final_suffix  = []
-        for s in suffix_list:
-            if not s.startswith('.'):
-                s = f'.{s}'
-                final_suffix.append(s)
-            else:
-                final_suffix.append(s)
-        print(final_suffix)
-        files = [f for f in folder_path.rglob("*") if f.suffix in final_suffix]
-        
-        print(f"Found {len(files)} file in {folder_path}")
-        for e_file in expected_files:
-            e_file_found = False
-            for f in files:
-                f_name = f.stem.lower()
-                if debug:
-                    print(f_name)
-                    print(e_file)
-                if e_file in f_name:
-                    files_found.append(f)
-                    e_file_found = True
-                    break
-                
-            if not e_file_found: 
-                files_not_found.append(e_file)
-                    
-        print(files_found)
-        for file in files_not_found:
-            print(f'{file} not found in {folder_path}, please provide')
-            file = select_file()   
-            files_found.append(file)
-    
-    if len(files_found) == len(expected_files):
-        return files_found
-
-
+def convertToPath(file_path: str):
+    path = Path(file_path)
+    return path
 
 def read_sql_template(file_name : str = None):
     global SQL_PATH
@@ -87,15 +66,6 @@ def read_sql_file(file_name):
         sql_query = f.read()
     
     return sql_query
-
-def select_file():
-    root = tk.Tk()
-    root.withdraw()  # hide the root window
-    file_path = filedialog.askopenfilename(
-        title="Select a file",
-        filetypes=[("All files", "*.*"), ("Text files", "*.txt"), ("CSV files", "*.csv")]
-    )
-    return file_path
 
 def convert_df_to_gdf(df : pd.DataFrame, lat_col : str = 'decimalLatitude', long_col : str = 'decimalLongitude', crs = 4326, verbose = False):
     gdf = gpd.GeoDataFrame(df, geometry=[Point(xy) for xy in zip(df["decimalLongitude"], df["decimalLatitude"])] , crs = 4326 )
@@ -151,8 +121,6 @@ def convert_crs(gdf : gpd.GeoDataFrame, target_crs = 4326, verbose = False):
         if verbose:
             print(f"Gdf already with target crs {target_crs}")
         return gdf
-
-
 
 def check_common_crs(gdf1 : gpd.GeoDataFrame, gdf2 : gpd.GeoDataFrame):
     """
