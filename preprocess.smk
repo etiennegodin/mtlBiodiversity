@@ -4,8 +4,6 @@ from math import sqrt
 
 data_dir = Path(config["data_dir"])
 raw_dir = data_dir / "raw"
-interim_dir = data_dir / "interim"
-processed_dir = data_dir / "processed"
 db_dir = data_dir / "db"
 scripts_dir = Path("scripts")
 
@@ -45,13 +43,9 @@ rule create_duckdb:
         int_gbif_path / "gbif_data.parquet"
     output:
         marker = db_dir / ".gbif_table"
-    resources:
     params:
-        limit = config.get("limit", None),
         db_name = config["duckdb_file"],
         marker_file = output.marker,
-        coordUncerFilter = coord_uncertainty
-
     script:
         scripts_dir / "03_loadGbifData.py"
 
@@ -59,25 +53,10 @@ rule load_shp_to_db:
     input:
         int_shp_path/"{name}.shp"
     output:
-        db_dir/".{name}_table"
-    resources:
-        db_con =         
+        db_dir/".{name}_table"        
     params:
         db_name = config["duckdb_file"],
 
     script:
         scripts_dir / "04_load_shapefiles.py"
 
-rule filter_gbif_data:
-    input:
-        db_dir / ".gbif_table"
-    output:
-        marker = db_dir / ".filtered_gbif_table"
-    params:
-        db_name = config["duckdb_file"],
-        marker_file = output.marker,
-        coordUncerFilter = coord_uncertainty,
-        wkt_filters = config.get("wkt_filters", [])
-
-    script:
-        scripts_dir / "05_filterGbifData.py"

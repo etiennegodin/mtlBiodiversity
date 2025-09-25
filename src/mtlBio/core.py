@@ -49,6 +49,42 @@ class DuckDBConnection:
     def file(self):
         return self._file
 
+def load_spatial_extension(con = None):
+    if con is None:
+        db = DuckDBConnection()
+        con = db.conn
+        
+    con.execute("INSTALL spatial;")
+    con.execute("LOAD spatial;")
+
+
+def assign_table_alias(columns: list = None, alias :str = None):
+    query = """"""
+    for col in columns:
+        col_new = f'{alias}.{col}'
+        query += f"{col_new},\n\t\t\t\t"
+    return query
+
+def set_geom_bbox(table_name = None):
+    db = DuckDBConnection()
+    con = db.conn
+    try:
+        # Add col for bbox 
+        con.execute(f"ALTER TABLE {table_name} ADD COLUMN minx DOUBLE;")
+        con.execute(f"ALTER TABLE {table_name} ADD COLUMN miny DOUBLE;")
+        con.execute(f"ALTER TABLE {table_name} ADD COLUMN maxx DOUBLE;")
+        con.execute(f"ALTER TABLE {table_name} ADD COLUMN maxy DOUBLE;")
+        # Fill bbox col from geom
+        con.execute(f"""UPDATE {table_name} 
+                            SET minx = ST_XMin(geom),
+                                miny = ST_YMin(geom),
+                                maxx = ST_XMax(geom),
+                                maxy = ST_YMax(geom);""")
+        return True
+    except Exception as e:
+        print(f'Could not set bbox for table {table_name}: {e}')
+        return False
+
 
 def convertToPath(file_path: str):
     path = Path(file_path)

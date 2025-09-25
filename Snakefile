@@ -2,12 +2,12 @@ from pathlib import Path
 from math import sqrt
 configfile: "config.yaml"
 
-
 data_dir = Path(config["data_dir"])
 raw_dir = data_dir / "raw"
 interim_dir = data_dir / "interim"
 processed_dir = data_dir / "processed"
 db_dir = data_dir / "db"
+scripts_dir = Path("scripts")
 
 raw_shp_path = raw_dir / "geospatial"
 int_shp_path = interim_dir / "geospatial"
@@ -15,7 +15,6 @@ int_shp_path = interim_dir / "geospatial"
 raw_gbif_path = raw_dir / "gbif" 
 int_gbif_path = interim_dir / "gbif" 
 
-scripts_dir = Path("scripts")
 
 # Extract shapefile names from config
 shapefile_names = [f.stem for f in raw_shp_path.glob("*.shp")]
@@ -33,12 +32,8 @@ rule all:
         db_dir / ".gbif_table",
         expand(db_dir/".{name}_sjoin", name=shapefile_names)
 
-rule lock_db:
-    output: db_lock
-    run:
-        Path(output[0]).touch()
 
-rule load_gbif_data:
+rule gbif_to_parquet:
     input:
         raw_gbif_path / f"{gbif_raw_file}.csv"
     output:
@@ -94,7 +89,7 @@ rule create_shp_tables:
 
 rule grid_spatial_join:
     input:
-        db_dir / ".gbif_table",
+        db_dir / ".filtered_gbif_table",
         db_dir/".grid_table"
     output:
         db_dir/".grid_sjoin"

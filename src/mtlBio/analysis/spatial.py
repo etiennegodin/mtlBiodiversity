@@ -1,20 +1,6 @@
 from pathlib import Path 
-from mtlBio.core import read_sql_template, DuckDBConnection, convertToPath
+from mtlBio.core import read_sql_template, DuckDBConnection, assign_table_alias, load_spatial_extension
 
-def load_spatial_extension(con = None):
-    if con is None:
-        db = DuckDBConnection()
-        con = db.conn
-        
-    con.execute("INSTALL spatial;")
-    con.execute("LOAD spatial;")
-
-def assign_table_alias(columns: list = None, alias :str = None):
-    query = """"""
-    for col in columns:
-        col_new = f'{alias}.{col}'
-        query += f"{col_new},\n\t\t\t\t"
-    return query
 
 def get_table_columns(table_name = None, con = None):
     columns = None
@@ -25,26 +11,6 @@ def get_table_columns(table_name = None, con = None):
         
     if isinstance(columns, list):
         return columns
-
-def set_geom_bbox(table_name = None):
-    db = DuckDBConnection()
-    con = db.conn
-    try:
-        # Add col for bbox 
-        con.execute(f"ALTER TABLE {table_name} ADD COLUMN minx DOUBLE;")
-        con.execute(f"ALTER TABLE {table_name} ADD COLUMN miny DOUBLE;")
-        con.execute(f"ALTER TABLE {table_name} ADD COLUMN maxx DOUBLE;")
-        con.execute(f"ALTER TABLE {table_name} ADD COLUMN maxy DOUBLE;")
-        # Fill bbox col from geom
-        con.execute(f"""UPDATE {table_name} 
-                            SET minx = ST_XMin(geom),
-                                miny = ST_YMin(geom),
-                                maxx = ST_XMax(geom),
-                                maxy = ST_YMax(geom);""")
-        return True
-    except Exception as e:
-        print(f'Could not set bbox for table {table_name}: {e}')
-        return False
 
 
 def grid_spatial_join(left_table_name : str = None, right_table_name: str = None, marker_file:str= None):

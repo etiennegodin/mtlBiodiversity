@@ -12,3 +12,29 @@ duckdb_file: "data/db/mtlBio.duckdb"
 grid_size: 250
 
 wkt_filters: ["filters/filter1.wkt"]
+
+gbif_columns: "gbifID,
+                occurrenceID,
+                kingdom,
+                phylum,
+                class,
+                order,
+                family,
+                genus,
+                species,
+                taxonRank,
+                scientificName,
+                eventDate,
+                day,
+                month,
+                year,
+                taxonKey,
+                basisOfRecord,
+                license,
+                recordedBy,
+                issue,
+                publishingOrgKey,
+                coordinateUncertaintyInMeters,
+                geom,
+                "
+               
