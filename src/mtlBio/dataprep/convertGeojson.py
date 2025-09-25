@@ -6,7 +6,7 @@ from shapely.geometry import Point
 import geopandas as gpd
 from mtlBio.config import configs
 
-def convertParquetGeojson(file_path:str = None, debug:bool = False, merge_col:str = None):
+def convertParquetGeojson(file_path:str = None, merge_col:str = None, debug:bool = False):
     print("Geographic data, exporting to GeoJSON")
 
     file_path = Path(file_path)
@@ -17,16 +17,9 @@ def convertParquetGeojson(file_path:str = None, debug:bool = False, merge_col:st
     con.execute("INSTALL spatial;")
     con.execute("LOAD spatial;")
     
-    df = con.execute(f""" SELECT * FROM '{file_path}'""").df()
-
-    print(df)
-    
+    df = con.execute(f""" SELECT * FROM '{file_path}'""").df()    
     gdf = gpd.read_file(shp_file_path)
-
-    print(gdf)
-    
-    gdf = gdf.merge(df, on = 'qrt_id')
-    print(gdf)
+    gdf = gdf.merge(df, on = merge_col)
     
     #Clean Nan values 
     gdf = gdf.dropna(how="any").reset_index(drop=True)
@@ -39,5 +32,7 @@ def convertParquetGeojson(file_path:str = None, debug:bool = False, merge_col:st
 
 if __name__ == "__main__":
     
-    file = f"{configs.data_dir}/processed/quartiers.parquet"
-    convertParquetGeojson(file)
+    quartiers_file = f"{configs.data_dir}/processed/quartiers.parquet"
+    grid_file = f"{configs.data_dir}/processed/grid.parquet"
+    convertParquetGeojson(quartiers_file, "qrt_id")
+    convertParquetGeojson(grid_file, "grid_id")

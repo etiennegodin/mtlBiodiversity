@@ -108,6 +108,10 @@ def create_gbif_table(gbif_data_path :Path = None, limit :int = None, marker_fil
                 f.basisOfRecord,
                 f.license,
                 f.recordedBy,
+                f.issue,
+                f.publishingOrgKey,
+                f.coordinateUncertaintyInMeters,
+                f.coordinatePrecision,
                 """
     
     #Redeclare connection variable
