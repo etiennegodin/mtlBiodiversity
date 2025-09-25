@@ -17,9 +17,10 @@ scripts_dir = Path("scripts")
 
 # Extract shapefile names from config
 shapefile_names = [f.stem for f in raw_shp_path.glob("*.shp")]
-shapefile_paths = [f for f in raw_shp_path.glob("*.shp")]
-
 gbif_raw_file = [f.stem for f in raw_gbif_path.glob("*.csv")][0]
+
+db_lock = db_dir / ".db_lock"
+group: "duckdb"
 
 
 rule all:
@@ -28,7 +29,10 @@ rule all:
         db_dir / ".gbif_table",
         expand(db_dir/".{name}_sjoin", name=shapefile_names)
 
-        
+rule lock_db:
+    output: db_lock
+    run:
+        Path(output[0]).touch()
 
 rule load_gbif_data:
     input:
@@ -55,10 +59,14 @@ rule create_duckdb:
         int_gbif_path / "gbif_data.parquet"
     output:
         marker = db_dir / ".gbif_table"
+    resources:
+        db_con =1 
     params:
         limit = config.get("limit", None),
         db_name = config["duckdb_file"],
         marker_file = output.marker
+    group:
+        "duckdb"
 
     script:
         scripts_dir / "03_createDuckdb.py"
@@ -68,6 +76,10 @@ rule create_shp_tables:
         int_shp_path/"{name}.shp"
     output:
         db_dir/".{name}_table"
+    resources:
+        db_con =1
+    group:
+        "duckdb"         
     params:
         db_name = config["duckdb_file"],
 
@@ -80,6 +92,10 @@ rule grid_spatial_join:
         db_dir/".grid_table"
     output:
         db_dir/".grid_sjoin"
+    resources:
+        db_con =1 
+    group: "duckdb"
+        
     params:
         db_name = config["duckdb_file"],        
     script:
@@ -88,9 +104,14 @@ rule grid_spatial_join:
 rule shp_spatial_join:
     input:
         db_dir/".grid_sjoin",
-        db_dir/".{name}_table"
+        db_dir/".{name}_table",
+        db_lock
+    group: "duckdb"
+
     output:
         db_dir/".{name}_sjoin"
+    resources:
+        db_con =1         
     params:
         db_name = config["duckdb_file"],        
     script:
