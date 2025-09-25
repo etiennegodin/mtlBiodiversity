@@ -6,20 +6,42 @@ con <- dbConnect(duckdb::duckdb(), dbdir = "C:/Users/manat/Documents/Projects/mt
 dbListTables(con)
 df <- dbReadTable(con, "quartiers_sjoin")   # read into R
 
+df <- df %>%
+  filter(!is.na(qrt_id))
 view(df)
-glimpse((df))
 
-?unique
 
-df %>% 
+#Shannon index helper function
+shannon <- function(x) {
+  freq <- table(x)          #count of each species
+  p <- freq / sum(freq)     # proportions
+  -sum(p*log(p))            # H
+}
+
+simpson <- function(x) {
+  freq <- table(x)
+  p <- freq / sum(freq)
+  1 - sum(p^2)                    # Simpson diversity
+}
+
+df_eco <- df %>% 
   group_by(qrt_id) %>% 
   summarise(
+    qrt_name = unique(qrt_name),
+    geom = unique(geom),
+    observations = n(),
     species_richness = n_distinct(species),
+    shannon_index = shannon(species),
+    simpson_index = simpson(species),
     genus_richness = n_distinct(genus),
     family_richness = n_distinct(family),
     order_richness = n_distinct(order),
-    class_richness = n_distinct(class)
-    
-    
+    class_richness = n_distinct(class),
+    phylum_richness = n_distinct(phylum)
   )
+
+
+view(df_eco)
+
+write.csv(qrt_eco, "data.csv", row.names=FALSE)
 
