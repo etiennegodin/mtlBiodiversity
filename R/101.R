@@ -1,6 +1,8 @@
+library(tidyverse)
 library(DBI)
 library(duckdb)
-library(tidyverse)
+library(arrow)
+library(sf) ## for geom
 
 con <- dbConnect(duckdb::duckdb(), dbdir = "C:/Users/manat/Documents/Projects/mtlBiodiversity/data/db/mtlbio.duckdb", read_only = TRUE)
 dbListTables(con)
@@ -41,7 +43,13 @@ df_eco <- df %>%
   )
 
 
+#Convert geom 
+my_sf <- st_as_sf(df_eco, coords = c("longitude", "latitude"), crs = 4326)
+my_sf
+
+df_eco$geom_wkb <- sf::st_as_binary(df_eco$geom)
 view(df_eco)
 
-write.csv(qrt_eco, "data.csv", row.names=FALSE)
+write_parquet(df_eco, "data/processed/qrt_eco.parquet")
+
 

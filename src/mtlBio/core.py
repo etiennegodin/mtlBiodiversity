@@ -7,7 +7,7 @@ import stat
 import duckdb
 from jinja2 import Template
 
-from config import configs
+from mtlBio.config import configs
 
 SQL_PATH = configs.sql_dir
 

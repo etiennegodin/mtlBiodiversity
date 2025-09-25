@@ -2,7 +2,7 @@ import argparse
 import subprocess
 from pathlib import Path
 import sys
-from config import configs
+from mtlBio.config import configs
 from mtlBio.core  import raw_data_read_only
 from mtlBio.dataprep.spatial_join import prep_gbif_data, gbif_spatial_joins
 from mtlBio.dataprep.clean_shp import prep_geospatial
