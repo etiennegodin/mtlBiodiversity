@@ -6,7 +6,7 @@ from shapely.geometry import Point
 import geopandas as gpd
 from mtlBio.config import configs
 
-def convertParquetGeojson(file_path:str = None, debug:bool = False):
+def convertParquetGeojson(file_path:str = None, debug:bool = False, merge_col:str = None):
     print("Geographic data, exporting to GeoJSON")
 
     file_path = Path(file_path)

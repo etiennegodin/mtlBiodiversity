@@ -3,39 +3,6 @@ import subprocess
 from pathlib import Path
 import sys
 from mtlBio.config import configs
-from mtlBio.core  import raw_data_read_only
-from mtlBio.dataprep.spatial_join import prep_gbif_data, gbif_spatial_joins
-from mtlBio.dataprep.clean_shp import prep_geospatial
-from mtlBio.metrics.main import process_all_metrics
-
-
-
-def run_prep(force = False, test = False, limit = None, colab = False):
-    print("Running data prep...")
-
-    if force:
-        user_force = input("You have chosen to force re-run GBIF data prep. This may take a while. Do you want to continue? (y/n): ")
-        if user_force.lower() == 'y':
-            force = True
-        else:
-            force = False
-            print("Skipping GBIF data prep.")
-
-    # Load raw data (CSV, SHP, etc.)
-    # Run prep_gbif/prep_mtl
-    # Save outputs (e.g. parquet, duckdb, feather)
-def run_geospatial(force = False):
-    prep_geospatial(force = force)
-
-def run_gbif(force = False, test = False, limit = None, colab = False):
-    
-    gbif_parquet = prep_gbif_data(force =force, test =test, limit =limit)
-
-    gbif_spatial_joins(gbif_occurence_db_file = gbif_parquet, force =force, test =test, limit =limit)
-
-def run_metrics(force = False, test = False, limit = None):
-    print("Running Aggregate Metrics...")
-    process_all_metrics(force = force, test = test, limit = limit)
 
 def run_app():
     print("Launching dashboard...")
@@ -71,19 +38,8 @@ def main():
     if args.debug:
         launch_debugger()
     # Default limit to 1000 if test mode is on and limit is not specified
-    if args.limit is None:
-        args.limit = configs.limit
-        run_geospatial(force = args.force)
-        run_gbif(force = args.force, test = args.test, limit = args.limit)
-        run_metrics(force = args.force, test = args.test, limit = args.limit)
-        run_app()
-    elif args.command == "geo":
-        run_geospatial(force = args.force)
-    elif args.command == "gbif":
-        run_gbif(force = args.force, test = args.test, limit = args.limit)
-    elif args.command == "metrics":
-        run_metrics(force = args.force, test = args.test, limit = args.limit)
-    elif args.command == "app":
+
+    if args.command == "app":
         run_app()
         
         

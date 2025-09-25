@@ -10,7 +10,7 @@ import folium
 PARENT_FOLDER = Path(__file__).parent
 DATA_FOLDER = PARENT_FOLDER / "data/processed/" 
 
-gjson_path = DATA_FOLDER / "parks.geojson"
+gjson_path = DATA_FOLDER / "quartiers.geojson"
 
 TITLE = 'Montreal Biodiversity Dashboard'
 # Page configs
@@ -45,7 +45,7 @@ Explore Montreal's hidden biodiversity
 # Side bar
 with st.sidebar:
     st.title = TITLE
-    park_list = list(gdf.park_name.unique().tolist())
+    park_list = list(gdf.qrt_namemt .unique().tolist())
 
     #selected_park = st.selectbox('Select park', park_list, index = len(park_list)-1)
     color_theme_list = ['blues', 'cividis', 'greens', 'inferno', 'magma', 'plasma', 'reds', 'rainbow', 'turbo', 'viridis']
@@ -62,7 +62,7 @@ with col[1]:
     st.bar_chart(
 
         gdf,
-        x = 'park_name',
+        x = 'qrt_name',
         y = 'species_richness'
 
 
@@ -74,8 +74,8 @@ with col[1]:
         geo_data=gdf.__geo_interface__,
         data=gdf,
         name ="Species Richness",
-        columns=["park_name","species_richness",],
-        key_on="feature.properties.park_name",
+        columns=["qrt_name","species_richness",],
+        key_on="feature.properties.qrt_name",
         fill_color="RdPu",
         fill_opacity=0.7,
         line_opacity=0.2,
@@ -85,7 +85,7 @@ with col[1]:
 
     # Add hover tooltips
     folium.GeoJsonTooltip(
-        fields=["park_name", "species_richness"],
+        fields=["qrt_name", "species_richness"],
         aliases=["Park:", "Species Richness:"],
     ).add_to(choropleth_species_richness.geojson)
 
