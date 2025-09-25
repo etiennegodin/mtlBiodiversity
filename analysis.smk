@@ -17,7 +17,7 @@ rule grid_spatial_join:
     output:
         db_dir/".grid_sjoin"
     params:
-        db_name = config["duckdb_file"],        
+        db_name = config["duckdb_file"]        
     script:
         scripts_dir / "06_grid_sjoin.py"
 
@@ -26,8 +26,10 @@ rule shp_spatial_join:
         db_dir/".grid_sjoin",
         db_dir/".{name}_table"
     output:
-        db_dir/".{name}_sjoin"       
+        db_dir/".{name}_sjoin"
+    resources:
+        db = 1       
     params:
-        db_name = config["duckdb_file"],        
+        db_name = config["duckdb_file"]        
     script:
         scripts_dir / "07_shp_sjoin.py"
