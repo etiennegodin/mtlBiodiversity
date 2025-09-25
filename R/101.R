@@ -29,8 +29,6 @@ simpson <- function(x) {
 df_eco <- df %>% 
   group_by(qrt_id) %>% 
   summarise(
-    qrt_name = unique(qrt_name),
-    geom = unique(geom),
     observations = n(),
     species_richness = n_distinct(species),
     shannon_index = shannon(species),
@@ -42,14 +40,8 @@ df_eco <- df %>%
     phylum_richness = n_distinct(phylum)
   )
 
-
-#Convert geom 
-my_sf <- st_as_sf(df_eco, coords = c("longitude", "latitude"), crs = 4326)
-my_sf
-
-df_eco$geom_wkb <- sf::st_as_binary(df_eco$geom)
 view(df_eco)
 
-write_parquet(df_eco, "data/processed/qrt_eco.parquet")
+write_parquet(df_eco, "data/processed/quartiers.parquet")
 
 
