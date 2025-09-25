@@ -8,3 +8,5 @@ limit: None
 target_crs: 4326
 
 duckdb_file: "data/db/mtlBio.duckdb"
+
+grid_size: 250

@@ -27,6 +27,7 @@ class DuckDBConnection:
         if file is not None:
             # Close old connection if switching files
             if cls._instance._conn is not None and file != cls._instance._file:
+                print('Closing duckdb connection')
                 cls._instance._conn.close()
                 cls._instance._conn = None
 

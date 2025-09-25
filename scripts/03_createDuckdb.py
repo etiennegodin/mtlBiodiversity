@@ -9,7 +9,10 @@ db = DuckDBConnection(file = snakemake.params.db_name)
 
 
 
-create_gbif_table(gbif_data_path= snakemake.input[0], limit = snakemake.params.limit, marker_file = snakemake.params.marker_file )
+create_gbif_table(gbif_data_path= snakemake.input[0],
+                  limit = snakemake.params.limit,
+                  marker_file = snakemake.params.marker_file,
+                  coordUncerFilter = snakemake.params.coordUncerFilter )
 
 db.conn.close()
 

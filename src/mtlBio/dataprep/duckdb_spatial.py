@@ -75,7 +75,7 @@ def create_table_from_shp(file_path : Path = None, marker_file:str = None):
     except Exception as e:
         print(f'Could not create table for {table_name}: {e}')
     
-def create_gbif_table(gbif_data_path :Path = None, limit :int = None, marker_file:str = None ):
+def create_gbif_table(gbif_data_path :Path = None, limit :int = None, marker_file:str = None, coordUncerFilter:float = None ):
     
     if limit == 'None':
         limit = None
@@ -111,7 +111,6 @@ def create_gbif_table(gbif_data_path :Path = None, limit :int = None, marker_fil
                 f.issue,
                 f.publishingOrgKey,
                 f.coordinateUncertaintyInMeters,
-                f.coordinatePrecision,
                 """
     
     #Redeclare connection variable
@@ -125,6 +124,7 @@ def create_gbif_table(gbif_data_path :Path = None, limit :int = None, marker_fil
                 SELECT {gbif_raw_col}
                 ST_Point(decimalLongitude, decimalLatitude) AS geom,
                 FROM '{gbif_data_path}' AS f
+                WHERE coordinateUncertaintyInMeters <= {coordUncerFilter}
                 {'LIMIT ' + str(limit) if (limit is not None) else ''} """
         
         try:

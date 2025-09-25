@@ -1,5 +1,7 @@
 from pathlib import Path
+from math import sqrt
 configfile: "config.yaml"
+
 
 data_dir = Path(config["data_dir"])
 raw_dir = data_dir / "raw"
@@ -22,6 +24,8 @@ gbif_raw_file = [f.stem for f in raw_gbif_path.glob("*.csv")][0]
 db_lock = db_dir / ".db_lock"
 group: "duckdb"
 
+# Calculate coordinate uncertainty based on grid size
+coord_uncertainty = ((config['grid_size'] * sqrt(2)) / 2)
 
 rule all:
     input:
@@ -64,7 +68,9 @@ rule create_duckdb:
     params:
         limit = config.get("limit", None),
         db_name = config["duckdb_file"],
-        marker_file = output.marker
+        marker_file = output.marker,
+        coordUncerFilter = coord_uncertainty
+
     group:
         "duckdb"
 
