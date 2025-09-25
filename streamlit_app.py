@@ -45,7 +45,7 @@ Explore Montreal's hidden biodiversity
 # Side bar
 with st.sidebar:
     st.title = TITLE
-    park_list = list(gdf.qrt_namemt .unique().tolist())
+    park_list = list(gdf.qrt_name .unique().tolist())
 
     #selected_park = st.selectbox('Select park', park_list, index = len(park_list)-1)
     color_theme_list = ['blues', 'cividis', 'greens', 'inferno', 'magma', 'plasma', 'reds', 'rainbow', 'turbo', 'viridis']
