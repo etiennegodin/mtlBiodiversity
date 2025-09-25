@@ -1,0 +1,6 @@
+library(DBI)
+library(duckdb)
+
+con <- dbConnect(duckdb::duckdb(), dbdir = "C:/Users/manat/Documents/Projects/mtlBiodiversity/data/db/mtlbio.duckdb", read_only = TRUE)
+dbListTables(con)
+df <- dbReadTable(con, "quartiers_sjoin")   # read into R

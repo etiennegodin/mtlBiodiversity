@@ -5,6 +5,7 @@
 build/
 
 #file type
+*.RData
 *.zip
 *.dbf
 *.db
