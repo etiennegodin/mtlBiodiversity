@@ -1,4 +1,4 @@
-from mtlBio.dataprep.importGbif import main
+from mtlBio.preprocess.importGbif import main
 
 print('#'*25, '01_loadGbifData', '#'*25, '\n' )
 

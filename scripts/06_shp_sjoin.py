@@ -1,4 +1,4 @@
-from mtlBio.dataprep.duckdb_spatial import grid_spatial_join
+from mtlBio.analysis.spatial import grid_spatial_join
 from mtlBio.core import DuckDBConnection
 
 print('#'*25, '06_shp_sjoin', '#'*25,'\n' )
