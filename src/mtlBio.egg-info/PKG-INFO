@@ -3,6 +3,7 @@ Name: mtlBio
 Version: 0.0.5
 Summary: MTL Biodiversity Project
 Author-email: Etienne Godin <etiennegodin@duck.com>
+License-File: LICENSE
 Requires-Dist: geopandas
 Requires-Dist: pandas
 Requires-Dist: numpy
@@ -20,6 +21,8 @@ Requires-Dist: folium
 Requires-Dist: jinja2
 Requires-Dist: dotenv
 Requires-Dist: snakemake
+Requires-Dist: scikit-learn
 Provides-Extra: dev
 Requires-Dist: pytest; extra == "dev"
 Requires-Dist: black; extra == "dev"
+Dynamic: license-file

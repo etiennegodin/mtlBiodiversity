@@ -27,7 +27,8 @@ dependencies = [
     'folium',
     'jinja2',
     'dotenv',
-    'snakemake'
+    'snakemake',
+    'scikit-learn'
 
 ]
 
