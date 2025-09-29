@@ -53,9 +53,13 @@ cluster_stats <- function(df, coords_utm)
       }
     )
   
-  print(cluster_stats)
-  
-  
+  #print(cluster_stats)
+  flags <- cluster_stats %>%
+    mutate(
+      flag_home = (n_obs > 100 & n_users == 1 & spread_mean_m < 30 ),
+      flag_chaining = (n_obs > 100 & n_users == 1 & spread_mean_m < 30 & spread_max_m > 200 )
+    )
+  print(flags)
 }
 
 db_scan_func <- function(df)
@@ -83,10 +87,5 @@ for (u in users)
   df_temp <- filter(df, identifiedBy == u)
   
   db_scan_func(df_temp)
-  break
-  
-  
-  
 }
-
 
