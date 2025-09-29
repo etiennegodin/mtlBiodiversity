@@ -9,6 +9,8 @@ library(arrow)
 library(sf)
 library(DBI)
 
+
+
 con <- dbConnect(duckdb::duckdb(), dbdir = "C:/Users/manat/Documents/Projects/mtlBiodiversity/data/db/mtlbio.duckdb", read_only = TRUE)
 dbListTables(con)
 df <- dbReadTable(con, "gbif_raw")   # read into R
@@ -65,7 +67,7 @@ cluster_stats <- function(df, coords_utm)
   {
     if (flags$flag_home[i] == "TRUE")
     {
-      selected_clusters <- c(selected_clusters, flag$flag_home[i] )
+      selected_clusters <- c(selected_clusters, flags$cluster[i] )
     }
   }
   
@@ -86,32 +88,24 @@ db_scan_func <- function(df)
   df$cluster <- db$cluster
 
   clusters <- cluster_stats(df, coords_utm)
-  
-  flagged_ids <- c()
-  
+  #print(clusters)
+
   if (length(clusters) > 0 )
   {
+    print(paste(length(clusters),'Clusters flagged'))
     for (i in 1:nrow(df))
     {
       if (df$cluster[i] %in% clusters){
-        flagged_ids <- c(flagged_ids, df$gbifID[i])
-        
+        ids_to_remove <<- c(ids_to_remove, df$gbifID[i])
+        #print(ids_to_remove)
+      
       }
     }
   }
-  else{
-    
-  }
+  #print(length(ids_to_remove))
   
-
-  return(df, coords_utm)
 }
 
-check_clusters <- function(df, flags)
-{
-  
-  break
-}
 
 # Initialize empty vector to store ids
 ids_to_remove <- c()
@@ -122,7 +116,5 @@ for (u in users)
   df_temp <- filter(df, identifiedBy == u)
 
   ids <-db_scan_func(df_temp)
-  break
-  
 }
-
+print(length(ids_to_remove))
