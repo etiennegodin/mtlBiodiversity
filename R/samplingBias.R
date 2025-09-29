@@ -9,13 +9,10 @@ library(arrow)
 library(sf)
 library(DBI)
 
-
-
 con <- dbConnect(duckdb::duckdb(), dbdir = "C:/Users/manat/Documents/Projects/mtlBiodiversity/data/db/mtlbio.duckdb", read_only = TRUE)
 dbListTables(con)
 df <- dbReadTable(con, "gbif_raw")   # read into R
 
-#View(df)
 
 df_top <- df %>% 
   group_by(identifiedBy) %>% 
@@ -55,7 +52,6 @@ cluster_stats <- function(df, coords_utm)
       }
     )
   
-  #print(cluster_stats)
   flags <- cluster_stats %>%
     mutate(
       flag_home = (n_obs > 100 & n_users == 1 & spread_mean_m < 30 ),
@@ -115,6 +111,9 @@ for (u in users)
   print(u)
   df_temp <- filter(df, identifiedBy == u)
 
-  ids <-db_scan_func(df_temp)
+  db_scan_func(df_temp)
 }
+
 print(length(ids_to_remove))
+
+saveRDS(ids_to_remove, "R/ids_samplingBias.rds")
