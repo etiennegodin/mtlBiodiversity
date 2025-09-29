@@ -28,7 +28,8 @@ dependencies = [
     'jinja2',
     'dotenv',
     'snakemake',
-    'scikit-learn'
+    'scikit-learn',
+    'haversine'
 
 ]
 
