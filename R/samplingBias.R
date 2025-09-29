@@ -59,7 +59,18 @@ cluster_stats <- function(df, coords_utm)
       flag_home = (n_obs > 100 & n_users == 1 & spread_mean_m < 30 ),
       flag_chaining = (n_obs > 100 & n_users == 1 & spread_mean_m < 30 & spread_max_m > 200 )
     )
-  print(flags)
+  
+  selected_clusters <- c()
+  for (i in 1:nrow(flags))
+  {
+    if (flags$flag_home[i] == "TRUE")
+    {
+      selected_clusters <- c(selected_clusters, flag$flag_home[i] )
+    }
+  }
+  
+  return(selected_clusters)
+
 }
 
 db_scan_func <- function(df)
@@ -70,22 +81,48 @@ db_scan_func <- function(df)
   df_utm <- st_transform(df_sf, 32618)  # pick your UTM zone
   coords_utm <- st_coordinates(df_utm)
   
-  db <- dbscan(coords_utm, eps = 50, minPts = 3)
+  db <- dbscan(coords_utm, eps = 50, minPts = 2)
   #db_h <- hdbscan(coords_utm, minPts = 5)
   df$cluster <- db$cluster
-  View(df)
+
+  clusters <- cluster_stats(df, coords_utm)
   
-  cluster_stats(df, coords_utm)
+  flagged_ids <- c()
   
+  if (length(clusters) > 0 )
+  {
+    for (i in 1:nrow(df))
+    {
+      if (df$cluster[i] %in% clusters){
+        flagged_ids <- c(flagged_ids, df$gbifID[i])
+        
+      }
+    }
+  }
+  else{
+    
+  }
   
+
+  return(df, coords_utm)
 }
 
+check_clusters <- function(df, flags)
+{
+  
+  break
+}
+
+# Initialize empty vector to store ids
+ids_to_remove <- c()
 
 for (u in users)
 {
-  print(paste("Hello", u))
+  print(u)
   df_temp <- filter(df, identifiedBy == u)
+
+  ids <-db_scan_func(df_temp)
+  break
   
-  db_scan_func(df_temp)
 }
 
