@@ -12,7 +12,7 @@ db = DuckDBConnection(file = snakemake.params.db_name)
 filter_gbif_data(gbif_cols = snakemake.params.gbif_cols,
                     limit = snakemake.params.limit,
                     marker_file = snakemake.params.marker_file,
-                    coordUncerFilter = snakemake.params.coordUncerFilter, 
+                    coordUncerFilter = None, 
                     wkt_filters = snakemake.params.wkt_filters)
                     
 db.conn.close()

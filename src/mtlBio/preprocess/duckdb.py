@@ -66,6 +66,10 @@ def filter_gbif_data(gbif_cols:str = None, limit :int = None,  marker_file:str =
     
     if limit == 'None':
         limit = None
+    if coordUncerFilter == 'None':
+        coordUncerFilter = None
+    if wkt_filters == 'None':
+        wkt_filters = None
     
     db = DuckDBConnection()
     con = db.conn
@@ -86,7 +90,7 @@ def filter_gbif_data(gbif_cols:str = None, limit :int = None,  marker_file:str =
     query = f"""CREATE OR REPLACE TABLE {table_name} AS
                 SELECT {gbif_cols}
                 FROM gbif_raw AS g,
-                WHERE coordinateUncertaintyInMeters <= {coordUncerFilter}
+                {'WHERE coordinateUncertaintyInMeters <= ' + str(coordUncerFilter) if (coordUncerFilter is not None) else ''}
                 {'LIMIT ' + str(limit) if (limit is not None) else ''}
                 """ 
                 

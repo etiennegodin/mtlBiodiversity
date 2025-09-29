@@ -1,16 +1,36 @@
 library(tidyverse)
+library(dplyr)
 library(DBI)
 library(duckdb)
 library(arrow)
 library(sf) ## for geom
 
+
+
 con <- dbConnect(duckdb::duckdb(), dbdir = "C:/Users/manat/Documents/Projects/mtlBiodiversity/data/db/mtlbio.duckdb", read_only = TRUE)
 dbListTables(con)
 df <- dbReadTable(con, "grid_sjoin")   # read into R
 
-df <- df %>%
+id_vector = df$gbifID
+View(id_vector)
+#Remove ids from user sampling bias filter
+loaded_ids <- readRDS("R/ids_samplingBias.rds")
+loaded_ids <- as.numeric(loaded_ids)
+View(loaded_ids)
+print(length(loaded_ids))
+
+common <- intersect(id_vector,loaded_ids)
+length(common)
+
+
+
+filtered_df <- df[!df$gbifID %in% loaded_ids, ]
+print(nrow(df) - nrow(filtered_df))
+print('Removed')
+
+
+filtered_df <- filtered_df %>%
   filter(!is.na(grid_id))
-view(df)
 
 
 #Shannon index helper function
@@ -26,7 +46,7 @@ simpson <- function(x) {
   1 - sum(p^2)                    # Simpson diversity
 }
 
-df_eco <- df %>% 
+df_eco <- filtered_df %>% 
   group_by(grid_id) %>% 
   summarise(
     observations = n(),

@@ -15,6 +15,7 @@ Explore the richness of Montreal’s urban nature through an interactive dashboa
 	
 - **Interactive Visualization:** Built a Python dashboard with maps, charts, and filters to explore biodiversity patterns across Montreal.
 
+- **Adressing VisualizationCitizen Science sampling bias:** DBScan to find highlighy clustered observations by same user 
 ## Impact & Insights
 
 - Identify parks and neighborhoods with the highest species diversity.
