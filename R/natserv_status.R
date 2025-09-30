@@ -17,6 +17,9 @@ get_status <- function(species_name){
     results <- res$results
     #View(results)
   }
+  if (length(results) == 0 ){
+    return(NA)
+  }
   for (r in 1:nrow(results))
   {
     if (results$scientificName[r] != species_name){
