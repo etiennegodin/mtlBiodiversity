@@ -39,8 +39,9 @@ get_status <- function(species_name){
     
     ca <- nations %>% 
       filter(nationCode == 'CA')
-    print(ca)
-    
+    if (nrow(ca) == 0){
+      return(NA)
+    }
     #View(ca)
     subnations <- ca[, "subnations"][[1]]
     #View(subnations)
@@ -95,7 +96,7 @@ View(species_list)
 
 #species_list <- species_list[1:20]
 
-species_list <-c("Rumex sanguineus")
+#species_list <-c("Tiarella cordifolia")
 
 
 statuses <- c()
