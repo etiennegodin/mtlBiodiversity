@@ -39,6 +39,12 @@ simpson <- function(x) {
   1 - sum(p^2)                    # Simpson diversity
 }
 
+rpo <- function(x){
+  # Richness per observations metric
+  
+  
+}
+
 df_eco <- filtered_df %>% 
   group_by(grid_id) %>% 
   summarise(
@@ -53,7 +59,9 @@ df_eco <- filtered_df %>%
     phylum_richness = n_distinct(phylum),
     n_users = n_distinct(recordedBy),
     H_user = shannon(recordedBy),
-    D_user = simpson(recordedBy)
+    D_user = simpson(recordedBy),
+    rpo = species_richness/observations,
+    user_diveristy = species_richness/n_users
     
     
   )

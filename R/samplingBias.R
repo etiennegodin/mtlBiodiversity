@@ -33,13 +33,8 @@ View(grid_counts)
 
 users <- filter(grid_counts, n_obs > 100 )
 users <- users[!is.na(users$recordedBy),]
+users <- unique(users$recordedBy)
 View(users)
-
-users <- users$recordedBy
-#user <- filter(users, )
-View(users)
-
-
 
 cluster_stats <- function(df, coords_utm)
 {

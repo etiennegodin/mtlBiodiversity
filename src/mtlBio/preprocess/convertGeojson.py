@@ -12,7 +12,7 @@ def convertParquetGeojson(file_path:str = None, merge_col:str = None, debug:bool
     file_path = Path(file_path)
     output_path = Path(f"{file_path.parent}/{file_path.stem}.geojson")
     shp_file_path = Path(f"{configs.data_dir}/interim/geospatial/{file_path.stem}.shp")
-    con = duckdb.connect(".tmp")
+    con = duckdb.connect()
     con.execute("INSTALL spatial;")
     con.execute("LOAD spatial;")
     
