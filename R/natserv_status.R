@@ -15,6 +15,7 @@ get_status <- function(species_name){
   if (length(res)> 1)
   {
     results <- res$results
+    #View(results)
   }
   for (r in 1:nrow(results))
   {
@@ -32,32 +33,49 @@ get_status <- function(species_name){
   else
   {
     nations <- b_result$nations[[1]]
+    if (nrow(nations) == 0){
+      return(NA)
+    }
+    
     ca <- nations %>% 
       filter(nationCode == 'CA')
+    print(ca)
+    
     #View(ca)
     subnations <- ca[, "subnations"][[1]]
     #View(subnations)
     qc <- subnations %>% 
       filter(subnationCode == 'QC')
-    
-    exotic = qc[,'exotic']
-    native = qc[,'native']
-    
-    if (exotic != native)
-    {
-      if (native == TRUE)
+    if(!nrow(qc) == 0){
+      exotic = qc[,'exotic']
+      native = qc[,'native']
+    }
+    else{
+      exotic = ca[,'exotic']
+      native = ca[,'native']
+    }
+
+    if (is.na(exotic) & is.na(native)){
+      return(NA)
+    }
+    else{
+      if (exotic != native)
       {
-        return(0)
+        if (native == TRUE)
+        {
+          return(0)
+        }
+        else if ( exotic == TRUE)
+        {
+          return(1)
+        }
       }
-      else if ( exotic == TRUE)
+      else
       {
-        return(1)
+        return(2)
       }
     }
-    else
-    {
-      return(2)
-    }
+
     
   }
 
@@ -75,9 +93,10 @@ df <- df %>%
 species_list <- unique(df$species)
 View(species_list)
 
-species_list <- species_list[1:20]
+#species_list <- species_list[1:20]
 
-#species_list <-c("Aralia racemosa")
+species_list <-c("Rumex sanguineus")
+
 
 statuses <- c()
 for (s in species_list){
