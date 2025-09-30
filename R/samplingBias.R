@@ -12,19 +12,33 @@ library(DBI)
 con <- dbConnect(duckdb::duckdb(), dbdir = "C:/Users/manat/Documents/Projects/mtlBiodiversity/data/db/mtlbio.duckdb", read_only = TRUE)
 dbListTables(con)
 df <- dbReadTable(con, "gbif_raw")   # read into R
+df_grid <- dbReadTable(con, "grid_sjoin")   # read into R
 
 
-df_top <- df %>% 
-  group_by(identifiedBy) %>% 
-  summarise(obs_count = n()) %>% 
-  arrange(desc(obs_count))
-View(df_top)
+# Filter to check for 
 
-users <- filter(df_top, obs_count > 1000 )
-users <- users[!is.na(users$identifiedBy),]
-users <- users$identifiedBy
+df_grid <- df_grid %>%
+  filter(!is.na(grid_id))
+
+grid_counts <- df_grid %>%
+  group_by(recordedBy, grid_id) %>%
+  summarise(
+    n_obs = n(),
+    n_species = n_distinct(species),
+    .groups = "drop"
+  ) %>% 
+  arrange(desc(n_obs))
+
+View(grid_counts)
+
+users <- filter(grid_counts, n_obs > 100 )
+users <- users[!is.na(users$recordedBy),]
+View(users)
+
+users <- users$recordedBy
 #user <- filter(users, )
 View(users)
+
 
 
 cluster_stats <- function(df, coords_utm)
@@ -34,13 +48,13 @@ cluster_stats <- function(df, coords_utm)
   # ---------------------------------------------------------
   df$x <- coords_utm[,1]
   df$y <- coords_utm[,2]
-  
+
   cluster_stats <- df %>%
     group_by(cluster) %>%
     summarise(
       n_obs = n(),
       n_species = n_distinct(species),
-      n_users = n_distinct(identifiedBy),
+      n_users = n_distinct(recordedBy),
       # spread = mean distance to centroid
       spread_mean_m = {
         centroid <- colMeans(cbind(x, y))
@@ -57,6 +71,7 @@ cluster_stats <- function(df, coords_utm)
       flag_home = (n_obs > 100 & n_users == 1 & spread_mean_m < 30 ),
       flag_chaining = (n_obs > 100 & n_users == 1 & spread_mean_m < 30 & spread_max_m > 200 )
     )
+  #print(flags)
   
   selected_clusters <- c()
   for (i in 1:nrow(flags))
@@ -82,7 +97,7 @@ db_scan_func <- function(df)
   db <- dbscan(coords_utm, eps = 50, minPts = 2)
   #db_h <- hdbscan(coords_utm, minPts = 5)
   df$cluster <- db$cluster
-
+  
   clusters <- cluster_stats(df, coords_utm)
   #print(clusters)
 
@@ -109,11 +124,16 @@ ids_to_remove <- c()
 for (u in users)
 {
   print(u)
-  df_temp <- filter(df, identifiedBy == u)
+  df_temp <- filter(df, recordedBy == u)
 
   db_scan_func(df_temp)
 }
 
 print(length(ids_to_remove))
+df_out <- df %>%
+  filter(gbifID %in% ids_to_remove)
+print(nrow(df_out))
+df_out$geom <- NULL
 
+write.csv(df_out, file = "R/test.csv")
 saveRDS(ids_to_remove, "R/ids_samplingBias.rds")

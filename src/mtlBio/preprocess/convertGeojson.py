@@ -12,8 +12,7 @@ def convertParquetGeojson(file_path:str = None, merge_col:str = None, debug:bool
     file_path = Path(file_path)
     output_path = Path(f"{file_path.parent}/{file_path.stem}.geojson")
     shp_file_path = Path(f"{configs.data_dir}/interim/geospatial/{file_path.stem}.shp")
-    
-    con = duckdb.connect()
+    con = duckdb.connect(".tmp")
     con.execute("INSTALL spatial;")
     con.execute("LOAD spatial;")
     
@@ -31,8 +30,14 @@ def convertParquetGeojson(file_path:str = None, merge_col:str = None, debug:bool
         print(f'Failed to save {output_path}: {e}')
 
 if __name__ == "__main__":
-    
     quartiers_file = f"{configs.data_dir}/processed/quartiers.parquet"
     grid_file = f"{configs.data_dir}/processed/grid.parquet"
     convertParquetGeojson(quartiers_file, "qrt_id")
     convertParquetGeojson(grid_file, "grid_id")
+
+
+
+
+
+
+

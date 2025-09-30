@@ -11,26 +11,19 @@ con <- dbConnect(duckdb::duckdb(), dbdir = "C:/Users/manat/Documents/Projects/mt
 dbListTables(con)
 df <- dbReadTable(con, "grid_sjoin")   # read into R
 
-id_vector = df$gbifID
-View(id_vector)
+df <- df %>%
+  filter(!is.na(grid_id))
+
 #Remove ids from user sampling bias filter
 loaded_ids <- readRDS("R/ids_samplingBias.rds")
 loaded_ids <- as.numeric(loaded_ids)
-View(loaded_ids)
-print(length(loaded_ids))
-
-common <- intersect(id_vector,loaded_ids)
-length(common)
-
-
 
 filtered_df <- df[!df$gbifID %in% loaded_ids, ]
 print(nrow(df) - nrow(filtered_df))
 print('Removed')
 
 
-filtered_df <- filtered_df %>%
-  filter(!is.na(grid_id))
+
 
 
 #Shannon index helper function
@@ -57,7 +50,12 @@ df_eco <- filtered_df %>%
     family_richness = n_distinct(family),
     order_richness = n_distinct(order),
     class_richness = n_distinct(class),
-    phylum_richness = n_distinct(phylum)
+    phylum_richness = n_distinct(phylum),
+    n_users = n_distinct(recordedBy),
+    H_user = shannon(recordedBy),
+    D_user = simpson(recordedBy)
+    
+    
   )
 
 view(df_eco)
