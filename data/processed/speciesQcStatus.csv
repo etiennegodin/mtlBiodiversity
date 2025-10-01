@@ -1,0 +1,4316 @@
+"index","species","status","error"
+1,"Aralia racemosa",0,NA
+2,"Rhamnus cathartica",1,NA
+3,"Rubus odoratus",0,NA
+4,"Acer spicatum",0,NA
+5,"Solidago flexicaulis",0,NA
+6,"Fagus grandifolia",0,NA
+7,"Actaea pachypoda",0,NA
+8,"Lobelia cardinalis",0,NA
+9,"Caulophyllum thalictroides",0,NA
+10,"Trillium grandiflorum",0,NA
+11,"Persicaria virginiana",0,NA
+12,"Erythronium americanum",0,NA
+13,"Lapsana communis",1,NA
+14,"Maianthemum racemosum",0,NA
+15,"Sanguinaria canadensis",0,NA
+16,"Tussilago farfara",1,NA
+17,"Amphicarpaea bracteata",0,NA
+18,"Solanum dulcamara",1,NA
+19,"Tanacetum vulgare",1,NA
+20,"Hemerocallis fulva",1,NA
+21,"Sonchus arvensis",1,NA
+22,"Leonurus cardiaca",1,NA
+23,"Menispermum canadense",0,NA
+24,"Onoclea sensibilis",0,NA
+25,"Rhus typhina",0,NA
+26,"Apocynum androsaemifolium",0,NA
+27,"Ranunculus abortivus",0,NA
+28,"Chelidonium majus",1,NA
+29,"Lysimachia ciliata",0,NA
+30,"Rosa rugosa",NA,"No matching species"
+31,"Matricaria discoidea",1,NA
+32,"Apocynum cannabinum",0,NA
+33,"Lysimachia nummularia",1,NA
+34,"Quercus macrocarpa",0,NA
+35,"Viola pubescens",0,NA
+36,"Allium tricoccum",0,NA
+37,"Celastrus scandens",0,NA
+38,"Eupatorium perfoliatum",0,NA
+39,"Symphyotrichum novae-angliae",0,NA
+40,"Cardamine concatenata",0,NA
+41,"Parthenocissus quinquefolia",1,NA
+42,"Rubus occidentalis",0,NA
+43,"Tilia americana",0,NA
+44,"Adiantum pedatum",0,NA
+45,"Rumex sanguineus",1,NA
+46,"Laportea canadensis",0,NA
+47,"Astragalus canadensis",0,NA
+48,"Boehmeria cylindrica",0,NA
+49,"Actaea rubra",0,NA
+50,"Atriplex hortensis",1,NA
+51,"Convolvulus arvensis",1,NA
+52,"Iris pseudacorus",1,NA
+53,"Tragopogon pratensis",1,NA
+54,"Ajuga reptans",1,NA
+55,"Physocarpus opulifolius",0,NA
+56,"Asclepias incarnata",0,NA
+57,"Saponaria officinalis",1,NA
+58,"Hemerocallis lilioasphodelus",1,NA
+59,"Stachys byzantina",1,NA
+60,"Campanula rapunculoides",1,NA
+61,"Melissa officinalis",1,NA
+62,"Sorbaria sorbifolia",1,NA
+63,"Ribes rubrum",1,NA
+64,"Filipendula ulmaria",1,NA
+65,"Syringa vulgaris",1,NA
+66,"Echinocystis lobata",0,NA
+67,"Sedum sarmentosum",1,NA
+68,"Lysimachia punctata",1,NA
+69,"Vitis riparia",0,NA
+70,"Convallaria majalis",1,NA
+71,"Prunella vulgaris",0,NA
+72,"Pilea pumila",0,NA
+73,"Erechtites hieraciifolius",0,NA
+74,"Mimulus ringens",0,NA
+75,"Silene vulgaris",1,NA
+76,"Erysimum cheiranthoides",1,NA
+77,"Nepeta cataria",1,NA
+78,"Lupinus polyphyllus",1,NA
+79,"Salvia officinalis",1,NA
+80,"Cosmos bipinnatus",1,NA
+81,"Phragmites australis",2,NA
+82,"Smilax herbacea",0,NA
+83,"Cyperus esculentus",0,NA
+84,"Asclepias syriaca",0,NA
+85,"Philadelphus coronarius",1,NA
+86,"Reynoutria japonica",1,NA
+87,"Campanula glomerata",1,NA
+88,"Monarda fistulosa",0,NA
+89,"Phleum pratense",1,NA
+90,"Symphoricarpos albus",0,NA
+91,"Marrubium vulgare",1,NA
+92,"Prunus virginiana",0,NA
+93,"Amaranthus retroflexus",1,NA
+94,"Arctium tomentosum",1,NA
+95,"Leymus arenarius",1,NA
+96,"Moehringia lateriflora",0,NA
+97,"Taxus canadensis",0,NA
+98,"Carex plantaginea",0,NA
+99,"Argentina anserina",NA,"No matching species"
+100,"Spinulum annotinum",0,NA
+101,"Tiarella cordifolia",NA,"No data for Canada"
+102,"Symphyotrichum cordifolium",0,NA
+103,"Polygonum aviculare",0,NA
+104,"Lycopus europaeus",1,NA
+105,"Hordeum jubatum",0,NA
+106,"Chelone glabra",0,NA
+107,"Dianthus barbatus",1,NA
+108,"Papaver somniferum",1,NA
+109,"Euphorbia cyparissias",1,NA
+110,"Cirsium arvense",1,NA
+111,"Urtica dioica",0,NA
+112,"Ambrosia trifida",0,NA
+113,"Coreopsis tinctoria",1,NA
+114,"Potentilla norvegica",0,NA
+115,"Berberis vulgaris",1,NA
+116,"Potentilla recta",1,NA
+117,"Ambrosia artemisiifolia",1,NA
+118,"Dasiphora fruticosa",0,NA
+119,"Euphorbia peplus",1,NA
+120,"Sicyos angulatus",1,NA
+121,"Phalaris arundinacea",0,NA
+122,"Vaccinium myrtilloides",0,NA
+123,"Rudbeckia triloba",1,NA
+124,"Fagopyrum esculentum",1,NA
+125,"Rudbeckia laciniata",0,NA
+126,"Artemisia vulgaris",1,NA
+127,"Sorbus aucuparia",1,NA
+128,"Ribes aureum",1,NA
+129,"Pontederia cordata",0,NA
+130,"Lobularia maritima",1,NA
+131,"Physostegia virginiana",0,NA
+132,"Sisyrinchium angustifolium",0,NA
+133,"Aronia melanocarpa",0,NA
+134,"Euonymus europaeus",1,NA
+135,"Dianthus deltoides",1,NA
+136,"Portulaca oleracea",1,NA
+137,"Humulus lupulus",NA,"No matching species"
+138,"Silene latifolia",1,NA
+139,"Uvularia grandiflora",0,NA
+140,"Helianthus tuberosus",1,NA
+141,"Maianthemum stellatum",0,NA
+142,"Artemisia absinthium",1,NA
+143,"Acer saccharinum",0,NA
+144,"Tragopogon dubius",1,NA
+145,"Epipactis helleborine",1,NA
+146,"Brassica oleracea",1,NA
+147,"Cirsium vulgare",1,NA
+148,"Rosa multiflora",1,NA
+149,"Elaeagnus commutata",0,NA
+150,"Verbena urticifolia",0,NA
+151,"Althaea officinalis",1,NA
+152,"Aquilegia vulgaris",1,NA
+153,"Viola canadensis",0,NA
+154,"Senecio vulgaris",1,NA
+155,"Polystichum acrostichoides",0,NA
+156,"Thlaspi arvense",1,NA
+157,"Euphorbia helioscopia",1,NA
+158,"Celtis occidentalis",0,NA
+159,"Zea mays",1,NA
+160,"Stellaria graminea",1,NA
+161,"Spiraea alba",0,NA
+162,"Artemisia biennis",1,NA
+163,"Coreopsis verticillata",1,NA
+164,"Verbena stricta",0,NA
+165,"Ribes nigrum",1,NA
+166,"Rumex acetosella",1,NA
+167,"Kalmia angustifolia",0,NA
+168,"Mentha arvensis",2,NA
+169,"Cornus canadensis",NA,"No matching species"
+170,"Solidago canadensis",0,NA
+171,"Campanula trachelium",1,NA
+172,"Monotropa uniflora",0,NA
+173,"Macleaya cordata",1,NA
+174,"Euphorbia lathyris",1,NA
+175,"Lilium martagon",1,NA
+176,"Oxybasis glauca",1,NA
+177,"Phedimus aizoon",1,NA
+178,"Thuja occidentalis",0,NA
+179,"Cypripedium reginae",0,NA
+180,"Amaranthus blitum",1,NA
+181,"Parnassia palustris",0,NA
+182,"Comptonia peregrina",0,NA
+183,"Podophyllum peltatum",0,NA
+184,"Inula helenium",1,NA
+185,"Teucrium canadense",0,NA
+186,"Aralia nudicaulis",0,NA
+187,"Cephalanthus occidentalis",0,NA
+188,"Verbena hastata",0,NA
+189,"Desmodium canadense",0,NA
+190,"Euphorbia marginata",1,NA
+191,"Mycelis muralis",1,NA
+192,"Sedum acre",1,NA
+193,"Bidens frondosa",0,NA
+194,"Fragaria vesca",0,NA
+195,"Ulmus pumila",1,NA
+196,"Lilium lancifolium",1,NA
+197,"Claytonia caroliniana",0,NA
+198,"Geranium pratense",1,NA
+199,"Alcea rosea",1,NA
+200,"Veratrum viride",0,NA
+201,"Trillium undulatum",NA,"No matching species"
+202,"Parietaria pensylvanica",0,NA
+203,"Asarum canadense",0,NA
+204,"Commelina communis",1,NA
+205,"Gypsophila elegans",1,NA
+206,"Armoracia rusticana",1,NA
+207,"Ribes uva-crispa",1,NA
+208,"Clintonia borealis",0,NA
+209,"Asclepias tuberosa",0,NA
+210,"Carex grayi",0,NA
+211,"Mitchella repens",0,NA
+212,"Hypericum punctatum",0,NA
+213,"Anaphalis margaritacea",0,NA
+214,"Ribes cynosbati",0,NA
+215,"Dicentra cucullaria",0,NA
+216,"Phytolacca americana",0,NA
+217,"Euthamia graminifolia",0,NA
+218,"Geum laciniatum",0,NA
+219,"Thladiantha dubia",1,NA
+220,"Rubus pubescens",0,NA
+221,"Vincetoxicum nigrum",NA,"No matching species"
+222,"Lagurus ovatus",NA,"No data for Canada"
+223,"Symplocarpus foetidus",0,NA
+224,"Origanum vulgare",1,NA
+225,"Arisaema triphyllum",0,NA
+226,"Cichorium intybus",1,NA
+227,"Cypripedium acaule",0,NA
+228,"Trillium erectum",0,NA
+229,"Quercus rubra",0,NA
+230,"Iberis umbellata",1,NA
+231,"Chenopodium ficifolium",1,NA
+232,"Campanula persicifolia",1,NA
+233,"Nigella damascena",1,NA
+234,"Carduus nutans",1,NA
+235,"Dianthus armeria",1,NA
+236,"Juniperus horizontalis",0,NA
+237,"Helianthus annuus",1,NA
+238,"Zanthoxylum americanum",0,NA
+239,"Helenium autumnale",0,NA
+240,"Galium aparine",1,NA
+241,"Achillea ptarmica",1,NA
+242,"Poa annua",1,NA
+243,"Populus tremuloides",0,NA
+244,"Pinus banksiana",0,NA
+245,"Salix purpurea",1,NA
+246,"Aquilegia canadensis",0,NA
+247,"Viola labradorica",0,NA
+248,"Apios americana",0,NA
+249,"Salix pentandra",1,NA
+250,"Artemisia abrotanum",1,NA
+251,"Capsella bursa-pastoris",1,NA
+252,"Hesperis matronalis",1,NA
+253,"Panicum capillare",0,NA
+254,"Dianthus plumarius",1,NA
+255,"Centaurea macrocephala",1,NA
+256,"Cerastium tomentosum",1,NA
+257,"Achillea distans",1,NA
+258,"Lactuca serriola",1,NA
+259,"Avena sativa",1,NA
+260,"Crataegus crus-galli",0,NA
+261,"Reynoutria sachalinensis",1,NA
+262,"Symphyotrichum novi-belgii",0,NA
+263,"Caltha palustris",0,NA
+264,"Hibiscus trionum",1,NA
+265,"Pinus strobus",0,NA
+266,"Bunias orientalis",1,NA
+267,"Cornus sericea",0,NA
+268,"Chenopodium album",1,NA
+269,"Sanguisorba canadensis",0,NA
+270,"Solidago caesia",0,NA
+271,"Erigeron annuus",0,NA
+272,"Sisymbrium officinale",1,NA
+273,"Artemisia ludoviciana",1,NA
+274,"Stachys palustris",1,NA
+275,"Diplotaxis tenuifolia",1,NA
+276,"Helianthus divaricatus",0,NA
+277,"Erigeron philadelphicus",0,NA
+278,"Prunus pensylvanica",0,NA
+279,"Mentha spicata",1,NA
+280,"Juniperus communis",0,NA
+281,"Malva sylvestris",1,NA
+282,"Fragaria virginiana",0,NA
+283,"Coptis trifolia",0,NA
+284,"Mirabilis nyctaginea",1,NA
+285,"Andromeda polifolia",0,NA
+286,"Asparagus officinalis",1,NA
+287,"Onopordum acanthium",1,NA
+288,"Echinochloa crus-galli",1,NA
+289,"Hamamelis virginiana",0,NA
+290,"Allium schoenoprasum",0,NA
+291,"Myrica gale",0,NA
+292,"Sarracenia purpurea",0,NA
+293,"Artemisia stelleriana",1,NA
+294,"Primula veris",1,NA
+295,"Speyeria cybele",NA,"No matching species"
+296,"Papilio cresphontes",NA,"No matching species"
+297,"Euptychia cymela",NA,"No matching species"
+298,"Euphyes vestris",0,NA
+299,"Colias eurytheme",0,NA
+300,"Clossiana toddi",NA,"Results is empty"
+301,"Strymon caryaevorus",NA,"No matching species"
+302,"Polygonia vaualbum",NA,"Results is empty"
+303,"Phyciodes tharos",0,NA
+304,"Lon hobomok",0,NA
+305,"Colias philodice",0,NA
+306,"Polyommatus icarus",1,NA
+307,"Pieris rapae",1,NA
+308,"Papilio polyxenes",0,NA
+309,"Pieris oleracea",0,NA
+310,"Lethe anthedon",0,NA
+311,"Ancyloxypha numitor",0,NA
+312,"Cornus racemosa",0,NA
+313,"Calendula officinalis",1,NA
+314,"Limenitis archippus",0,NA
+315,"Achillea millefolium",0,NA
+316,"Polygonia interrogationis",0,NA
+317,"Poa pratensis",0,NA
+318,"Danaus plexippus",0,NA
+319,"Vanessa cardui",0,NA
+320,"Lycaeides idas",NA,"No matching species"
+321,"Cornus rugosa",0,NA
+322,"Prunus domestica",1,NA
+323,"Nymphalis antiopa",0,NA
+324,"Cercyonis pegala",0,NA
+325,"Incisalia henrici",NA,"No matching species"
+326,"Chlosyne nycteis",0,NA
+327,"Limenitis arthemis",0,NA
+328,"Artemisia annua",1,NA
+329,"Panicum miliaceum",1,NA
+330,"Celastrina lucia",0,NA
+331,"Tharsalea hyllus",0,NA
+332,"Cyaniris neglecta",NA,"Results is empty"
+333,"Vanessa atalanta",0,NA
+334,"Galinsoga quadriradiata",1,NA
+335,"Prunus serotina",0,NA
+336,"Scorzoneroides autumnalis",NA,"No matching species"
+337,"Ranunculus sceleratus",0,NA
+338,"Epargyreus clarus",0,NA
+339,"Galeopsis tetrahit",1,NA
+340,"Solidago rugosa",0,NA
+341,"Strymon acadica",NA,"Results is empty"
+342,"Speyeria aphrodite",NA,"No matching species"
+343,"Harkenclenus titus",NA,"No matching species"
+344,"Boloria selene",NA,"No matching species"
+345,"Lethe eurydice",0,NA
+346,"Satyrium calanus",0,NA
+347,"Coenonympha tullia",NA,"No matching species"
+348,"Euphydryas phaeton",0,NA
+349,"Hesperia sassacus",0,NA
+350,"Aglais milberti",0,NA
+351,"Thymelicus lineola",1,NA
+352,"Aglais io",1,NA
+353,"Vanessa virginiensis",0,NA
+354,"Polygonia comma",0,NA
+355,"Polygonia progne",0,NA
+356,"Feniseca tarquinius",0,NA
+357,"Elkalyce comyntas",NA,"Results is empty"
+358,"Rosa spinosissima",1,NA
+359,"Ribes americanum",0,NA
+360,"Cystopteris bulbifera",0,NA
+361,"Potentilla argentea",1,NA
+362,"Linum usitatissimum",1,NA
+363,"Penthorum sedoides",0,NA
+364,"Hydrophyllum virginianum",0,NA
+365,"Satyrium liparops",0,NA
+366,"Trichodezia albovittata",0,NA
+367,"Homochlodes fritillaria",0,NA
+368,"Pyrrharctia isabella",0,NA
+369,"Junco hyemalis",0,NA
+370,"Pseudacris crucifer",0,NA
+371,"Auriscalpium vulgare",0,NA
+372,"Buteo jamaicensis",0,NA
+373,"Pomoxis nigromaculatus",0,NA
+374,"Anaxyrus americanus",0,NA
+375,"Glaucopsyche lygdamus",0,NA
+376,"Chlosyne harrisii",0,NA
+377,"Asterocampa celtis",0,NA
+378,"Chlorociboria aeruginascens",0,NA
+379,"Catharus guttatus",0,NA
+380,"Strobilomyces strobilaceus",0,NA
+381,"Larus delawarensis",0,NA
+382,"Nabalus altissima",NA,"No matching species"
+383,"Melospiza melodia",0,NA
+384,"Branta canadensis",0,NA
+385,"Actitis macularius",0,NA
+386,"Certhia americana",0,NA
+387,"Turdus migratorius",0,NA
+388,"Zonotrichia albicollis",0,NA
+389,"Seiurus aurocapilla",0,NA
+390,"Setophaga coronata",0,NA
+391,"Bucephala clangula",0,NA
+392,"Cardinalis cardinalis",0,NA
+393,"Sphyrapicus varius",0,NA
+394,"Sayornis phoebe",0,NA
+395,"Apis mellifera",1,NA
+396,"Micropterus dolomieu",0,NA
+397,"Odocoileus virginianus",0,NA
+398,"Molothrus ater",0,NA
+399,"Melanoplus bivittatus",0,NA
+400,"Lithobates clamitans",0,NA
+401,"Spizella passerina",0,NA
+402,"Hirundo rustica",0,NA
+403,"Setophaga petechia",0,NA
+404,"Poecile atricapillus",0,NA
+405,"Corvus brachyrhynchos",0,NA
+406,"Tamias striatus",0,NA
+407,"Geothlypis trichas",0,NA
+408,"Leuconotopicus villosus",NA,"Results is empty"
+409,"Charadrius vociferus",0,NA
+410,"Dryocopus pileatus",0,NA
+411,"Dumetella carolinensis",0,NA
+412,"Peponapis pruinosa",0,NA
+413,"Sturnus vulgaris",1,NA
+414,"Troglodytes aedon",0,NA
+415,"Tachycineta bicolor",0,NA
+416,"Tamiasciurus hudsonicus",0,NA
+417,"Bombycilla cedrorum",0,NA
+418,"Dryobates pubescens",0,NA
+419,"Spinus tristis",0,NA
+420,"Setophaga ruticilla",0,NA
+421,"Setophaga palmarum",0,NA
+422,"Ichneumon centrator",NA,"Results is empty"
+423,"Meleagris gallopavo",0,NA
+424,"Argia moesta",0,NA
+425,"Anas platyrhynchos",0,NA
+426,"Carya ovata",0,NA
+427,"Nymphaea odorata",0,NA
+428,"Vinca minor",1,NA
+429,"Sitta carolinensis",0,NA
+430,"Vicia cracca",1,NA
+431,"Medicago sativa",1,NA
+432,"Lythrum salicaria",1,NA
+433,"Argiope trifasciata",0,NA
+434,"Carex lupulina",0,NA
+435,"Neandra brunnea",0,NA
+436,"Graptemys geographica",0,NA
+437,"Cypripedium parviflorum",0,NA
+438,"Emmelina monodactyla",0,NA
+439,"Ischnoderma resinosum",0,NA
+440,"Frangula alnus",1,NA
+441,"Archips purpurana",0,NA
+442,"Harmonia axyridis",1,NA
+443,"Aix sponsa",0,NA
+444,"Acanthocephala terminalis",0,NA
+445,"Carex sparganioides",0,NA
+446,"Pterourus canadensis",0,NA
+447,"Pimephales promelas",0,NA
+448,"Pachydiplax longipennis",0,NA
+449,"Quiscalus quiscula",0,NA
+450,"Bombus impatiens",0,NA
+451,"Trametes versicolor",0,NA
+452,"Equisetum hyemale",0,NA
+453,"Tremex columba",0,NA
+454,"Sambucus racemosa",0,NA
+455,"Leucorrhinia intacta",0,NA
+456,"Anemone virginiana",0,NA
+457,"Lotus corniculatus",1,NA
+458,"Taraxacum officinale",0,NA
+459,"Mus musculus",1,NA
+460,"Trifolium pratense",1,NA
+461,"Bombus griseocollis",0,NA
+462,"Bombus rufocinctus",0,NA
+463,"Anthidium florentinum",NA,"no applicable method for 'filter' applied to an object of class ""list"""
+464,"Pyrausta bicoloralis",0,NA
+465,"Datana integerrima",0,NA
+466,"Coccinella septempunctata",1,NA
+467,"Cyanocitta cristata",0,NA
+468,"Dolichovespula maculata",0,NA
+469,"Falco columbarius",0,NA
+470,"Ranunculus repens",1,NA
+471,"Popillia japonica",1,NA
+472,"Setophaga castanea",0,NA
+473,"Cepaea nemoralis",1,NA
+474,"Phalangium opilio",1,NA
+475,"Thryothorus ludovicianus",0,NA
+476,"Diervilla lonicera",0,NA
+477,"Scutigera coleoptrata",1,NA
+478,"Physalis grisea",1,NA
+479,"Dolomedes tenebrosus",0,NA
+480,"Lymantria dispar",1,NA
+481,"Lathyrus sylvestris",1,NA
+482,"Tetraopes tetrophthalmus",0,NA
+483,"Lithobates sylvaticus",0,NA
+484,"Plethodon cinereus",0,NA
+485,"Typha latifolia",0,NA
+486,"Parkesia noveboracensis",0,NA
+487,"Phymata americana",0,NA
+488,"Urophora cardui",1,NA
+489,"Ischnura posita",0,NA
+490,"Haemorhous mexicanus",1,NA
+491,"Falco atricapillus",NA,"Results is empty"
+492,"Sylvilagus floridanus",0,NA
+493,"Prunus nigra",0,NA
+494,"Gallinula chloropus",NA,"No matching species"
+495,"Bubo virginianus",0,NA
+496,"Falco sparverius",0,NA
+497,"Spizelloides arborea",0,NA
+498,"Populus deltoides",0,NA
+499,"Lithobates pipiens",0,NA
+500,"Gallinago delicata",0,NA
+501,"Trifolium repens",1,NA
+502,"Carabus nemoralis",1,NA
+503,"Valeriana officinalis",1,NA
+504,"Eutrochium maculatum",0,NA
+505,"Butorides virescens",0,NA
+506,"Ardea herodias",0,NA
+507,"Umbra limi",0,NA
+508,"Athyrium angustum",NA,"No matching species"
+509,"Crataegus submollis",0,NA
+510,"Rhagonycha fulva",1,NA
+511,"Cathartes aura",0,NA
+512,"Lobelia inflata",0,NA
+513,"Araneus diadematus",1,NA
+514,"Vespula maculifrons",0,NA
+515,"Macrostemum zebratum",0,NA
+516,"Veronica peregrina",0,NA
+517,"Aphis nerii",1,NA
+518,"Aythya marila",0,NA
+519,"Armadillidium vulgare",1,NA
+520,"Tramea lacerata",0,NA
+521,"Neotibicen canicularis",0,NA
+522,"Sciurus carolinensis",0,NA
+523,"Alliaria petiolata",1,NA
+524,"Loweomyces fractipes",0,NA
+525,"Marmota monax",0,NA
+526,"Daucus carota",1,NA
+527,"Agelaius phoeniceus",0,NA
+528,"Lebia viridis",0,NA
+529,"Sedum sexangulare",1,NA
+530,"Passer domesticus",1,NA
+531,"Crambus praefectellus",0,NA
+532,"Toxomerus geminatus",0,NA
+533,"Hypericum perforatum",1,NA
+534,"Ceratomia amyntor",0,NA
+535,"Silene coronaria",1,NA
+536,"Trachelipus rathkii",NA,"No matching species"
+537,"Glechoma hederacea",1,NA
+538,"Buteo lineatus",0,NA
+539,"Sorex cinereus",0,NA
+540,"Noctua pronuba",1,NA
+541,"Lumbricus terrestris",1,NA
+542,"Setophaga magnolia",0,NA
+543,"Leiothlypis ruficapilla",0,NA
+544,"Matteuccia struthiopteris",0,NA
+545,"Anax junius",0,NA
+546,"Setophaga caerulescens",0,NA
+547,"Linaria vulgaris",1,NA
+548,"Polites mystic",0,NA
+549,"Corvus corax",0,NA
+550,"Vulpes vulpes",NA,"No matching species"
+551,"Acontia candefacta",NA,"Results is empty"
+552,"Passerella iliaca",0,NA
+553,"Eumenes fraternus",0,NA
+554,"Storeria dekayi",0,NA
+555,"Symphyotrichum lateriflorum",0,NA
+556,"Halictus rubicundus",0,NA
+557,"Acer negundo",1,NA
+558,"Medicago lupulina",1,NA
+559,"Coronilla varia",1,NA
+560,"Eumorpha pandorus",0,NA
+561,"Lophocampa caryae",0,NA
+562,"Polygonia faunus",0,NA
+563,"Reduvius personatus",0,NA
+564,"Junonia coenia",NA,"No data for Canada"
+565,"Porcellio spinicornis",NA,"no applicable method for 'filter' applied to an object of class ""list"""
+566,"Verbascum thapsus",1,NA
+567,"Pelidnota punctata",0,NA
+568,"Silpha tristis",1,NA
+569,"Phlox paniculata",1,NA
+570,"Lopidea instabilis",0,NA
+571,"Geranium sanguineum",1,NA
+572,"Nephrotoma cornicina",NA,"No matching species"
+573,"Bicyrtes quadrifasciatus",NA,"In argument: `subnationCode == ""QC""`."
+574,"Erioptera caliptera",NA,"no applicable method for 'filter' applied to an object of class ""list"""
+575,"Puschkinia scilloides",1,NA
+576,"Charidotella sexpunctata",0,NA
+577,"Herpyllus ecclesiasticus",0,NA
+578,"Istocheta aldrichi",NA,"no applicable method for 'filter' applied to an object of class ""list"""
+579,"Acer saccharum",0,NA
+580,"Impatiens parviflora",1,NA
+581,"Gymnopilus luteus",0,NA
+582,"Orchesella villosa",1,NA
+583,"Malacosoma disstria",0,NA
+584,"Enchenopa latipes",NA,"Results is empty"
+585,"Columba livia",1,NA
+586,"Acronicta americana",0,NA
+587,"Anethum graveolens",1,NA
+588,"Carya cordiformis",0,NA
+589,"Lucidota atra",0,NA
+590,"Megarhyssa macrura",NA,"No matching species"
+591,"Papaipema impecuniosa",0,NA
+592,"Microcrambus elegans",0,NA
+593,"Halysidota tessellaris",0,NA
+594,"Eudonia strigalis",0,NA
+595,"Ampedus areolatus",0,NA
+596,"Gerdana caritella",0,NA
+597,"Calomycterus setarius",1,NA
+598,"Petrophila canadensis",0,NA
+599,"Acleris forsskaleana",1,NA
+600,"Cantharis livida",1,NA
+601,"Moodna ostrinella",0,NA
+602,"Trichoferus campestris",1,NA
+603,"Crioceris duodecimpunctata",1,NA
+604,"Viola cucullata",0,NA
+605,"Chinavia hilaris",0,NA
+606,"Ischnura verticalis",0,NA
+607,"Libellula luctuosa",0,NA
+608,"Sympetrum vicinum",0,NA
+609,"Neolasioptera impatientifolia",NA,"no applicable method for 'filter' applied to an object of class ""list"""
+610,"Vernia verna",NA,"No matching species"
+611,"Mantis religiosa",1,NA
+612,"Dolichovespula arenaria",0,NA
+613,"Echium vulgare",1,NA
+614,"Polistes dominula",1,NA
+615,"Brochymena arborea",NA,"No matching species"
+616,"Camponotus nearcticus",0,NA
+617,"Jikradia olitoria",0,NA
+618,"Pasiphila rectangulata",1,NA
+619,"Proteoteras aesculana",0,NA
+620,"Cydalima perspectalis",NA,"No data for Canada"
+621,"Tipula oleracea",NA,"no applicable method for 'filter' applied to an object of class ""list"""
+622,"Colaptes auratus",0,NA
+623,"Volvariella bombycina",0,NA
+624,"Analeptura lineola",0,NA
+625,"Mordellistena fuscipennis",0,NA
+626,"Neurocolpus nubilus",0,NA
+627,"Aesculus glabra",2,NA
+628,"Regulus calendula",NA,"No matching species"
+629,"Coenonympha california",0,NA
+630,"Regulus satrapa",0,NA
+631,"Chrysemys picta",0,NA
+632,"Dioctria hyalipennis",1,NA
+633,"Brachiacantha ursina",0,NA
+634,"Lygus lineolaris",0,NA
+635,"Viburnum lantana",1,NA
+636,"Halyomorpha halys",1,NA
+637,"Pinicola enucleator",0,NA
+638,"Protichneumon grandis",NA,"No data for Canada"
+639,"Dreissena bugensis",1,NA
+640,"Lasius americanus",0,NA
+641,"Viburnum opulus",0,NA
+642,"Bipalium adventitium",NA,"No data for Canada"
+643,"Imatisma posticata",NA,"Results is empty"
+644,"Toxomerus marginatus",0,NA
+645,"Hylaeus hyalinatus",1,NA
+646,"Ischnus inquisitorius",NA,"Results is empty"
+647,"Attagenus fasciatus",NA,"Results is empty"
+648,"Cardamine pratensis",0,NA
+649,"Lepomis gibbosus",0,NA
+650,"Populus balsamifera",0,NA
+651,"Mniotilta varia",0,NA
+652,"Bombus ternarius",0,NA
+653,"Scilla siberica",1,NA
+654,"Bucephala albeola",0,NA
+655,"Poecilocapsus lineatus",0,NA
+656,"Onthophagus hecate",0,NA
+657,"Echinacea purpurea",1,NA
+658,"Arianta arbustorum",1,NA
+659,"Calligrapha philadelphica",0,NA
+660,"Cepaea hortensis",2,NA
+661,"Tsuga canadensis",0,NA
+662,"Procyon lotor",0,NA
+663,"Agromyza vockerothi",NA,"no applicable method for 'filter' applied to an object of class ""list"""
+664,"Hieracium lachenalii",1,NA
+665,"Pistosia testacea",NA,"Results is empty"
+666,"Ulmus americana",0,NA
+667,"Idia americalis",0,NA
+668,"Aegopodium podagraria",1,NA
+669,"Synchroa punctata",0,NA
+670,"Acalymma vittatum",0,NA
+671,"Picea glauca",0,NA
+672,"Phalacrocorax auritus",NA,"No matching species"
+673,"Exomala orientalis",NA,"No matching species"
+674,"Larus marinus",0,NA
+675,"Philanthus gibbosus",NA,"In argument: `subnationCode == ""QC""`."
+676,"Colletes inaequalis",0,NA
+677,"Pholiota aurivella",0,NA
+678,"Impatiens pallida",0,NA
+679,"Ageratina altissima",0,NA
+680,"Oenothera biennis",0,NA
+681,"Dactylis glomerata",1,NA
+682,"Pachypsylla celtidismamma",0,NA
+683,"Lepiota cristata",0,NA
+684,"Cerioporus squamosus",0,NA
+685,"Acalypha rhomboidea",0,NA
+686,"Arctium lappa",1,NA
+687,"Oxalis stricta",1,NA
+688,"Impatiens capensis",0,NA
+689,"Mergus serrator",0,NA
+690,"Anthriscus sylvestris",1,NA
+691,"Betula populifolia",0,NA
+692,"Viola sororia",0,NA
+693,"Musca domestica",1,NA
+694,"Attulus fasciger",1,NA
+695,"Saperda tridentata",0,NA
+696,"Impatiens balfourii",1,NA
+697,"Juniperus virginiana",0,NA
+698,"Acer freemanii",NA,"No matching species"
+699,"Gnamptopelta obsidianator",NA,"Results is empty"
+700,"Chaetura pelagica",0,NA
+701,"Stictocephala bisonia",0,NA
+702,"Isodontia mexicana",NA,"no applicable method for 'filter' applied to an object of class ""list"""
+703,"Boisea trivittata",0,NA
+704,"Polypedilum scalaenum",0,NA
+705,"Sitochroa palealis",1,NA
+706,"Argyrotaenia velutinana",0,NA
+707,"Rubus idaeus",0,NA
+708,"Isophrictis striatella",NA,"In argument: `subnationCode == ""QC""`."
+709,"Eudryas grata",0,NA
+710,"Empidonax flaviventris",0,NA
+711,"Podilymbus podiceps",0,NA
+712,"Habronattus decorus",0,NA
+713,"Incisalia irioides",NA,"Results is empty"
+714,"Pieris virginiensis",0,NA
+715,"Polites coras",0,NA
+716,"Carterocephalus palaemon",NA,"No matching species"
+717,"Lycaena phlaeas",NA,"No matching species"
+718,"Hesperia leonardus",0,NA
+719,"Plebejus saepiolus",NA,"No matching species"
+720,"Polites egeremet",0,NA
+721,"Phyciodes batesii",0,NA
+722,"Bidens vulgata",0,NA
+723,"Eristalis transversa",0,NA
+724,"Strix varia",0,NA
+725,"Estigmene acrea",0,NA
+726,"Euphoria inda",0,NA
+727,"Corythucha cydoniae",0,NA
+728,"Sphex pensylvanicus",0,NA
+729,"Procecidocharoides penelope",0,NA
+730,"Tringa solitaria",0,NA
+731,"Myosotis scorpioides",1,NA
+732,"Enallagma hageni",0,NA
+733,"Brunnera macrophylla",1,NA
+734,"Euphorbia maculata",1,NA
+735,"Solanum emulans",NA,"No matching species"
+736,"Melilotus officinalis",1,NA
+737,"Setophaga tigrina",0,NA
+738,"Osmoderma eremicola",0,NA
+739,"Leiothlypis peregrina",0,NA
+740,"Felis catus",1,NA
+741,"Trifolium hybridum",1,NA
+742,"Lophodytes cucullatus",0,NA
+743,"Quercus bebbiana",NA,"No matching species"
+744,"Acer platanoides",1,NA
+745,"Carpinus caroliniana",0,NA
+746,"Oligia modica",0,NA
+747,"Psyllobora vigintimaculata",0,NA
+748,"Maladera formosae",NA,"Results is empty"
+749,"Setophaga pinus",0,NA
+750,"Harrisina americana",0,NA
+751,"Viburnum lentago",0,NA
+752,"Delphinia picta",0,NA
+753,"Micromus posticus",0,NA
+754,"Rhinusa tetra",1,NA
+755,"Bombus bimaculatus",0,NA
+756,"Atrytone delaware",NA,"No matching species"
+757,"Propylaea quatuordecimpunctata",1,NA
+758,"Antheraea polyphemus",0,NA
+759,"Laetiporus sulphureus",0,NA
+760,"Robinia pseudoacacia",1,NA
+761,"Cornus alternifolia",0,NA
+762,"Polites themistocles",0,NA
+763,"Oxneria fallax",NA,"Results is empty"
+764,"Agrimonia gryposepala",0,NA
+765,"Troglodytes hiemalis",0,NA
+766,"Hippodamia variegata",1,NA
+767,"Peltodytes edentulus",0,NA
+768,"Polygonatum multiflorum",1,NA
+769,"Lithobates catesbeianus",0,NA
+770,"Caulophyllum giganteum",0,NA
+771,"Iris versicolor",0,NA
+772,"Plantago major",1,NA
+773,"Leptoglossus occidentalis",2,NA
+774,"Symphyotrichum lanceolatum",0,NA
+775,"Melilotus albus",NA,"Results is empty"
+776,"Dipsacus fullonum",1,NA
+777,"Aesculus hippocastanum",1,NA
+778,"Hypericum ascyron",0,NA
+779,"Cenopis pettitana",0,NA
+780,"Fraxinus pennsylvanica",0,NA
+781,"Acer nigrum",0,NA
+782,"Ostrya virginiana",0,NA
+783,"Melaphis rhois",0,NA
+784,"Catocala briseis",0,NA
+785,"Cotinus coggygria",1,NA
+786,"Falco peregrinus",0,NA
+787,"Galeopsis bifida",1,NA
+788,"Mareca strepera",0,NA
+789,"Dendrocygna autumnalis",NA,"No data for Canada"
+790,"Pinus resinosa",0,NA
+791,"Thamnophis sirtalis",0,NA
+792,"Mareca americana",0,NA
+793,"Epicauta pensylvanica",0,NA
+794,"Chauliognathus pensylvanicus",0,NA
+795,"Thyanta accerra",NA,"No matching species"
+796,"Thyanta custator",0,NA
+797,"Diabrotica undecimpunctata",0,NA
+798,"Hypsizygus ulmarius",0,NA
+799,"Solidago gigantea",0,NA
+800,"Mastor hegon",NA,"Results is empty"
+801,"Anavitrinella pampinaria",0,NA
+802,"Macaria pustularia",0,NA
+803,"Ennomos magnaria",0,NA
+804,"Xylena germana",NA,"Results is empty"
+805,"Campaea perlata",0,NA
+806,"Amphipyra pyramidoides",0,NA
+807,"Astyleiopus variegatus",0,NA
+808,"Gluphisia septentrionis",0,NA
+809,"Tragopogon crantzii",NA,"No matching species"
+810,"Idaea dimidiata",0,NA
+811,"Elophila obliteralis",0,NA
+812,"Lygaeus kalmii",0,NA
+813,"Maianthemum canadense",0,NA
+814,"Salix interior",0,NA
+815,"Castor canadensis",0,NA
+816,"Spilomyia longicornis",0,NA
+817,"Ilex verticillata",0,NA
+818,"Heliopsis helianthoides",0,NA
+819,"Epifagus virginiana",0,NA
+820,"Pekania pennanti",0,NA
+821,"Lithobius forficatus",1,NA
+822,"Mephitis mephitis",0,NA
+823,"Hiodon tergisus",0,NA
+824,"Rudiloria trimaculata",NA,"No data for Canada"
+825,"Ctenucha virginica",0,NA
+826,"Hylodesmum glutinosum",NA,"No matching species"
+827,"Pennisetia marginatum",0,NA
+828,"Vireo olivaceus",0,NA
+829,"Zenaida macroura",0,NA
+830,"Canis latrans",0,NA
+831,"Myiarchus crinitus",0,NA
+832,"Labidomera clivicollis",0,NA
+833,"Archilochus colubris",0,NA
+834,"Icterus galbula",0,NA
+835,"Amblycorypha oblongifolia",0,NA
+836,"Gavia immer",0,NA
+837,"Helophilus fasciatus",0,NA
+838,"Lamium galeobdolon",NA,"No matching species"
+839,"Petrochelidon pyrrhonota",0,NA
+840,"Cassida rubiginosa",1,NA
+841,"Melospiza georgiana",0,NA
+842,"Ixodes scapularis",0,NA
+843,"Clinopodium vulgare",0,NA
+844,"Anemonastrum canadense",0,NA
+845,"Phragmatobia fuliginosa",0,NA
+846,"Polistes fuscatus",0,NA
+847,"Megaceryle alcyon",0,NA
+848,"Epiblema otiosana",0,NA
+849,"Setophaga virens",0,NA
+850,"Toxicodendron rydbergii",0,NA
+851,"Dryophytes versicolor",0,NA
+852,"Lestes congener",0,NA
+853,"Hepatica acutiloba",NA,"No matching species"
+854,"Calidris pusilla",0,NA
+855,"Fraxinus nigra",0,NA
+856,"Alypia octomaculata",0,NA
+857,"Merodon equestris",1,NA
+858,"Anthidium oblongatum",1,NA
+859,"Leiobunum vittatum",NA,"No matching species"
+860,"Augochlora pura",0,NA
+861,"Deroceras reticulatum",1,NA
+862,"Phidippus audax",0,NA
+863,"Zale galbanata",0,NA
+864,"Mimus polyglottos",0,NA
+865,"Cnaemidophorus rhododactyla",1,NA
+866,"Sphenophorus interstitialis",NA,"Results is empty"
+867,"Bombus perplexus",0,NA
+868,"Trogoderma sternale",0,NA
+869,"Bourletiella hortensis",0,NA
+870,"Aphomia sociella",1,NA
+871,"Nephrotoma ferruginea",NA,"In argument: `subnationCode == ""QC""`."
+872,"Arctium minus",0,NA
+873,"Pholiota limonella",0,NA
+874,"Adelphocoris lineolatus",1,NA
+875,"Cardamine diphylla",0,NA
+876,"Anas rubripes",0,NA
+877,"Calvatia gigantea",0,NA
+878,"Catocala subnata",0,NA
+879,"Libellula pulchella",0,NA
+880,"Bartramia longicauda",0,NA
+881,"Leucanthemum vulgare",1,NA
+882,"Faxonius virilis",0,NA
+883,"Pheucticus ludovicianus",0,NA
+884,"Tyrannus forficatus",0,NA
+885,"Equisetum arvense",0,NA
+886,"Eris militaris",0,NA
+887,"Daktulosphaira vitifoliae",0,NA
+888,"Fraxinus americana",0,NA
+889,"Osmundastrum cinnamomeum",0,NA
+890,"Viola eriocarpa",NA,"No matching species"
+891,"Spilosoma virginica",0,NA
+892,"Ceratina calcarata",0,NA
+893,"Dasineura pellex",NA,"In argument: `subnationCode == ""QC""`."
+894,"Anthocomus equestris",1,NA
+895,"Erigeron canadensis",NA,"No matching species"
+896,"Prunus americana",1,NA
+897,"Haploa clymene",0,NA
+898,"Salticus scenicus",1,NA
+899,"Eranthis hyemalis",1,NA
+900,"Alkekengi officinarum",1,NA
+901,"Candelaria concolor",0,NA
+902,"Chalybion californicum",NA,"In argument: `subnationCode == ""QC""`."
+903,"Sitta canadensis",0,NA
+904,"Catharus ustulatus",0,NA
+905,"Lasius niger",0,NA
+906,"Oxyporus populinus",0,NA
+907,"Hexagenia bilineata",0,NA
+908,"Carabus granulatus",1,NA
+909,"Tyrannus tyrannus",NA,"No matching species"
+910,"Dissosteira carolina",0,NA
+911,"Talinum paniculatum",NA,"No data for Canada"
+912,"Juglans cinerea",0,NA
+913,"Archips rosana",1,NA
+914,"Circaea canadensis",NA,"No matching species"
+915,"Sceliphron caementarium",NA,"No matching species"
+916,"Tipula paludosa",NA,"no applicable method for 'filter' applied to an object of class ""list"""
+917,"Ipomoea purpurea",1,NA
+918,"Veronica serpyllifolia",0,NA
+919,"Harmostes reflexulus",0,NA
+920,"Rainieria antennaepes",0,NA
+921,"Anasa tristis",0,NA
+922,"Eutrapela clemataria",0,NA
+923,"Crepidotus mollis",0,NA
+924,"Amphion floridensis",0,NA
+925,"Zelus luridus",0,NA
+926,"Pachypsylla celtidisvesicula",NA,"No matching species"
+927,"Larinus carlinae",NA,"No matching species"
+928,"Tipula sayi",NA,"no applicable method for 'filter' applied to an object of class ""list"""
+929,"Lacinipolia renigera",0,NA
+930,"Aedes japonicus",1,NA
+931,"Megachile rotundata",1,NA
+932,"Hypena scabra",0,NA
+933,"Climacodon septentrionalis",0,NA
+934,"Passerina cyanea",0,NA
+935,"Anser caerulescens",0,NA
+936,"Laphria thoracica",0,NA
+937,"Mycena leaiana",0,NA
+938,"Graphisurus fasciatus",0,NA
+939,"Larinioides sclopetarius",1,NA
+940,"Rheum rhabarbarum",1,NA
+941,"Olethreutes ferriferana",0,NA
+942,"Lactarius hygrophoroides",0,NA
+943,"Euschistus tristigmus",0,NA
+944,"Lonicera morrowii",1,NA
+945,"Ondatra zibethicus",0,NA
+946,"Atomosia puella",0,NA
+947,"Alaus oculatus",0,NA
+948,"Celastrus orbiculatus",1,NA
+949,"Hylaeus modestus",0,NA
+950,"Anoplodera pubera",0,NA
+951,"Pimpla pedalis",NA,"No data for Canada"
+952,"Graphocephala fennahi",0,NA
+953,"Arrenodes minutus",0,NA
+954,"Epiphragma fasciapenne",NA,"no applicable method for 'filter' applied to an object of class ""list"""
+955,"Cerceris atramontensis",NA,"no applicable method for 'filter' applied to an object of class ""list"""
+956,"Syrphus knabi",0,NA
+957,"Geum canadense",0,NA
+958,"Ligustrum vulgare",1,NA
+959,"Arigomphus cornutus",0,NA
+960,"Euodynerus foraminatus",0,NA
+961,"Neriene montana",1,NA
+962,"Atocion armeria",NA,"No matching species"
+963,"Euclidia cuspidea",0,NA
+964,"Brochymena quadripustulata",0,NA
+965,"Rhagio mystaceus",NA,"No matching species"
+966,"Larinioides patagiatus",0,NA
+967,"Hymenopellis furfuracea",0,NA
+968,"Vincetoxicum rossicum",NA,"No matching species"
+969,"Mycetophagus quadripustulatus",NA,"Results is empty"
+970,"Megarhyssa greenei",NA,"No data for Canada"
+971,"Catocala cerogama",0,NA
+972,"Megacyllene robiniae",0,NA
+973,"Lithospermum officinale",1,NA
+974,"Trachemys scripta",1,NA
+975,"Pandion haliaetus",0,NA
+976,"Ptecticus trivittatus",0,NA
+977,"Catalpa speciosa",1,NA
+978,"Thalictrum dioicum",0,NA
+979,"Oniscus asellus",1,NA
+980,"Nycticorax nycticorax",0,NA
+981,"Mergus merganser",0,NA
+982,"Symmorphus canadensis",0,NA
+983,"Phyllobius oblongus",1,NA
+984,"Coprinellus disseminatus",0,NA
+985,"Acer pensylvanicum",0,NA
+986,"Symphytum officinale",1,NA
+987,"Sphinx kalmiae",0,NA
+988,"Flammulina velutipes",0,NA
+989,"Psylliodes dulcamarae",NA,"no applicable method for 'filter' applied to an object of class ""list"""
+990,"Poronidulus conchifer",0,NA
+991,"Diadophis punctatus",0,NA
+992,"Fomitopsis betulina",0,NA
+993,"Bjerkandera adusta",0,NA
+994,"Trametes gibbosa",0,NA
+995,"Armadillidium nasatum",NA,"Results is empty"
+996,"Claytosmunda claytoniana",0,NA
+997,"Imatisma bautias",NA,"Results is empty"
+998,"Accipiter striatus",0,NA
+999,"Marasmius oreades",0,NA
+1000,"Halictus ligatus",0,NA
+1001,"Cheiracanthium mildei",1,NA
+1002,"Parthenocissus inserta",NA,"No matching species"
+1003,"Calystegia sepium",0,NA
+1004,"Condylostylus patibulatus",NA,"no applicable method for 'filter' applied to an object of class ""list"""
+1005,"Caragana arborescens",1,NA
+1006,"Eurosta solidaginis",0,NA
+1007,"Ischnopterapion virens",1,NA
+1008,"Pachysandra terminalis",1,NA
+1009,"Cosmos sulphureus",NA,"No data for Canada"
+1010,"Sehirus cinctus",0,NA
+1011,"Oxidus gracilis",1,NA
+1012,"Callopistromyia annulipes",0,NA
+1013,"Banksiola dossuaria",0,NA
+1014,"Chloriona sicula",NA,"Results is empty"
+1015,"Deloyala guttata",0,NA
+1016,"Solidago altissima",0,NA
+1017,"Lilioceris lilii",1,NA
+1018,"Harpalus affinis",1,NA
+1019,"Cardellina pusilla",0,NA
+1020,"Contopus cooperi",0,NA
+1021,"Epitheca canis",0,NA
+1022,"Misumena vatia",0,NA
+1023,"Crambus agitatellus",0,NA
+1024,"Agapostemon virescens",0,NA
+1025,"Aeshna interrupta",0,NA
+1026,"Eristalis arbustorum",1,NA
+1027,"Typha angustifolia",1,NA
+1028,"Calligrapha bidenticola",0,NA
+1029,"Podisus placidus",0,NA
+1030,"Nuphar variegata",NA,"No matching species"
+1031,"Sphex ichneumoneus",NA,"In argument: `subnationCode == ""QC""`."
+1032,"Vespula germanica",1,NA
+1033,"Toxicodendron radicans",0,NA
+1034,"Acer tataricum",NA,"No data for Canada"
+1035,"Udea rubigalis",0,NA
+1036,"Bombylius major",0,NA
+1037,"Lucilia sericata",0,NA
+1038,"Aphrophora alni",1,NA
+1039,"Acer rubrum",0,NA
+1040,"Platanus occidentalis",0,NA
+1041,"Reticularia lycoperdon",NA,"Results is empty"
+1042,"Aproceros leucopoda",NA,"In argument: `subnationCode == ""QC""`."
+1043,"Pleuroprucha insulsaria",0,NA
+1044,"Arabidopsis thaliana",1,NA
+1045,"Veronica arvensis",1,NA
+1046,"Anthonomus signatus",0,NA
+1047,"Alsophila pometaria",0,NA
+1048,"Erythemis simplicicollis",0,NA
+1049,"Butomus umbellatus",1,NA
+1050,"Polydrusus impressifrons",1,NA
+1051,"Xanthium strumarium",0,NA
+1052,"Coleomegilla maculata",0,NA
+1053,"Agrotis ipsilon",0,NA
+1054,"Dianthera americana",NA,"Results is empty"
+1055,"Photinus corrusca",NA,"No matching species"
+1056,"Rudbeckia hirta",1,NA
+1057,"Deidamia inscriptum",0,NA
+1058,"Strix nebulosa",0,NA
+1059,"Agaricus placomyces",0,NA
+1060,"Crataegus holmesiana",0,NA
+1061,"Petrophila bifascialis",0,NA
+1062,"Mangora gibberosa",0,NA
+1063,"Centaurea jacea",1,NA
+1064,"Hymenopellis megalospora",0,NA
+1065,"Haliaeetus leucocephalus",0,NA
+1066,"Ardea alba",0,NA
+1067,"Salix bebbiana",0,NA
+1068,"Megarhyssa atrata",NA,"No data for Canada"
+1069,"Betula pendula",NA,"No matching species"
+1070,"Maliattha synochitis",0,NA
+1071,"Pyrausta merrickalis",NA,"No matching species"
+1072,"Physalis heterophylla",0,NA
+1073,"Sander canadensis",0,NA
+1074,"Haematopis grataria",0,NA
+1075,"Hemaris diffinis",0,NA
+1076,"Cistothorus palustris",0,NA
+1077,"Elliptio complanata",0,NA
+1078,"Ulmus rubra",0,NA
+1079,"Phidippus clarus",0,NA
+1080,"Sphaerophoria contigua",0,NA
+1081,"Calleida punctata",0,NA
+1082,"Leuconycta diphteroides",0,NA
+1083,"Agrochola bicolorago",NA,"Results is empty"
+1084,"Enargia decolor",0,NA
+1085,"Chrysopa oculata",0,NA
+1086,"Prochoerodes lineola",0,NA
+1087,"Anathix puta",0,NA
+1088,"Anathix aggressa",0,NA
+1089,"Xanthogaleruca luteola",1,NA
+1090,"Lacanobia subjuncta",0,NA
+1091,"Alydus eurinus",0,NA
+1092,"Pseudeustrotia carneola",0,NA
+1093,"Rhizedra lutosa",1,NA
+1094,"Synanthedon acerni",0,NA
+1095,"Orthosia revicta",0,NA
+1096,"Catocala unijuga",0,NA
+1097,"Melissodes druriellus",NA,"No matching species"
+1098,"Leucrocuta aphrodite",0,NA
+1099,"Amphimallon majale",1,NA
+1100,"Notophthalmus viridescens",0,NA
+1101,"Hericium americanum",0,NA
+1102,"Pastinaca sativa",1,NA
+1103,"Ambystoma unisexual",NA,"No matching species"
+1104,"Sander vitreus",0,NA
+1105,"Meloe impressus",0,NA
+1106,"Ranunculus acris",1,NA
+1107,"Sialia sialis",0,NA
+1108,"Chelydra serpentina",0,NA
+1109,"Papilio canadensis",NA,"No matching species"
+1110,"Buteo lagopus",0,NA
+1111,"Eristalis flavipes",0,NA
+1112,"Bembidion frontale",0,NA
+1113,"Euphagus carolinus",0,NA
+1114,"Argiope aurantia",0,NA
+1115,"Lenzites betulinus",0,NA
+1116,"Oiceoptoma noveboracense",0,NA
+1117,"Carex alopecoidea",0,NA
+1118,"Paectes oculatrix",0,NA
+1119,"Elymus virginicus",0,NA
+1120,"Atteva punctella",NA,"No matching species"
+1121,"Parallelia bistriaris",0,NA
+1122,"Automeris io",0,NA
+1123,"Blepharomastix ranalis",0,NA
+1124,"Acrolepiopsis incertella",0,NA
+1125,"Lestes rectangularis",0,NA
+1126,"Phlebia tremellosa",0,NA
+1127,"Crossocerus nitidiventris",NA,"no applicable method for 'filter' applied to an object of class ""list"""
+1128,"Piranga olivacea",0,NA
+1129,"Syritta pipiens",1,NA
+1130,"Rosa canina",1,NA
+1131,"Stictocephala diceros",NA,"No matching species"
+1132,"Trichopoda plumipes",NA,"no applicable method for 'filter' applied to an object of class ""list"""
+1133,"Helix pomatia",NA,"In argument: `subnationCode == ""QC""`."
+1134,"Progne subis",0,NA
+1135,"Demeijerea brachialis",0,NA
+1136,"Persicaria maculosa",1,NA
+1137,"Euchaetes egle",0,NA
+1138,"Elymus repens",1,NA
+1139,"Suillia plumata",0,NA
+1140,"Hericium coralloides",0,NA
+1141,"Deparia acrostichoides",0,NA
+1142,"Anas crecca",0,NA
+1143,"Agalinis purpurea",0,NA
+1144,"Eremnophila aureonotata",NA,"In argument: `subnationCode == ""QC""`."
+1145,"Zonotrichia leucophrys",0,NA
+1146,"Bombus citrinus",0,NA
+1147,"Limnoporus dissortis",0,NA
+1148,"Acanthis flammea",0,NA
+1149,"Ambystoma laterale",0,NA
+1150,"Catocala cara",0,NA
+1151,"Banasa calva",0,NA
+1152,"Porzana carolina",0,NA
+1153,"Vireo gilvus",0,NA
+1154,"Agonum extensicolle",0,NA
+1155,"Tringa flavipes",0,NA
+1156,"Discomyza incurva",0,NA
+1157,"Pelecinus polyturator",0,NA
+1158,"Tigrosa helluo",0,NA
+1159,"Porcellio scaber",1,NA
+1160,"Darapsa myron",0,NA
+1161,"Phytomyza loewii",NA,"no applicable method for 'filter' applied to an object of class ""list"""
+1162,"Phaeolus schweinitzii",0,NA
+1163,"Spinus pinus",NA,"No matching species"
+1164,"Lepomis macrochirus",0,NA
+1165,"Harpalus rufipes",1,NA
+1166,"Trametes cinnabarina",NA,"No matching species"
+1167,"Gomphurus fraternus",0,NA
+1168,"Dromogomphus spinosus",0,NA
+1169,"Macromia illinoiensis",0,NA
+1170,"Otiorhynchus raucus",1,NA
+1171,"Tenodera sinensis",NA,"No matching species"
+1172,"Setophaga pensylvanica",0,NA
+1173,"Lepyronia coleoptrata",1,NA
+1174,"Cicindela duodecimguttata",0,NA
+1175,"Viola odorata",1,NA
+1176,"Chilocorus stigma",0,NA
+1177,"Lamium maculatum",1,NA
+1178,"Eriophyes tiliae",NA,"Results is empty"
+1179,"Chrysis angolensis",NA,"No data for Canada"
+1180,"Andrena dunningi",0,NA
+1181,"Acontia erastrioides",NA,"No matching species"
+1182,"Cannabis sativa",1,NA
+1183,"Platycodon grandiflorus",NA,"No matching species"
+1184,"Ataenius spretulus",0,NA
+1185,"Sisyrinchium montanum",0,NA
+1186,"Megascops asio",0,NA
+1187,"Galasa nigrinodis",0,NA
+1188,"Orchestes steppensis",1,NA
+1189,"Pyralis farinalis",1,NA
+1190,"Achatia latex",NA,"Results is empty"
+1191,"Catocala ilia",0,NA
+1192,"Setophaga striata",0,NA
+1193,"Aceria fraxiniflora",NA,"No data for Canada"
+1194,"Ladona julia",0,NA
+1195,"Eristalis tenax",1,NA
+1196,"Amaropostia stiptica",NA,"No matching species"
+1197,"Gnophomyia tristissima",0,NA
+1198,"Spiraea japonica",1,NA
+1199,"Xanthorhoe ferrugata",0,NA
+1200,"Chrysopilus quadratus",NA,"no applicable method for 'filter' applied to an object of class ""list"""
+1201,"Choristoneura rosaceana",0,NA
+1202,"Centaurium pulchellum",1,NA
+1203,"Cylapus tenuicornis",0,NA
+1204,"Enallagma signatum",0,NA
+1205,"Allophyla laevis",NA,"No matching species"
+1206,"Choreutis pariana",1,NA
+1207,"Carassius auratus",1,NA
+1208,"Megachile latimanus",0,NA
+1209,"Chymomyza amoena",NA,"no applicable method for 'filter' applied to an object of class ""list"""
+1210,"Humulus neomexicanus",NA,"No matching species"
+1211,"Meiorganum curtisii",NA,"No matching species"
+1212,"Calophasia lunula",1,NA
+1213,"Erysiphe convolvuli",NA,"Results is empty"
+1214,"Haemorhous purpureus",0,NA
+1215,"Mycena haematopus",0,NA
+1216,"Machimia tentoriferella",0,NA
+1217,"Plantago rugelii",1,NA
+1218,"Abia fasciata",1,NA
+1219,"Polydrusus formosus",1,NA
+1220,"Catocala innubens",0,NA
+1221,"Rubus allegheniensis",0,NA
+1222,"Rilaena triangularis",1,NA
+1223,"Euonymus alatus",1,NA
+1224,"Scaeva affinis",0,NA
+1225,"Panaeolina foenisecii",0,NA
+1226,"Galanthus nivalis",1,NA
+1227,"Daedaleopsis tricolor",NA,"no applicable method for 'filter' applied to an object of class ""list"""
+1228,"Betula alleghaniensis",0,NA
+1229,"Cylindroiulus caeruleocinctus",1,NA
+1230,"Microrhopala vittata",0,NA
+1231,"Parasola plicatilis",0,NA
+1232,"Juglans nigra",1,NA
+1233,"Sterna hirundo",0,NA
+1234,"Lithospermum parviflorum",NA,"No matching species"
+1235,"Rumex crispus",1,NA
+1236,"Oecanthus fultoni",0,NA
+1237,"Anaplectoides prasina",0,NA
+1238,"Flavoparmelia caperata",0,NA
+1239,"Eupeodes pomus",0,NA
+1240,"Tringa melanoleuca",0,NA
+1241,"Toxostoma rufum",0,NA
+1242,"Euschistus servus",0,NA
+1243,"Anomoea laticlavia",0,NA
+1244,"Plathemis lydia",0,NA
+1245,"Melanoplus femurrubrum",0,NA
+1246,"Oxybleptes kiteleyi",0,NA
+1247,"Alchemilla mollis",1,NA
+1248,"Enoplognatha ovata",1,NA
+1249,"Empidonax minimus",0,NA
+1250,"Chamaenerion angustifolium",NA,"No matching species"
+1251,"Contopus virens",0,NA
+1252,"Acholla multispinosa",0,NA
+1253,"Gleditsia triacanthos",2,NA
+1254,"Megaloceroea recticornis",1,NA
+1255,"Parectopa robiniella",0,NA
+1256,"Catocala amatrix",0,NA
+1257,"Solanum nigrum",1,NA
+1258,"Baeolophus bicolor",0,NA
+1259,"Heracleum maximum",0,NA
+1260,"Aythya collaris",0,NA
+1261,"Parhelophilus laetus",0,NA
+1262,"Arotes amoenus",NA,"Results is empty"
+1263,"Corylus cornuta",NA,"No matching species"
+1264,"Medicago varia",NA,"Results is empty"
+1265,"Elaeagnus angustifolia",1,NA
+1266,"Odontites vulgaris",NA,"No matching species"
+1267,"Eucosma tomonana",0,NA
+1268,"Staphylea trifolia",0,NA
+1269,"Solidago nemoralis",0,NA
+1270,"Cryptus albitarsis",NA,"Results is empty"
+1271,"Lobophora nivigerata",0,NA
+1272,"Cleonis pigra",1,NA
+1273,"Choristoneura fumiferana",0,NA
+1274,"Macronoctua onusta",0,NA
+1275,"Catocala relicta",0,NA
+1276,"Achatia distincta",0,NA
+1277,"Lycia ursaria",0,NA
+1278,"Operophtera bruceata",0,NA
+1279,"Lateroligia ophiogramma",1,NA
+1280,"Eusarca confusaria",0,NA
+1281,"Caenurgina erechtea",0,NA
+1282,"Parapoynx obscuralis",0,NA
+1283,"Potamogeton gramineus",0,NA
+1284,"Betula papyrifera",0,NA
+1285,"Panax trifolius",0,NA
+1286,"Cryptotaenia canadensis",0,NA
+1287,"Galium triflorum",0,NA
+1288,"Polygonatum pubescens",0,NA
+1289,"Fomes fomentarius",0,NA
+1290,"Macrurocampa marthesia",0,NA
+1291,"Perca flavescens",0,NA
+1292,"Labidesthes sicculus",0,NA
+1293,"Osmunda spectabilis",0,NA
+1294,"Ambloplites rupestris",0,NA
+1295,"Coccyzus erythropthalmus",0,NA
+1296,"Scopula limboundata",0,NA
+1297,"Rubus pensilvanicus",0,NA
+1298,"Psaphida grotei",NA,"No matching species"
+1299,"Archips packardiana",0,NA
+1300,"Enallagma civile",0,NA
+1301,"Amorpha juglandis",0,NA
+1302,"Trirhabda canadensis",0,NA
+1303,"Artomyces pyxidatus",0,NA
+1304,"Hyalophora cecropia",0,NA
+1305,"Hyphantria cunea",0,NA
+1306,"Crataegus irrasa",0,NA
+1307,"Eptesicus fuscus",0,NA
+1308,"Cyprinus carpio",1,NA
+1309,"Muscari botryoides",1,NA
+1310,"Bombus fervidus",0,NA
+1311,"Banasa dimidiata",0,NA
+1312,"Physocephala furcillata",0,NA
+1313,"Sonchus asper",1,NA
+1314,"Dirca palustris",0,NA
+1315,"Andrena carlini",0,NA
+1316,"Setophaga americana",0,NA
+1317,"Microtus pennsylvanicus",NA,"No matching species"
+1318,"Circus cyaneus",NA,"No matching species"
+1319,"Necturus maculosus",0,NA
+1320,"Barbarea vulgaris",1,NA
+1321,"Perithemis tenera",0,NA
+1322,"Anemone ranunculoides",1,NA
+1323,"Ancistrocerus gazella",1,NA
+1324,"Silene chalcedonica",1,NA
+1325,"Pilosella aurantiaca",NA,"No matching species"
+1326,"Amanita variicolor",NA,"no applicable method for 'filter' applied to an object of class ""list"""
+1327,"Diabrotica barberi",0,NA
+1328,"Ligumia recta",0,NA
+1329,"Aceria fraxinicola",NA,"No matching species"
+1330,"Tricholomopsis rutilans",0,NA
+1331,"Acutalis tartarea",0,NA
+1332,"Oncopeltus fasciatus",0,NA
+1333,"Impatiens glandulifera",1,NA
+1334,"Tipula dorsimacula",NA,"no applicable method for 'filter' applied to an object of class ""list"""
+1335,"Calopteryx maculata",0,NA
+1336,"Trigonotylus caelestialium",0,NA
+1337,"Otiorhynchus sulcatus",1,NA
+1338,"Epiblema glenni",0,NA
+1339,"Amblycerus robiniae",0,NA
+1340,"Xylaria hypoxylon",0,NA
+1341,"Crataegus chrysocarpa",0,NA
+1342,"Anthomyia procellaris",0,NA
+1343,"Orthosia hibisci",0,NA
+1344,"Rhingia nasica",0,NA
+1345,"Ancistrocerus capensis",NA,"Results is empty"
+1346,"Laphria index",0,NA
+1347,"Trypoxylon lactitarse",NA,"no applicable method for 'filter' applied to an object of class ""list"""
+1348,"Rhamphomyia longicauda",NA,"no applicable method for 'filter' applied to an object of class ""list"""
+1349,"Mathildana newmanella",0,NA
+1350,"Dermestes lardarius",1,NA
+1351,"Smilia camelus",0,NA
+1352,"Hoplistoscelis pallescens",0,NA
+1353,"Andrena milwaukeensis",0,NA
+1354,"Morus alba",1,NA
+1355,"Pteridium aquilinum",0,NA
+1356,"Byturus unicolor",0,NA
+1357,"Echinoderma asperum",0,NA
+1358,"Typocerus velutinus",0,NA
+1359,"Calycina citrina",NA,"No matching species"
+1360,"Helianthus strumosus",0,NA
+1361,"Entoloma abortivum",0,NA
+1362,"Phlebia radiata",0,NA
+1363,"Mycena galericulata",0,NA
+1364,"Marasmius rotula",0,NA
+1365,"Sericomyia chrysotoxoides",0,NA
+1366,"Parthenocissus tricuspidata",1,NA
+1367,"Oecanthus pini",0,NA
+1368,"Camponotus pennsylvanicus",0,NA
+1369,"Bellis perennis",1,NA
+1370,"Coprinus comatus",0,NA
+1371,"Epinotia normanana",0,NA
+1372,"Hemerobius stigma",0,NA
+1373,"Trifolium aureum",1,NA
+1374,"Phalaris canariensis",1,NA
+1375,"Sphecodina abbottii",0,NA
+1376,"Marchantia polymorpha",0,NA
+1377,"Janetiella ulmii",NA,"no applicable method for 'filter' applied to an object of class ""list"""
+1378,"Bembix americana",0,NA
+1379,"Dysdera crocata",1,NA
+1380,"Hydrobius fuscipes",0,NA
+1381,"Galium odoratum",1,NA
+1382,"Ancistrocerus adiabatus",0,NA
+1383,"Neogalerucella calmariensis",1,NA
+1384,"Erythroneura elegans",0,NA
+1385,"Abies balsamea",0,NA
+1386,"Uloborus glomosus",NA,"No matching species"
+1387,"Setaria faberi",1,NA
+1388,"Sitona hispidulus",1,NA
+1389,"Rosa blanda",0,NA
+1390,"Eristalis dimidiata",0,NA
+1391,"Tutelina harti",0,NA
+1392,"Hasarius adansoni",NA,"No data for Canada"
+1393,"Golovinomyces monardae",NA,"Results is empty"
+1394,"Ameiurus nebulosus",0,NA
+1395,"Leiobunum aldrichi",0,NA
+1396,"Diplolepis rosae",1,NA
+1397,"Dolomedes scriptus",0,NA
+1398,"Tubifera ferruginosa",NA,"Results is empty"
+1399,"Claytonia virginica",0,NA
+1400,"Populus grandidentata",0,NA
+1401,"Philaenus spumarius",1,NA
+1402,"Colymbetes sculptilis",0,NA
+1403,"Juncus torreyi",0,NA
+1404,"Bromus inermis",1,NA
+1405,"Andrena hirticincta",0,NA
+1406,"Crataegus suborbiculata",0,NA
+1407,"Elaphria versicolor",0,NA
+1408,"Sitona lineatus",1,NA
+1409,"Neoplea striola",0,NA
+1410,"Populus alba",1,NA
+1411,"Euphorbia virgata",1,NA
+1412,"Reynoutria bohemica",NA,"No matching species"
+1413,"Vespula alascensis",0,NA
+1414,"Acronicta superans",0,NA
+1415,"Tetracis cachexiata",0,NA
+1416,"Diachrysia balluca",0,NA
+1417,"Hypoprepia miniata",0,NA
+1418,"Oecanthus niveus",0,NA
+1419,"Scutellaria galericulata",0,NA
+1420,"Schoenoplectus tabernaemontani",0,NA
+1421,"Notropis atherinoides",0,NA
+1422,"Suillus americanus",0,NA
+1423,"Malus domestica",NA,"No matching species"
+1424,"Lanius borealis",0,NA
+1425,"Agrilus cuprescens",1,NA
+1426,"Megachile relativa",0,NA
+1427,"Libellula quadrimaculata",0,NA
+1428,"Olethreutes connectum",0,NA
+1429,"Thaumatomyia grata",0,NA
+1430,"Cucullia convexipennis",0,NA
+1431,"Hesperomyces harmoniae",NA,"Results is empty"
+1432,"Carex eburnea",0,NA
+1433,"Tarenaya houtteana",NA,"Results is empty"
+1434,"Doellingeria umbellata",0,NA
+1435,"Psectrotanypus dyari",0,NA
+1436,"Golovinomyces magnicellulatus",NA,"Results is empty"
+1437,"Cerastium fontanum",1,NA
+1438,"Belostoma flumineum",NA,"No matching species"
+1439,"Pantala flavescens",0,NA
+1440,"Carex vulpinoidea",0,NA
+1441,"Cisseps fulvicollis",0,NA
+1442,"Roeseliana roeselii",1,NA
+1443,"Pipilo erythrophthalmus",0,NA
+1444,"Symphyotrichum pilosum",0,NA
+1445,"Macrochilo morbidalis",NA,"No matching species"
+1446,"Apiosporina morbosa",0,NA
+1447,"Homalosorus pycnocarpos",0,NA
+1448,"Diaperis maculata",0,NA
+1449,"Messatoporus discoidalis",NA,"Results is empty"
+1450,"Necrophila americana",0,NA
+1451,"Rhytisma acerinum",0,NA
+1452,"Clogmia albipunctatus",NA,"No matching species"
+1453,"Anisodactylus rusticus",0,NA
+1454,"Pyrus calleryana",NA,"No data for Canada"
+1455,"Leptinotarsa decemlineata",0,NA
+1456,"Bubo scandiacus",0,NA
+1457,"Pyropyga nigricans",0,NA
+1458,"Stenolophus lecontei",0,NA
+1459,"Passerculus sandwichensis",0,NA
+1460,"Monochamus scutellatus",0,NA
+1461,"Malva neglecta",1,NA
+1462,"Sambucus canadensis",NA,"No matching species"
+1463,"Exoprosopa decora",0,NA
+1464,"Hypsopygia intermedialis",0,NA
+1465,"Camponotus novaeboracensis",0,NA
+1466,"Vasates quadripedes",NA,"No data for Canada"
+1467,"Trachelas tranquillus",0,NA
+1468,"Plantago lanceolata",1,NA
+1469,"Agastache foeniculum",1,NA
+1470,"Erigeron strigosus",0,NA
+1471,"Epuraea rufa",0,NA
+1472,"Eufidonia notataria",0,NA
+1473,"Plutella xylostella",0,NA
+1474,"Orientus ishidae",1,NA
+1475,"Chrysoperla rufilabris",0,NA
+1476,"Synanthedon tipuliformis",0,NA
+1477,"Osmoderma scabra",0,NA
+1478,"Molorchus bimaculatus",0,NA
+1479,"Ictalurus punctatus",0,NA
+1480,"Glischrochilus quadrisignatus",0,NA
+1481,"Plantago arenaria",NA,"No matching species"
+1482,"Odiellus pictus",0,NA
+1483,"Heterophleps triguttaria",0,NA
+1484,"Cladara limitaria",0,NA
+1485,"Berberis thunbergii",1,NA
+1486,"Setophaga fusca",0,NA
+1487,"Spilomyia sayi",0,NA
+1488,"Ectemnius cephalotes",0,NA
+1489,"Rumex obtusifolius",1,NA
+1490,"Luxilus cornutus",0,NA
+1491,"Colladonus clitellarius",0,NA
+1492,"Tilia cordata",1,NA
+1493,"Actias luna",0,NA
+1494,"Tetramorium immigrans",1,NA
+1495,"Lasius nearcticus",0,NA
+1496,"Rattus norvegicus",1,NA
+1497,"Blarina brevicauda",0,NA
+1498,"Saperda vestita",0,NA
+1499,"Vireo solitarius",0,NA
+1500,"Gloeophyllum sepiarium",0,NA
+1501,"Megacollybia rodmanii",0,NA
+1502,"Liriomyza arctii",NA,"no applicable method for 'filter' applied to an object of class ""list"""
+1503,"Nicrophorus tomentosus",0,NA
+1504,"Matteuccia pensylvanica",NA,"No matching species"
+1505,"Conium maculatum",1,NA
+1506,"Strauzia longipennis",0,NA
+1507,"Hylocichla mustelina",0,NA
+1508,"Oecanthus nigricornis",0,NA
+1509,"Halictus confusus",0,NA
+1510,"Coprinellus micaceus",0,NA
+1511,"Bourletiella arvalis",0,NA
+1512,"Stenodema pilosa",NA,"No matching species"
+1513,"Scathophaga furcata",0,NA
+1514,"Cucullia asteroides",0,NA
+1515,"Erasmoneura vulnerata",0,NA
+1516,"Crataegus punctata",0,NA
+1517,"Erucastrum gallicum",1,NA
+1518,"Omphalotus illudens",0,NA
+1519,"Limax maximus",1,NA
+1520,"Viola communis",NA,"Results is empty"
+1521,"Erysiphe aquilegiae",0,NA
+1522,"Geum urbanum",1,NA
+1523,"Mythimna unipuncta",0,NA
+1524,"Hippophae rhamnoides",1,NA
+1525,"Crataegus macracantha",0,NA
+1526,"Setaria pumila",1,NA
+1527,"Xanthia tatago",0,NA
+1528,"Papaipema furcata",0,NA
+1529,"Eudryas unio",0,NA
+1530,"Euaresta bella",0,NA
+1531,"Saucrobotys fumoferalis",0,NA
+1532,"Raphia frater",0,NA
+1533,"Orthonama obstipata",0,NA
+1534,"Bolboschoenus fluviatilis",0,NA
+1535,"Carpiodes cyprinus",0,NA
+1536,"Bombycilla garrulus",0,NA
+1537,"Penstemon digitalis",1,NA
+1538,"Persicaria amphibia",0,NA
+1539,"Trachea delicata",0,NA
+1540,"Callima argenticinctella",0,NA
+1541,"Lontra canadensis",0,NA
+1542,"Moxostoma macrolepidotum",0,NA
+1543,"Verbena bonariensis",1,NA
+1544,"Andropogon gerardi",0,NA
+1545,"Ochropleura implecta",0,NA
+1546,"Corythucha marmorata",0,NA
+1547,"Sylvicola alternata",NA,"no applicable method for 'filter' applied to an object of class ""list"""
+1548,"Notiobia terminata",0,NA
+1549,"Viola williamsii",NA,"Results is empty"
+1550,"Equisetum praealtum",NA,"No matching species"
+1551,"Chordeiles minor",0,NA
+1552,"Cicuta maculata",0,NA
+1553,"Aegolius acadicus",0,NA
+1554,"Hydrocharis morsus-ranae",1,NA
+1555,"Alisma triviale",0,NA
+1556,"Salix discolor",0,NA
+1557,"Lethocerus americanus",NA,"No matching species"
+1558,"Cucullia florea",0,NA
+1559,"Corydalus cornutus",NA,"In argument: `subnationCode == ""QC""`."
+1560,"Araniella displicata",0,NA
+1561,"Pantala hymenaea",0,NA
+1562,"Borago officinalis",1,NA
+1563,"Myodocha serripes",0,NA
+1564,"Valgus hemipterus",1,NA
+1565,"Scolops sulcipes",0,NA
+1566,"Bovista plumbea",0,NA
+1567,"Asio otus",0,NA
+1568,"Lepidium campestre",1,NA
+1569,"Toxonevra superba",0,NA
+1570,"Cucullia intermedia",0,NA
+1571,"Plagiodera versicolora",1,NA
+1572,"Aronia prunifolia",NA,"No matching species"
+1573,"Spiza americana",0,NA
+1574,"Aeshna constricta",0,NA
+1575,"Petasites japonicus",1,NA
+1576,"Pyrausta rubricalis",NA,"In argument: `subnationCode == ""QC""`."
+1577,"Astenus discopunctatus",0,NA
+1578,"Tanyptera dorsalis",NA,"no applicable method for 'filter' applied to an object of class ""list"""
+1579,"Cygnus olor",1,NA
+1580,"Chalcosyrphus nemorum",0,NA
+1581,"Eunemobius carolinus",0,NA
+1582,"Catocala minuta",0,NA
+1583,"Anelaphus villosus",0,NA
+1584,"Mordellochroa scapularis",0,NA
+1585,"Laphria flavicollis",0,NA
+1586,"Lestica producticollis",NA,"no applicable method for 'filter' applied to an object of class ""list"""
+1587,"Diapheromera femorata",0,NA
+1588,"Thelia bimaculata",0,NA
+1589,"Manduca sexta",0,NA
+1590,"Xylomya americana",0,NA
+1591,"Setaria viridis",1,NA
+1592,"Hypena abalienalis",0,NA
+1593,"Helocassis clavata",NA,"Results is empty"
+1594,"Conocephalum salebrosum",0,NA
+1595,"Dorcus parallelus",0,NA
+1596,"Stylurus notatus",0,NA
+1597,"Hemitrichia decipiens",NA,"Results is empty"
+1598,"Agrocybe praecox",0,NA
+1599,"Lapposyrphus lapponicus",0,NA
+1600,"Coprinopsis variegata",0,NA
+1601,"Orchesella cincta",2,NA
+1602,"Urtica gracilis",NA,"No matching species"
+1603,"Brassica rapa",1,NA
+1604,"Bassettia flavipes",NA,"Results is empty"
+1605,"Coprinopsis atramentaria",0,NA
+1606,"Erioptera septemtrionis",NA,"In argument: `subnationCode == ""QC""`."
+1607,"Galium verum",1,NA
+1608,"Elimia livescens",0,NA
+1609,"Coenagrion resolutum",0,NA
+1610,"Osmia lignaria",0,NA
+1611,"Lestes disjunctus",0,NA
+1612,"Cyrtolobus maculifrontis",0,NA
+1613,"Monarda didyma",1,NA
+1614,"Entoloma murrayi",0,NA
+1615,"Didea fuscipes",0,NA
+1616,"Eurois occulta",0,NA
+1617,"Nacerdes melanura",1,NA
+1618,"Tanacetum parthenium",1,NA
+1619,"Eichlinia cucurbitae",0,NA
+1620,"Sumitrosis inaequalis",0,NA
+1621,"Parkesia motacilla",0,NA
+1622,"Pilosella caespitosa",NA,"No matching species"
+1623,"Carex cephaloidea",0,NA
+1624,"Quercus bicolor",0,NA
+1625,"Conocephalus brevipennis",0,NA
+1626,"Pheosia rimosa",0,NA
+1627,"Anageshna primordialis",0,NA
+1628,"Idia aemula",0,NA
+1629,"Biston betularia",0,NA
+1630,"Apamea devastator",0,NA
+1631,"Lysimachia borealis",NA,"No matching species"
+1632,"Veronica officinalis",1,NA
+1633,"Sympetrum obtrusum",0,NA
+1634,"Picoides arcticus",0,NA
+1635,"Sagittaria latifolia",0,NA
+1636,"Catharus fuscescens",0,NA
+1637,"Cornus obliqua",0,NA
+1638,"Carex grisea",0,NA
+1639,"Epirrhoe alternata",0,NA
+1640,"Sympetrum semicinctum",0,NA
+1641,"Anthidium manicatum",1,NA
+1642,"Depressaria depressana",NA,"No matching species"
+1643,"Hydrelia albifera",0,NA
+1644,"Sceptridium dissectum",NA,"No matching species"
+1645,"Pleurotus ostreatus",0,NA
+1646,"Aeshna canadensis",0,NA
+1647,"Myrmarachne formicaria",1,NA
+1648,"Ursus americanus",0,NA
+1649,"Hackelia virginiana",0,NA
+1650,"Abutilon theophrasti",1,NA
+1651,"Salix petiolaris",0,NA
+1652,"Plicaturopsis crispa",0,NA
+1653,"Fulica americana",0,NA
+1654,"Schinia florida",0,NA
+1655,"Bombus terricola",0,NA
+1656,"Rhaxonycha carolina",0,NA
+1657,"Cucujus clavipes",0,NA
+1658,"Crocus neapolitanus",NA,"Results is empty"
+1659,"Clytus ruricola",0,NA
+1660,"Hololepta aequalis",0,NA
+1661,"Allolobophora chlorotica",1,NA
+1662,"Gaillardia pulchella",1,NA
+1663,"Efferia aestuans",NA,"No matching species"
+1664,"Cornu aspersum",1,NA
+1665,"Cerotoma trifurcata",0,NA
+1666,"Potamilus fragilis",0,NA
+1667,"Erynnis baptisiae",0,NA
+1668,"Paratendipes albimanus",0,NA
+1669,"Acanalonia conica",0,NA
+1670,"Pyrausta signatalis",0,NA
+1671,"Phrurolithus festivus",NA,"Results is empty"
+1672,"Crucibulum laeve",0,NA
+1673,"Ornithogalum umbellatum",1,NA
+1674,"Rubus canadensis",0,NA
+1675,"Aquarius remigis",0,NA
+1676,"Drosophila suzukii",NA,"In argument: `subnationCode == ""QC""`."
+1677,"Argyresthia oreasella",0,NA
+1678,"Phycitodes mucidellus",NA,"No matching species"
+1679,"Lauxania shewelli",0,NA
+1680,"Feltia herilis",0,NA
+1681,"Otiorhynchus ovatus",1,NA
+1682,"Meteorus pulchricornis",NA,"Results is empty"
+1683,"Cyrtolobus pictus",NA,"No matching species"
+1684,"Chlaenius tricolor",0,NA
+1685,"Argyresthia calliphanes",0,NA
+1686,"Mompha brevivittella",0,NA
+1687,"Paraclemensia acerifoliella",0,NA
+1688,"Lithophane bethunei",0,NA
+1689,"Balsa tristrigella",0,NA
+1690,"Allygidius atomarius",NA,"No matching species"
+1691,"Fundulus diaphanus",0,NA
+1692,"Nehalennia irene",0,NA
+1693,"Phyllocnistis populiella",0,NA
+1694,"Pulmonaria officinalis",1,NA
+1695,"Forficula auricularia",1,NA
+1696,"Silphium perfoliatum",1,NA
+1697,"Alnus incana",0,NA
+1698,"Ganoderma tsugae",0,NA
+1699,"Carex arctata",0,NA
+1700,"Helonica excelsa",NA,"Results is empty"
+1701,"Lilium canadense",NA,"No matching species"
+1702,"Golovinomyces asterum",0,NA
+1703,"Lycoperdon marginatum",0,NA
+1704,"Oligolophus tridens",1,NA
+1705,"Cerioporus leptocephalus",0,NA
+1706,"Choristoneura conflictana",0,NA
+1707,"Cuphophyllus pratensis",0,NA
+1708,"Cynoglossum amabile",NA,"No data for Canada"
+1709,"Hippuris vulgaris",0,NA
+1710,"Eulithis diversilineata",0,NA
+1711,"Placopterus thoracicus",0,NA
+1712,"Micrurapteryx salicifoliella",0,NA
+1713,"Pantographa limata",0,NA
+1714,"Perisoreus canadensis",0,NA
+1715,"Epilobium hirsutum",1,NA
+1716,"Chlorophyllum rhacodes",0,NA
+1717,"Japananus hyalinus",1,NA
+1718,"Bryum argenteum",0,NA
+1719,"Tricholoma terreum",0,NA
+1720,"Sarcomyxa serotina",NA,"No matching species"
+1721,"Geranium sibiricum",1,NA
+1722,"Colliuris pensylvanica",0,NA
+1723,"Saperda puncticollis",0,NA
+1724,"Iris sanguinea",1,NA
+1725,"Brachycorynella asparagi",1,NA
+1726,"Dipsacus laciniatus",1,NA
+1727,"Melospiza lincolnii",0,NA
+1728,"Crambus albellus",0,NA
+1729,"Rhus aromatica",0,NA
+1730,"Erysimum hieraciifolium",1,NA
+1731,"Cyperus strigosus",0,NA
+1732,"Lonicera tatarica",1,NA
+1733,"Agrimonia striata",0,NA
+1734,"Daphne mezereum",1,NA
+1735,"Rallus limicola",0,NA
+1736,"Polyporus umbellatus",0,NA
+1737,"Carex radiata",0,NA
+1738,"Sporobolus michauxianus",NA,"No matching species"
+1739,"Melanchra adjuncta",0,NA
+1740,"Agrotis venerabilis",0,NA
+1741,"Egira dolosa",0,NA
+1742,"Eucopina tocullionana",0,NA
+1743,"Phigalia titea",0,NA
+1744,"Zale minerea",0,NA
+1745,"Lithophane petulca",0,NA
+1746,"Grylloprociphilus imbricator",0,NA
+1747,"Viburnum lantanoides",0,NA
+1748,"Armillaria ostoyae",0,NA
+1749,"Calonarius caryae",NA,"Results is empty"
+1750,"Narcissus pseudonarcissus",1,NA
+1751,"Vespula vidua",0,NA
+1752,"Dolichonyx oryzivorus",0,NA
+1753,"Ancistrocerus catskill",0,NA
+1754,"Dryopteris marginalis",0,NA
+1755,"Xestia normaniana",NA,"No matching species"
+1756,"Acrobasis juglandis",0,NA
+1757,"Phlogophora periculosa",0,NA
+1758,"Nomophila nearctica",0,NA
+1759,"Lacinipolia lorea",0,NA
+1760,"Donacia cincticornis",0,NA
+1761,"Utricularia macrorhiza",0,NA
+1762,"Aplodinotus grunniens",0,NA
+1763,"Potentilla indica",NA,"No matching species"
+1764,"Synanthedon acerrubri",0,NA
+1765,"Hylaeus annulatus",0,NA
+1766,"Lucilia illustris",0,NA
+1767,"Mordellaria serval",0,NA
+1768,"Temnothorax longispinosus",0,NA
+1769,"Psylliodes affinis",1,NA
+1770,"Lepidium densiflorum",1,NA
+1771,"Myiarchus cinerascens",NA,"No data for Canada"
+1772,"Empidonax traillii",0,NA
+1773,"Ricciocarpos natans",0,NA
+1774,"Sium suave",0,NA
+1775,"Solanum scabrum",NA,"Results is empty"
+1776,"Catocala neogama",0,NA
+1777,"Gryllus veletis",0,NA
+1778,"Pholiota populnea",NA,"No matching species"
+1779,"Leucorrhinia frigida",0,NA
+1780,"Elater abruptus",0,NA
+1781,"Physcomitrium pyriforme",0,NA
+1782,"Lipandra polysperma",NA,"No matching species"
+1783,"Perilla frutescens",1,NA
+1784,"Olethreutes quadrifidum",0,NA
+1785,"Lepidocyrtus paradoxus",1,NA
+1786,"Lepturges confluens",0,NA
+1787,"Aeolus mellillus",0,NA
+1788,"Oberea affinis",0,NA
+1789,"Dichomeris marginella",1,NA
+1790,"Dinothenarus badipes",0,NA
+1791,"Amanita muscaria",0,NA
+1792,"Graphopsocus cruciatus",NA,"Results is empty"
+1793,"Russula brevipes",0,NA
+1794,"Dichomeris ochripalpella",0,NA
+1795,"Temnostoma alternans",0,NA
+1796,"Phallus indusiatus",0,NA
+1797,"Cryptarcha ampla",0,NA
+1798,"Discobola annulata",0,NA
+1799,"Dorocordulia libera",0,NA
+1800,"Compsobata univitta",0,NA
+1801,"Ibalia anceps",NA,"Results is empty"
+1802,"Anticarsia gemmatalis",NA,"No data for Canada"
+1803,"Boletinellus merulioides",0,NA
+1804,"Ceruchus piceus",0,NA
+1805,"Machimus sadyates",0,NA
+1806,"Orgyia definita",0,NA
+1807,"Solidago rigida",NA,"No matching species"
+1808,"Syrphus rectus",0,NA
+1809,"Tulipa sylvestris",1,NA
+1810,"Agrilus cyanescens",1,NA
+1811,"Eurybia macrophylla",0,NA
+1812,"Caenurgina crassiuscula",0,NA
+1813,"Niveoporofomes spraguei",0,NA
+1814,"Tyromyces chioneus",0,NA
+1815,"Conocybe filaris",0,NA
+1816,"Physalis philadelphica",1,NA
+1817,"Phryma leptostachya",0,NA
+1818,"Irpex lacteus",0,NA
+1819,"Plagiognathus obscurus",0,NA
+1820,"Sceliphron curvatum",NA,"no applicable method for 'filter' applied to an object of class ""list"""
+1821,"Larix laricina",0,NA
+1822,"Uroleucon sonchi",1,NA
+1823,"Melissodes desponsus",NA,"No matching species"
+1824,"Populus canescens",NA,"No matching species"
+1825,"Pseudomalus auratus",NA,"Results is empty"
+1826,"Eupeodes americanus",0,NA
+1827,"Eupteryx atropunctata",1,NA
+1828,"Ypsolopha dentella",1,NA
+1829,"Bombus borealis",0,NA
+1830,"Lonicera canadensis",0,NA
+1831,"Tortistilus inermis",NA,"No matching species"
+1832,"Tylonotus bimaculatus",0,NA
+1833,"Ficaria verna",NA,"No matching species"
+1834,"Perillus bioculatus",0,NA
+1835,"Aeshna umbrosa",0,NA
+1836,"Leucorrhinia proxima",0,NA
+1837,"Andrena vicina",0,NA
+1838,"Amanita rubescens",0,NA
+1839,"Mertensia virginica",0,NA
+1840,"Tetrix subulata",0,NA
+1841,"Cipangopaludina chinensis",1,NA
+1842,"Polygonum achoreum",1,NA
+1843,"Amanita bisporigera",0,NA
+1844,"Xylaria polymorpha",0,NA
+1845,"Rhus glabra",0,NA
+1846,"Chrysoteuchia topiarius",0,NA
+1847,"Lepisma saccharinum",1,NA
+1848,"Shepherdia argentea",1,NA
+1849,"Inula racemosa",1,NA
+1850,"Adoxophyes negundana",0,NA
+1851,"Acentria ephemerella",1,NA
+1852,"Protoparmeliopsis muralis",0,NA
+1853,"Dryopteris carthusiana",0,NA
+1854,"Prunus padus",1,NA
+1855,"Neortholomus scolopax",0,NA
+1856,"Hypoprepia fucosa",0,NA
+1857,"Cycnia tenera",0,NA
+1858,"Sagittaria cuneata",0,NA
+1859,"Persicaria sagittata",0,NA
+1860,"Pseudopolydesmus serratus",0,NA
+1861,"Flammula alnicola",NA,"No matching species"
+1862,"Fomitopsis mounceae",0,NA
+1863,"Chalcosyrphus chalybeus",0,NA
+1864,"Stelgidopteryx serripennis",0,NA
+1865,"Andrena wilkella",1,NA
+1866,"Amelanchier arborea",0,NA
+1867,"Eupsilia morrisoni",0,NA
+1868,"Poanes viator",0,NA
+1869,"Phyllotopsis nidulans",0,NA
+1870,"Stenacron interpunctatum",0,NA
+1871,"Nanophyes marmoratus",1,NA
+1872,"Clavaria fragilis",0,NA
+1873,"Larinus turbinatus",NA,"no applicable method for 'filter' applied to an object of class ""list"""
+1874,"Peromyscus leucopus",0,NA
+1875,"Riparia riparia",0,NA
+1876,"Thaumatomyia glabra",0,NA
+1877,"Archytas metallicus",NA,"no applicable method for 'filter' applied to an object of class ""list"""
+1878,"Stamnodes gibbicostata",0,NA
+1879,"Blissus leucopterus",0,NA
+1880,"Obrium rufulum",0,NA
+1881,"Sambucus nigra",0,NA
+1882,"Leptopterna dolabrata",1,NA
+1883,"Pissonotus flabellatus",0,NA
+1884,"Parancistrocerus leionotus",0,NA
+1885,"Sitona cylindricollis",1,NA
+1886,"Dikraneura arizona",NA,"Results is empty"
+1887,"Agnippe biscolorella",0,NA
+1888,"Synanthedon exitiosa",0,NA
+1889,"Microvelia pulchella",0,NA
+1890,"Dorcaschema nigrum",0,NA
+1891,"Ommatius tibialis",0,NA
+1892,"Tiarella stolonifera",0,NA
+1893,"Datura stramonium",1,NA
+1894,"Catocala lineella",0,NA
+1895,"Xylocopa virginica",0,NA
+1896,"Chrysopa nigricornis",0,NA
+1897,"Golovinomyces depressus",0,NA
+1898,"Proteoteras crescentana",0,NA
+1899,"Thermobia domestica",NA,"In argument: `subnationCode == ""QC""`."
+1900,"Lepidium virginicum",1,NA
+1901,"Systena frontalis",0,NA
+1902,"Mutinus elegans",0,NA
+1903,"Fuligo septica",NA,"Results is empty"
+1904,"Hydaticus aruspex",0,NA
+1905,"Cancer irroratus",NA,"In argument: `subnationCode == ""QC""`."
+1906,"Trifolium incarnatum",1,NA
+1907,"Galerina marginata",0,NA
+1908,"Parapoynx allionealis",0,NA
+1909,"Mordwilkoja vagabunda",0,NA
+1910,"Baliosus nervosus",0,NA
+1911,"Telamona decorata",0,NA
+1912,"Vespula flavopilosa",0,NA
+1913,"Trypoxylon collinum",NA,"no applicable method for 'filter' applied to an object of class ""list"""
+1914,"Lithophane grotei",0,NA
+1915,"Bibio femoratus",NA,"In argument: `subnationCode == ""QC""`."
+1916,"Sparganothis unifasciana",0,NA
+1917,"Xestia smithii",0,NA
+1918,"Clostera strigosa",0,NA
+1919,"Renia flavipunctalis",0,NA
+1920,"Platynota exasperatana",0,NA
+1921,"Myriophyllum spicatum",1,NA
+1922,"Ennomos subsignaria",0,NA
+1923,"Mecaphesa asperata",0,NA
+1924,"Quercus alba",0,NA
+1925,"Larus smithsonianus",NA,"Results is empty"
+1926,"Botaurus lentiginosus",0,NA
+1927,"Trametes hirsuta",0,NA
+1928,"Chlidonias niger",0,NA
+1929,"Cenopis reticulatana",0,NA
+1930,"Synanthedon scitula",1,NA
+1931,"Sparnopolius confusus",0,NA
+1932,"Aphilanthops frigidus",NA,"In argument: `subnationCode == ""QC""`."
+1933,"Harpalus pensylvanicus",0,NA
+1934,"Renia adspergillus",0,NA
+1935,"Sphaeroderus stenostomus",0,NA
+1936,"Paonias excaecata",0,NA
+1937,"Cicindela repanda",0,NA
+1938,"Cynomya cadaverina",0,NA
+1939,"Platygyrium repens",0,NA
+1940,"Ceratodon purpureus",0,NA
+1941,"Lampsilis radiata",0,NA
+1942,"Graphocephala coccinea",0,NA
+1943,"Trichopoda pennipes",NA,"In argument: `subnationCode == ""QC""`."
+1944,"Physocephala sagittaria",0,NA
+1945,"Larinioides cornutus",0,NA
+1946,"Sinea diadema",0,NA
+1947,"Crioceris asparagi",1,NA
+1948,"Madarellus undulatus",0,NA
+1949,"Agrobacterium radiobacter",NA,"Results is empty"
+1950,"Coenosia tigrina",1,NA
+1951,"Chlorochlamys chloroleucaria",0,NA
+1952,"Telamona monticola",0,NA
+1953,"Metalimnobia novaeangliae",NA,"Results is empty"
+1954,"Erysiphe cruciferarum",NA,"No data for Canada"
+1955,"Cyanosporus livens",NA,"Results is empty"
+1956,"Stomoxys calcitrans",1,NA
+1957,"Leucospis affinis",0,NA
+1958,"Naphrys pulex",0,NA
+1959,"Somula decora",0,NA
+1960,"Thecophora occidensis",0,NA
+1961,"Neoconocephalus ensiger",0,NA
+1962,"Clepsis melaleucanus",0,NA
+1963,"Buteo platypterus",0,NA
+1964,"Drusilla canaliculata",1,NA
+1965,"Centaurea nigra",1,NA
+1966,"Calligrapha multipunctata",0,NA
+1967,"Agapostemon sericeus",0,NA
+1968,"Menecles insertus",0,NA
+1969,"Rhagoletis tabellaria",0,NA
+1970,"Taraxacum palustre",1,NA
+1971,"Syneches simplex",NA,"no applicable method for 'filter' applied to an object of class ""list"""
+1972,"Scudderia septentrionalis",0,NA
+1973,"Loxia curvirostra",0,NA
+1974,"Conocephalus fasciatus",0,NA
+1975,"Anthomyia pluvialis",1,NA
+1976,"Anthomyia oculifera",0,NA
+1977,"Amara aenea",1,NA
+1978,"Callopistria floridensis",NA,"No data for Canada"
+1979,"Synanthedon pictipes",0,NA
+1980,"Brassica juncea",1,NA
+1981,"Potamogeton crispus",1,NA
+1982,"Aeorestes cinereus",NA,"No matching species"
+1983,"Sawadaea tulasnei",NA,"Results is empty"
+1984,"Malva moschata",1,NA
+1985,"Agelenopsis potteri",0,NA
+1986,"Phyllotreta striolata",1,NA
+1987,"Eupatorium altissimum",1,NA
+1988,"Megachile mendica",0,NA
+1989,"Viola egglestonii",NA,"No data for Canada"
+1990,"Tettigidea laterale",NA,"No matching species"
+1991,"Mystacides sepulchralis",0,NA
+1992,"Pelochrista dorsisignatana",0,NA
+1993,"Palthis angulalis",0,NA
+1994,"Condylostylus caudatus",NA,"In argument: `subnationCode == ""QC""`."
+1995,"Nepytia canosaria",0,NA
+1996,"Magusa divaricata",NA,"No data for Canada"
+1997,"Caradrina montana",0,NA
+1998,"Spinellus fusiger",0,NA
+1999,"Pseudopolydesmus canadensis",0,NA
+2000,"Hesperiphona vespertina",NA,"No matching species"
+2001,"Viburnum trilobum",NA,"No matching species"
+2002,"Brachymyrmex depilis",0,NA
+2003,"Cameraria corylisella",0,NA
+2004,"Macrochilo absorptalis",0,NA
+2005,"Amorpha fruticosa",1,NA
+2006,"Parascotia fuliginaria",1,NA
+2007,"Crataegus flabellata",0,NA
+2008,"Allium tuberosum",1,NA
+2009,"Allograpta obliqua",0,NA
+2010,"Erysiphe polygoni",0,NA
+2011,"Poecilus lucublandus",0,NA
+2012,"Erysiphe syringae",NA,"Results is empty"
+2013,"Cairina moschata",NA,"No data for Canada"
+2014,"Scolopax minor",0,NA
+2015,"Culaea inconstans",0,NA
+2016,"Parapoynx badiusalis",0,NA
+2017,"Hyles gallii",0,NA
+2018,"Solanum lycopersicum",1,NA
+2019,"Pholcus manueli",0,NA
+2020,"Rivula propinqualis",0,NA
+2021,"Leiothlypis celata",0,NA
+2022,"Populus nigra",1,NA
+2023,"Anthonomus quadrigibbus",0,NA
+2024,"Erysiphe heraclei",NA,"Results is empty"
+2025,"Lonicera dioica",0,NA
+2026,"Limnephilus submonilifer",0,NA
+2027,"Phedimus spurius",1,NA
+2028,"Disonycha triangularis",0,NA
+2029,"Lycogala flavofuscum",NA,"Results is empty"
+2030,"Galgula partita",0,NA
+2031,"Bedellia somnulentella",0,NA
+2032,"Limnaecia phragmitella",0,NA
+2033,"Erythridula aspera",NA,"No matching species"
+2034,"Myosotis sylvatica",1,NA
+2035,"Rhyssella nitida",NA,"Results is empty"
+2036,"Vireo philadelphicus",0,NA
+2037,"Orussus terminalis",0,NA
+2038,"Tagetes erecta",NA,"No data for Canada"
+2039,"Scathophaga stercoraria",0,NA
+2040,"Lonicera bella",NA,"No matching species"
+2041,"Hyloniscus riparius",NA,"Results is empty"
+2042,"Phyllocnistis vitifoliella",0,NA
+2043,"Endothenia hebesana",0,NA
+2044,"Iris domestica",NA,"No matching species"
+2045,"Caradrina clavipalpis",NA,"No data for Canada"
+2046,"Agaricus bisporus",0,NA
+2047,"Vitreoporus dichrous",0,NA
+2048,"Melanitta deglandi",0,NA
+2049,"Coptotomus longulus",0,NA
+2050,"Amelanchier stolonifera",NA,"Results is empty"
+2051,"Amanita jacksonii",0,NA
+2052,"Steatoda triangulosa",1,NA
+2053,"Epirrita autumnata",0,NA
+2054,"Lysimachia clethroides",1,NA
+2055,"Tmetogaster nubilipennis",NA,"Results is empty"
+2056,"Autographa precationis",0,NA
+2057,"Lonicera xylosteum",1,NA
+2058,"Pholcus phalangioides",1,NA
+2059,"Iflavirus dinococcinellae",NA,"Results is empty"
+2060,"Aphomia terrenella",1,NA
+2061,"Leucocoprinus birnbaumii",0,NA
+2062,"Enallagma carunculatum",0,NA
+2063,"Stenolophus lineola",0,NA
+2064,"Scirtes tibialis",0,NA
+2065,"Attulus ammophilus",1,NA
+2066,"Persicaria lapathifolia",0,NA
+2067,"Orthocephalus coriaceus",1,NA
+2068,"Ulmus intermedia",NA,"Results is empty"
+2069,"Arge ochropus",1,NA
+2070,"Vallisneria americana",0,NA
+2071,"Ceratomia undulosa",0,NA
+2072,"Furcula modesta",0,NA
+2073,"Euparthenos nubilis",0,NA
+2074,"Chauliodes rastricornis",0,NA
+2075,"Lithophane amanda",0,NA
+2076,"Ecdytolopha insiticiana",0,NA
+2077,"Pseudothyatira cymatophoroides",0,NA
+2078,"Lactuca biennis",0,NA
+2079,"Helmitheros vermivorum",0,NA
+2080,"Charadrius semipalmatus",0,NA
+2081,"Carex albursina",0,NA
+2082,"Nerice bidentata",0,NA
+2083,"Lygropia rivulalis",0,NA
+2084,"Acleris forbesana",0,NA
+2085,"Papaipema arctivorens",0,NA
+2086,"Euthyatira pudens",0,NA
+2087,"Gymnosporangium globosum",0,NA
+2088,"Ablabesmyia annulata",0,NA
+2089,"Hypena humuli",0,NA
+2090,"Cicindela sexguttata",0,NA
+2091,"Cratichneumon unifasciatorius",NA,"Results is empty"
+2092,"Cosmopepla lintneriana",0,NA
+2093,"Amanita frostiana",0,NA
+2094,"Trogus pennator",NA,"Results is empty"
+2095,"Carex lurida",0,NA
+2096,"Anthemis cotula",1,NA
+2097,"Entylia carinata",0,NA
+2098,"Lappula squarrosa",1,NA
+2099,"Acoptus suturalis",0,NA
+2100,"Cynoglossum officinale",1,NA
+2101,"Chrysolina hyperici",1,NA
+2102,"Stellaria aquatica",NA,"No matching species"
+2103,"Brachypera zoilus",1,NA
+2104,"Neokolla hieroglyphica",0,NA
+2105,"Actaea ludovici",NA,"No matching species"
+2106,"Pediasia trisecta",0,NA
+2107,"Chrysopa quadripunctata",0,NA
+2108,"Platynota semiustana",0,NA
+2109,"Sylvanelater cylindriformis",0,NA
+2110,"Clematis virginiana",0,NA
+2111,"Golovinomyces latisporus",NA,"Results is empty"
+2112,"Cenopis diluticostana",0,NA
+2113,"Mutinus ravenelii",0,NA
+2114,"Lygaeus turcicus",0,NA
+2115,"Sabacon cavicolens",0,NA
+2116,"Plagiomnium cuspidatum",0,NA
+2117,"Aleochara curtula",1,NA
+2118,"Microchrysa polita",0,NA
+2119,"Ceratiomyxa fruticulosa",NA,"Results is empty"
+2120,"Philoscia muscorum",0,NA
+2121,"Suillus grevillei",0,NA
+2122,"Trioza obtusa",0,NA
+2123,"Aeshna eremita",0,NA
+2124,"Digitalis lutea",1,NA
+2125,"Pero honestaria",0,NA
+2126,"Spizella pusilla",0,NA
+2127,"Stellaria media",1,NA
+2128,"Amanita abrupta",0,NA
+2129,"Metcalfa pruinosa",0,NA
+2130,"Agromyza aristata",NA,"no applicable method for 'filter' applied to an object of class ""list"""
+2131,"Lathyrus latifolius",1,NA
+2132,"Centaurea cyanus",1,NA
+2133,"Lobelia siphilitica",0,NA
+2134,"Orgyia leucostigma",0,NA
+2135,"Sonchus oleraceus",1,NA
+2136,"Harpalus rubripes",1,NA
+2137,"Aphis spiraecola",1,NA
+2138,"Clastoptera proteus",0,NA
+2139,"Lagopus lagopus",0,NA
+2140,"Trifolium campestre",1,NA
+2141,"Larinus obtusus",1,NA
+2142,"Lemna minor",0,NA
+2143,"Phidippus purpuratus",0,NA
+2144,"Feltia jaculifera",0,NA
+2145,"Nectopsyche exquisita",0,NA
+2146,"Xestia c-nigrum",0,NA
+2147,"Lithophane pexata",0,NA
+2148,"Ectropis crepuscularia",0,NA
+2149,"Promenetus exacuous",0,NA
+2150,"Melanerpes carolinus",0,NA
+2151,"Pimephales notatus",0,NA
+2152,"Cardellina canadensis",0,NA
+2153,"Scoparia biplagialis",0,NA
+2154,"Zanclognatha pedipilalis",0,NA
+2155,"Protodeltote muscosula",0,NA
+2156,"Anas acuta",0,NA
+2157,"Megachile campanulae",0,NA
+2158,"Agrilus obsoletoguttatus",0,NA
+2159,"Exomias pellucidus",NA,"Results is empty"
+2160,"Eriophyes emarginatae",NA,"No data for Canada"
+2161,"Salix eriocephala",0,NA
+2162,"Macrosaccus robiniella",0,NA
+2163,"Orthonevra nitida",0,NA
+2164,"Eugonobapta nivosaria",0,NA
+2165,"Leersia virginica",0,NA
+2166,"Prochyliza xanthostoma",0,NA
+2167,"Triphosa haesitata",0,NA
+2168,"Urocerus albicornis",0,NA
+2169,"Entomobrya nivalis",0,NA
+2170,"Melopsittacus undulatus",NA,"No data for Canada"
+2171,"Platydracus cinnamopterus",0,NA
+2172,"Euchlaena serrata",0,NA
+2173,"Alnus glutinosa",1,NA
+2174,"Lespedeza bicolor",1,NA
+2175,"Picea abies",1,NA
+2176,"Xanthoria elegans",NA,"No matching species"
+2177,"Ocypus nitens",1,NA
+2178,"Viburnum cassinoides",NA,"No matching species"
+2179,"Glyphidocera lithodoxa",0,NA
+2180,"Lema daturaphila",0,NA
+2181,"Perittia herrichiella",1,NA
+2182,"Agastache rugosa",NA,"Results is empty"
+2183,"Podisus maculiventris",0,NA
+2184,"Celithemis elisa",0,NA
+2185,"Crocus flavus",NA,"No data for Canada"
+2186,"Stenocorus schaumii",0,NA
+2187,"Pinus sylvestris",1,NA
+2188,"Catogenus rufus",0,NA
+2189,"Carex communis",0,NA
+2190,"Agrilus planipennis",1,NA
+2191,"Catostomus commersonii",0,NA
+2192,"Lacrymaria lacrymabunda",0,NA
+2193,"Peniophora rufa",0,NA
+2194,"Ganoderma applanatum",0,NA
+2195,"Xanthoparmelia cumberlandia",0,NA
+2196,"Calycomyza flavinotum",NA,"no applicable method for 'filter' applied to an object of class ""list"""
+2197,"Persicaria longiseta",1,NA
+2198,"Gryllus pennsylvanicus",0,NA
+2199,"Senecio viscosus",1,NA
+2200,"Stenotus binotatus",1,NA
+2201,"Agromyza pallidiseta",NA,"no applicable method for 'filter' applied to an object of class ""list"""
+2202,"Tripleurospermum inodorum",1,NA
+2203,"Conocybe apala",0,NA
+2204,"Herpetogramma aquilonalis",0,NA
+2205,"Epicauta fabricii",0,NA
+2206,"Ammophila pictipennis",NA,"In argument: `subnationCode == ""QC""`."
+2207,"Neogobius melanostomus",1,NA
+2208,"Sherardia arvensis",1,NA
+2209,"Fraxinus excelsior",1,NA
+2210,"Anagrapha falcifera",0,NA
+2211,"Maccaffertium mediopunctatum",0,NA
+2212,"Archips alberta",0,NA
+2213,"Equisetum sylvaticum",0,NA
+2214,"Dyspteris abortivaria",0,NA
+2215,"Oiceoptoma inaequale",0,NA
+2216,"Archips strianus",0,NA
+2217,"Metanema determinata",0,NA
+2218,"Euphyia intermediata",0,NA
+2219,"Xanthorhoe labradorensis",0,NA
+2220,"Cenopis ferreana",0,NA
+2221,"Piranga rubra",0,NA
+2222,"Macrodactylus subspinosus",0,NA
+2223,"Cyanosporus caesius",NA,"No matching species"
+2224,"Apioperdon pyriforme",0,NA
+2225,"Contacyphon pusillus",NA,"Results is empty"
+2226,"Stemonitis splendens",NA,"Results is empty"
+2227,"Phidippus princeps",0,NA
+2228,"Asio flammeus",0,NA
+2229,"Rhopalomyia solidaginis",NA,"no applicable method for 'filter' applied to an object of class ""list"""
+2230,"Salix fragilis",1,NA
+2231,"Phallus rugulosus",NA,"Results is empty"
+2232,"Onthophagus orpheus",0,NA
+2233,"Sergiolus montanus",0,NA
+2234,"Triticum aestivum",1,NA
+2235,"Helenium amarum",NA,"No data for Canada"
+2236,"Epiblema scudderiana",0,NA
+2237,"Candolleomyces candolleanus",NA,"No matching species"
+2238,"Meconema thalassinum",1,NA
+2239,"Chasmanthium latifolium",NA,"No data for Canada"
+2240,"Lycogala epidendrum",NA,"Results is empty"
+2241,"Fallopia convolvulus",1,NA
+2242,"Candelaria fibrosa",0,NA
+2243,"Stragania apicalis",0,NA
+2244,"Ectemnius continuus",NA,"In argument: `subnationCode == ""QC""`."
+2245,"Schizophyllum commune",0,NA
+2246,"Helochara communis",0,NA
+2247,"Agrilus bilineatus",0,NA
+2248,"Hypocritanus fascipennis",0,NA
+2249,"Hystricia abrupta",NA,"In argument: `subnationCode == ""QC""`."
+2250,"Lycoperdon perlatum",0,NA
+2251,"Sparganothis pulcherrimana",0,NA
+2252,"Calligrapha californica",0,NA
+2253,"Brachypalpus oarus",0,NA
+2254,"Acronicta lobeliae",0,NA
+2255,"Phlox subulata",1,NA
+2256,"Abortiporus biennis",0,NA
+2257,"Geum rivale",0,NA
+2258,"Candelariella vitellina",0,NA
+2259,"Lamium purpureum",1,NA
+2260,"Digrammia ocellinata",0,NA
+2261,"Cordulia shurtleffii",0,NA
+2262,"Nephelodes minians",0,NA
+2263,"Ampelomyia vitiscoryloides",NA,"no applicable method for 'filter' applied to an object of class ""list"""
+2264,"Dolomedes triton",0,NA
+2265,"Agonum lutulentum",0,NA
+2266,"Latrodectus hesperus",0,NA
+2267,"Bibio albipennis",0,NA
+2268,"Scoliopteryx libatrix",0,NA
+2269,"Setophaga dominica",0,NA
+2270,"Lysimachia vulgaris",1,NA
+2271,"Persicaria pensylvanica",0,NA
+2272,"Picromerus bidens",1,NA
+2273,"Colletes compactus",0,NA
+2274,"Morone saxatilis",0,NA
+2275,"Laccaria ochropurpurea",0,NA
+2276,"Allagrapha aerea",0,NA
+2277,"Sympistis chionanthi",0,NA
+2278,"Elasmostethus cruciatus",0,NA
+2279,"Leersia oryzoides",0,NA
+2280,"Dryopteris goldieana",0,NA
+2281,"Faxonius propinquus",0,NA
+2282,"Medeola virginiana",0,NA
+2283,"Anisodactylus harrisii",0,NA
+2284,"Chrysops vittatus",0,NA
+2285,"Carex rosea",0,NA
+2286,"Oreta rosea",0,NA
+2287,"Phosphila miselioides",0,NA
+2288,"Pyrausta orphisalis",0,NA
+2289,"Dicentra canadensis",0,NA
+2290,"Melanophora roralis",NA,"no applicable method for 'filter' applied to an object of class ""list"""
+2291,"Pyrausta acrionalis",0,NA
+2292,"Carex typhina",0,NA
+2293,"Amphasia sericea",0,NA
+2294,"Therion circumflexum",NA,"Results is empty"
+2295,"Atriplex patula",1,NA
+2296,"Crambus laqueatellus",0,NA
+2297,"Malacosoma americana",0,NA
+2298,"Euclea delphinii",0,NA
+2299,"Elliptio crassidens",0,NA
+2300,"Neolimonia rara",NA,"Results is empty"
+2301,"Drepanaphis acerifoliae",0,NA
+2302,"Micromus subanticus",0,NA
+2303,"Meconema meridionale",NA,"Results is empty"
+2304,"Conotelus obscurus",0,NA
+2305,"Viburnum dentatum",NA,"No data for Canada"
+2306,"Platyarthrus hoffmannseggii",NA,"Results is empty"
+2307,"Clastoptera achatina",0,NA
+2308,"Cedusa maculata",0,NA
+2309,"Crossocerus maculipennis",NA,"In argument: `subnationCode == ""QC""`."
+2310,"Cyclachaena xanthiifolia",NA,"No matching species"
+2311,"Sericomyia militaris",0,NA
+2312,"Rhagio lineola",NA,"no applicable method for 'filter' applied to an object of class ""list"""
+2313,"Anacampsis agrimoniella",0,NA
+2314,"Solva pallipes",0,NA
+2315,"Lepisosteus osseus",0,NA
+2316,"Nabalus albus",NA,"No matching species"
+2317,"Dryopteris intermedia",0,NA
+2318,"Gymnopilus sapineus",0,NA
+2319,"Gyalolechia flavovirescens",0,NA
+2320,"Carex pedunculata",0,NA
+2321,"Dichomeris flavocostella",0,NA
+2322,"Philanthus ventilabris",NA,"In argument: `subnationCode == ""QC""`."
+2323,"Gyponana octolineata",0,NA
+2324,"Arion fasciatus",1,NA
+2325,"Pacificanthia rotundicollis",0,NA
+2326,"Corydalis solida",1,NA
+2327,"Costaconvexa centrostrigaria",0,NA
+2328,"Elymus villosus",0,NA
+2329,"Thelypteris palustris",0,NA
+2330,"Myosotis arvensis",1,NA
+2331,"Carex retrorsa",0,NA
+2332,"Coprinellus flocculosus",0,NA
+2333,"Pseudanomodon attenuatus",NA,"No matching species"
+2334,"Melandrya striata",0,NA
+2335,"Lycopus americanus",0,NA
+2336,"Enallagma exsulans",0,NA
+2337,"Catocala concumbens",0,NA
+2338,"Autographa bimaculata",0,NA
+2339,"Hyppa xylinoides",0,NA
+2340,"Cardamine impatiens",1,NA
+2341,"Storeria occipitomaculata",0,NA
+2342,"Evernia mesomorpha",0,NA
+2343,"Oxalis dillenii",1,NA
+2344,"Amolita fessa",0,NA
+2345,"Scilla luciliae",NA,"No matching species"
+2346,"Lathyrus palustris",0,NA
+2347,"Imleria badia",0,NA
+2348,"Gentiana andrewsii",0,NA
+2349,"Aceria quercina",NA,"Results is empty"
+2350,"Celina hubbelli",0,NA
+2351,"Psyllipsocus ramburii",NA,"No data for Canada"
+2352,"Araneus trifolium",0,NA
+2353,"Ludwigia palustris",0,NA
+2354,"Peromyscus maniculatus",0,NA
+2355,"Microrhopala excavata",0,NA
+2356,"Pilea fontana",0,NA
+2357,"Erythroneura acuticephala",0,NA
+2358,"Cylisticus convexus",NA,"No data for Canada"
+2359,"Oryctolagus cuniculus",1,NA
+2360,"Eristalis stipator",0,NA
+2361,"Basella alba",NA,"No data for Canada"
+2362,"Euxesta notata",0,NA
+2363,"Eriococcus spurius",NA,"Results is empty"
+2364,"Astylopsis macula",0,NA
+2365,"Cerma cerintha",0,NA
+2366,"Pandemis lamprosana",0,NA
+2367,"Xorides albopictus",NA,"Results is empty"
+2368,"Micranthes virginiensis",0,NA
+2369,"Leptocerus americanus",0,NA
+2370,"Bombus vagans",0,NA
+2371,"Catocala nebulosa",0,NA
+2372,"Filipendula rubra",1,NA
+2373,"Xylaria longipes",0,NA
+2374,"Carex pseudocyperus",0,NA
+2375,"Angarotipula illustris",0,NA
+2376,"Ozyptila praticola",1,NA
+2377,"Vasates aceriscrumena",NA,"Results is empty"
+2378,"Pachypappa pseudobyrsa",0,NA
+2379,"Agrocybe pediades",0,NA
+2380,"Eragrostis minor",1,NA
+2381,"Nabis roseipennis",0,NA
+2382,"Enallagma ebrium",0,NA
+2383,"Plochionus timidus",0,NA
+2384,"Erysiphe vanbruntiana",NA,"Results is empty"
+2385,"Hedera helix",1,NA
+2386,"Populus rouleauana",NA,"No matching species"
+2387,"Hydrangea quercifolia",NA,"No data for Canada"
+2388,"Megachile frigida",0,NA
+2389,"Setophaga nigrescens",0,NA
+2390,"Crepidotus calolepis",0,NA
+2391,"Coccyzus americanus",0,NA
+2392,"Hexagenia limbata",0,NA
+2393,"Ferrissia rivularis",0,NA
+2394,"Gaultheria procumbens",0,NA
+2395,"Cuerna striata",0,NA
+2396,"Ponana quadralaba",0,NA
+2397,"Lithacodes fasciola",0,NA
+2398,"Carex stipata",0,NA
+2399,"Silene noctiflora",1,NA
+2400,"Megachile texana",0,NA
+2401,"Spilomyia alcimus",0,NA
+2402,"Cyrtophorus verrucosus",0,NA
+2403,"Crepidotus kauffmanii",0,NA
+2404,"Chrysoesthia sexguttella",1,NA
+2405,"Solenopsis molesta",0,NA
+2406,"Dermestes undulatus",1,NA
+2407,"Polyporus radicatus",0,NA
+2408,"Cyprinella spiloptera",0,NA
+2409,"Agraylea multipunctata",0,NA
+2410,"Holcocephala calva",0,NA
+2411,"Grifola frondosa",0,NA
+2412,"Morchella americana",0,NA
+2413,"Ctenolepisma longicaudatum",1,NA
+2414,"Stropharia aeruginosa",0,NA
+2415,"Neoneides muticus",0,NA
+2416,"Phlogophora iris",0,NA
+2417,"Asterophora lycoperdoides",0,NA
+2418,"Paralimnus phragmitis",NA,"Results is empty"
+2419,"Telamona westcotti",0,NA
+2420,"Hedya chionosema",0,NA
+2421,"Microporus nigrita",NA,"No matching species"
+2422,"Saperda candida",0,NA
+2423,"Hoplismenus morulus",NA,"Results is empty"
+2424,"Mahonia aquifolium",NA,"No matching species"
+2425,"Phellodendron amurense",1,NA
+2426,"Pholiota squarrosa",0,NA
+2427,"Atalantycha neglecta",0,NA
+2428,"Maccaffertium terminatum",0,NA
+2429,"Carex molesta",0,NA
+2430,"Draba verna",1,NA
+2431,"Publilia concava",0,NA
+2432,"Epiblema carolinana",0,NA
+2433,"Pogonocherus mixtus",0,NA
+2434,"Primula polyantha",NA,"No matching species"
+2435,"Bondarzewia berkeleyi",0,NA
+2436,"Dolichopus vigilans",NA,"no applicable method for 'filter' applied to an object of class ""list"""
+2437,"Rudbeckia fulgida",1,NA
+2438,"Sanicula marilandica",0,NA
+2439,"Arenaria interpres",0,NA
+2440,"Metatropiphorus belfragii",0,NA
+2441,"Galium mollugo",1,NA
+2442,"Tulasnella aurantiaca",NA,"Results is empty"
+2443,"Corimelaena pulicaria",0,NA
+2444,"Aplocera plagiata",1,NA
+2445,"Vitula edmandsii",0,NA
+2446,"Cratichneumon parata",NA,"No data for Canada"
+2447,"Equisetum fluviatile",0,NA
+2448,"Pleurotus populinus",0,NA
+2449,"Golovinomyces sonchicola",NA,"Results is empty"
+2450,"Evergestis pallidata",0,NA
+2451,"Cyathus striatus",0,NA
+2452,"Anguilla rostrata",0,NA
+2453,"Chortophaga viridifasciata",0,NA
+2454,"Scudderia furcata",0,NA
+2455,"Blattella germanica",1,NA
+2456,"Solanum angustifolium",NA,"Results is empty"
+2457,"Anisodactylus sanctaecrucis",0,NA
+2458,"Oryzaephilus surinamensis",1,NA
+2459,"Dryocosmus quercuspalustris",NA,"Results is empty"
+2460,"Gaurotes cyanipennis",0,NA
+2461,"Synageles venator",1,NA
+2462,"Erysimum capitatum",0,NA
+2463,"Golovinomyces sordidus",0,NA
+2464,"Cydia pomonella",1,NA
+2465,"Epilobium ciliatum",0,NA
+2466,"Myadestes townsendi",0,NA
+2467,"Dendroides canadensis",0,NA
+2468,"Andrena nubecula",0,NA
+2469,"Leiobunum ventricosum",0,NA
+2470,"Hydra viridissima",NA,"Results is empty"
+2471,"Amanita crocea",0,NA
+2472,"Sagina japonica",1,NA
+2473,"Stigmella multispicata",NA,"no applicable method for 'filter' applied to an object of class ""list"""
+2474,"Trichocera bimacula",NA,"no applicable method for 'filter' applied to an object of class ""list"""
+2475,"Potamyia flava",0,NA
+2476,"Conocephalus attenuatus",0,NA
+2477,"Aeshna tuberculifera",0,NA
+2478,"Fallopia scandens",0,NA
+2479,"Asteromyia carbonifera",NA,"no applicable method for 'filter' applied to an object of class ""list"""
+2480,"Onthophagus nuchicornis",1,NA
+2481,"Xanthorhoe lacustrata",0,NA
+2482,"Monobia quadridens",0,NA
+2483,"Uvularia sessilifolia",0,NA
+2484,"Gargaphia tiliae",0,NA
+2485,"Balaenoptera acutorostrata",0,NA
+2486,"Neottiglossa undata",0,NA
+2487,"Vitis labrusca",2,NA
+2488,"Lasius neoniger",0,NA
+2489,"Disonycha xanthomelas",0,NA
+2490,"Virbia opella",0,NA
+2491,"Cuscuta gronovii",0,NA
+2492,"Lobelia kalmii",0,NA
+2493,"Anania funebris",0,NA
+2494,"Olethreutes nitidana",0,NA
+2495,"Agonopterix curvilineella",0,NA
+2496,"Lampropeltis triangulum",0,NA
+2497,"Punctelia rudecta",0,NA
+2498,"Acidota subcarinata",0,NA
+2499,"Acronicta funeralis",0,NA
+2500,"Pseudochorthippus curtipennis",0,NA
+2501,"Hippodamia convergens",0,NA
+2502,"Vireo griseus",0,NA
+2503,"Chionaspis pinifoliae",0,NA
+2504,"Ctenolepisma lineata",NA,"no applicable method for 'filter' applied to an object of class ""list"""
+2505,"Lepidium sativum",1,NA
+2506,"Photinus pyralis",0,NA
+2507,"Icterica seriata",0,NA
+2508,"Podoschistus vittifrons",NA,"No data for Canada"
+2509,"Hypena baltimoralis",0,NA
+2510,"Rhyssomatus lineaticollis",0,NA
+2511,"Parazumia symmorpha",0,NA
+2512,"Pleurotus pulmonarius",0,NA
+2513,"Myelochroa aurulenta",0,NA
+2514,"Acronicta fragilis",0,NA
+2515,"Larus hyperboreus",0,NA
+2516,"Aythya americana",0,NA
+2517,"Phallus ravenelii",0,NA
+2518,"Scilla mischtschenkoana",NA,"Results is empty"
+2519,"Golovinomyces verbenae",NA,"Results is empty"
+2520,"Carex pellita",0,NA
+2521,"Ufeus plicatus",0,NA
+2522,"Ampedus rubricus",0,NA
+2523,"Scaptomyza flava",NA,"no applicable method for 'filter' applied to an object of class ""list"""
+2524,"Cyclophora pendulinaria",0,NA
+2525,"Megaptera novaeangliae",0,NA
+2526,"Puccinia coronata",0,NA
+2527,"Nectria cinnabarina",0,NA
+2528,"Cerceris clypeata",NA,"In argument: `subnationCode == ""QC""`."
+2529,"Nicrophorus pustulatus",0,NA
+2530,"Coccinella trifasciata",0,NA
+2531,"Tolype laricis",0,NA
+2532,"Lepidophora lutea",0,NA
+2533,"Philanthus lepidus",NA,"no applicable method for 'filter' applied to an object of class ""list"""
+2534,"Parallelodiplosis subtruncata",NA,"no applicable method for 'filter' applied to an object of class ""list"""
+2535,"Chrysobothris harrisii",NA,"No matching species"
+2536,"Tetrops praeustus",NA,"No matching species"
+2537,"Microcrambus biguttellus",0,NA
+2538,"Crocigrapha normani",0,NA
+2539,"Euschistus variolarius",0,NA
+2540,"Elasmucha lateralis",0,NA
+2541,"Amanita velatipes",0,NA
+2542,"Erynnis juvenalis",0,NA
+2543,"Augochloropsis viridula",0,NA
+2544,"Apomyelois bistriatella",0,NA
+2545,"Lobiopa undulata",0,NA
+2546,"Nomada imbricata",0,NA
+2547,"Chrysodeixis includens",0,NA
+2548,"Maccaffertium modestum",0,NA
+2549,"Conotrachelus nenuphar",0,NA
+2550,"Ceratophyllum demersum",0,NA
+2551,"Pidonia ruficollis",0,NA
+2552,"Anolis sagrei",NA,"No data for Canada"
+2553,"Osmanthus fragrans",NA,"Results is empty"
+2554,"Coelioxys sayi",0,NA
+2555,"Pelecotoma flavipes",0,NA
+2556,"Strophiona nitens",0,NA
+2557,"Tylopilus rubrobrunneus",0,NA
+2558,"Enallagma traviatum",0,NA
+2559,"Spilomyia fusca",0,NA
+2560,"Dreissena polymorpha",1,NA
+2561,"Hypomyces chrysospermus",0,NA
+2562,"Helvella crispa",0,NA
+2563,"Amblypsilopus scintillans",NA,"no applicable method for 'filter' applied to an object of class ""list"""
+2564,"Omosita nearctica",0,NA
+2565,"Pholiota flammans",0,NA
+2566,"Thyreodon atricolor",NA,"No data for Canada"
+2567,"Neoerysiphe maquii",NA,"Results is empty"
+2568,"Geothlypis philadelphia",0,NA
+2569,"Bittacomorpha clavipes",0,NA
+2570,"Phedimus ellacombeanus",NA,"Results is empty"
+2571,"Pyrrhalta viburni",1,NA
+2572,"Metalimnobia immatura",NA,"no applicable method for 'filter' applied to an object of class ""list"""
+2573,"Anthophora terminalis",0,NA
+2574,"Hemaris thysbe",0,NA
+2575,"Macrobdella decora",0,NA
+2576,"Dacrymyces chrysospermus",0,NA
+2577,"Matricaria chamomilla",NA,"No matching species"
+2578,"Rhinocyllus conicus",1,NA
+2579,"Telphusa longifasciella",0,NA
+2580,"Silene csereii",1,NA
+2581,"Andrena integra",0,NA
+2582,"Vaccinium angustifolium",0,NA
+2583,"Schoenoplectus pungens",0,NA
+2584,"Protodeltote albidula",0,NA
+2585,"Sclerocona acutella",NA,"No matching species"
+2586,"Chrysops aestuans",0,NA
+2587,"Lampsilis siliquoidea",0,NA
+2588,"Schizotus cervicalis",0,NA
+2589,"Cabera erythemaria",0,NA
+2590,"Galium palustre",0,NA
+2591,"Leucorrhinia hudsonica",0,NA
+2592,"Dryomyza anilis",0,NA
+2593,"Olethreutes inornatana",0,NA
+2594,"Dicymolomia julianalis",0,NA
+2595,"Chauliodes pectinicornis",0,NA
+2596,"Amelanchier laevis",0,NA
+2597,"Stenochironomus hilaris",0,NA
+2598,"Mastophora hutchinsoni",0,NA
+2599,"Deleaster dichrous",1,NA
+2600,"Ranunculus recurvatus",0,NA
+2601,"Tmarus angulatus",0,NA
+2602,"Lysimachia thyrsiflora",0,NA
+2603,"Aegolius funereus",0,NA
+2604,"Melanerpes erythrocephalus",0,NA
+2605,"Zale lunata",0,NA
+2606,"Diabrotica virgifera",0,NA
+2607,"Apamea amputatrix",0,NA
+2608,"Astragalus cicer",1,NA
+2609,"Acleris clarkei",0,NA
+2610,"Chrysoclista linneela",NA,"No matching species"
+2611,"Lignyodes helvolus",0,NA
+2612,"Agonum muelleri",1,NA
+2613,"Chalcosyrphus curvaria",NA,"No matching species"
+2614,"Thymus pulegioides",1,NA
+2615,"Helianthus decapetalus",0,NA
+2616,"Agrilus carpini",0,NA
+2617,"Carex crinita",0,NA
+2618,"Oberea tripunctata",0,NA
+2619,"Leucocoprinus cepistipes",0,NA
+2620,"Aythya affinis",0,NA
+2621,"Tricholoma vaccinum",0,NA
+2622,"Mycena filopes",0,NA
+2623,"Phytoliriomyza melampyga",NA,"no applicable method for 'filter' applied to an object of class ""list"""
+2624,"Xanthoconium separans",0,NA
+2625,"Sorbus decora",0,NA
+2626,"Oxyporus rufipennis",0,NA
+2627,"Oxychilus draparnaudi",1,NA
+2628,"Parmotrema austrosinense",NA,"No data for Canada"
+2629,"Prunus pumila",0,NA
+2630,"Acronicta morula",0,NA
+2631,"Paxillus involutus",0,NA
+2632,"Panopoda rufimargo",0,NA
+2633,"Dytiscus fasciventris",0,NA
+2634,"Occidentalia comptulatalis",0,NA
+2635,"Lochmaeus manteo",0,NA
+2636,"Botryosphaeria dothidea",NA,"No data for Canada"
+2637,"Ramariopsis kunzei",0,NA
+2638,"Percina caprodes",0,NA
+2639,"Schizura badia",0,NA
+2640,"Nematocampa resistaria",0,NA
+2641,"Centaurea montana",1,NA
+2642,"Chimaphila umbellata",0,NA
+2643,"Nephelopsis obscura",NA,"No matching species"
+2644,"Psychomorpha epimenis",0,NA
+2645,"Iridopsis larvaria",0,NA
+2646,"Hemerocallis dumortieri",NA,"Results is empty"
+2647,"Planorbella trivolvis",0,NA
+2648,"Xylota segnis",1,NA
+2649,"Ancylis semiovana",0,NA
+2650,"Knautia macedonica",NA,"Results is empty"
+2651,"Phytomyza aralivora",NA,"no applicable method for 'filter' applied to an object of class ""list"""
+2652,"Fieberiella florii",1,NA
+2653,"Arta statalis",0,NA
+2654,"Phlox divaricata",0,NA
+2655,"Telamona tiliae",0,NA
+2656,"Galega orientalis",NA,"Results is empty"
+2657,"Aphis fabae",1,NA
+2658,"Coprinopsis romagnesiana",0,NA
+2659,"Tubaria furfuracea",0,NA
+2660,"Phegopteris connectilis",0,NA
+2661,"Erythroneura tricincta",0,NA
+2662,"Balanobius salicivorus",NA,"Results is empty"
+2663,"Theronia hilaris",NA,"Results is empty"
+2664,"Ophonus puncticeps",1,NA
+2665,"Calliephialtes grapholithae",NA,"Results is empty"
+2666,"Priocnemis minorata",NA,"Results is empty"
+2667,"Phalaenostola larentioides",0,NA
+2668,"Carex sprengelii",0,NA
+2669,"Lampsilis cardium",0,NA
+2670,"Pilocrocis ramentalis",0,NA
+2671,"Dypterygia rozmani",0,NA
+2672,"Leucrocuta hebe",0,NA
+2673,"Saperda calcarata",0,NA
+2674,"Sanicula odorata",0,NA
+2675,"Melanchra picta",0,NA
+2676,"Zanclognatha jacchusalis",0,NA
+2677,"Lemna trisulca",0,NA
+2678,"Agrilus vittaticollis",0,NA
+2679,"Palthis asopialis",0,NA
+2680,"Agalliota quadripunctata",NA,"No matching species"
+2681,"Sminthurinus henshawi",0,NA
+2682,"Boettgerilla pallens",1,NA
+2683,"Scopula inductata",0,NA
+2684,"Enallagma geminatum",0,NA
+2685,"Phalonidia lepidana",0,NA
+2686,"Empidonax alnorum",0,NA
+2687,"Pardosa saxatilis",0,NA
+2688,"Thyraylia nana",0,NA
+2689,"Geranium macrorrhizum",1,NA
+2690,"Petasites hybridus",1,NA
+2691,"Rosa carolina",0,NA
+2692,"Olethreutes permundana",0,NA
+2693,"Antherophagus ochraceus",0,NA
+2694,"Xylesthia pruniramiella",0,NA
+2695,"Alydus conspersus",0,NA
+2696,"Erysiphe trifoliorum",NA,"Results is empty"
+2697,"Epistrophe grossulariae",0,NA
+2698,"Nymphaea marliacea",NA,"No matching species"
+2699,"Tortula acaulon",0,NA
+2700,"Helminthosphaeria clavariarum",0,NA
+2701,"Erysiphe symphoricarpi",NA,"No data for Canada"
+2702,"Cotoneaster acutifolius",1,NA
+2703,"Megacerus discoidus",0,NA
+2704,"Carpophilus brachypterus",0,NA
+2705,"Malus baccata",1,NA
+2706,"Hyssopus thymus",0,NA
+2707,"Veronica longifolia",1,NA
+2708,"Plutella porrectella",0,NA
+2709,"Callosamia promethea",0,NA
+2710,"Bruchophagus gibbus",NA,"no applicable method for 'filter' applied to an object of class ""list"""
+2711,"Clemensia albata",0,NA
+2712,"Chelifer cancroides",2,NA
+2713,"Typha glauca",NA,"No matching species"
+2714,"Amphicrossus ciliatus",0,NA
+2715,"Taphrina pruni",NA,"Results is empty"
+2716,"Aralia elata",1,NA
+2717,"Nyctanassa violacea",NA,"No data for Canada"
+2718,"Stictopleurus punctiventris",0,NA
+2719,"Pero ancetaria",0,NA
+2720,"Tournotaris bimaculata",0,NA
+2721,"Cecrita guttivitta",0,NA
+2722,"Grammia virgo",NA,"No matching species"
+2723,"Scudderia pistillata",0,NA
+2724,"Lytrosis unitaria",0,NA
+2725,"Nemoria bistriaria",0,NA
+2726,"Orthodes cynica",0,NA
+2727,"Argyrotaenia quercifoliana",0,NA
+2728,"Rhodobaenus quinquepunctatus",0,NA
+2729,"Tortricidia testacea",0,NA
+2730,"Glischrochilus fasciatus",0,NA
+2731,"Argyria nivalis",NA,"Results is empty"
+2732,"Epilobium parviflorum",1,NA
+2733,"Aedes triseriatus",0,NA
+2734,"Phyllosticta paviae",NA,"No data for Canada"
+2735,"Cosmopterix nitens",0,NA
+2736,"Anthrax analis",NA,"No matching species"
+2737,"Physocephala marginata",0,NA
+2738,"Lathyrus pratensis",1,NA
+2739,"Phlegyas abbreviatus",0,NA
+2740,"Oxyomus sylvestris",1,NA
+2741,"Prionoxystus robiniae",0,NA
+2742,"Coreopsis lanceolata",2,NA
+2743,"Ampedus apicatus",0,NA
+2744,"Geum aleppicum",0,NA
+2745,"Dichrorampha acuminatana",1,NA
+2746,"Ganoderma resinaceum",0,NA
+2747,"Deltometopus amoenicornis",0,NA
+2748,"Orius insidiosus",0,NA
+2749,"Coelichneumon azotus",NA,"Results is empty"
+2750,"Symphyotrichum ontarionis",0,NA
+2751,"Coltricia perennis",0,NA
+2752,"Sphinx canadensis",0,NA
+2753,"Macremphytus testaceus",0,NA
+2754,"Dyspyralis puncticosta",0,NA
+2755,"Anthonomus suturalis",0,NA
+2756,"Solanum carolinense",1,NA
+2757,"Ampelopsis glandulosa",1,NA
+2758,"Stenonema femoratum",0,NA
+2759,"Palpita magniferalis",0,NA
+2760,"Thera juniperata",1,NA
+2761,"Hyperaspis undulata",0,NA
+2762,"Oenothera parviflora",0,NA
+2763,"Acanthocinus pusillus",0,NA
+2764,"Zale phaeocapna",0,NA
+2765,"Notodonta scitipennis",0,NA
+2766,"Anser rossii",0,NA
+2767,"Clavulinopsis fusiformis",0,NA
+2768,"Epilobium coloratum",0,NA
+2769,"Mentha canadensis",0,NA
+2770,"Thalictrum pubescens",0,NA
+2771,"Calligrapha confluens",0,NA
+2772,"Conservula anodonta",0,NA
+2773,"Archips cerasivorana",0,NA
+2774,"Hypena bijugalis",0,NA
+2775,"Argyrotaenia quadrifasciana",0,NA
+2776,"Libytheana carinenta",NA,"No data for Canada"
+2777,"Physcia stellaris",0,NA
+2778,"Isarthrus rufipes",0,NA
+2779,"Hibana gracilis",0,NA
+2780,"Chrysolina marginata",0,NA
+2781,"Allonemobius allardi",0,NA
+2782,"Calidris minutilla",0,NA
+2783,"Blastobasis glandulella",0,NA
+2784,"Blastodacna atra",0,NA
+2785,"Atymna helena",0,NA
+2786,"Plodia interpunctella",0,NA
+2787,"Myopa vesiculosa",0,NA
+2788,"Mordella marginata",0,NA
+2789,"Olethreutes fasciatana",0,NA
+2790,"Ectobius lucidus",1,NA
+2791,"Philonthus caeruleipennis",0,NA
+2792,"Craterellus cornucopioides",0,NA
+2793,"Enoclerus nigripes",0,NA
+2794,"Aulagromyza orbitalis",NA,"no applicable method for 'filter' applied to an object of class ""list"""
+2795,"Sciaphilus asperatus",1,NA
+2796,"Calidris canutus",0,NA
+2797,"Dictyla echii",0,NA
+2798,"Tabanus atratus",0,NA
+2799,"Heterocerus fenestratus",NA,"Results is empty"
+2800,"Cystopteris fragilis",0,NA
+2801,"Chironomus atroviridis",0,NA
+2802,"Euxoa detersa",0,NA
+2803,"Imleria pallida",NA,"Results is empty"
+2804,"Calligrapha suturella",0,NA
+2805,"Gratiola neglecta",0,NA
+2806,"Condylura cristata",0,NA
+2807,"Pseudobourletiella spinata",0,NA
+2808,"Metzneria lappella",1,NA
+2809,"Melanotus castanipes",0,NA
+2810,"Poa palustris",0,NA
+2811,"Medetera aberrans",NA,"no applicable method for 'filter' applied to an object of class ""list"""
+2812,"Anemone blanda",1,NA
+2813,"Clivina fossor",1,NA
+2814,"Libellula semifasciata",0,NA
+2815,"Scilla forbesii",1,NA
+2816,"Sphaerophoria philantha",NA,"No matching species"
+2817,"Idia lubricalis",0,NA
+2818,"Stenolophus comma",0,NA
+2819,"Hypercompe scribonia",0,NA
+2820,"Caliadurgus fasciatellus",NA,"Results is empty"
+2821,"Acleris semipurpurana",0,NA
+2822,"Crocus vernus",1,NA
+2823,"Macropis nuda",0,NA
+2824,"Basiaeschna janata",0,NA
+2825,"Podosphaera physocarpi",NA,"Results is empty"
+2826,"Cortinarius purpureus",0,NA
+2827,"Hygrocybe flavescens",0,NA
+2828,"Veronica persica",1,NA
+2829,"Cyperus odoratus",0,NA
+2830,"Equisetum palustre",0,NA
+2831,"Pelegrina proterva",0,NA
+2832,"Hygrotus sayi",0,NA
+2833,"Riccia cavernosa",0,NA
+2834,"Melanitta perspicillata",0,NA
+2835,"Perilampus fulvicornis",NA,"In argument: `subnationCode == ""QC""`."
+2836,"Erysiphe necator",NA,"Results is empty"
+2837,"Stylogaster neglecta",0,NA
+2838,"Omphale acuminativentris",NA,"no applicable method for 'filter' applied to an object of class ""list"""
+2839,"Metasequoia glyptostroboides",NA,"Results is empty"
+2840,"Quercus robur",1,NA
+2841,"Coriandrum sativum",1,NA
+2842,"Rhodotus palmatus",0,NA
+2843,"Leucoma salicis",1,NA
+2844,"Striacosta albicosta",0,NA
+2845,"Dendrolycopodium obscurum",0,NA
+2846,"Mustela erminea",NA,"No data for Canada"
+2847,"Allium vineale",1,NA
+2848,"Acronicta impleta",0,NA
+2849,"Coleophora deauratella",1,NA
+2850,"Hydroprogne caspia",0,NA
+2851,"Melanoplus punctulatus",0,NA
+2852,"Panopoda carneicosta",0,NA
+2853,"Marathyssa inficita",0,NA
+2854,"Zanclognatha cruralis",0,NA
+2855,"Scopula cacuminaria",0,NA
+2856,"Blitum capitatum",NA,"No matching species"
+2857,"Anatis mali",0,NA
+2858,"Hypsopygia olinalis",0,NA
+2859,"Betulapion simile",0,NA
+2860,"Oreana unicolorella",0,NA
+2861,"Neonectria faginata",0,NA
+2862,"Gnaphalium uliginosum",1,NA
+2863,"Neolasioptera vitinea",NA,"no applicable method for 'filter' applied to an object of class ""list"""
+2864,"Piranga ludoviciana",0,NA
+2865,"Pseudagolius bicolor",0,NA
+2866,"Ancistrocerus unifasciatus",0,NA
+2867,"Platynus cincticollis",0,NA
+2868,"Catastega aceriella",0,NA
+2869,"Trypetisoma sticticum",NA,"Results is empty"
+2870,"Tasgius melanarius",1,NA
+2871,"Bitoma crenata",1,NA
+2872,"Chlorophyllum olivieri",0,NA
+2873,"Zale undularis",0,NA
+2874,"Diplazon laetatorius",0,NA
+2875,"Zanclognatha protumnusalis",0,NA
+2876,"Anthrenus scrophulariae",1,NA
+2877,"Dichomeris juncidella",0,NA
+2878,"Elymus canadensis",0,NA
+2879,"Crepis tectorum",1,NA
+2880,"Zale horrida",0,NA
+2881,"Ulmus thomasii",0,NA
+2882,"Apantesis arge",0,NA
+2883,"Enicospilus purgatus",NA,"No data for Canada"
+2884,"Heteranthera dubia",0,NA
+2885,"Spatula clypeata",0,NA
+2886,"Epitheca princeps",0,NA
+2887,"Eurema lisa",NA,"No matching species"
+2888,"Framinghamia helvalis",0,NA
+2889,"Osmia cornifrons",1,NA
+2890,"Blaesodiplosis crataegibedeguar",NA,"no applicable method for 'filter' applied to an object of class ""list"""
+2891,"Hygrocybe cuspidata",0,NA
+2892,"Dolichovespula adulterina",NA,"Results is empty"
+2893,"Cantharis rufa",1,NA
+2894,"Spatula discors",0,NA
+2895,"Trichaptum biforme",0,NA
+2896,"Epinotia lindana",0,NA
+2897,"Quercus coccinea",NA,"No data for Canada"
+2898,"Ilex aquifolium",1,NA
+2899,"Psylla buxi",1,NA
+2900,"Acanalonia bivittata",0,NA
+2901,"Erynnis icelus",0,NA
+2902,"Nabis americoferus",0,NA
+2903,"Spelobia ochripes",NA,"no applicable method for 'filter' applied to an object of class ""list"""
+2904,"Argyresthia thuiella",0,NA
+2905,"Dolichopus bifractus",NA,"no applicable method for 'filter' applied to an object of class ""list"""
+2906,"Xylobiops basilaris",0,NA
+2907,"Leucophaeus atricilla",0,NA
+2908,"Digitaria sanguinalis",1,NA
+2909,"Coelostoma orbiculare",NA,"no applicable method for 'filter' applied to an object of class ""list"""
+2910,"Osmia georgica",0,NA
+2911,"Pseudofumaria lutea",NA,"No data for Canada"
+2912,"Loxia leucoptera",0,NA
+2913,"Eriocampa ovata",1,NA
+2914,"Aphis sambuci",1,NA
+2915,"Empoasca fabae",0,NA
+2916,"Amelanchier alnifolia",0,NA
+2917,"Epinotia trigonella",0,NA
+2918,"Vespula consobrina",0,NA
+2919,"Enargia infumata",0,NA
+2920,"Amphipyra tragopoginis",1,NA
+2921,"Cladara atroliturata",0,NA
+2922,"Panthea furcilla",0,NA
+2923,"Diphasiastrum digitatum",0,NA
+2924,"Drepana arcuata",0,NA
+2925,"Mycosarcoma maydis",NA,"No matching species"
+2926,"Lactarius deterrimus",0,NA
+2927,"Polemonium caeruleum",1,NA
+2928,"Anania hortulata",1,NA
+2929,"Ostrinia nubilalis",1,NA
+2930,"Myzia pullata",0,NA
+2931,"Podosphaera erigerontis-canadensis",0,NA
+2932,"Thymoites unimaculatus",0,NA
+2933,"Eupeodes perplexus",0,NA
+2934,"Parasteatoda tepidariorum",1,NA
+2935,"Telamona ampelopsidis",0,NA
+2936,"Hylaeus affinis",0,NA
+2937,"Hellinsia inquinatus",0,NA
+2938,"Lysimachia terrestris",0,NA
+2939,"Boletus subluridellus",0,NA
+2940,"Sphragisticus nebulosus",0,NA
+2941,"Wockia asperipunctella",0,NA
+2942,"Pterostichus melanarius",1,NA
+2943,"Hyacinthus orientalis",NA,"No data for Canada"
+2944,"Longistigma caryae",0,NA
+2945,"Bolbitius titubans",0,NA
+2946,"Sphenarches ontario",0,NA
+2947,"Trichiotinus assimilis",0,NA
+2948,"Amaurobius ferox",1,NA
+2949,"Auricularia americana",0,NA
+2950,"Arisaema dracontium",0,NA
+2951,"Rhopalosiphum padi",1,NA
+2952,"Aglossa pinguinalis",1,NA
+2953,"Dicranomyia longipennis",NA,"In argument: `subnationCode == ""QC""`."
+2954,"Adaina montanus",0,NA
+2955,"Mompha eloisella",0,NA
+2956,"Tricholoma columbetta",0,NA
+2957,"Tolype velleda",0,NA
+2958,"Ogdoconta cinereola",0,NA
+2959,"Lentinus arcularius",0,NA
+2960,"Rhagio tringaria",NA,"no applicable method for 'filter' applied to an object of class ""list"""
+2961,"Morchella angusticeps",0,NA
+2962,"Aulagromyza luteoscutellata",NA,"no applicable method for 'filter' applied to an object of class ""list"""
+2963,"Lolium perenne",1,NA
+2964,"Plectrophenax nivalis",0,NA
+2965,"Etheostoma flabellare",0,NA
+2966,"Wolffia columbiana",0,NA
+2967,"Macropsis fumipennis",0,NA
+2968,"Corvus ossifragus",0,NA
+2969,"Prunus armeniaca",1,NA
+2970,"Alosa sapidissima",0,NA
+2971,"Bembidion patruele",0,NA
+2972,"Stenodema vicinum",0,NA
+2973,"Aedes atropalpus",0,NA
+2974,"Phymatodes amoenus",0,NA
+2975,"Scaphoideus melanotus",0,NA
+2976,"Blera badia",0,NA
+2977,"Glossonotus crataegi",0,NA
+2978,"Erythroneura vitis",0,NA
+2979,"Chrysobothris sexsignata",0,NA
+2980,"Tetragnatha versicolor",0,NA
+2981,"Porpidia albocaerulescens",0,NA
+2982,"Branta bernicla",0,NA
+2983,"Alopecurus pratensis",1,NA
+2984,"Stropharia caerulea",0,NA
+2985,"Agrocybe molesta",0,NA
+2986,"Erysimum marschallianum",NA,"Results is empty"
+2987,"Aethes promptana",0,NA
+2988,"Chalcoela iphitalis",0,NA
+2989,"Acronicta laetifica",0,NA
+2990,"Lacinipolia olivacea",0,NA
+2991,"Cerastis salicarum",0,NA
+2992,"Lentinellus ursinus",0,NA
+2993,"Catocala meskei",0,NA
+2994,"Cepphis armataria",0,NA
+2995,"Lucilia silvarum",0,NA
+2996,"Campanula punctata",NA,"No data for Canada"
+2997,"Neoscona arabesca",0,NA
+2998,"Philanthus politus",0,NA
+2999,"Myrmosa unicolor",NA,"Results is empty"
+3000,"Lunaria annua",1,NA
+3001,"Neofavolus americanus",NA,"Results is empty"
+3002,"Eumorpha achemon",0,NA
+3003,"Enallagma boreale",0,NA
+3004,"Catocala parta",0,NA
+3005,"Epeolus scutellaris",0,NA
+3006,"Sminthurinus quadrimaculatus",0,NA
+3007,"Hylesinus aculeatus",0,NA
+3008,"Urgleptes querci",0,NA
+3009,"Scardiella approximatella",0,NA
+3010,"Eutomostethus ephippium",1,NA
+3011,"Eulithis gracilineata",0,NA
+3012,"Melampodium divaricatum",NA,"Results is empty"
+3013,"Photinus marginellus",0,NA
+3014,"Acroricnus stylator",NA,"Results is empty"
+3015,"Callopistromyia strigula",0,NA
+3016,"Pleurozium schreberi",0,NA
+3017,"Physcia millegrana",0,NA
+3018,"Wisteria frutescens",NA,"No data for Canada"
+3019,"Oscarinus rusicola",0,NA
+3020,"Sitona obsoletus",NA,"Results is empty"
+3021,"Digitaria ischaemum",1,NA
+3022,"Phytomyza agromyzina",NA,"no applicable method for 'filter' applied to an object of class ""list"""
+3023,"Nyholmiella obtusifolia",NA,"No matching species"
+3024,"Pycnoscelus surinamensis",1,NA
+3025,"Pelegrina flaviceps",0,NA
+3026,"Cryptolaemus montrouzieri",NA,"Results is empty"
+3027,"Talavera minuta",0,NA
+3028,"Carex cristatella",0,NA
+3029,"Pseudoboletus parasiticus",0,NA
+3030,"Bibio slossonae",0,NA
+3031,"Schizura ipomaeae",0,NA
+3032,"Nedra ramosula",0,NA
+3033,"Semotilus corporalis",0,NA
+3034,"Potamilus alatus",0,NA
+3035,"Euchlaena effecta",0,NA
+3036,"Xestia dolosa",0,NA
+3037,"Plagodis alcoolaria",0,NA
+3038,"Clostera apicalis",0,NA
+3039,"Hypena deceptalis",0,NA
+3040,"Sargus elegans",0,NA
+3041,"Gloiodon strigosus",0,NA
+3042,"Sympetrum internum",0,NA
+3043,"Funaria hygrometrica",0,NA
+3044,"Batrachedra praeangusta",0,NA
+3045,"Rhopalapion longirostre",1,NA
+3046,"Acronicta impressa",0,NA
+3047,"Bidens cernua",0,NA
+3048,"Amblysellus curtisii",0,NA
+3049,"Trametes pubescens",0,NA
+3050,"Ampedus vitiosus",0,NA
+3051,"Ptychoptera quadrifasciata",NA,"no applicable method for 'filter' applied to an object of class ""list"""
+3052,"Dalibarda repens",NA,"No matching species"
+3053,"Rumex britannica",NA,"No matching species"
+3054,"Harrya chromipes",0,NA
+3055,"Philanthus bilunatus",NA,"no applicable method for 'filter' applied to an object of class ""list"""
+3056,"Geranium thunbergii",1,NA
+3057,"Drosophila hydei",NA,"no applicable method for 'filter' applied to an object of class ""list"""
+3058,"Neohelix albolabris",0,NA
+3059,"Xanthium orientale",NA,"No matching species"
+3060,"Panicum virgatum",0,NA
+3061,"Spodoptera frugiperda",0,NA
+3062,"Eupithecia ravocostaliata",0,NA
+3063,"Megachile inermis",0,NA
+3064,"Perichaena depressa",NA,"Results is empty"
+3065,"Crataegus fretalis",NA,"Results is empty"
+3066,"Schinia arcigera",0,NA
+3067,"Drosophila busckii",NA,"no applicable method for 'filter' applied to an object of class ""list"""
+3068,"Cerrena unicolor",0,NA
+3069,"Chlaenius impunctifrons",0,NA
+3070,"Larix decidua",1,NA
+3071,"Fragaria ananassa",NA,"No matching species"
+3072,"Phaenopsectra obediens",0,NA
+3073,"Lophocampa maculata",0,NA
+3074,"Sambucus ebulus",1,NA
+3075,"Eucosma ochroterminana",0,NA
+3076,"Hypomyces hyalinus",0,NA
+3077,"Helianthus pauciflorus",0,NA
+3078,"Platydracus maculosus",0,NA
+3079,"Cryptomyzus ribis",1,NA
+3080,"Sparganium eurycarpum",0,NA
+3081,"Leucauge venusta",0,NA
+3082,"Digitalis purpurea",1,NA
+3083,"Dryocampa rubicunda",0,NA
+3084,"Neolecanium cornuparvum",0,NA
+3085,"Dejongia lobidactylus",0,NA
+3086,"Olethreutes nigranum",0,NA
+3087,"Tetragnatha extensa",0,NA
+3088,"Polioptila caerulea",0,NA
+3089,"Parascalops breweri",0,NA
+3090,"Viola minuscula",NA,"Results is empty"
+3091,"Pohlia nutans",0,NA
+3092,"Caenis youngi",0,NA
+3093,"Myiomma cixiiforme",0,NA
+3094,"Prociphilus tessellatus",0,NA
+3095,"Polites origenes",0,NA
+3096,"Vernonia fasciculata",0,NA
+3097,"Geranium robertianum",0,NA
+3098,"Cerma cora",0,NA
+3099,"Cerceris arelate",NA,"no applicable method for 'filter' applied to an object of class ""list"""
+3100,"Charidotella purpurata",0,NA
+3101,"Tuber canaliculatum",0,NA
+3102,"Sisymbrium altissimum",1,NA
+3103,"Amanita flavoconia",0,NA
+3104,"Acrossus rufipes",1,NA
+3105,"Pyrgotella chagnoni",NA,"no applicable method for 'filter' applied to an object of class ""list"""
+3106,"Geophilus vittatus",0,NA
+3107,"Elymus hystrix",0,NA
+3108,"Plasmopara viticola",NA,"Results is empty"
+3109,"Galanthus elwesii",1,NA
+3110,"Mezium affine",1,NA
+3111,"Ctenophora apicata",NA,"no applicable method for 'filter' applied to an object of class ""list"""
+3112,"Geum catlingii",NA,"No matching species"
+3113,"Lestes eurinus",0,NA
+3114,"Spodoptera ornithogalli",0,NA
+3115,"Nola cilicoides",0,NA
+3116,"Mesostenus thoracicus",NA,"Results is empty"
+3117,"Tosale oviplagalis",0,NA
+3118,"Agalinis tenuifolia",0,NA
+3119,"Xeromphalina kauffmanii",0,NA
+3120,"Elophila icciusalis",0,NA
+3121,"Amelanchier lamarckii",1,NA
+3122,"Ectemnius maculosus",NA,"no applicable method for 'filter' applied to an object of class ""list"""
+3123,"Acleris nivisellana",0,NA
+3124,"Lasioglossum coeruleum",0,NA
+3125,"Kolkwitzia amabilis",1,NA
+3126,"Agriphila vulgivagellus",0,NA
+3127,"Rhytisma americanum",0,NA
+3128,"Gliophorus psittacinus",0,NA
+3129,"Sargus decorus",0,NA
+3130,"Contarinia verrucicola",NA,"no applicable method for 'filter' applied to an object of class ""list"""
+3131,"Callobius bennetti",0,NA
+3132,"Juncus tenuis",0,NA
+3133,"Symphyotrichum puniceum",0,NA
+3134,"Galinsoga parviflora",1,NA
+3135,"Myrmecina americana",0,NA
+3136,"Pachygaster pulchra",0,NA
+3137,"Hymetta balteata",0,NA
+3138,"Andrena crataegi",0,NA
+3139,"Cotoneaster suecicus",NA,"No matching species"
+3140,"Eupithecia miserulata",0,NA
+3141,"Eueretagrotis sigmoides",0,NA
+3142,"Trichordestra legitima",0,NA
+3143,"Houttuynia cordata",NA,"No data for Canada"
+3144,"Scutellinia setosa",0,NA
+3145,"Iris virginica",0,NA
+3146,"Calidris melanotos",0,NA
+3147,"Mitella diphylla",0,NA
+3148,"Perigona nigriceps",1,NA
+3149,"Symphyotrichum laeve",1,NA
+3150,"Diplotaxis muralis",1,NA
+3151,"Leucania commoides",0,NA
+3152,"Eurimyia stipatus",NA,"No matching species"
+3153,"Conocybe tenera",0,NA
+3154,"Gryllodes sigillatus",1,NA
+3155,"Impatiens balsamina",NA,"No data for Canada"
+3156,"Cingilia catenaria",0,NA
+3157,"Aethes argentilimitana",0,NA
+3158,"Lithophane fagina",0,NA
+3159,"Oenothera villosa",0,NA
+3160,"Tricholita signata",0,NA
+3161,"Homophoberia apicosa",0,NA
+3162,"Acronicta insita",0,NA
+3163,"Picipes badius",0,NA
+3164,"Pyrola elliptica",0,NA
+3165,"Wolffia borealis",0,NA
+3166,"Papaver rhoeas",1,NA
+3167,"Syngrapha rectangula",0,NA
+3168,"Anotylus insignitus",1,NA
+3169,"Lonicera periclymenum",1,NA
+3170,"Isa textula",0,NA
+3171,"Tropidia quadrata",0,NA
+3172,"Sarea resinae",0,NA
+3173,"Bubulcus ibis",NA,"No matching species"
+3174,"Supella longipalpa",1,NA
+3175,"Proteoteras moffatiana",0,NA
+3176,"Tenebrio molitor",1,NA
+3177,"Cimex lectularius",0,NA
+3178,"Odontomyia cincta",0,NA
+3179,"Helophilus latifrons",0,NA
+3180,"Tapinoma melanocephalum",1,NA
+3181,"Cerastium arvense",0,NA
+3182,"Centaurea stoebe",1,NA
+3183,"Achatia evicta",NA,"Results is empty"
+3184,"Neoligia exhausta",0,NA
+3185,"Rumex triangulivalvis",0,NA
+3186,"Somateria mollissima",0,NA
+3187,"Zomaria interruptolineana",0,NA
+3188,"Golovinomyces bolayi",NA,"No data for Canada"
+3189,"Equisetum scirpoides",0,NA
+3190,"Sturnella magna",0,NA
+3191,"Episyron biguttatus",NA,"Results is empty"
+3192,"Viola septentrionalis",0,NA
+3193,"Hyperplatys aspersa",0,NA
+3194,"Tetrix arenosa",0,NA
+3195,"Lonicera villosa",0,NA
+3196,"Tychius picirostris",1,NA
+3197,"Melanophila acuminata",0,NA
+3198,"Vulgichneumon brevicinctor",NA,"Results is empty"
+3199,"Claviceps purpurea",0,NA
+3200,"Elodea canadensis",0,NA
+3201,"Creophilus maxillosus",0,NA
+3202,"Triosteum aurantiacum",0,NA
+3203,"Schinia rivulosa",0,NA
+3204,"Metaxaglaea inulta",0,NA
+3205,"Cosmia calami",0,NA
+3206,"Asphondylia rudbeckiaeconspicua",NA,"Results is empty"
+3207,"Sorghastrum nutans",0,NA
+3208,"Eudonia heterosalis",0,NA
+3209,"Taxus cuspidata",NA,"No data for Canada"
+3210,"Nephrotoma cingulata",NA,"no applicable method for 'filter' applied to an object of class ""list"""
+3211,"Verbena bracteata",1,NA
+3212,"Athous haemorrhoidalis",1,NA
+3213,"Amauropelta noveboracensis",0,NA
+3214,"Ascocoryne sarcoides",0,NA
+3215,"Merosargus caeruleifrons",0,NA
+3216,"Discus rotundatus",1,NA
+3217,"Speyeria atlantis",NA,"No matching species"
+3218,"Leiobunum calcar",0,NA
+3219,"Anatis labiculata",0,NA
+3220,"Thoracophorus costalis",0,NA
+3221,"Daldinia childiae",0,NA
+3222,"Sitobolium punctilobum",NA,"No matching species"
+3223,"Scirpus atrovirens",0,NA
+3224,"Pluteus longistriatus",0,NA
+3225,"Cardamine maxima",0,NA
+3226,"Rhopalomyia capitata",NA,"no applicable method for 'filter' applied to an object of class ""list"""
+3227,"Zale duplicata",0,NA
+3228,"Huperzia lucidula",0,NA
+3229,"Xylomya terminalis",NA,"no applicable method for 'filter' applied to an object of class ""list"""
+3230,"Echinops bannaticus",NA,"Results is empty"
+3231,"Micrutalis calva",0,NA
+3232,"Wesmaelius longifrons",0,NA
+3233,"Etheostoma nigrum",0,NA
+3234,"Empoa casta",NA,"No matching species"
+3235,"Vanduzea arquata",0,NA
+3236,"Dichomeris nonstrigella",0,NA
+3237,"Clavulinopsis corniculata",0,NA
+3238,"Ophiognomonia clavigignenti-juglandacearum",NA,"Results is empty"
+3239,"Arrhenia epichysium",0,NA
+3240,"Verseghya thysanophora",NA,"No matching species"
+3241,"Diplodia tumefaciens",NA,"no applicable method for 'filter' applied to an object of class ""list"""
+3242,"Tabanus novaescotiae",0,NA
+3243,"Bibio xanthopus",0,NA
+3244,"Hepatica americana",NA,"No matching species"
+3245,"Garella nilotica",1,NA
+3246,"Pleurocera acuta",0,NA
+3247,"Amnicola limosus",0,NA
+3248,"Philomycus togatus",0,NA
+3249,"Augochlorella aurata",0,NA
+3250,"Diastictis ventralis",0,NA
+3251,"Xeromphalina campanella",0,NA
+3252,"Tinca tinca",1,NA
+3253,"Schizomyia racemicola",NA,"no applicable method for 'filter' applied to an object of class ""list"""
+3254,"Anoscopus flavostriatus",1,NA
+3255,"Lopidea robiniae",0,NA
+3256,"Epiphanis cornutus",0,NA
+3257,"Antirrhinum majus",1,NA
+3258,"Acronicta innotata",0,NA
+3259,"Sparganothis sulfureana",0,NA
+3260,"Blapstinus metallicus",0,NA
+3261,"Anacampsis nonstrigella",NA,"In argument: `subnationCode == ""QC""`."
+3262,"Hedya separatana",0,NA
+3263,"Agenioideus cinctellus",NA,"Results is empty"
+3264,"Eido trimaculella",0,NA
+3265,"Erysiphe howeana",NA,"Results is empty"
+3266,"Panaeolus cinctulus",0,NA
+3267,"Lepyronia quadrangularis",0,NA
+3268,"Platydracus immaculatus",0,NA
+3269,"Iris germanica",1,NA
+3270,"Corylus colurna",NA,"Results is empty"
+3271,"Dinocampus coccinellae",NA,"Results is empty"
+3272,"Battaristis vittella",0,NA
+3273,"Juncus effusus",0,NA
+3274,"Eragrostis pectinacea",0,NA
+3275,"Lepomis peltastes",0,NA
+3276,"Potentilla inclinata",1,NA
+3277,"Populus canadensis",NA,"No matching species"
+3278,"Pleurotus dryinus",0,NA
+3279,"Clavulina coralloides",0,NA
+3280,"Potamogeton richardsonii",0,NA
+3281,"Anacampsis tristrigella",0,NA
+3282,"Portulaca grandiflora",1,NA
+3283,"Coenus delius",0,NA
+3284,"Graphis scripta",0,NA
+3285,"Paracorsia repandalis",NA,"No data for Canada"
+3286,"Polistes aurifer",2,NA
+3287,"Albuna fraxini",0,NA
+3288,"Tuberolachnus salignus",1,NA
+3289,"Episyron quinquenotatus",0,NA
+3290,"Erysiphe paeoniae",NA,"Results is empty"
+3291,"Rhagoletis cerasi",1,NA
+3292,"Deroceras laeve",0,NA
+3293,"Glyptotendipes barbipes",0,NA
+3294,"Periplaneta americana",1,NA
+3295,"Syringa villosa",1,NA
+3296,"Anthribus nebulosus",1,NA
+3297,"Merhynchites bicolor",0,NA
+3298,"Cyperus squarrosus",0,NA
+3299,"Apocynum floribundum",NA,"No matching species"
+3300,"Carex hirta",1,NA
+3301,"Nostoc commune",NA,"Results is empty"
+3302,"Cicindela punctulata",0,NA
+3303,"Armillaria sinapina",0,NA
+3304,"Coprinopsis lagopus",0,NA
+3305,"Sedum album",1,NA
+3306,"Carex granularis",0,NA
+3307,"Hypselistes florens",0,NA
+3308,"Pardosa lapidicina",0,NA
+3309,"Bistorta officinalis",1,NA
+3310,"Cenopis niveana",0,NA
+3311,"Desmia funeralis",0,NA
+3312,"Stenocorus vittiger",0,NA
+3313,"Sagina procumbens",0,NA
+3314,"Clematis terniflora",1,NA
+3315,"Hydrocoloeus minutus",0,NA
+3316,"Malva alcea",1,NA
+3317,"Xerolenta obvia",1,NA
+3318,"Aristolochia clematitis",1,NA
+3319,"Euzophera semifuneralis",0,NA
+3320,"Chondrostereum purpureum",0,NA
+3321,"Rheumatobates rileyi",0,NA
+3322,"Hebeloma leucosarx",0,NA
+3323,"Centaurea nigrescens",1,NA
+3324,"Anopheles punctipennis",0,NA
+3325,"Achatia confusa",NA,"No matching species"
+3326,"Melanitta americana",0,NA
+3327,"Asphondylia solidaginis",NA,"no applicable method for 'filter' applied to an object of class ""list"""
+3328,"Lasius subumbratus",0,NA
+3329,"Amaranthus albus",1,NA
+3330,"Blaniulus guttulatus",1,NA
+3331,"Carex blanda",0,NA
+3332,"Phellinus igniarius",0,NA
+3333,"Stenocranus unipunctatus",0,NA
+3334,"Euxoa messoria",0,NA
+3335,"Lochmaeus bilineata",0,NA
+3336,"Potamogeton perfoliatus",0,NA
+3337,"Notemigonus crysoleucas",0,NA
+3338,"Boletus chippewaensis",0,NA
+3339,"Myriococcum praecox",NA,"Results is empty"
+3340,"Carabus maeander",0,NA
+3341,"Campeloma decisum",0,NA
+3342,"Hypena manalis",0,NA
+3343,"Acanthoscelidius acephalus",0,NA
+3344,"Syrphus ribesii",0,NA
+3345,"Rosa glauca",1,NA
+3346,"Melissodes trinodis",0,NA
+3347,"Geum macrophyllum",0,NA
+3348,"Megabruchidius dorsalis",NA,"Results is empty"
+3349,"Spoladea recurvalis",0,NA
+3350,"Walshia miscecolorella",0,NA
+3351,"Cymatodera undulata",0,NA
+3352,"Bucculatrix speciosa",NA,"No data for Canada"
+3353,"Dermacentor variabilis",2,NA
+3354,"Hapalopilus rutilans",0,NA
+3355,"Carex platyphylla",0,NA
+3356,"Drosophila repleta",NA,"no applicable method for 'filter' applied to an object of class ""list"""
+3357,"Trogulus tricarinatus",NA,"Results is empty"
+3358,"Fitchia aptera",0,NA
+3359,"Ancylis diminuatana",0,NA
+3360,"Verbascum blattaria",1,NA
+3361,"Climacia areolaris",0,NA
+3362,"Cyathus stercoreus",0,NA
+3363,"Brachiacantha decempustulata",0,NA
+3364,"Aethes spartinana",0,NA
+3365,"Branta hutchinsii",0,NA
+3366,"Stigmatomma pallipes",0,NA
+3367,"Fagisyrphus cincta",NA,"No matching species"
+3368,"Podosesia syringae",0,NA
+3369,"Mentha piperita",NA,"No matching species"
+3370,"Nomada bethunei",0,NA
+3371,"Stenolophus ochropezus",0,NA
+3372,"Didelphis virginiana",0,NA
+3373,"Podosphaera spiraeae",NA,"Results is empty"
+3374,"Hebeloma crustuliniforme",0,NA
+3375,"Lasius claviger",0,NA
+3376,"Cantharellus cinnabarinus",0,NA
+3377,"Lasallia papulosa",0,NA
+3378,"Cydia latiferreana",0,NA
+3379,"Cantharellus cibarius",0,NA
+3380,"Parasola auricoma",0,NA
+3381,"Coquillettidia perturbans",0,NA
+3382,"Baorangia bicolor",0,NA
+3383,"Parasola conopilea",NA,"No matching species"
+3384,"Phoca vitulina",0,NA
+3385,"Furcula occidentalis",0,NA
+3386,"Lycomorpha pholus",0,NA
+3387,"Eudeilinia herminiata",0,NA
+3388,"Palporus nitidulus",NA,"Results is empty"
+3389,"Aythya valisineria",0,NA
+3390,"Lysimachia quadrifolia",0,NA
+3391,"Cryptorhynchus lapathi",0,NA
+3392,"Alcea setosa",NA,"No matching species"
+3393,"Hydnoporia olivacea",NA,"No matching species"
+3394,"Streptopelia roseogrisea",NA,"No data for Canada"
+3395,"Chelostoma campanularum",1,NA
+3396,"Tacparia detersata",0,NA
+3397,"Xylodon ovisporus",NA,"Results is empty"
+3398,"Rhyssella humida",NA,"Results is empty"
+3399,"Tetracis crocallata",0,NA
+3400,"Cornus amomum",NA,"No data for Canada"
+3401,"Cortinarius caperatus",0,NA
+3402,"Sphinx chersis",0,NA
+3403,"Lestes unguiculatus",0,NA
+3404,"Oncorhynchus mykiss",1,NA
+3405,"Macaria pinistrobata",0,NA
+3406,"Anemone nemorosa",1,NA
+3407,"Nemoria mimosaria",0,NA
+3408,"Ligyrus relictus",NA,"No matching species"
+3409,"Diploschistes scruposus",0,NA
+3410,"Rissa tridactyla",0,NA
+3411,"Lithophane baileyi",0,NA
+3412,"Catocala blandula",0,NA
+3413,"Chrysochus auratus",0,NA
+3414,"Dichorda iridaria",0,NA
+3415,"Catocala ultronia",0,NA
+3416,"Radix auricularia",1,NA
+3417,"Clepsis peritana",0,NA
+3418,"Achyra rantalis",0,NA
+3419,"Tritoma mimetica",0,NA
+3420,"Taedia scrupea",0,NA
+3421,"Coenomyia ferruginea",0,NA
+3422,"Psyche casta",0,NA
+3423,"Helix lucorum",NA,"Results is empty"
+3424,"Clepsis clemensiana",0,NA
+3425,"Stratiomys norma",0,NA
+3426,"Stylophorum diphyllum",0,NA
+3427,"Salix alba",1,NA
+3428,"Anthriscus cerefolium",1,NA
+3429,"Carex intumescens",0,NA
+3430,"Allium canadense",0,NA
+3431,"Trapa natans",1,NA
+3432,"Besma endropiaria",0,NA
+3433,"Eulithis molliculata",0,NA
+3434,"Odontocorynus salebrosus",0,NA
+3435,"Picea mariana",0,NA
+3436,"Cyrnellus fraternus",NA,"No data for Canada"
+3437,"Cota tinctoria",NA,"No matching species"
+3438,"Golovinomyces ambrosiae",NA,"Results is empty"
+3439,"Inonotus obliquus",0,NA
+3440,"Eustrophopsis bicolor",0,NA
+3441,"Vitisiella brevicauda",NA,"No matching species"
+3442,"Nomada xanthura",0,NA
+3443,"Persicaria filiformis",NA,"No data for Canada"
+3444,"Corylus avellana",1,NA
+3445,"Amia calva",NA,"No data for Canada"
+3446,"Condylolomia participialis",0,NA
+3447,"Urophora stylata",NA,"In argument: `subnationCode == ""QC""`."
+3448,"Temnothorax curvispinosus",0,NA
+3449,"Lepturges symmetricus",0,NA
+3450,"Baileya ophthalmica",0,NA
+3451,"Epinotia nisella",0,NA
+3452,"Acrobasis angusella",0,NA
+3453,"Zanclognatha laevigata",0,NA
+3454,"Microglossum rufum",0,NA
+3455,"Catocala grynea",0,NA
+3456,"Hemistropharia albocrenulata",0,NA
+3457,"Achatodes zeae",0,NA
+3458,"Lycopus virginicus",0,NA
+3459,"Phalaropus lobatus",0,NA
+3460,"Prenolepis imparis",0,NA
+3461,"Melanoplus sanguinipes",0,NA
+3462,"Tachypompilus ferrugineus",NA,"No data for Canada"
+3463,"Nemotaulius hostilis",0,NA
+3464,"Euxoa tessellata",0,NA
+3465,"Forsythia suspensa",1,NA
+3466,"Datura innoxia",NA,"No matching species"
+3467,"Xylopinus saperdoides",0,NA
+3468,"Hellinsia homodactylus",0,NA
+3469,"Falco rusticolus",0,NA
+3470,"Anas rubripes x platyrhynchos",NA,"Results is empty"
+3471,"Hypomyces lactifluorum",0,NA
+3472,"Chrysopilus modestus",NA,"no applicable method for 'filter' applied to an object of class ""list"""
+3473,"Monomorium pharaonis",1,NA
+3474,"Dicerca divaricata",0,NA
+3475,"Coleophora trifolii",1,NA
+3476,"Tychius stephensi",1,NA
+3477,"Phigalia strigataria",0,NA
+3478,"Anthrenus fuscus",1,NA
+3479,"Ampedus nigricollis",0,NA
+3480,"Symplecta cana",0,NA
+3481,"Loxocera cylindrica",0,NA
+3482,"Pluteus petasatus",0,NA
+3483,"Hypopitys monotropa",NA,"No matching species"
+3484,"Spiraea tomentosa",0,NA
+3485,"Olethreutes exoletum",0,NA
+3486,"Apantesis nais",0,NA
+3487,"Myrmica rubra",1,NA
+3488,"Taraxacum erythrospermum",NA,"No matching species"
+3489,"Phlebia coccineofulva",0,NA
+3490,"Mythimna oxygala",0,NA
+3491,"Xanthoria parietina",0,NA
+3492,"Euphorbia nutans",1,NA
+3493,"Carex spicata",1,NA
+3494,"Neoxabea bipunctata",0,NA
+3495,"Celticecis spiniformis",NA,"Results is empty"
+3496,"Tetraneura nigriabdominalis",NA,"No matching species"
+3497,"Veronica chamaedrys",1,NA
+3498,"Anasimyia bilinearis",0,NA
+3499,"Plusia venusta",0,NA
+3500,"Lymnaea stagnalis",0,NA
+3501,"Zonitis bilineata",0,NA
+3502,"Calidris himantopus",0,NA
+3503,"Omophron americanum",0,NA
+3504,"Tegenaria domestica",1,NA
+3505,"Sarosesthes fulminans",0,NA
+3506,"Heptagenia marginalis",0,NA
+3507,"Metalimnobia triocellata",NA,"no applicable method for 'filter' applied to an object of class ""list"""
+3508,"Phellinopsis conchata",0,NA
+3509,"Zavrelimyia sinuosa",0,NA
+3510,"Acer campestre",1,NA
+3511,"Parogonum ciliinode",NA,"Results is empty"
+3512,"Daedaleopsis confragosa",0,NA
+3513,"Allium cristophii",NA,"Results is empty"
+3514,"Lonicera maackii",1,NA
+3515,"Chytonix palliatricula",0,NA
+3516,"Acrobasis stigmella",0,NA
+3517,"Eulithis prunata",1,NA
+3518,"Argyrotaenia juglandana",0,NA
+3519,"Cardamine pensylvanica",0,NA
+3520,"Lebia solea",0,NA
+3521,"Golovinomyces montagnei",NA,"Results is empty"
+3522,"Golovinomyces asperifolii",NA,"Results is empty"
+3523,"Enallagma aspersum",0,NA
+3524,"Salix nigra",0,NA
+3525,"Euphorbia myrsinites",1,NA
+3526,"Trifolium arvense",1,NA
+3527,"Agonopterix thelmae",0,NA
+3528,"Pleurophorus caesus",1,NA
+3529,"Hypera postica",1,NA
+3530,"Anotylus rugosus",1,NA
+3531,"Cerceris rufopicta",NA,"no applicable method for 'filter' applied to an object of class ""list"""
+3532,"Corylus americana",0,NA
+3533,"Pyxine sorediata",0,NA
+3534,"Colletotrichum trichellum",NA,"Results is empty"
+3535,"Physella acuta",0,NA
+3536,"Psathyrella bipellis",0,NA
+3537,"Hylotelephium telephium",1,NA
+3538,"Potentilla intermedia",1,NA
+3539,"Lotus tenuis",1,NA
+3540,"Eisenia fetida",NA,"No matching species"
+3541,"Solidago juncea",0,NA
+3542,"Perispasta caeculalis",0,NA
+3543,"Eristalis anthophorina",0,NA
+3544,"Telamona maculata",0,NA
+3545,"Pococera expandens",0,NA
+3546,"Macaria coortaria",0,NA
+3547,"Papaipema pterisii",0,NA
+3548,"Carex comosa",0,NA
+3549,"Steatoda grossa",1,NA
+3550,"Pterophylla camellifolia",0,NA
+3551,"Lomographa semiclarata",0,NA
+3552,"Anas carolinensis",NA,"No matching species"
+3553,"Oecetis cinerascens",0,NA
+3554,"Pyractomena borealis",0,NA
+3555,"Ponera pennsylvanica",0,NA
+3556,"Proxenus miranda",0,NA
+3557,"Parmelia sulcata",0,NA
+3558,"Asilus flavofemoratus",NA,"Results is empty"
+3559,"Psychoda alternata",NA,"no applicable method for 'filter' applied to an object of class ""list"""
+3560,"Neofavolus alveolaris",0,NA
+3561,"Hadromorphus inflatus",0,NA
+3562,"Exetastes suaveolens",NA,"Results is empty"
+3563,"Aphaenogaster picea",0,NA
+3564,"Ectemnius ruficornis",0,NA
+3565,"Primula vulgaris",NA,"Results is empty"
+3566,"Mystacides interjectus",0,NA
+3567,"Polia purpurissata",0,NA
+3568,"Tortricidia flexuosa",0,NA
+3569,"Leucrocuta minerva",0,NA
+3570,"Lepus americanus",0,NA
+3571,"Clostera albosigma",0,NA
+3572,"Bidens discoidea",0,NA
+3573,"Polystepha pilulae",NA,"no applicable method for 'filter' applied to an object of class ""list"""
+3574,"Gymnosporangium clavipes",0,NA
+3575,"Orchelimum nigripes",0,NA
+3576,"Nymphoides peltata",1,NA
+3577,"Meripilus sumstinei",0,NA
+3578,"Bembidion affine",0,NA
+3579,"Urophora quadrifasciata",1,NA
+3580,"Lebia fuscata",0,NA
+3581,"Erysimum cheiri",1,NA
+3582,"Bittacus strigosus",0,NA
+3583,"Elophila tinealis",0,NA
+3584,"Philhelius flavipes",NA,"Results is empty"
+3585,"Kleidocerys resedae",0,NA
+3586,"Lyophyllum decastes",0,NA
+3587,"Schizomyia impatientis",NA,"no applicable method for 'filter' applied to an object of class ""list"""
+3588,"Lactarius indigo",0,NA
+3589,"Paleacrita vernata",0,NA
+3590,"Limnephilus ornatus",0,NA
+3591,"Esox lucius",0,NA
+3592,"Chaenomeles superba",NA,"Results is empty"
+3593,"Prionyx parkeri",NA,"In argument: `subnationCode == ""QC""`."
+3594,"Ethmia bipunctella",1,NA
+3595,"Formica incerta",0,NA
+3596,"Celithemis eponina",0,NA
+3597,"Petrosedum orientale",NA,"Results is empty"
+3598,"Hemicrepidius memnonius",0,NA
+3599,"Moodna pallidostrinella",0,NA
+3600,"Nicandra physalodes",1,NA
+3601,"Hemileccinum hortonii",NA,"Results is empty"
+3602,"Setophaga citrina",0,NA
+3603,"Ancylis brauni",0,NA
+3604,"Musculium partumeium",0,NA
+3605,"Anusia nasicornis",NA,"no applicable method for 'filter' applied to an object of class ""list"""
+3606,"Glipa oculata",0,NA
+3607,"Hygrocybe cantharellus",0,NA
+3608,"Daleomyces phillipsii",NA,"Results is empty"
+3609,"Ulmus minor",1,NA
+3610,"Grammia parthenice",NA,"No matching species"
+3611,"Myrmeleon immaculatus",0,NA
+3612,"Yakuhananomia bidentata",0,NA
+3613,"Iridopsis ephyraria",0,NA
+3614,"Amblyomma maculatum",1,NA
+3615,"Aurantioporthe corni",NA,"Results is empty"
+3616,"Macrochilo louisiana",0,NA
+3617,"Caucasotachea vindobonensis",NA,"Results is empty"
+3618,"Amanita rhacopus",0,NA
+3619,"Berteroa incana",1,NA
+3620,"Pectinatella magnifica",0,NA
+3621,"Lasionycteris noctivagans",0,NA
+3622,"Agaricus bitorquis",0,NA
+3623,"Panus neostrigosus",0,NA
+3624,"Rubroboletus rhodosanguineus",0,NA
+3625,"Protonotaria citrea",0,NA
+3626,"Pococera asperatella",0,NA
+3627,"Mesoleuca ruficillata",0,NA
+3628,"Cacopsylla annulata",0,NA
+3629,"Dolichopus plumipes",NA,"no applicable method for 'filter' applied to an object of class ""list"""
+3630,"Dryophthorus americanus",0,NA
+3631,"Ulmus parvifolia",NA,"In argument: `subnationCode == ""QC""`."
+3632,"Leptobryum pyriforme",0,NA
+3633,"Euclemensia bassettella",0,NA
+3634,"Aphis craccae",1,NA
+3635,"Eriosoma americanum",0,NA
+3636,"Euxoa albipennis",0,NA
+3637,"Epicauta murina",0,NA
+3638,"Acronicta grisea",0,NA
+3639,"Calledapteryx dryopterata",0,NA
+3640,"Orgyia antiqua",0,NA
+3641,"Herpetogramma pertextalis",0,NA
+3642,"Thalera pistasciaria",0,NA
+3643,"Metalimnobia cinctipes",NA,"In argument: `subnationCode == ""QC""`."
+3644,"Tapinoma sessile",0,NA
+3645,"Gymnopus semihirtipes",0,NA
+3646,"Pentacora ligata",0,NA
+3647,"Lathropus vernalis",0,NA
+3648,"Cornus mas",NA,"No matching species"
+3649,"Xantholobus intermedia",NA,"no applicable method for 'filter' applied to an object of class ""list"""
+3650,"Vanderbylia fraxinea",NA,"No matching species"
+3651,"Endria inimicus",NA,"No matching species"
+3652,"Lonchoptera bifurcata",0,NA
+3653,"Oxalis corniculata",1,NA
+3654,"Bassaniana utahensis",0,NA
+3655,"Heraeus plebejus",0,NA
+3656,"Scandosorbus intermedia",NA,"No matching species"
+3657,"Penthimia americana",0,NA
+3658,"Anser albifrons",0,NA
+3659,"Thyris maculata",0,NA
+3660,"Oidaematophorus eupatorii",0,NA
+3661,"Haploa confusa",0,NA
+3662,"Notonecta irrorata",0,NA
+3663,"Amelanchier sanguinea",0,NA
+3664,"Megalonotus sabulicola",1,NA
+3665,"Cylindroiulus punctatus",1,NA
+3666,"Ancistrocerus waldenii",0,NA
+3667,"Plagiognathus politus",0,NA
+3668,"Ilisia graphica",NA,"no applicable method for 'filter' applied to an object of class ""list"""
+3669,"Echmepteryx hageni",NA,"Results is empty"
+3670,"Prescottia lobata",0,NA
+3671,"Erysiphe lonicerae",NA,"Results is empty"
+3672,"Liburniella ornata",0,NA
+3673,"Aoplus confirmatus",NA,"Results is empty"
+3674,"Moxostoma anisurum",0,NA
+3675,"Lebia ornata",0,NA
+3676,"Polyozosia sambuci",NA,"No matching species"
+3677,"Chaenorhinum minus",1,NA
+3678,"Cryptocephalus moraei",NA,"no applicable method for 'filter' applied to an object of class ""list"""
+3679,"Morone americana",0,NA
+3680,"Pemphigus spyrothecae",1,NA
+3681,"Hieracium maculatum",1,NA
+3682,"Zanclognatha marcidilinea",0,NA
+3683,"Oulema melanopus",1,NA
+3684,"Zenodosus sanguineus",0,NA
+3685,"Anthrenus polonicus",NA,"Results is empty"
+3686,"Heliomata cycladata",0,NA
+3687,"Spizella pallida",0,NA
+3688,"Cantharellus enelensis",0,NA
+3689,"Hypholoma fasciculare",0,NA
+3690,"Bucephala islandica",0,NA
+3691,"Rhododendron groenlandicum",0,NA
+3692,"Lindernia dubia",0,NA
+3693,"Neuroterus quercusverrucarum",NA,"Results is empty"
+3694,"Barbara mappana",0,NA
+3695,"Panellus stipticus",0,NA
+3696,"Alectoris chukar",1,NA
+3697,"Horisme intestinata",0,NA
+3698,"Scutellaria lateriflora",0,NA
+3699,"Ammocrypta pellucida",0,NA
+3700,"Sus scrofa",1,NA
+3701,"Streblotrichum convolutum",NA,"No matching species"
+3702,"Tethida barda",0,NA
+3703,"Acleris macdunnoughi",0,NA
+3704,"Thymalus marginicollis",0,NA
+3705,"Prunus tomentosa",1,NA
+3706,"Sapyga louisi",NA,"Results is empty"
+3707,"Panstenon poaphilum",0,NA
+3708,"Corythucha juglandis",0,NA
+3709,"Sympetrum danae",0,NA
+3710,"Lota lota",0,NA
+3711,"Gelechia lynceella",0,NA
+3712,"Hericium erinaceus",0,NA
+3713,"Pseudohydnum gelatinosum",0,NA
+3714,"Geina periscelidactylus",0,NA
+3715,"Dytiscus harrisii",0,NA
+3716,"Formica exsectoides",0,NA
+3717,"Aporrectodea rosea",1,NA
+3718,"Andrena cressonii",0,NA
+3719,"Sphecodes ranunculi",0,NA
+3720,"Syrphus torvus",0,NA
+3721,"Euplexia benesimilis",0,NA
+3722,"Zavrelimyia bifasciata",0,NA
+3723,"Aedes canadensis",0,NA
+3724,"Quercus jackiana",NA,"No matching species"
+3725,"Dichelonyx linearis",0,NA
+3726,"Tapinella atrotomentosa",0,NA
+3727,"Ampedus oblessus",0,NA
+3728,"Caloplaca cerina",0,NA
+3729,"Anthophora bomboides",0,NA
+3730,"Habritys brevicornis",NA,"no applicable method for 'filter' applied to an object of class ""list"""
+3731,"Rhagio hirta",NA,"no applicable method for 'filter' applied to an object of class ""list"""
+3732,"Aedes trivittatus",0,NA
+3733,"Theridula emertoni",0,NA
+3734,"Clavaria zollingeri",0,NA
+3735,"Zizania aquatica",0,NA
+3736,"Cuterebra fontinella",0,NA
+3737,"Callizzia amorata",0,NA
+3738,"Celypha cespitana",0,NA
+3739,"Grus canadensis",NA,"No matching species"
+3740,"Astrantia major",NA,"Results is empty"
+3741,"Nemophila maculata",NA,"No data for Canada"
+3742,"Amara rubrica",0,NA
+3743,"Meronera venustula",0,NA
+3744,"Condylostylus flavipes",NA,"no applicable method for 'filter' applied to an object of class ""list"""
+3745,"Chondestes grammacus",0,NA
+3746,"Climacium americanum",0,NA
+3747,"Tutelina similis",0,NA
+3748,"Enchodes sericea",0,NA
+3749,"Paralobesia viteana",0,NA
+3750,"Eschscholzia californica",1,NA
+3751,"Epitheca cynosura",0,NA
+3752,"Sphiximorpha willistoni",0,NA
+3753,"Mycenastrum corium",0,NA
+3754,"Hemileccinum subglabripes",0,NA
+3755,"Herpetogramma aeglealis",0,NA
+3756,"Bromus tectorum",1,NA
+3757,"Nemognatha nemorensis",0,NA
+3758,"Holcostethus limbolarius",0,NA
+3759,"Ectemnius stirpicola",NA,"no applicable method for 'filter' applied to an object of class ""list"""
+3760,"Synanthedon proxima",0,NA
+3761,"Prunus avium",1,NA
+3762,"Coelotanypus scapularis",0,NA
+3763,"Nectopsyche pavida",0,NA
+3764,"Temnothorax ambiguus",0,NA
+3765,"Caradrina multifera",0,NA
+3766,"Steatoda borealis",0,NA
+3767,"Chenopodiastrum hybridum",NA,"No matching species"
+3768,"Alebra aurea",0,NA
+3769,"Anisostena nigrita",0,NA
+3770,"Gluphisia lintneri",0,NA
+3771,"Hygrocybe conica",0,NA
+3772,"Monochamus notatus",0,NA
+3773,"Homaemus aeneifrons",0,NA
+3774,"Syndemis afflictana",0,NA
+3775,"Pimpinella saxifraga",1,NA
+3776,"Hippodamia parenthesis",0,NA
+3777,"Strangalepta abbreviata",0,NA
+3778,"Podisus serieventris",0,NA
+3779,"Lonicera japonica",1,NA
+3780,"Neoitamus orphne",0,NA
+3781,"Lepidocyrtus fimicolus",NA,"Results is empty"
+3782,"Synuchus impunctatus",0,NA
+3783,"Cryptotaenia japonica",NA,"Results is empty"
+3784,"Craterellus foetidus",0,NA
+3785,"Iridopsis vellivolata",0,NA
+3786,"Hypholoma lateritium",0,NA
+3787,"Habrosyne gloriosa",0,NA
+3788,"Mimetus puritanus",0,NA
+3789,"Acrolepia assectella",NA,"Results is empty"
+3790,"Phylloxera caryae-semen",NA,"Results is empty"
+3791,"Tibellus oblongus",0,NA
+3792,"Metapelma spectabile",0,NA
+3793,"Epitrix cucumeris",0,NA
+3794,"Rhus pulvinata",NA,"No matching species"
+3795,"Decodon verticillatus",0,NA
+3796,"Nemorimyza posticata",NA,"no applicable method for 'filter' applied to an object of class ""list"""
+3797,"Coelichneumon navus",NA,"Results is empty"
+3798,"Liriomyza ptarmicae",NA,"no applicable method for 'filter' applied to an object of class ""list"""
+3799,"Aceria caulleryi",NA,"Results is empty"
+3800,"Polygonum plebeium",NA,"No data for Canada"
+3801,"Hypena eductalis",0,NA
+3802,"Sthenopis thule",0,NA
+3803,"Cortinarius bolaris",0,NA
+3804,"Zanclognatha lituralis",0,NA
+3805,"Eupsilia vinulenta",0,NA
+3806,"Rhagoletis basiola",NA,"No matching species"
+3807,"Houstonia caerulea",0,NA
+3808,"Colinus virginianus",2,NA
+3809,"Epinotia septemberana",0,NA
+3810,"Ilisia venusta",NA,"No matching species"
+3811,"Thylodrias contractus",1,NA
+3812,"Cyrtolobus fenestrata",NA,"No matching species"
+3813,"Euonymus latifolius",NA,"Results is empty"
+3814,"Lophocolea heterophylla",0,NA
+3815,"Tipula furca",NA,"no applicable method for 'filter' applied to an object of class ""list"""
+3816,"Carex gracillima",0,NA
+3817,"Hyperplatys maculata",0,NA
+3818,"Pseudiron centralis",0,NA
+3819,"Eucirroedia pampina",0,NA
+3820,"Psephenus herricki",0,NA
+3821,"Opilio parietinus",2,NA
+3822,"Pseudomonas syringae",NA,"Results is empty"
+3823,"Tipula borealis",NA,"no applicable method for 'filter' applied to an object of class ""list"""
+3824,"Cyprinus rubrofuscus",NA,"Results is empty"
+3825,"Convolvulus tricolor",NA,"Results is empty"
+3826,"Parapoynx maculalis",0,NA
+3827,"Golovinomyces salviae",NA,"Results is empty"
+3828,"Lactarius chelidonium",0,NA
+3829,"Puccinia sparganioidis",NA,"Results is empty"
+3830,"Pterodontia flavipes",0,NA
+3831,"Cortinarius malodorus",NA,"Results is empty"
+3832,"Stigmella intermedia",0,NA
+3833,"Neomida bicornis",0,NA
+3834,"Orthops scutellatus",0,NA
+3835,"Araneus nordmanni",0,NA
+3836,"Omalus biaccinctus",NA,"Results is empty"
+3837,"Monostegia abdominalis",1,NA
+3838,"Cenopis directana",0,NA
+3839,"Orius tristicolor",0,NA
+3840,"Tetranychus urticae",NA,"In argument: `subnationCode == ""QC""`."
+3841,"Hygrotus nubilus",NA,"No matching species"
+3842,"Spirodela polyrhiza",0,NA
+3843,"Rumex verticillatus",0,NA
+3844,"Gillmeria pallidactyla",0,NA
+3845,"Habrosyne scripta",0,NA
+3846,"Caloptilia bimaculatella",0,NA
+3847,"Icterus spurius",0,NA
+3848,"Sorex palustris",0,NA
+3849,"Aquilegia chrysantha",NA,"No data for Canada"
+3850,"Ancylis muricana",0,NA
+3851,"Helina depuncta",NA,"Results is empty"
+3852,"Tremella mesenterica",0,NA
+3853,"Gnorimella maculosa",0,NA
+3854,"Nabalus racemosus",NA,"No matching species"
+3855,"Cabera variolaria",0,NA
+3856,"Lamium hybridum",NA,"No matching species"
+3857,"Stegobium paniceum",1,NA
+3858,"Acronicta insularis",0,NA
+3859,"Carex backii",0,NA
+3860,"Plagodis phlogosaria",0,NA
+3861,"Leuconycta lepidula",0,NA
+3862,"Pelochrista derelicta",0,NA
+3863,"Microtechnites bractatus",NA,"No matching species"
+3864,"Cochlicopa lubrica",0,NA
+3865,"Lygocoris pabulinus",0,NA
+3866,"Tipula abdominalis",NA,"In argument: `subnationCode == ""QC""`."
+3867,"Eucallipterus tiliae",1,NA
+3868,"Eutreta novaeboracensis",0,NA
+3869,"Stelidota geminata",0,NA
+3870,"Latrodectus geometricus",NA,"No data for Canada"
+3871,"Sawadaea bicornis",NA,"Results is empty"
+3872,"Symphyotrichum racemosum",0,NA
+3873,"Meleoma signoretii",0,NA
+3874,"Harrisimemna trisignata",0,NA
+3875,"Apoda y-inversa",0,NA
+3876,"Cuterebra abdominalis",NA,"Results is empty"
+3877,"Leucoagaricus rubrotinctus",0,NA
+3878,"Lascoria ambigualis",0,NA
+3879,"Russula aurea",0,NA
+3880,"Anisodactylus merula",0,NA
+3881,"Allium giganteum",NA,"No matching species"
+3882,"Icteria virens",0,NA
+3883,"Caryomyia ansericollum",NA,"Results is empty"
+3884,"Cerastium holosteoides",NA,"Results is empty"
+3885,"Trichocera annulata",NA,"no applicable method for 'filter' applied to an object of class ""list"""
+3886,"Apocephalus coquilletti",NA,"no applicable method for 'filter' applied to an object of class ""list"""
+3887,"Molinia caerulea",1,NA
+3888,"Liriomyza carphephori",NA,"no applicable method for 'filter' applied to an object of class ""list"""
+3889,"Viola affinis",0,NA
+3890,"Lentinus levis",0,NA
+3891,"Leucocoprinus ianthinus",0,NA
+3892,"Bassia scoparia",1,NA
+3893,"Dasineura salicifoliae",NA,"no applicable method for 'filter' applied to an object of class ""list"""
+3894,"Entoloma flavoviride",0,NA
+3895,"Hordeum vulgare",1,NA
+3896,"Phidippus whitmani",0,NA
+3897,"Agonopterix pulvipennella",0,NA
+3898,"Bellura obliqua",0,NA
+3899,"Pholcus opilionoides",1,NA
+3900,"Carex leptonervia",0,NA
+3901,"Dolichopus reflectus",NA,"no applicable method for 'filter' applied to an object of class ""list"""
+3902,"Acmella oleracea",NA,"Results is empty"
+3903,"Acleris chalybeana",0,NA
+3904,"Chironomus ochreatus",NA,"no applicable method for 'filter' applied to an object of class ""list"""
+3905,"Aruncus dioicus",1,NA
+3906,"Scleroderma citrinum",0,NA
+3907,"Geomyza tripunctata",1,NA
+3908,"Syringa reticulata",1,NA
+3909,"Chlaenius sericeus",0,NA
+3910,"Bleptina caradrinalis",0,NA
+3911,"Olethreutes bipartitana",0,NA
+3912,"Cerceris fumipennis",NA,"In argument: `subnationCode == ""QC""`."
+3913,"Gastrophysa polygoni",1,NA
+3914,"Bibarrambla allenella",0,NA
+3915,"Anemone apennina",NA,"Results is empty"
+3916,"Calopteron reticulatum",0,NA
+3917,"Oecanthus exclamationis",0,NA
+3918,"Larus glaucoides",0,NA
+3919,"Ramularia brunnea",NA,"No matching species"
+3920,"Pontania proxima",NA,"No matching species"
+3921,"Cercyon laminatus",1,NA
+3922,"Epinotia medioviridana",0,NA
+3923,"Pachybrachis bivittatus",0,NA
+3924,"Pheosidea elegans",0,NA
+3925,"Amphipyra glabella",0,NA
+3926,"Vitronura giselae",NA,"Results is empty"
+3927,"Barbarea stricta",1,NA
+3928,"Choristoneura fractivittana",0,NA
+3929,"Castianeira cingulata",0,NA
+3930,"Novisuccinea ovalis",0,NA
+3931,"Limnodromus griseus",0,NA
+3932,"Helius flavipes",NA,"no applicable method for 'filter' applied to an object of class ""list"""
+3933,"Apantesis phalerata",0,NA
+3934,"Schizachyrium scoparium",0,NA
+3935,"Euderces picipes",0,NA
+3936,"Clitocybula oculus",0,NA
+3937,"Trametes lactinea",NA,"Results is empty"
+3938,"Arion ater",1,NA
+3939,"Panicum dichotomiflorum",1,NA
+3940,"Achillea asiatica",NA,"Results is empty"
+3941,"Kretzschmaria deusta",0,NA
+3942,"Silene flos-cuculi",1,NA
+3943,"Desmocerus palliatus",0,NA
+3944,"Koenigia fennica",NA,"No matching species"
+3945,"Telamona tristis",0,NA
+3946,"Caloscypha fulgens",0,NA
+3947,"Dryopteris clintoniana",0,NA
+3948,"Prochoreutis inflatella",0,NA
+3949,"Telephanus velox",NA,"No matching species"
+3950,"Megachile sculpturalis",1,NA
+3951,"Physconia detersa",0,NA
+3952,"Neolygus tiliae",0,NA
+3953,"Mordellina pustulata",0,NA
+3954,"Mordellistena cervicalis",0,NA
+3955,"Trirhabda borealis",0,NA
+3956,"Humidicutis marginata",0,NA
+3957,"Agriphila ruricolellus",0,NA
+3958,"Furcula borealis",0,NA
+3959,"Hillia iris",0,NA
+3960,"Furcula cinerea",0,NA
+3961,"Miscanthus sacchariflorus",1,NA
+3962,"Diachrysia aereoides",0,NA
+3963,"Phalaenostola eumelusalis",0,NA
+3964,"Pandemis limitata",0,NA
+3965,"Pupilla muscorum",0,NA
+3966,"Nephrotoma alterna",NA,"no applicable method for 'filter' applied to an object of class ""list"""
+3967,"Otiorhynchus rugosostriatus",1,NA
+3968,"Ophiomyia maura",NA,"no applicable method for 'filter' applied to an object of class ""list"""
+3969,"Catharus minimus",0,NA
+3970,"Bartheletia paradoxa",NA,"Results is empty"
+3971,"Lasioglossum coriaceum",0,NA
+3972,"Sympetrum costiferum",0,NA
+3973,"Linum grandiflorum",NA,"No data for Canada"
+3974,"Ophiderma pubescens",0,NA
+3975,"Amanita flavorubens",0,NA
+3976,"Swammerdamia lutarea",NA,"Results is empty"
+3977,"Digrammia continuata",0,NA
+3978,"Chelostoma rapunculi",1,NA
+3979,"Ipomoea tricolor",NA,"No data for Canada"
+3980,"Ampedus linteus",0,NA
+3981,"Crepidotus crocophyllus",0,NA
+3982,"Salvia splendens",NA,"No data for Canada"
+3983,"Calvatia cyathiformis",0,NA
+3984,"Physcia caesia",0,NA
+3985,"Gibbium aequinoctiale",1,NA
+3986,"Tylozygus bifidus",0,NA
+3987,"Pseudoxenos tigridis",0,NA
+3988,"Sphenophorus zeae",0,NA
+3989,"Taphrina farlowii",NA,"Results is empty"
+3990,"Ufeus satyricus",0,NA
+3991,"Rorippa islandica",NA,"No data for Canada"
+3992,"Chlorochroa persimilis",0,NA
+3993,"Colletes simulans",0,NA
+3994,"Agonum cupripenne",0,NA
+3995,"Tylopilus felleus",0,NA
+3996,"Strophitus undulatus",0,NA
+3997,"Sparganium emersum",0,NA
+3998,"Calliphora vicina",0,NA
+3999,"Baeospora myosura",0,NA
+4000,"Aderus populneus",1,NA
+4001,"Protophormia terraenovae",0,NA
+4002,"Crocus tommasinianus",NA,"No matching species"
+4003,"Phegopteris hexagonoptera",0,NA
+4004,"Geastrum saccatum",0,NA
+4005,"Stenocranus dorsalis",0,NA
+4006,"Acraspis quercushirta",NA,"Results is empty"
+4007,"Pseudohermonassa bicarnea",0,NA
+4008,"Falcaria bilineata",NA,"Results is empty"
+4009,"Carex scoparia",0,NA
+4010,"Metarranthis hypochraria",0,NA
+4011,"Eubaphe mendica",0,NA
+4012,"Arthrophaga myriapodina",NA,"Results is empty"
+4013,"Elinora flaveola",NA,"Results is empty"
+4014,"Acronicta rubricoma",0,NA
+4015,"Scirpus cyperinus",0,NA
+4016,"Trimerotropis verruculata",0,NA
+4017,"Platycerus quercus",0,NA
+4018,"Symmerista albifrons",0,NA
+4019,"Carex pallescens",0,NA
+4020,"Phaeophyscia rubropulchra",0,NA
+4021,"Formica subsericea",0,NA
+4022,"Blatta orientalis",1,NA
+4023,"Podabrus rugosulus",0,NA
+4024,"Liriomyza philadelphivora",NA,"no applicable method for 'filter' applied to an object of class ""list"""
+4025,"Lasioglossum nigroviride",0,NA
+4026,"Bactra verutana",0,NA
+4027,"Persicaria hydropiper",1,NA
+4028,"Elaphria alapallida",0,NA
+4029,"Lithophane georgii",0,NA
+4030,"Protitame virginalis",0,NA
+4031,"Gyroporus cyanescens",0,NA
+4032,"Leucania linita",NA,"No data for Canada"
+4033,"Argyrotaenia mariana",0,NA
+4034,"Thysanocnemis bischoffi",NA,"No matching species"
+4035,"Stigmella populetorum",0,NA
+4036,"Cerceris nigrescens",0,NA
+4037,"Glyphopsyche irrorata",0,NA
+4038,"Stropenron hamata",NA,"Results is empty"
+4039,"Trochulus hispidus",1,NA
+4040,"Strongylium tenuicolle",0,NA
+4041,"Blaesodiplosis venae",NA,"Results is empty"
+4042,"Renia discoloralis",0,NA
+4043,"Golovinomyces asperifoliorum",NA,"Results is empty"
+4044,"Viola renifolia",0,NA
+4045,"Phenolia grossa",0,NA
+4046,"Tenomerga cinerea",0,NA
+4047,"Dolichopus ramifer",NA,"no applicable method for 'filter' applied to an object of class ""list"""
+4048,"Gluphisia avimacula",0,NA
+4049,"Platypolia anceps",0,NA
+4050,"Physella gyrina",0,NA
+4051,"Araneus marmoreus",0,NA
+4052,"Phaeoura quernaria",0,NA
+4053,"Trixoscelis fumipennis",0,NA
+4054,"Clastoptera obtusa",0,NA
+4055,"Deuterosminthurus bicinctus",NA,"Results is empty"
+4056,"Grapholita interstinctana",0,NA
+4057,"Passaloecus gracilis",NA,"no applicable method for 'filter' applied to an object of class ""list"""
+4058,"Eumarozia malachitana",0,NA
+4059,"Meroptera pravella",0,NA
+4060,"Pterostichus mutus",0,NA
+4061,"Hentzia mitrata",0,NA
+4062,"Iberis amara",1,NA
+4063,"Dolichomitus irritator",NA,"Results is empty"
+4064,"Gyroporus castaneus",0,NA
+4065,"Pycnoporellus fulgens",0,NA
+4066,"Hieracium umbellatum",0,NA
+4067,"Hydnoporia tabacina",NA,"No matching species"
+4068,"Vicia villosa",1,NA
+4069,"Nitellopsis obtusa",NA,"Results is empty"
+4070,"Smerinthus jamaicensis",0,NA
+4071,"Papaipema eupatorii",0,NA
+4072,"Semioscopis packardella",0,NA
+4073,"Pyla fusca",0,NA
+4074,"Pemphigus obesinymphae",NA,"Results is empty"
+4075,"Banasa euchlora",0,NA
+4076,"Suillus spraguei",0,NA
+4077,"Hemicrepidius hemipodus",NA,"No data for Canada"
+4078,"Amphipoea americana",0,NA
+4079,"Olethreutes tilianum",0,NA
+4080,"Hypagyrtis unipunctata",0,NA
+4081,"Auplopus carbonarius",NA,"Results is empty"
+4082,"Bistorta affinis",NA,"Results is empty"
+4083,"Lixus rubellus",0,NA
+4084,"Amanita multisquamosa",0,NA
+4085,"Willowsia buski",0,NA
+4086,"Aritranis director",NA,"Results is empty"
+4087,"Rhyparochromus vulgaris",0,NA
+4088,"Metalimnobia solitaria",NA,"In argument: `subnationCode == ""QC""`."
+4089,"Phasgonophora sulcata",0,NA
+4090,"Pilosella officinarum",NA,"No matching species"
+4091,"Anathix ralla",0,NA
+4092,"Puccinia tanaceti",NA,"No data for Canada"
+4093,"Armillaria gallica",0,NA
+4094,"Epithemia gibba",NA,"Results is empty"
+4095,"Plegadis falcinellus",0,NA
+4096,"Xylaria filiformis",0,NA
+4097,"Podosphaera mors-uvae",NA,"No data for Canada"
+4098,"Errastunus ocellaris",NA,"No matching species"
+4099,"Diglyphus websteri",NA,"no applicable method for 'filter' applied to an object of class ""list"""
+4100,"Choreia inepta",NA,"Results is empty"
+4101,"Cuscuta campestris",0,NA
+4102,"Hylurgopinus rufipes",0,NA
+4103,"Thecodiplosis pinirigidae",NA,"no applicable method for 'filter' applied to an object of class ""list"""
+4104,"Photinus indictus",0,NA
+4105,"Paonias myops",0,NA
+4106,"Plusiodonta compressipalpis",0,NA
+4107,"Erysiphe sedi",NA,"Results is empty"
+4108,"Neatus tenebrioides",0,NA
+4109,"Aphrodes makarovi",2,NA
+4110,"Psathyrella piluliformis",0,NA
+4111,"Blaesodiplosis crataegifolia",NA,"In argument: `subnationCode == ""QC""`."
+4112,"Duponchelia fovealis",NA,"In argument: `subnationCode == ""QC""`."
+4113,"Pristiphora geniculata",1,NA
+4114,"Glossonotus acuminata",NA,"No matching species"
+4115,"Diploschizia impigritella",0,NA
+4116,"Aethes sexdentata",0,NA
+4117,"Arenaria serpyllifolia",1,NA
+4118,"Erysiphe pisi",NA,"Results is empty"
+4119,"Trogoderma variabile",1,NA
+4120,"Chrysopa chi",0,NA
+4121,"Isonychia bicolor",0,NA
+4122,"Acleris robinsoniana",0,NA
+4123,"Pineus strobi",0,NA
+4124,"Inocybe geophylla",0,NA
+4125,"Hylaeus communis",1,NA
+4126,"Andrena clarkella",0,NA
+4127,"Rhipidia maculata",NA,"no applicable method for 'filter' applied to an object of class ""list"""
+4128,"Ornithogalum nutans",1,NA
+4129,"Cirsium discolor",0,NA
+4130,"Neopamera albocincta",0,NA
+4131,"Fenusella nana",1,NA
+4132,"Enargia fausta",0,NA
+4133,"Cloeon dipterum",0,NA
+4134,"Zapus hudsonius",0,NA
+4135,"Rosa palustris",0,NA
+4136,"Hebata alboneura",NA,"Results is empty"
+4137,"Argyresthia canadensis",0,NA
+4138,"Cladius grandis",1,NA
+4139,"Arion subfuscus",1,NA
+4140,"Omphale huggerti",NA,"no applicable method for 'filter' applied to an object of class ""list"""
+4141,"Aethes biscana",0,NA
+4142,"Norvellina chenopodii",0,NA
+4143,"Bertamyia notata",0,NA
+4144,"Potamogeton zosteriformis",0,NA
+4145,"Hemyda aurata",NA,"In argument: `subnationCode == ""QC""`."
+4146,"Enallagma vesperum",0,NA
+4147,"Mycosphaerella fraxinicola",NA,"No matching species"
+4148,"Rhagoletis suavis",0,NA
+4149,"Digrammia gnophosaria",0,NA
+4150,"Cameraria aceriella",0,NA
+4151,"Dytiscus verticalis",0,NA
+4152,"Papaipema inquaesita",0,NA
+4153,"Hydnellum scrobiculatum",0,NA
+4154,"Phalacrus apicalis",NA,"No matching species"
+4155,"Myrrhis odorata",1,NA
+4156,"Cyclosa conica",0,NA
+4157,"Hieracium murorum",1,NA
+4158,"Agromyza pseudoreptans",NA,"no applicable method for 'filter' applied to an object of class ""list"""
+4159,"Eleutherococcus sieboldianus",NA,"No matching species"
+4160,"Geum ternatum",NA,"Results is empty"
+4161,"Gymnosporangium juniperi-virginianae",NA,"No data for Canada"
+4162,"Neolygus vitticollis",0,NA
+4163,"Polytrichum juniperinum",0,NA
+4164,"Catocala habilis",0,NA
+4165,"Stuckenia pectinata",0,NA
+4166,"Platynota idaeusalis",0,NA
+4167,"Depressaria radiella",1,NA
+4168,"Lestes dryas",0,NA
+4169,"Phytolacca acinosa",NA,"Results is empty"
+4170,"Eupithecia tripunctaria",0,NA
+4171,"Cameraria guttifinitella",0,NA
+4172,"Haploa lecontei",0,NA
+4173,"Ripiphorus fasciatus",0,NA
+4174,"Gyroporus purpurinus",0,NA
+4175,"Phaeophyscia orbicularis",0,NA
+4176,"Zizia aurea",0,NA
+4177,"Lambdina fiscellaria",0,NA
+4178,"Crambus girardellus",0,NA
+4179,"Draeculacephala paludosa",0,NA
+4180,"Apotomis removana",0,NA
+4181,"Salix lucida",0,NA
+4182,"Carthamus tinctorius",1,NA
+4183,"Pluteus cervinus",0,NA
+4184,"Neodactria luteolellus",0,NA
+4185,"Gyponana gladia",0,NA
+4186,"Dacne quadrimaculata",0,NA
+4187,"Floerkea proserpinacoides",0,NA
+4188,"Arctia caja",0,NA
+4189,"Amanita virosa",0,NA
+4190,"Ethmia zelleriella",0,NA
+4191,"Archips semiferanus",0,NA
+4192,"Agonopterix lythrella",0,NA
+4193,"Acleris schalleriana",NA,"No matching species"
+4194,"Cinara strobi",0,NA
+4195,"Apocellus sphaericollis",0,NA
+4196,"Obolodiplosis robiniae",NA,"no applicable method for 'filter' applied to an object of class ""list"""
+4197,"Trochosa ruricola",1,NA
+4198,"Panchlora nivea",NA,"In argument: `subnationCode == ""QC""`."
+4199,"Hypsizygus tessulatus",0,NA
+4200,"Dacrymyces spathularius",NA,"Results is empty"
+4201,"Sternidius alpha",0,NA
+4202,"Amaurobius similis",1,NA
+4203,"Endomychus biguttatus",0,NA
+4204,"Epistrophella emarginata",0,NA
+4205,"Leratiomyces ceres",1,NA
+4206,"Persicaria orientalis",1,NA
+4207,"Osmorhiza claytonii",0,NA
+4208,"Trypetoptera canadensis",0,NA
+4209,"Chrosomus eos",0,NA
+4210,"Romualdius scaber",NA,"No matching species"
+4211,"Ectemnius lapidarius",NA,"In argument: `subnationCode == ""QC""`."
+4212,"Coelioxys modestus",NA,"No matching species"
+4213,"Strongygaster triangulifera",NA,"no applicable method for 'filter' applied to an object of class ""list"""
+4214,"Monarda punctata",0,NA
+4215,"Psathyrella longicauda",NA,"Results is empty"
+4216,"Anthidiellum notatum",0,NA
+4217,"Trypodendron lineatum",0,NA
+4218,"Mycetinis scorodonius",0,NA
+4219,"Physiphora alceae",0,NA
+4220,"Prionyx atratus",NA,"No matching species"
+4221,"Polia nimbosa",0,NA
+4222,"Synchlora aerata",0,NA
+4223,"Anthrenus verbasci",1,NA
+4224,"Macrophya punctumalbum",1,NA
+4225,"Neocoelidia tumidifrons",0,NA
+4226,"Caloptilia serotinella",0,NA
+4227,"Antennaria parlinii",0,NA
+4228,"Argyresthia alternatella",0,NA
+4229,"Carpatolechia fugitivella",1,NA
+4230,"Temnostoma excentricum",NA,"No matching species"
+4231,"Venusia comptaria",0,NA
+4232,"Agrilus anxius",0,NA
+4233,"Gymnosporangium sabinae",NA,"Results is empty"
+4234,"Euphorbia graminea",NA,"No data for Canada"
+4235,"Capnoides sempervirens",0,NA
+4236,"Amanita citrina",0,NA
+4237,"Crocidophora serratissimalis",0,NA
+4238,"Calligrapha scalaris",0,NA
+4239,"Eubulus bisignatus",0,NA
+4240,"Autographa ampla",0,NA
+4241,"Galium album",NA,"No matching species"
+4242,"Liatris spicata",1,NA
+4243,"Chionodes mediofuscella",0,NA
+4244,"Psathyrella psammophila",NA,"No matching species"
+4245,"Pleurotus citrinopileatus",NA,"No data for Canada"
+4246,"Heliria cristata",NA,"No matching species"
+4247,"Pycnanthemum muticum",NA,"No data for Canada"
+4248,"Viola melissifolia",NA,"No matching species"
+4249,"Physciella melanchra",0,NA
+4250,"Pediopsoides distinctus",0,NA
+4251,"Lamium amplexicaule",1,NA
+4252,"Sirex noctilio",1,NA
+4253,"Scrophularia lanceolata",0,NA
+4254,"Lentinus tigrinus",0,NA
+4255,"Spiramater lutra",0,NA
+4256,"Brassica napus",1,NA
+4257,"Weissia muhlenbergiana",0,NA
+4258,"Rivellia steyskali",0,NA
+4259,"Amanita farinosa",0,NA
+4260,"Dolichopus scapularis",NA,"no applicable method for 'filter' applied to an object of class ""list"""
+4261,"Nomada maculata",0,NA
+4262,"Lycoperdon curtisii",0,NA
+4263,"Panaeolus antillarum",0,NA
+4264,"Anthrenus museorum",1,NA
+4265,"Caloptilia fraxinella",0,NA
+4266,"Echinops exaltatus",1,NA
+4267,"Glaucomys volans",0,NA
+4268,"Nicrophorus orbicollis",0,NA
+4269,"Archips argyrospila",0,NA
+4270,"Aethes mymara",0,NA
+4271,"Agriotes collaris",0,NA
+4272,"Phanogomphus spicatus",0,NA
+4273,"Tropicus pusillus",0,NA
+4274,"Harpalus erraticus",0,NA
+4275,"Tricholoma caligatum",0,NA
+4276,"Hemipenthes webberi",0,NA
+4277,"Gomphaeschna furcillata",0,NA
+4278,"Fenusa pusilla",NA,"No matching species"
+4279,"Evarcha hoyi",0,NA
+4280,"Tyrannus verticalis",0,NA
+4281,"Chalcosyrphus libo",0,NA
+4282,"Lebia atriventris",0,NA
+4283,"Colaspis brunnea",0,NA
+4284,"Pardosa modica",0,NA
+4285,"Cryptocala acadiensis",0,NA
+4286,"Autographa mappa",0,NA
+4287,"Collops vittatus",0,NA
+4288,"Ooencyrtus kuvanae",NA,"no applicable method for 'filter' applied to an object of class ""list"""
+4289,"Lycaena epixanthe",NA,"No matching species"
+4290,"Linaria maroccana",1,NA
+4291,"Anthaxia quercata",0,NA
+4292,"Antennaria howellii",0,NA
+4293,"Ammophila urnaria",NA,"In argument: `subnationCode == ""QC""`."
+4294,"Pterourus glaucus",0,NA
+4295,"Hesperia comma",NA,"No matching species"
+4296,"Pontia protodice",0,NA
+4297,"Quercus schuettei",NA,"No matching species"
+4298,"Euborellia annulipes",1,NA
+4299,"Urbanus proteus",NA,"No data for Canada"
+4300,"Parides erithalion",NA,"Results is empty"
+4301,"Hyalopterus pruni",1,NA
+4302,"Gymnopilus luteofolius",0,NA
+4303,"Platypsyllus castoris",0,NA
+4304,"Heliconius charithonia",NA,"No data for Canada"
+4305,"Polygonia satyrus",0,NA
+4306,"Limenitis astyanax",NA,"No matching species"
+4307,"Mastor vialis",NA,"No matching species"
+4308,"Papilio brevicauda",0,NA
+4309,"Pyrisitia lisa",0,NA
+4310,"Hylephila phyleus",0,NA
+4311,"Incisalia niphon",NA,"No matching species"
+4312,"Caligo telamonius",NA,"Results is empty"
+4313,"Euptoieta claudia",0,NA
+4314,"Myscelus assaricus",NA,"Results is empty"
+4315,"Celastrina ladon",0,NA

@@ -96,14 +96,12 @@ df <- df %>%
 
 species_list <- unique(df$species)
 #View(species_list)
-
-species_list <- species_list[1:100]
-
+#species_list <- species_list[1:300]
 #species_list <-c("Polygonia satyrus", "Caligo telamonius","Myscelus assaricus")
 
 df_status <- safe_apply(species_list)
 View(df_status)
 
-write_parquet(df_status, "data/speciesQcStatus.parquet")
-write.csv(df_status, file = "data/speciesQcStatus.csv", row.names = FALSE)
+write_parquet(df_status, "data/processed/speciesQcStatus.parquet")
+write.csv(df_status, file = "data/processed/speciesQcStatus.csv", row.names = FALSE)
 

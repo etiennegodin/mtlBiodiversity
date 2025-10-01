@@ -136,6 +136,5 @@ df_out <- df %>%
 print(nrow(df_out))
 df_out$geom <- NULL
 
-write.csv(df_out, file = "R/test.csv")
-write.csv(flags_df, file = "R/samplingBias_log.csv")
+write.csv(flags_df, file = "data/reports/samplingBias_log.csv")
 saveRDS(ids_to_remove, "R/ids_samplingBias.rds")
