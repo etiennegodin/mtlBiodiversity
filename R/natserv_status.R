@@ -6,96 +6,60 @@ library(duckdb)
 
 
 get_status <- function(species_name){
+  #print(species_name)
   exotic <- NA
   native <- NA
-  b_result <- NA
-  res <- NA
+  b_result <- NULL
   # Search for species by common name or scientific name
   res <- ns_search_spp(text = species_name, page = 0, per_page = 5)
   #Check if results are provided
-  if (length(res)> 1)
-  {
-    #Extract first list as df results 
+  if (length(res) > 1) {
     results <- res$results
+  } else {
+    stop("No results found")
   }
-  #Check if results list is empty
-  if (length(results) == 0 ){
-    stop("Results is empty")   # will trigger an error
-  }
+  
+  if (length(results) == 0) stop("Results is empty")
 
   #Check if results 
   #Iterate over each species to find the one matching with provided name 
-  for (r in 1:nrow(results))
-  {
-    if (results$scientificName[r] != species_name){
-      next
-      #If not species_name, skip to next iteration 
+  for (r in 1:nrow(results)) {
+    if (results$scientificName[r] == species_name) {
+      b_result <- results %>% filter(scientificName == species_name)
+      break
     }
-    else if (results$scientificName[r] == species_name){
-      #If item in list matches, store as best results
-      b_result <- results %>% 
-        filter(scientificName == species_name)
-      #View(b_result)
-    }
+  }
     
   #If no matching name, return NA as unsure 
-  if (!length(b_result)> 1){
-    stop('No species data match to provided species')   # will trigger an error
-  }
-  # If right species name, extract exotic/native values
-  else
-  {
-    nations <- b_result$nations[[1]]
-    if (nrow(nations) == 0){
-      stop('No national data')   # will trigger an error
-    }
-    
-    ca <- nations %>% 
-      filter(nationCode == 'CA')
-    if (nrow(ca) == 0){
-      stop('No data for canada')   # will trigger an error
-    }
-    #View(ca)
-    subnations <- ca[, "subnations"][[1]]
-    #View(subnations)
-    qc <- subnations %>% 
-      filter(subnationCode == 'QC')
-    if(!nrow(qc) == 0){
-      exotic = qc[,'exotic']
-      native = qc[,'native']
-    }
-    else{
-      exotic = ca[,'exotic']
-      native = ca[,'native']
-    }
-
-    if (is.na(exotic) & is.na(native)){
-      stop('No exotic or native data')   # will trigger an error
-    }
-    else{
-      if (exotic != native)
-      {
-        if (native == TRUE)
-        {
-          return(0)
-        }
-        else if ( exotic == TRUE)
-        {
-          return(1)
-        }
-      }
-      else
-      {
-        return(2)
-      }
-    }
-
-    
-  }
-
-  }
+  if (is.null(b_result) || nrow(b_result) == 0) stop("No matching species")
   
-}
+  # If right species name, extract exotic/native values
+  nations <- b_result$nations[[1]]
+  if (nrow(nations) == 0) stop("No national data")
+    
+  ca <- nations %>% filter(nationCode == 'CA')
+  if (nrow(ca) == 0) stop("No data for Canada")
+
+  
+  subnations <- ca[, "subnations"][[1]]
+  qc <- subnations %>% filter(subnationCode == 'QC')
+  
+  if (nrow(qc) != 0) {
+    exotic <- qc$exotic
+    native <- qc$native
+  } else {
+    exotic <- ca$exotic
+    native <- ca$native
+  }
+
+  # Assign status
+  if (exotic != native) {
+    if (native == TRUE) return(0)
+    if (exotic == TRUE) return(1)
+  } else {
+    return(2)
+  }
+} 
 
 con <- dbConnect(duckdb::duckdb(), dbdir = "C:/Users/manat/Documents/Projects/mtlBiodiversity/data/db/mtlbio.duckdb", read_only = TRUE)
 dbListTables(con)
@@ -108,35 +72,34 @@ df <- df %>%
   filter(!is.na(species))
 
 species_list <- unique(df$species)
-View(species_list)
+#View(species_list)
 
-#species_list <- species_list[1:2]
+species_list <- species_list[1:30]
 
-#species_list <-c("Tiarella cordifolia")
-
-log_file <- "R/natserv_status_error_log.txt"
-statuses <- c()
-for (s in species_list){
-  print(s)
-  
-  status <- tryCatch({
-    get_status(s)
-  }, error = function(e) {
-    message("Error for element ", s, ": ", e$message)
-    return(NA)  # or NA, or just skip
-    cat("Value=", s, " | Error=", e$message, "\n", file = log_file, append = TRUE)
-  })
-
-  statuses <<- c(statuses, status)
-  
+species_list <-c("Polygonia satyrus", "Caligo telamonius","Myscelus assaricus")
+safe_apply <- function(species_list) {
+  lapply(seq_along(species_list), function(i) {
+    s <- species_list[[i]]
+    tryCatch({
+      list(
+        index = i,
+        species = s,
+        status = get_status(s),
+        error = NA_character_
+      )
+    }, error = function(e) {
+      list(
+        index = i,
+        species = s,
+        status = NA,
+        error = e$message
+      )
+    })
+  }) %>%
+    lapply(as.data.frame) %>%
+    do.call(rbind, .)
 }
-View(statuses)
-View(results)
-
-df_status <- data.frame(
-  species = species_list,
-  status = statuses
-)
+df_status <- safe_apply(species_list)
 View(df_status)
 
 write_parquet(df_status, "data/speciesQcStatus.parquet")
