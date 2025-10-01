@@ -17,18 +17,12 @@ get_status <- function(species_name){
   {
     #Extract first list as df results 
     results <- res$results
-    #View(results)
   }
   #Check if results list is empty
   if (length(results) == 0 ){
-    return(NA)
+    stop("Results is empty")   # will trigger an error
   }
-  
-  #Check if results is a list and not a df:
-  if (is.list(results)){
-    return(NA)
-  }
-  
+
   #Check if results 
   #Iterate over each species to find the one matching with provided name 
   for (r in 1:nrow(results))
@@ -46,20 +40,20 @@ get_status <- function(species_name){
     
   #If no matching name, return NA as unsure 
   if (!length(b_result)> 1){
-    return(NA)
+    stop('No species data match to provided species')   # will trigger an error
   }
   # If right species name, extract exotic/native values
   else
   {
     nations <- b_result$nations[[1]]
     if (nrow(nations) == 0){
-      return(NA)
+      stop('No national data')   # will trigger an error
     }
     
     ca <- nations %>% 
       filter(nationCode == 'CA')
     if (nrow(ca) == 0){
-      return(NA)
+      stop('No data for canada')   # will trigger an error
     }
     #View(ca)
     subnations <- ca[, "subnations"][[1]]
@@ -76,7 +70,7 @@ get_status <- function(species_name){
     }
 
     if (is.na(exotic) & is.na(native)){
-      return(NA)
+      stop('No exotic or native data')   # will trigger an error
     }
     else{
       if (exotic != native)
@@ -116,7 +110,7 @@ df <- df %>%
 species_list <- unique(df$species)
 View(species_list)
 
-#species_list <- species_list[1:20]
+species_list <- species_list[1:2]
 
 #species_list <-c("Tiarella cordifolia")
 
@@ -124,17 +118,19 @@ View(species_list)
 statuses <- c()
 for (s in species_list){
   print(s)
+  
   status <- tryCatch({
     get_status(s)
   }, error = function(e) {
     message("Error for element ", s, ": ", e$message)
     return(NA)  # or NA, or just skip
   })
-  
+
   statuses <<- c(statuses, status)
   
 }
 View(statuses)
+View(results)
 
 df_status <- data.frame(
   species = species_list,
