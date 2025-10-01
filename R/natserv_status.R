@@ -61,24 +61,8 @@ get_status <- function(species_name){
   }
 } 
 
-con <- dbConnect(duckdb::duckdb(), dbdir = "C:/Users/manat/Documents/Projects/mtlBiodiversity/data/db/mtlbio.duckdb", read_only = TRUE)
-dbListTables(con)
-df <- dbReadTable(con, "grid_sjoin")   # read into R
-
-df <- df %>%
-  filter(!is.na(grid_id))
-
-df <- df %>%
-  filter(!is.na(species))
-
-species_list <- unique(df$species)
-#View(species_list)
-
-species_list <- species_list[1:30]
-
-species_list <-c("Polygonia satyrus", "Caligo telamonius","Myscelus assaricus")
 safe_apply <- function(species_list) {
-  lapply(seq_along(species_list), function(i) {
+  pbapply::pblapply(seq_along(species_list), function(i) {
     s <- species_list[[i]]
     tryCatch({
       list(
@@ -99,6 +83,24 @@ safe_apply <- function(species_list) {
     lapply(as.data.frame) %>%
     do.call(rbind, .)
 }
+
+con <- dbConnect(duckdb::duckdb(), dbdir = "C:/Users/manat/Documents/Projects/mtlBiodiversity/data/db/mtlbio.duckdb", read_only = TRUE)
+dbListTables(con)
+df <- dbReadTable(con, "grid_sjoin")   # read into R
+
+df <- df %>%
+  filter(!is.na(grid_id))
+
+df <- df %>%
+  filter(!is.na(species))
+
+species_list <- unique(df$species)
+#View(species_list)
+
+species_list <- species_list[1:100]
+
+#species_list <-c("Polygonia satyrus", "Caligo telamonius","Myscelus assaricus")
+
 df_status <- safe_apply(species_list)
 View(df_status)
 
