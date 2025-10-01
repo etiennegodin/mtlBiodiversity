@@ -110,7 +110,7 @@ df <- df %>%
 species_list <- unique(df$species)
 View(species_list)
 
-species_list <- species_list[1:2]
+#species_list <- species_list[1:2]
 
 #species_list <-c("Tiarella cordifolia")
 
@@ -137,5 +137,7 @@ df_status <- data.frame(
   status = statuses
 )
 View(df_status)
+
+write_parquet(df_status, "data/speciesQcStatus.parquet")
 write.csv(df_status, file = "data/speciesQcStatus.csv", row.names = FALSE)
 

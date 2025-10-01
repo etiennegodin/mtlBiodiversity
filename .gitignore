@@ -10,7 +10,6 @@ build/
 *.RData
 *.RDataTmp
 *.Rhistory
-*.csv
 *.zip
 *.dbf
 *.db

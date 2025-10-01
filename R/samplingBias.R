@@ -64,16 +64,20 @@ cluster_stats <- function(df, coords_utm, u)
 
   flags <- cluster_stats %>%
     mutate(
-      flag_home = (n_obs > 100 & n_users == 1 & spread_mean_m < 30 ),
-      flag_chaining = (n_obs > 100 & n_users == 1 & spread_mean_m < 30 & spread_max_m > 200 )
+      flag_home = (n_obs > 100 & n_users == 1 & spread_mean_m < 20 ),
+      flag_chaining = (n_obs > 100 & n_users == 1 & spread_mean_m < 20 & spread_max_m > 200 )
     )
-  #print(flags)
-  
+  #Adding to logging df
+
   selected_clusters <- c()
   for (i in 1:nrow(flags))
   {
     if (flags$flag_home[i] == "TRUE")
     {
+      #Adding to logging df
+      #print(flags[i,])
+      
+      flags_df <<- rbind(flags_df, flags[i,])
       selected_clusters <- c(selected_clusters, flags$cluster[i] )
     }
   }
@@ -116,15 +120,8 @@ db_scan_func <- function(df, u)
 
 # Initialize empty vector to store ids
 ids_to_remove <- c()
-flags_df <- data.frame(user = c(),
-                       n_obs = c(),
-                       n_species = c(),
-                       n_users = c(),
-                       spread_mean_m = c(),
-                       spread_max_m = c(),
-                       flag_home = c(),
-                       flag_chaining = c()
-)
+flags_df <- data.frame()
+
 for (u in users)
 {
   print(u)
@@ -140,4 +137,5 @@ print(nrow(df_out))
 df_out$geom <- NULL
 
 write.csv(df_out, file = "R/test.csv")
+write.csv(flags_df, file = "R/samplingBias_log.csv")
 saveRDS(ids_to_remove, "R/ids_samplingBias.rds")
