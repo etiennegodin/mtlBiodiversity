@@ -12,27 +12,43 @@ get_status <- function(species_name){
   res <- NA
   # Search for species by common name or scientific name
   res <- ns_search_spp(text = species_name, page = 0, per_page = 5)
+  #Check if results are provided
   if (length(res)> 1)
   {
+    #Extract first list as df results 
     results <- res$results
     #View(results)
   }
+  #Check if results list is empty
   if (length(results) == 0 ){
     return(NA)
   }
+  
+  #Check if results is a list and not a df:
+  if (is.list(results)){
+    return(NA)
+  }
+  
+  #Check if results 
+  #Iterate over each species to find the one matching with provided name 
   for (r in 1:nrow(results))
   {
     if (results$scientificName[r] != species_name){
       next
+      #If not species_name, skip to next iteration 
     }
     else if (results$scientificName[r] == species_name){
+      #If item in list matches, store as best results
       b_result <- results %>% 
         filter(scientificName == species_name)
       #View(b_result)
     }
+    
+  #If no matching name, return NA as unsure 
   if (!length(b_result)> 1){
     return(NA)
   }
+  # If right species name, extract exotic/native values
   else
   {
     nations <- b_result$nations[[1]]
@@ -93,6 +109,9 @@ df <- dbReadTable(con, "grid_sjoin")   # read into R
 
 df <- df %>%
   filter(!is.na(grid_id))
+
+df <- df %>%
+  filter(!is.na(species))
 
 species_list <- unique(df$species)
 View(species_list)
