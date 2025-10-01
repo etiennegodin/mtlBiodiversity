@@ -36,7 +36,7 @@ users <- users[!is.na(users$recordedBy),]
 users <- unique(users$recordedBy)
 View(users)
 
-cluster_stats <- function(df, coords_utm)
+cluster_stats <- function(df, coords_utm, u)
 {
   # ---------------------------------------------------------
   # 3. Summarise cluster stats
@@ -47,6 +47,7 @@ cluster_stats <- function(df, coords_utm)
   cluster_stats <- df %>%
     group_by(cluster) %>%
     summarise(
+      user = u,
       n_obs = n(),
       n_species = n_distinct(species),
       n_users = n_distinct(recordedBy),
@@ -60,7 +61,7 @@ cluster_stats <- function(df, coords_utm)
         max(sqrt((x - centroid[1])^2 + (y - centroid[2])^2))
       }
     )
-  
+
   flags <- cluster_stats %>%
     mutate(
       flag_home = (n_obs > 100 & n_users == 1 & spread_mean_m < 30 ),
@@ -81,7 +82,7 @@ cluster_stats <- function(df, coords_utm)
 
 }
 
-db_scan_func <- function(df)
+db_scan_func <- function(df, u)
 {
   
   coords <- df[, c('decimalLongitude', 'decimalLatitude')]
@@ -93,7 +94,7 @@ db_scan_func <- function(df)
   #db_h <- hdbscan(coords_utm, minPts = 5)
   df$cluster <- db$cluster
   
-  clusters <- cluster_stats(df, coords_utm)
+  clusters <- cluster_stats(df, coords_utm, u)
   #print(clusters)
 
   if (length(clusters) > 0 )
@@ -115,13 +116,21 @@ db_scan_func <- function(df)
 
 # Initialize empty vector to store ids
 ids_to_remove <- c()
-
+flags_df <- data.frame(user = c(),
+                       n_obs = c(),
+                       n_species = c(),
+                       n_users = c(),
+                       spread_mean_m = c(),
+                       spread_max_m = c(),
+                       flag_home = c(),
+                       flag_chaining = c()
+)
 for (u in users)
 {
   print(u)
   df_temp <- filter(df, recordedBy == u)
 
-  db_scan_func(df_temp)
+  db_scan_func(df_temp, u)
 }
 
 print(length(ids_to_remove))
