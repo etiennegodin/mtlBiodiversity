@@ -124,7 +124,13 @@ View(species_list)
 statuses <- c()
 for (s in species_list){
   print(s)
-  status = get_status(s)
+  status <- tryCatch({
+    get_status(s)
+  }, error = function(e) {
+    message("Error for element ", s, ": ", e$message)
+    return(NA)  # or NA, or just skip
+  })
+  
   statuses <<- c(statuses, status)
   
 }
