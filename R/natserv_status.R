@@ -114,7 +114,7 @@ View(species_list)
 
 #species_list <-c("Tiarella cordifolia")
 
-
+log_file <- "R/natserv_status_error_log.txt"
 statuses <- c()
 for (s in species_list){
   print(s)
@@ -124,6 +124,7 @@ for (s in species_list){
   }, error = function(e) {
     message("Error for element ", s, ": ", e$message)
     return(NA)  # or NA, or just skip
+    cat("Value=", s, " | Error=", e$message, "\n", file = log_file, append = TRUE)
   })
 
   statuses <<- c(statuses, status)
