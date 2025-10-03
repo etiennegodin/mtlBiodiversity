@@ -1,0 +1,10 @@
+name: r_env
+channels:
+  - conda-forge
+dependencies:
+  - r-base=4.3.2
+  - r-renv
+  - r-dplyr
+  - r-tidyverse
+  - r-sf      # if you do spatial work
+  - r-arrow 
