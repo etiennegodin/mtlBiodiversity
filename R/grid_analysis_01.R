@@ -37,7 +37,8 @@ filter_df <- function(df){
 analysis <- function(df, group_col){
   
   df_filtered <- filter_df(df)
-
+  #df_filtered <- df
+  
   df_analysis <- df_filtered %>% 
     group_by({{group_col}}) %>% 
     summarise(
@@ -65,12 +66,14 @@ con <- dbConnect(duckdb::duckdb(), dbdir = "C:/Users/manat/Documents/Projects/mt
 dbListTables(con)
 
 df_grid <- dbReadTable(con, "grid_sjoin")   # read into R
-df_quartiers <- dbReadTable(con, "quartiers_sjoin")   # read into R
+df_quartiers <- dbReadTable(con, "qrt_sjoin")   # read into R
 df_parks <- dbReadTable(con, "parks_sjoin")   # read into R
+
+dbDisconnect(conn =  con)
 
 grid_analysis_df <- analysis(df_grid, grid_id)
 quartiers_analysis_df <- analysis(df_quartiers, qrt_id)
-parks_analysis_df <- analysis(df_parks, park_id)
+parks_analysis_df <- analysis(df_parks, parks_id)
 
 write_parquet(grid_analysis_df, "data/processed/grid.parquet")
 write_parquet(quartiers_analysis_df, "data/processed/quartiers.parquet")

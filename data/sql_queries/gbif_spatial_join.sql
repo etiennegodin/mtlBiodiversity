@@ -11,5 +11,5 @@ CREATE OR REPLACE TABLE {{output_table_name}}  AS
                     AND l.minx <= r.maxx
                     AND l.maxy >= r.miny
                     AND l.miny <= r.maxy
-                    AND ST_Within(l.geom, r.geom) -- Spatial join predicate
+                    AND ST_Intersects(l.geom, r.geom) -- Spatial join predicate
                 ;

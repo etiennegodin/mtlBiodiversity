@@ -11,8 +11,6 @@ duckdb_file: "data/db/mtlBio.duckdb"
 
 grid_size: 250
 
-wkt_filters: ["filters/filter1.wkt"]
-
 gbif_columns: "gbifID,
                 occurrenceID,
                 kingdom,
