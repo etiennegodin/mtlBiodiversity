@@ -60,7 +60,7 @@ def create_gbif_table(gbif_data_path :Path = None,  marker_file:str = None):
             print(e)
     
 
-def filter_gbif_data(gbif_cols:str = None, limit :int = None,  marker_file:str = None,  coordUncerFilter:float = None, wkt_filters: str = None ):
+def filter_gbif_data(gbif_cols:str = None, limit :int = None,  marker_file:str = None,  coordUncerFilter:float = None, taxa_filter: list = None):
     
     table_name = 'filtered_gbif'
     
@@ -68,8 +68,11 @@ def filter_gbif_data(gbif_cols:str = None, limit :int = None,  marker_file:str =
         limit = None
     if coordUncerFilter == 'None':
         coordUncerFilter = None
-    if wkt_filters == 'None':
-        wkt_filters = None
+    if taxa_filter == 'None':
+        taxa_filter = None
+    else:
+        # Add '' to last element of filter for sql query LIKE
+        taxa_filter[1] = f"'{taxa_filter[1]}'"
     
     db = DuckDBConnection()
     con = db.conn
@@ -91,6 +94,7 @@ def filter_gbif_data(gbif_cols:str = None, limit :int = None,  marker_file:str =
                 SELECT {gbif_cols}
                 FROM gbif_raw AS g,
                 {'WHERE coordinateUncertaintyInMeters <= ' + str(coordUncerFilter) if (coordUncerFilter is not None) else ''}
+                {'WHERE ' + str(taxa_filter[0]) + ' LIKE ' + str(taxa_filter[1]) if (taxa_filter is not None) else ''}
                 {'LIMIT ' + str(limit) if (limit is not None) else ''}
                 """ 
                 

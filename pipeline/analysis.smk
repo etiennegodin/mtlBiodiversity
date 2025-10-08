@@ -2,12 +2,14 @@ from pathlib import Path
 configfile: "config.yaml"
 
 data_dir = Path(config["data_dir"])
-raw_dir = data_dir / "raw"
-interim_dir = data_dir / "interim"
-processed_dir = data_dir / "processed"
-db_dir = data_dir / "db"
-scripts_dir = Path("scripts")
-
+raw_dir = Path(config["raw_dir"])
+db_dir = Path(config["db_dir"])
+scripts_dir = Path(config["scripts_dir"])
+raw_shp_path = Path(config["raw_shp_path"])
+int_shp_path = Path(config["int_shp_path"])
+raw_gbif_path = Path(config["raw_gbif_path"])
+int_gbif_path = Path(config["int_gbif_path"])
+db_name = Path(config["duckdb_file"])
 
 
 rule grid_spatial_join:

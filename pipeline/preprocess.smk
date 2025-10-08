@@ -3,17 +3,14 @@ configfile: "config.yaml"
 from math import sqrt
 
 data_dir = Path(config["data_dir"])
-raw_dir = data_dir / "raw"
-db_dir = data_dir / "db"
-scripts_dir = Path("scripts")
-
-raw_shp_path = raw_dir / "geospatial"
-int_shp_path = interim_dir / "geospatial"
-
-raw_gbif_path = raw_dir / "gbif" 
-int_gbif_path = interim_dir / "gbif" 
-
-db_name = config["duckdb_file"]
+raw_dir = Path(config["raw_dir"])
+interim_dir : Path(config["interim_dir"])
+db_dir = Path(config["db_dir"])
+scripts_dir = Path(config["scripts_dir"])
+int_shp_path = Path(config["int_shp_path"])
+raw_gbif_path = Path(config["raw_gbif_path"])
+int_gbif_path = Path(config["int_gbif_path"])
+db_name = Path(config["duckdb_file"])
 
 # Calculate coordinate uncertainty based on grid size
 coord_uncertainty = ((config['grid_size'] * sqrt(2)) / 2)

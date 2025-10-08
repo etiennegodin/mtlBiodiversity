@@ -2,10 +2,8 @@ from pathlib import Path
 configfile: "config.yaml"
 
 data_dir = Path(config["data_dir"])
-db_dir = data_dir / "db"
-scripts_dir = Path("scripts")
-
-
+db_dir = Path(config["db_dir"])
+scripts_dir = Path(config["scripts_dir"])
 
 rule filter_gbif_data:
     input:
@@ -18,7 +16,8 @@ rule filter_gbif_data:
         db_name = config["duckdb_file"],
         marker_file = output.marker,
         coordUncerFilter = coord_uncertainty,
-        wkt_filters = config.get("wkt_filters", [])
+        taxa_filter =  config["taxa_filter"]
 
     script:
         scripts_dir / "05_filterGbifData.py"
+

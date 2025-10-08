@@ -28,14 +28,13 @@ con <- dbConnect(duckdb::duckdb(), dbdir = "C:/Users/manat/Documents/Projects/mt
 dbListTables(con)
 
 table <- "parks_sjoin"
-group_id <- 'park_id'
+group_id <- 'parks_id'
 cluster_count = 3
 df <- dbReadTable(con, table)   # read into R
 
-?dbDisconnect(con, shutdown = TRUE)
+dbDisconnect(conn =  con)
+
 df_filtered <- filter_df(df, group_id)
-
-
 
 df_counts <- df_filtered %>% 
   add_count(.data[[group_id]], name = 'n_obs') %>% 
